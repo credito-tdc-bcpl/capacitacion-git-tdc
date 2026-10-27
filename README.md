@@ -54,7 +54,7 @@ git config --global user.email "tu.correo@bancoppel.com"
    ```
 2. Descarga la biblioteca completa del equipo con el comando `git clone`:
    ```powershell
-   git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git
+   git clone https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git
    ```
 3. Entra a la carpeta recién descargada:
    ```powershell
@@ -80,9 +80,11 @@ Verás todas las carpetas del equipo (`originacion/`, `lineas-credito/`, `indica
 En la raíz de este proyecto tienes el archivo **`index.html`**, que es una plataforma interactiva completa con emuladores de terminal, explicaciones visuales y laboratorios prácticos.
 
 Para abrirlo a la par de tu VS Code:
-1. En el explorador lateral de VS Code, dale **clic derecho a `index.html`** y selecciona **"Reveal in File Explorer"** (Mostrar en el explorador de archivos).
-2. Haz **doble clic en `index.html`** para que se abra en Google Chrome o Microsoft Edge.
-3. 💡 **Tip de trabajo:** Coloca tu navegador en la mitad izquierda de tu pantalla y Visual Studio Code en la mitad derecha. Así podrás leer las lecciones e ir ejecutando los comandos reales en tu VS Code.
+- **Opción A (Recomendada):** Ábrelo directamente en tu navegador desde GitHub Pages:  
+  👉 **[https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)**
+- **Opción B (Local):** En el explorador lateral de VS Code, dale **clic derecho a `index.html`** ➔ **"Reveal in File Explorer"** y haz doble clic sobre el archivo.
+
+💡 **Tip de trabajo:** Coloca tu navegador en la mitad izquierda de tu pantalla y Visual Studio Code en la mitad derecha. Así podrás leer las lecciones e ir ejecutando los comandos reales en tu terminal.
 
 ---
 

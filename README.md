@@ -8,6 +8,100 @@ Repositorio centralizado del equipo de **Políticas y Estrategia de Crédito par
 
 ---
 
+## 🐣 Guía de Instalación y Primer Uso (Para Principiantes Absolutos)
+
+> **¿Es tu primer día usando Git o no sabes si lo tienes instalado?**  
+> Sigue estos 5 pasos ordenados para dejar tu entorno listo en menos de 5 minutos y poder abrir el curso interactivo a la par de tu Visual Studio Code.
+
+### Paso 0: Verificar o Instalar Git en Windows
+
+1. Abre la terminal de Windows (**PowerShell**) o abre Visual Studio Code y presiona <kbd>Ctrl</kbd> + <kbd>Ñ</kbd>.
+2. Escribe el siguiente comando y presiona <kbd>Enter</kbd>:
+   ```powershell
+   git --version
+   ```
+3. **¿Qué resultado obtuviste?**
+   - **Caso A (Ya lo tienes):** Aparece algo como `git version 2.4x.x.windows.1`. 👉 Pasa directo al **Paso 1**.
+   - **Caso B (No está instalado):** Aparece en rojo *"git no se reconoce como un comando interno o externo..."*.
+
+   **Para instalar Git en Windows (Solo toma 2 minutos):**
+   - Opción 1 (Descarga directa): Entra a [https://git-scm.com/download/win](https://git-scm.com/download/win) y descarga el instalador **64-bit Git for Windows Setup**.
+   - Opción 2 (Rápida desde PowerShell como Administrador):
+     ```powershell
+     winget install --id Git.Git -e --source winget
+     ```
+   - Al instalar, da clic en **"Next"** a todas las opciones por defecto sin cambiar nada.
+   - ⚠️ **MUY IMPORTANTE:** Al terminar la instalación, **cierra y vuelve a abrir Visual Studio Code** para que reconozca a Git.
+
+---
+
+### Paso 1: Configurar tu Identidad por Primera Vez (Solo 1 vez en tu máquina)
+
+Para que el banco sepa quién es el autor de cada script o política de crédito, abre la terminal en VS Code (<kbd>Ctrl</kbd> + <kbd>Ñ</kbd>) y ejecuta tus datos:
+
+```powershell
+git config --global user.name "Tu Nombre y Apellido"
+git config --global user.email "tu.correo@bancoppel.com"
+```
+
+---
+
+### Paso 2: Descargar este Repositorio a tu Computadora (`git clone`)
+
+1. En la terminal de Windows o PowerShell, ve a tu carpeta de trabajo preferida (por ejemplo, `Documents`):
+   ```powershell
+   cd C:\Users\$env:USERNAME\Documents
+   ```
+2. Descarga la biblioteca completa del equipo con el comando `git clone`:
+   ```powershell
+   git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git
+   ```
+3. Entra a la carpeta recién descargada:
+   ```powershell
+   cd capacitacion-git-tdc
+   ```
+
+---
+
+### Paso 3: Abrir la Carpeta en Visual Studio Code
+
+Desde esa misma terminal, escribe:
+```powershell
+code .
+```
+*(O bien abre VS Code, ve al menú superior **Archivo > Abrir Carpeta...** y selecciona la carpeta `capacitacion-git-tdc`).*
+
+Verás todas las carpetas del equipo (`originacion/`, `lineas-credito/`, `indicadores-cosechas/`, `ejemplos/`) en la barra lateral izquierda.
+
+---
+
+### Paso 4: Abrir el Portal de Capacitación Interactivo (`index.html`)
+
+En la raíz de este proyecto tienes el archivo **`index.html`**, que es una plataforma interactiva completa con emuladores de terminal, explicaciones visuales y laboratorios prácticos.
+
+Para abrirlo a la par de tu VS Code:
+1. En el explorador lateral de VS Code, dale **clic derecho a `index.html`** y selecciona **"Reveal in File Explorer"** (Mostrar en el explorador de archivos).
+2. Haz **doble clic en `index.html`** para que se abra en Google Chrome o Microsoft Edge.
+3. 💡 **Tip de trabajo:** Coloca tu navegador en la mitad izquierda de tu pantalla y Visual Studio Code en la mitad derecha. Así podrás leer las lecciones e ir ejecutando los comandos reales en tu VS Code.
+
+---
+
+### Paso 5: Tu Primer `git pull` Real en Visual Studio Code
+
+Una vez abierto el proyecto en VS Code:
+1. Abre la terminal integrada con el atajo: <kbd>Ctrl</kbd> + <kbd>Ñ</kbd> (o menú **Terminal > New Terminal**).
+2. Asegúrate de estar dentro de la carpeta y ejecuta tu primer comando:
+   ```powershell
+   git pull
+   ```
+3. Verás la respuesta:
+   ```text
+   Already up to date.
+   ```
+¡Felicidades! Tu entorno local está sincronizado con el repositorio central. A partir de este momento, cada mañana antes de comenzar tus análisis, tu primer paso siempre será correr `git pull`.
+
+---
+
 ## 📌 Reglas de Convivencia y Operación del Repositorio
 
 Para mantener el orden, la trazabilidad y la seguridad regulatoria del banco:
@@ -25,8 +119,9 @@ Para mantener el orden, la trazabilidad y la seguridad regulatoria del banco:
 ## 🗂️ Estructura del Repositorio
 
 ```text
-politicas-credito-tdc/
+capacitacion-git-tdc/
 │
+├── index.html                      # Portal web interactivo de capacitación (simulador en navegador)
 ├── .gitignore                      # Protección contra subida de datos confidenciales (.csv, .xlsx, .env)
 ├── README.md                       # Catálogo general y reglas del equipo
 │
@@ -61,24 +156,24 @@ politicas-credito-tdc/
 
 ---
 
-## 🚀 Guía de Arranque Rápido para Analistas (5 Comandos)
+## 🚀 Guía de los 5 Comandos de Supervivencia
 
-Si es tu primer día con este repositorio:
+Una vez instalado y configurado tu entorno, tu ciclo diario se resume en estos 5 comandos:
 
 ```powershell
-# 1. Clona el repositorio a tu máquina (solo la primera vez)
-git clone https://github.com/tu-organizacion-bancaria/politicas-credito-tdc.git
-
-# 2. Entra a la carpeta
-cd politicas-credito-tdc
-
-# 3. Antes de empezar tu día (SIEMPRE):
+# 1. Al comenzar el día en tu terminal de VS Code:
 git pull
 
-# 4. Cuando hayas creado o modificado tu script:
+# 2. Cuando hayas terminado de modificar o crear tu script:
 git status
+
+# 3. Preparar tus cambios (meter a la caja):
 git add .
+
+# 4. Guardar versión con mensaje descriptivo (mínimo 10 caracteres):
 git commit -m "feat(lineas): se actualiza regla de incremento para cosecha 2026-Q1"
+
+# 5. Enviar tus cambios a la organización en GitHub:
 git push
 ```
 

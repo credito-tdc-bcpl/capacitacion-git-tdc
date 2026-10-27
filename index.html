@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-[#f5f5f7] text-[#1d1d1f]">
+<html lang="es" class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Políticas TDC — Guía de Acompañamiento Git & GitHub</title>
   
-  <!-- Typography: Inter & JetBrains Mono (Substitutes for SF Pro & SF Mono) -->
+  <!-- Typography: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,27 +14,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
             sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'SF Mono', 'Menlo', 'Consolas', 'monospace'],
-          },
-          colors: {
-            apple: {
-              ink: '#1d1d1f',
-              midGray: '#707070',
-              deepGray: '#474747',
-              hairline: '#d6d6d6',
-              canvas: '#f5f5f7',
-              paper: '#ffffff',
-              coolWash: '#e8e8ed',
-              fadedSurface: '#fafafc',
-              blue: '#0071e3',
-              blueHover: '#0077ed',
-              linkBlue: '#0066cc',
-              ember: '#b64400',
-            }
           },
           borderRadius: {
             'card': '28px',
@@ -46,33 +31,71 @@
   </script>
 
   <style>
-    /* DESIGN.md Tokens & Typography Specifications */
+    /* ==========================================================================
+       DESIGN TOKENS (Default: Apple Dark Mode / OLED Obsidian)
+       ========================================================================== */
     :root {
+      /* Dark Mode (Default) */
+      --color-canvas: #000000;
+      --color-surface: #121214;
+      --color-card: #1c1c1e;
+      --color-card-border: rgba(255, 255, 255, 0.10);
+      --color-subcard: #252528;
+      --color-pill-bg: #161618;
+      --color-hairline: rgba(255, 255, 255, 0.12);
+      --color-primary-ink: #f5f5f7;
+      --color-mid-gray: #a1a1a6;
+      --color-deep-gray: #6e6e73;
+      --color-electric-blue: #2997ff;
+      --color-electric-blue-hover: #0077ed;
+      --color-link-blue: #2997ff;
+      --color-ember: #ff9f0a;
+      --color-nav-bg: rgba(0, 0, 0, 0.82);
+      --color-nav-sub: rgba(18, 18, 20, 0.95);
+      --color-kbd-bg: #2c2c2e;
+      --color-kbd-border: rgba(255, 255, 255, 0.15);
+      --color-btn-active-bg: #f5f5f7;
+      --color-btn-active-text: #000000;
+      --radius-card: 28px;
+      --radius-pill: 980px;
+    }
+
+    /* Light Mode Option */
+    html.light {
+      --color-canvas: #f5f5f7;
+      --color-surface: #ffffff;
+      --color-card: #ffffff;
+      --color-card-border: rgba(0, 0, 0, 0.08);
+      --color-subcard: #f5f5f7;
+      --color-pill-bg: #f5f5f7;
+      --color-hairline: #d6d6d6;
       --color-primary-ink: #1d1d1f;
       --color-mid-gray: #707070;
       --color-deep-gray: #474747;
-      --color-hairline: #d6d6d6;
-      --color-canvas: #f5f5f7;
-      --color-paper: #ffffff;
-      --color-cool-wash: #e8e8ed;
       --color-electric-blue: #0071e3;
+      --color-electric-blue-hover: #0077ed;
       --color-link-blue: #0066cc;
       --color-ember: #b64400;
-      --radius-card: 28px;
-      --radius-pill: 980px;
+      --color-nav-bg: rgba(255, 255, 255, 0.85);
+      --color-nav-sub: #fafafc;
+      --color-kbd-bg: #f5f5f7;
+      --color-kbd-border: #d6d6d6;
+      --color-btn-active-bg: #1d1d1f;
+      --color-btn-active-text: #ffffff;
     }
 
     body {
       background-color: var(--color-canvas);
       color: var(--color-primary-ink);
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    /* Minimal scrollbars */
+    /* Minimalist Apple scrollbars */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #d6d6d6; border-radius: 999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #707070; }
+    ::-webkit-scrollbar-thumb { background: var(--color-hairline); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-mid-gray); }
 
     /* Custom Checkbox Animation */
     .task-check:checked + label {
@@ -82,62 +105,71 @@
   </style>
 </head>
 
-<body class="h-full flex flex-col font-sans selection:bg-[#0071e3] selection:text-white">
+<body class="h-full flex flex-col font-sans selection:bg-[#2997ff] selection:text-white">
 
-  <!-- ================= STICKY GLOBAL NAVIGATION (DESIGN.md: 44px height, frosted glass) ================= -->
-  <header class="sticky top-0 z-50 bg-[#ffffff]/85 backdrop-blur-md border-b border-[#d6d6d6]/60 transition-all">
+  <!-- ================= STICKY TOP GLOBAL BAR (44px height, Frosted Glass) ================= -->
+  <header class="sticky top-0 z-50 backdrop-blur-md transition-all border-b" style="background-color: var(--color-nav-bg); border-color: var(--color-hairline);">
     <div class="max-w-[1200px] mx-auto px-4 sm:px-8 h-12 flex items-center justify-between gap-4">
       
       <!-- Brand & Eyebrow -->
       <div class="flex items-center space-x-3">
-        <span class="text-sm font-semibold tracking-tight text-[#1d1d1f]">Políticas TDC</span>
-        <span class="text-[#d6d6d6]">|</span>
-        <span class="text-xs text-[#707070] hidden sm:inline">Guía de Acompañamiento en Vivo</span>
+        <span class="text-sm font-semibold tracking-tight" style="color: var(--color-primary-ink);">Políticas TDC</span>
+        <span class="text-xs" style="color: var(--color-deep-gray);">|</span>
+        <span class="text-xs hidden sm:inline" style="color: var(--color-mid-gray);">Guía de Acompañamiento en Vivo</span>
       </div>
 
-      <!-- Live Checklist Progress Bar & Shortcut -->
-      <div class="flex items-center space-x-3 sm:space-x-5">
+      <!-- Controls: Theme Switcher, Progress, VS Code Shortcut -->
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        
+        <!-- Live Checklist Progress Bar -->
         <div class="flex items-center space-x-2 text-xs">
-          <span class="text-[#707070] text-[11px] hidden md:inline">Progreso en VS Code:</span>
-          <span class="font-semibold text-[#1d1d1f] text-xs font-mono" id="progress-summary">0 de 8</span>
-          <div class="w-16 sm:w-24 bg-[#e8e8ed] rounded-full h-1.5 overflow-hidden">
-            <div id="progress-fill" class="bg-[#0071e3] h-1.5 rounded-full transition-all duration-300" style="width: 0%;"></div>
+          <span class="text-[11px] hidden md:inline" style="color: var(--color-mid-gray);">Progreso:</span>
+          <span class="font-semibold text-xs font-mono" id="progress-summary" style="color: var(--color-primary-ink);">0 de 8</span>
+          <div class="w-16 sm:w-20 rounded-full h-1.5 overflow-hidden" style="background-color: var(--color-subcard);">
+            <div id="progress-fill" class="h-1.5 rounded-full transition-all duration-300" style="width: 0%; background-color: var(--color-electric-blue);"></div>
           </div>
-          <button onclick="resetAllChecks()" title="Reiniciar lista de verificación" class="text-[#707070] hover:text-[#1d1d1f] text-xs transition px-1">
+          <button onclick="resetAllChecks()" title="Reiniciar lista de verificación" class="text-xs transition px-1 hover:opacity-100 opacity-60" style="color: var(--color-mid-gray);">
             ↺
           </button>
         </div>
 
-        <div class="hidden sm:flex items-center space-x-1.5 bg-[#f5f5f7] px-2.5 py-1 rounded-full text-[11px] text-[#474747] border border-[#d6d6d6]/50">
+        <!-- Terminal Shortcut Pill -->
+        <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-mid-gray);">
           <span>Terminal:</span>
-          <kbd class="font-mono font-medium text-[#1d1d1f]">Ctrl + Ñ</kbd>
+          <kbd class="font-mono font-medium" style="color: var(--color-primary-ink);">Ctrl + Ñ</kbd>
         </div>
+
+        <!-- Theme Switcher Button (Dark / Light) -->
+        <button onclick="toggleTheme()" id="theme-btn" class="p-1.5 rounded-full border transition hover:opacity-100 flex items-center justify-center text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);" title="Cambiar tema claro/oscuro">
+          <span id="theme-icon">🌙</span>
+        </button>
+
       </div>
 
     </div>
 
-    <!-- Sub-navigation Tabs (Apple segmented control aesthetic) -->
-    <div class="bg-[#fafafc] border-t border-[#d6d6d6]/40">
+    <!-- Segmented Navigation Tabs (Apple Dark Segmented Control) -->
+    <div class="border-t transition-all" style="background-color: var(--color-nav-sub); border-color: var(--color-hairline);">
       <div class="max-w-[1200px] mx-auto px-4 sm:px-8">
         <nav class="flex space-x-2 overflow-x-auto py-2 no-scrollbar" id="nav-tabs">
           
-          <button onclick="switchTab('tab-setup')" id="btn-tab-setup" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition bg-[#1d1d1f] text-white">
+          <button onclick="switchTab('tab-setup')" id="btn-tab-setup" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition active-tab-pill">
             1. Instalación y Setup
           </button>
 
-          <button onclick="switchTab('tab-pull')" id="btn-tab-pull" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+          <button onclick="switchTab('tab-pull')" id="btn-tab-pull" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
             2. Comenzar el Día (pull)
           </button>
 
-          <button onclick="switchTab('tab-ciclo')" id="btn-tab-ciclo" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+          <button onclick="switchTab('tab-ciclo')" id="btn-tab-ciclo" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
             3. Compartir en 4 Pasos
           </button>
 
-          <button onclick="switchTab('tab-seguridad')" id="btn-tab-seguridad" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+          <button onclick="switchTab('tab-seguridad')" id="btn-tab-seguridad" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
             4. Seguridad (.gitignore)
           </button>
 
-          <button onclick="switchTab('tab-cheatsheet')" id="btn-tab-cheatsheet" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+          <button onclick="switchTab('tab-cheatsheet')" id="btn-tab-cheatsheet" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
             5. Acordeón & Errores
           </button>
 
@@ -146,151 +178,150 @@
     </div>
   </header>
 
-  <!-- ================= HERO PRESENTATION (DESIGN.md: Cathedral of white space with whispered headlines) ================= -->
-  <section class="bg-[#ffffff] pt-12 pb-10 border-b border-[#d6d6d6]/40">
+  <!-- ================= HERO PRESENTATION (Apple Dark Pro Style) ================= -->
+  <section class="pt-12 pb-10 border-b transition-all" style="background-color: var(--color-surface); border-color: var(--color-hairline);">
     <div class="max-w-[1200px] mx-auto px-4 sm:px-8 text-center space-y-3">
-      <div class="inline-block text-[13px] font-semibold text-[#b64400] tracking-normal uppercase">
+      <div class="inline-block text-[13px] font-semibold tracking-normal uppercase" style="color: var(--color-ember);">
         Área de Riesgo de Crédito
       </div>
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1d1d1f] max-w-4xl mx-auto leading-tight">
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight" style="color: var(--color-primary-ink);">
         Aprende Git en tu consola.<br class="hidden sm:inline"> Sin fricción ni confusión.
       </h1>
-      <p class="text-base sm:text-lg text-[#707070] max-w-2xl mx-auto pt-1 leading-relaxed font-normal">
+      <p class="text-base sm:text-lg max-w-2xl mx-auto pt-1 leading-relaxed font-normal" style="color: var(--color-mid-gray);">
         Una referencia limpia diseñada para trabajar en pantalla dividida. Copia el comando, ejecútalo en la terminal de Visual Studio Code y valida el resultado.
       </p>
     </div>
   </section>
 
-  <!-- ================= MAIN CONTENT PANES ================= -->
+  <!-- ================= MAIN CONTENT CONTAINER ================= -->
   <main class="flex-1 max-w-[1200px] w-full mx-auto p-4 sm:p-8 space-y-8">
 
     <!-- ================================================================ -->
-    <!-- TAB 1: INSTALACIÓN Y CONFIGURACIÓN INICIAL (SETUP) -->
+    <!-- TAB 1: INSTALACIÓN Y SETUP -->
     <!-- ================================================================ -->
     <section id="content-tab-setup" class="tab-pane space-y-6">
       
-      <!-- Section Header (DESIGN.md: 28-32px weight 600) -->
       <div class="space-y-1">
-        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
           Paso 0. Preparar tu entorno
         </h2>
-        <p class="text-sm text-[#707070]">
+        <p class="text-sm" style="color: var(--color-mid-gray);">
           Verifica que tu computadora tenga Git listo antes de clonar el repositorio semilla.
         </p>
       </div>
 
       <!-- Feature Card 1: Comprobar Git -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40 transition hover:border-[#d6d6d6]">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">1</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">Comprueba si tienes Git instalado</h3>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">1</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Comprueba si tienes Git instalado</h3>
           </div>
-          <span class="text-xs text-[#b64400] font-medium">Verificación previa</span>
+          <span class="text-xs font-medium" style="color: var(--color-ember);">Verificación previa</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
-          Abre la terminal en Visual Studio Code (<kbd class="px-2 py-0.5 bg-[#f5f5f7] border border-[#d6d6d6] rounded font-mono text-xs text-[#1d1d1f]">Ctrl + Ñ</kbd>) o en PowerShell y corre:
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
+          Abre la terminal en Visual Studio Code (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>) o en PowerShell y corre:
         </p>
 
-        <!-- Command Pill with Single Blue CTA Button -->
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
+        <!-- Command Pill -->
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code>git --version</code>
-          <button onclick="copyCmd('git --version')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition shadow-sm">
+          <button onclick="copyCmd('git --version')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition shadow-sm" style="background-color: var(--color-electric-blue);">
             Copiar
           </button>
         </div>
 
         <!-- Terminal Output Spec Card -->
-        <div class="bg-[#fafafc] p-4 rounded-[20px] border border-[#d6d6d6]/50 text-xs space-y-1.5 font-mono">
-          <div class="text-[#707070] font-sans font-semibold text-[11px] uppercase tracking-wider">Salida esperada</div>
-          <div class="text-[#1d1d1f] font-semibold">git version 2.4x.x.windows.1</div>
-          <div class="text-[#707070] font-sans text-xs pt-1">
-            Si arroja un error en rojo, instala Git en 2 minutos desde <a href="https://git-scm.com/download/win" target="_blank" class="text-[#0066cc] hover:underline font-medium">git-scm.com ›</a> y <strong>reinicia VS Code</strong>.
+        <div class="p-4 rounded-[20px] border text-xs space-y-1.5 font-mono" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Salida esperada</div>
+          <div class="font-semibold" style="color: var(--color-primary-ink);">git version 2.4x.x.windows.1</div>
+          <div class="font-sans text-xs pt-1" style="color: var(--color-mid-gray);">
+            Si arroja un error en rojo, instala Git en 2 minutos desde <a href="https://git-scm.com/download/win" target="_blank" class="hover:underline font-medium" style="color: var(--color-link-blue);">git-scm.com ›</a> y <strong>reinicia VS Code</strong>.
           </div>
         </div>
 
         <!-- Interactive Checklist Item -->
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-0" onchange="toggleTask('check-step-0')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-0" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-0" onchange="toggleTask('check-step-0')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-0" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ya confirmé que tengo Git instalado y funcionando en mi terminal.
           </label>
         </div>
       </div>
 
       <!-- Feature Card 2: Configurar Identidad -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40 transition hover:border-[#d6d6d6]">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">2</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">Configura tu nombre y correo (Solo 1 vez en la vida)</h3>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">2</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Configura tu nombre y correo (Solo 1 vez en la vida)</h3>
           </div>
-          <span class="text-xs text-[#707070] font-mono">Global</span>
+          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Global</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
           Esto asocia tus cambios a tu identidad profesional para la trazabilidad y auditoría de las políticas de crédito:
         </p>
 
         <div class="space-y-2">
-          <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
+          <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
             <code>git config --global user.name "Tu Nombre y Apellido"</code>
-            <button onclick="copyCmd('git config --global user.name &quot;Tu Nombre y Apellido&quot;')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+            <button onclick="copyCmd('git config --global user.name &quot;Tu Nombre y Apellido&quot;')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
               Copiar
             </button>
           </div>
-          <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
+          <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
             <code>git config --global user.email "tu.correo@banco.com"</code>
-            <button onclick="copyCmd('git config --global user.email &quot;tu.correo@bancoppel.com&quot;')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+            <button onclick="copyCmd('git config --global user.email &quot;tu.correo@bancoppel.com&quot;')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
               Copiar
             </button>
           </div>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-1" onchange="toggleTask('check-step-1')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-1" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-1" onchange="toggleTask('check-step-1')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-1" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ya ejecuté ambos comandos con mi nombre y correo institucional.
           </label>
         </div>
       </div>
 
       <!-- Feature Card 3: Clonar Repositorio -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40 transition hover:border-[#d6d6d6]">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">3</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">Descarga el repositorio a tu máquina (`git clone`)</h3>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">3</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Descarga el repositorio a tu máquina (`git clone`)</h3>
           </div>
-          <span class="text-xs text-[#0066cc] font-medium">Biblioteca central</span>
+          <span class="text-xs font-medium" style="color: var(--color-link-blue);">Biblioteca central</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
           Posiciónate en tu carpeta de trabajo y clona el proyecto semilla de Políticas TDC:
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code class="truncate">git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git</code>
-          <button onclick="copyCmd('git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0">
+          <button onclick="copyCmd('git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0" style="background-color: var(--color-electric-blue);">
             Copiar URL
           </button>
         </div>
 
-        <p class="text-xs text-[#707070]">
+        <p class="text-xs" style="color: var(--color-mid-gray);">
           Luego entra a la carpeta y ábrela en Visual Studio Code:
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code>cd capacitacion-git-tdc ; code .</code>
-          <button onclick="copyCmd('cd capacitacion-git-tdc ; code .')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+          <button onclick="copyCmd('cd capacitacion-git-tdc ; code .')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
             Copiar
           </button>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-2" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-2" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ya descargué el repositorio y lo tengo abierto en Visual Studio Code.
           </label>
         </div>
@@ -305,49 +336,49 @@
     <section id="content-tab-pull" class="tab-pane hidden space-y-6">
       
       <div class="space-y-1">
-        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
           Paso 1. Comenzar el día con `git pull`
         </h2>
-        <p class="text-sm text-[#707070]">
+        <p class="text-sm" style="color: var(--color-mid-gray);">
           Tu primer acto cada mañana antes de redactar código. Sincroniza las novedades de tus colegas en 2 segundos.
         </p>
       </div>
 
       <!-- Main Action Card -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-5 border border-[#d6d6d6]/40">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-5 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         
-        <p class="text-[15px] text-[#474747] leading-relaxed">
-          Abre la terminal en VS Code (<kbd class="px-2 py-0.5 bg-[#f5f5f7] border border-[#d6d6d6] rounded font-mono text-xs text-[#1d1d1f]">Ctrl + Ñ</kbd>) y escribe:
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
+          Abre la terminal en VS Code (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>) y escribe:
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-sm text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code class="font-bold text-base">git pull</code>
-          <button onclick="copyCmd('git pull')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm">
+          <button onclick="copyCmd('git pull')" class="text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm" style="background-color: var(--color-electric-blue);">
             Copiar Comando
           </button>
         </div>
 
-        <!-- 2 Outcomes Grid (DESIGN.md: 2-column comparative layout) -->
+        <!-- 2 Outcomes Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
           
-          <div class="bg-[#f5f5f7] p-5 rounded-[22px] space-y-2 border border-[#d6d6d6]/30">
-            <span class="text-xs font-semibold text-[#1d1d1f] block uppercase tracking-wider">Escenario A: Ya estás al día</span>
-            <div class="font-mono text-xs text-[#707070] bg-[#ffffff] p-3 rounded-[14px] border border-[#d6d6d6]/40">
+          <div class="p-5 rounded-[22px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <span class="text-xs font-semibold block uppercase tracking-wider" style="color: var(--color-primary-ink);">Escenario A: Ya estás al día</span>
+            <div class="font-mono text-xs p-3 rounded-[14px] border" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-mid-gray);">
               Already up to date.
             </div>
-            <p class="text-xs text-[#707070] pt-1">
+            <p class="text-xs pt-1" style="color: var(--color-mid-gray);">
               Significa que ningún compañero ha subido cambios nuevos desde tu última sincronización. Puedes comenzar a trabajar con tranquilidad.
             </p>
           </div>
 
-          <div class="bg-[#f5f5f7] p-5 rounded-[22px] space-y-2 border border-[#d6d6d6]/30">
-            <span class="text-xs font-semibold text-[#1d1d1f] block uppercase tracking-wider">Escenario B: Descarga novedades</span>
-            <div class="font-mono text-xs text-[#1d1d1f] bg-[#ffffff] p-3 rounded-[14px] border border-[#d6d6d6]/40 space-y-0.5">
-              <div class="text-[#0066cc]">Fast-forward</div>
+          <div class="p-5 rounded-[22px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <span class="text-xs font-semibold block uppercase tracking-wider" style="color: var(--color-primary-ink);">Escenario B: Descarga novedades</span>
+            <div class="font-mono text-xs p-3 rounded-[14px] border space-y-0.5" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <div style="color: var(--color-link-blue);">Fast-forward</div>
               <div>indicadores/cosechas.sql | 45 ++++</div>
-              <div class="text-[#707070]">2 files changed, 107 insertions(+)</div>
+              <div style="color: var(--color-mid-gray);">2 files changed, 107 insertions(+)</div>
             </div>
-            <p class="text-xs text-[#707070] pt-1">
+            <p class="text-xs pt-1" style="color: var(--color-mid-gray);">
               Git bajó los últimos scripts creados por el equipo directamente a tus carpetas locales.
             </p>
           </div>
@@ -355,21 +386,21 @@
         </div>
 
         <div class="pt-2 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-3" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-3" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ya ejecuté `git pull` en mi terminal de VS Code y revisé la respuesta.
           </label>
         </div>
 
       </div>
 
-      <!-- Regla de convivencia: Clean text banner -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 border border-[#d6d6d6]/40 flex items-start space-x-4">
+      <!-- Regla de convivencia -->
+      <div class="rounded-[28px] p-6 border flex items-start space-x-4" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <span class="text-2xl">🏛️</span>
         <div class="space-y-1">
-          <h4 class="font-semibold text-sm text-[#1d1d1f]">Regla de Oro: Cada analista en su carpeta</h4>
-          <p class="text-xs text-[#707070] leading-relaxed">
-            Al trabajar en <code class="text-[#1d1d1f] font-mono">originacion/</code>, <code class="text-[#1d1d1f] font-mono">lineas-credito/</code> o <code class="text-[#1d1d1f] font-mono">indicadores-cosechas/</code> sin modificar los archivos de otros compañeros al mismo tiempo, <strong>nunca tendrás conflictos de Git</strong> al hacer pull.
+          <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Regla de Oro: Cada analista en su carpeta</h4>
+          <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+            Al trabajar en <code class="font-mono" style="color: var(--color-primary-ink);">originacion/</code>, <code class="font-mono" style="color: var(--color-primary-ink);">lineas-credito/</code> o <code class="font-mono" style="color: var(--color-primary-ink);">indicadores-cosechas/</code> sin modificar los archivos de otros compañeros al mismo tiempo, <strong>nunca tendrás conflictos de Git</strong> al hacer pull.
           </p>
         </div>
       </div>
@@ -378,134 +409,134 @@
 
 
     <!-- ================================================================ -->
-    <!-- TAB 3: EL CICLO DE 4 PASOS (STATUS -> ADD -> COMMIT -> PUSH) -->
+    <!-- TAB 3: EL CICLO DE 4 PASOS -->
     <!-- ================================================================ -->
     <section id="content-tab-ciclo" class="tab-pane hidden space-y-6">
       
       <div class="space-y-1">
-        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
           El Ciclo de 4 Pasos. La Analogía de la Caja 📦
         </h2>
-        <p class="text-sm text-[#707070]">
+        <p class="text-sm" style="color: var(--color-mid-gray);">
           Cuando terminas o modificas un script y quieres subirlo a GitHub, sigue este orden en tu terminal:
         </p>
       </div>
 
       <!-- Step 1: status -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">1</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">git status</h3>
-            <span class="text-xs text-[#707070]">— Ver qué cambió</span>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">1</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">git status</h3>
+            <span class="text-xs" style="color: var(--color-mid-gray);">— Ver qué cambió</span>
           </div>
-          <span class="text-xs text-[#707070] font-mono">Paso 1 de 4</span>
+          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Paso 1 de 4</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
           Muestra en rojo los archivos que has creado o modificado y que aún están fuera de la caja:
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code>git status</code>
-          <button onclick="copyCmd('git status')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+          <button onclick="copyCmd('git status')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
             Copiar
           </button>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-4" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-4" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté `git status` y vi mis archivos modificados en la consola.
           </label>
         </div>
       </div>
 
       <!-- Step 2: add -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">2</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">git add .</h3>
-            <span class="text-xs text-[#707070]">— Meter a la caja de envío</span>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">2</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">git add .</h3>
+            <span class="text-xs" style="color: var(--color-mid-gray);">— Meter a la caja de envío</span>
           </div>
-          <span class="text-xs text-[#707070] font-mono">Paso 2 de 4</span>
+          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Paso 2 de 4</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
-          Prepara todos los archivos modificados. El punto (<code class="font-mono text-[#0066cc]">.</code>) significa "incluye todo":
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
+          Prepara todos los archivos modificados. El punto (<code class="font-mono" style="color: var(--color-link-blue);">.</code>) significa "incluye todo":
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code>git add .</code>
-          <button onclick="copyCmd('git add .')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+          <button onclick="copyCmd('git add .')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
             Copiar
           </button>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-5" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-5" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté `git add .` en mi terminal (mis archivos pasaron a verde).
           </label>
         </div>
       </div>
 
       <!-- Step 3: commit -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">3</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">git commit -m "..."</h3>
-            <span class="text-xs text-[#707070]">— Sellar y etiquetar</span>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">3</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">git commit -m "..."</h3>
+            <span class="text-xs" style="color: var(--color-mid-gray);">— Sellar y etiquetar</span>
           </div>
-          <span class="text-xs text-[#707070] font-mono">Paso 3 de 4</span>
+          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Paso 3 de 4</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
-          Guarda la versión con una nota explicativa. Recuerda siempre incluir <code class="font-mono text-[#0066cc]">-m "mensaje"</code> para no caer en el editor Vim:
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
+          Guarda la versión con una nota explicativa. Recuerda siempre incluir <code class="font-mono" style="color: var(--color-link-blue);">-m "mensaje"</code> para no caer en el editor Vim:
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code class="truncate">git commit -m "feat(lineas): actualiza matriz de aumento de limites"</code>
-          <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0">
+          <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0" style="background-color: var(--color-electric-blue);">
             Copiar Ejemplo
           </button>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-6" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-6" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Guardé el commit con un mensaje descriptivo de al menos 10 caracteres.
           </label>
         </div>
       </div>
 
       <!-- Step 4: push -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">4</span>
-            <h3 class="font-semibold text-lg text-[#1d1d1f]">git push</h3>
-            <span class="text-xs text-[#707070]">— Enviar a la Organización</span>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">4</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">git push</h3>
+            <span class="text-xs" style="color: var(--color-mid-gray);">— Enviar a la Organización</span>
           </div>
-          <span class="text-xs text-[#0066cc] font-medium font-mono">Paso 4 (Final)</span>
+          <span class="text-xs font-medium font-mono" style="color: var(--color-link-blue);">Paso 4 (Final)</span>
         </div>
 
-        <p class="text-[15px] text-[#474747] leading-relaxed">
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
           Sube tus cambios por internet a GitHub para que queden disponibles para el equipo y tu líder:
         </p>
 
-        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-sm text-[#1d1d1f]">
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code class="font-bold text-base">git push</code>
-          <button onclick="copyCmd('git push')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm">
+          <button onclick="copyCmd('git push')" class="text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm" style="background-color: var(--color-electric-blue);">
             Copiar Comando
           </button>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
-          <label for="check-step-7" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-7" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté `git push` y mis archivos ya están subidos a GitHub.
           </label>
         </div>
@@ -515,91 +546,91 @@
 
 
     <!-- ================================================================ -->
-    <!-- TAB 4: SEGURIDAD Y ESTÁNDARES (.gitignore) -->
+    <!-- TAB 4: SEGURIDAD (.gitignore) -->
     <!-- ================================================================ -->
     <section id="content-tab-seguridad" class="tab-pane hidden space-y-6">
       
       <div class="space-y-1">
-        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
           Gobernanza de Datos. El archivo `.gitignore`
         </h2>
-        <p class="text-sm text-[#707070]">
+        <p class="text-sm" style="color: var(--color-mid-gray);">
           En crédito, el código se comparte; los datos de los clientes y las contraseñas se protegen.
         </p>
       </div>
 
-      <!-- Comparative Two-Column Grid (DESIGN.md: 2-column feature cards with 28px radius) -->
+      <!-- Comparative Two-Column Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <!-- PROHIBIDO (Ember accent border) -->
-        <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/60">
-          <div class="flex items-center space-x-2 pb-2 border-b border-[#d6d6d6]/40">
-            <span class="w-3 h-3 rounded-full bg-[#b64400]"></span>
-            <span class="font-semibold text-sm text-[#1d1d1f] uppercase tracking-wider">Prohibido Subir</span>
+        <!-- PROHIBIDO -->
+        <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+          <div class="flex items-center space-x-2 pb-2 border-b" style="border-color: var(--color-hairline);">
+            <span class="w-3 h-3 rounded-full" style="background-color: var(--color-ember);"></span>
+            <span class="font-semibold text-sm uppercase tracking-wider" style="color: var(--color-primary-ink);">Prohibido Subir</span>
           </div>
-          <ul class="space-y-3 text-xs sm:text-sm text-[#474747]">
+          <ul class="space-y-3 text-xs sm:text-sm" style="color: var(--color-mid-gray);">
             <li class="flex items-start space-x-2.5">
-              <span class="text-[#b64400] font-bold">—</span>
-              <div><strong class="text-[#1d1d1f]">Bases de clientes:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.csv</code>, <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.xlsx</code> o <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.parquet</code> con RFC, saldos o buró.</div>
+              <span class="font-bold" style="color: var(--color-ember);">—</span>
+              <div><strong style="color: var(--color-primary-ink);">Bases de clientes:</strong> Archivos <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.csv</code>, <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.xlsx</code> o <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.parquet</code> con RFC, saldos o buró.</div>
             </li>
             <li class="flex items-start space-x-2.5">
-              <span class="text-[#b64400] font-bold">—</span>
-              <div><strong class="text-[#1d1d1f]">Credenciales bancarias:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.env</code> o contraseñas de bases de datos.</div>
+              <span class="font-bold" style="color: var(--color-ember);">—</span>
+              <div><strong style="color: var(--color-primary-ink);">Credenciales bancarias:</strong> Archivos <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.env</code> o contraseñas de bases de datos.</div>
             </li>
             <li class="flex items-start space-x-2.5">
-              <span class="text-[#b64400] font-bold">—</span>
-              <div><strong class="text-[#1d1d1f]">Entornos virtuales:</strong> Carpetas locales <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">venv/</code> o cachés.</div>
+              <span class="font-bold" style="color: var(--color-ember);">—</span>
+              <div><strong style="color: var(--color-primary-ink);">Entornos virtuales:</strong> Carpetas locales <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">venv/</code> o cachés.</div>
             </li>
           </ul>
         </div>
 
         <!-- PERMITIDO -->
-        <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/60">
-          <div class="flex items-center space-x-2 pb-2 border-b border-[#d6d6d6]/40">
-            <span class="w-3 h-3 rounded-full bg-[#0071e3]"></span>
-            <span class="font-semibold text-sm text-[#1d1d1f] uppercase tracking-wider">Permitido Subir</span>
+        <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+          <div class="flex items-center space-x-2 pb-2 border-b" style="border-color: var(--color-hairline);">
+            <span class="w-3 h-3 rounded-full" style="background-color: var(--color-electric-blue);"></span>
+            <span class="font-semibold text-sm uppercase tracking-wider" style="color: var(--color-primary-ink);">Permitido Subir</span>
           </div>
-          <ul class="space-y-3 text-xs sm:text-sm text-[#474747]">
+          <ul class="space-y-3 text-xs sm:text-sm" style="color: var(--color-mid-gray);">
             <li class="flex items-start space-x-2.5">
-              <span class="text-[#0071e3] font-bold">—</span>
-              <div><strong class="text-[#1d1d1f]">Scripts en Python:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.py</code> con reglas de admisión, scorecuts y matrices.</div>
+              <span class="font-bold" style="color: var(--color-electric-blue);">—</span>
+              <div><strong style="color: var(--color-primary-ink);">Scripts en Python:</strong> Archivos <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.py</code> con reglas de admisión, scorecuts y matrices.</div>
             </li>
             <li class="flex items-start space-x-2.5">
-              <span class="text-[#0071e3] font-bold">—</span>
-              <div><strong class="text-[#1d1d1f]">Queries en SQL:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.sql</code> de cálculo de cosechas o roll rates.</div>
+              <span class="font-bold" style="color: var(--color-electric-blue);">—</span>
+              <div><strong style="color: var(--color-primary-ink);">Queries en SQL:</strong> Archivos <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.sql</code> de cálculo de cosechas o roll rates.</div>
             </li>
             <li class="flex items-start space-x-2.5">
-              <span class="text-[#0071e3] font-bold">—</span>
-              <div><strong class="text-[#1d1d1f]">Documentación:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">README.md</code> explicando cómo funciona tu modelo.</div>
+              <span class="font-bold" style="color: var(--color-electric-blue);">—</span>
+              <div><strong style="color: var(--color-primary-ink);">Documentación:</strong> Archivos <code class="font-mono text-xs px-1 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">README.md</code> explicando cómo funciona tu modelo.</div>
             </li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Header Templates (1-click copy cards) -->
-      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
-        <h3 class="font-semibold text-base text-[#1d1d1f]">Plantillas oficiales de documentación obligatoria</h3>
-        <p class="text-xs text-[#707070]">
+      <!-- Header Templates -->
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+        <h3 class="font-semibold text-base" style="color: var(--color-primary-ink);">Plantillas oficiales de documentación obligatoria</h3>
+        <p class="text-xs" style="color: var(--color-mid-gray);">
           Todo archivo nuevo que crees debe comenzar con esta estructura para cumplir con los comités de auditoría interna:
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
           
-          <button onclick="copyHeaderSQL()" class="p-5 bg-[#f5f5f7] hover:bg-[#e8e8ed] rounded-[20px] text-left transition space-y-2 border border-[#d6d6d6]/30">
+          <button onclick="copyHeaderSQL()" class="p-5 rounded-[20px] text-left transition space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center justify-between">
-              <span class="font-semibold text-sm text-[#1d1d1f]">Cabecera SQL (.sql)</span>
-              <span id="btn-lbl-sql" class="text-xs text-[#0066cc] font-medium">Copiar plantilla ›</span>
+              <span class="font-semibold text-sm" style="color: var(--color-primary-ink);">Cabecera SQL (.sql)</span>
+              <span id="btn-lbl-sql" class="text-xs font-medium" style="color: var(--color-link-blue);">Copiar plantilla ›</span>
             </div>
-            <p class="text-xs text-[#707070]">Incluye autor, tablas de entrada, destino y periodicidad mensual.</p>
+            <p class="text-xs" style="color: var(--color-mid-gray);">Incluye autor, tablas de entrada, destino y periodicidad mensual.</p>
           </button>
 
-          <button onclick="copyHeaderPY()" class="p-5 bg-[#f5f5f7] hover:bg-[#e8e8ed] rounded-[20px] text-left transition space-y-2 border border-[#d6d6d6]/30">
+          <button onclick="copyHeaderPY()" class="p-5 rounded-[20px] text-left transition space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center justify-between">
-              <span class="font-semibold text-sm text-[#1d1d1f]">Docstring Python (.py)</span>
-              <span id="btn-lbl-py" class="text-xs text-[#0066cc] font-medium">Copiar plantilla ›</span>
+              <span class="font-semibold text-sm" style="color: var(--color-primary-ink);">Docstring Python (.py)</span>
+              <span id="btn-lbl-py" class="text-xs font-medium" style="color: var(--color-link-blue);">Copiar plantilla ›</span>
             </div>
-            <p class="text-xs text-[#707070]">Explica la regla de política, inputs del cliente y dictamen final.</p>
+            <p class="text-xs" style="color: var(--color-mid-gray);">Explica la regla de política, inputs del cliente y dictamen final.</p>
           </button>
 
         </div>
@@ -609,74 +640,74 @@
 
 
     <!-- ================================================================ -->
-    <!-- TAB 5: ACORDEÓN & SOLUCIÓN A LOS 3 DOLORES DE CABEZA -->
+    <!-- TAB 5: ACORDEÓN & SOLUCIÓN A ERRORES COMUNES -->
     <!-- ================================================================ -->
     <section id="content-tab-cheatsheet" class="tab-pane hidden space-y-6">
       
       <div class="space-y-1">
-        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
           Acordeón de Bolsillo y Rescate en Windows
         </h2>
-        <p class="text-sm text-[#707070]">
+        <p class="text-sm" style="color: var(--color-mid-gray);">
           La referencia compacta para tener abierta mientras trabajas en tus análisis de portafolio.
         </p>
       </div>
 
-      <!-- Quick Reference Table (Clean Apple table aesthetic) -->
-      <div class="bg-[#ffffff] rounded-[28px] overflow-hidden border border-[#d6d6d6]/40">
-        <div class="p-5 border-b border-[#d6d6d6]/40 flex items-center justify-between">
-          <span class="font-semibold text-sm text-[#1d1d1f]">Los 5 Comandos Esenciales</span>
-          <span class="text-xs text-[#707070] font-mono">Terminal PowerShell</span>
+      <!-- Quick Reference Table -->
+      <div class="rounded-[28px] overflow-hidden border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+        <div class="p-5 border-b flex items-center justify-between" style="border-color: var(--color-hairline);">
+          <span class="font-semibold text-sm" style="color: var(--color-primary-ink);">Los 5 Comandos Esenciales</span>
+          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Terminal PowerShell</span>
         </div>
 
-        <div class="divide-y divide-[#d6d6d6]/30 text-xs sm:text-sm">
+        <div class="divide-y text-xs sm:text-sm" style="border-color: var(--color-hairline);">
           
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
-              <div class="font-mono font-semibold text-[#1d1d1f]">git pull</div>
-              <div class="text-xs text-[#707070]">Descarga novedades de tus compañeros (hacer todas las mañanas).</div>
+              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git pull</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Descarga novedades de tus compañeros (hacer todas las mañanas).</div>
             </div>
-            <button onclick="copyCmd('git pull')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+            <button onclick="copyCmd('git pull')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
-              <div class="font-mono font-semibold text-[#1d1d1f]">git status</div>
-              <div class="text-xs text-[#707070]">Muestra qué archivos has creado o modificado.</div>
+              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git status</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Muestra qué archivos has creado o modificado.</div>
             </div>
-            <button onclick="copyCmd('git status')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+            <button onclick="copyCmd('git status')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
-              <div class="font-mono font-semibold text-[#1d1d1f]">git add .</div>
-              <div class="text-xs text-[#707070]">Prepara todos tus cambios en la caja de envío.</div>
+              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git add .</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Prepara todos tus cambios en la caja de envío.</div>
             </div>
-            <button onclick="copyCmd('git add .')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+            <button onclick="copyCmd('git add .')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
-              <div class="font-mono font-semibold text-[#1d1d1f]">git commit -m "..."</div>
-              <div class="text-xs text-[#707070]">Sella la versión con una nota explicativa de política.</div>
+              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git commit -m "..."</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Sella la versión con una nota explicativa de política.</div>
             </div>
-            <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+            <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
-              <div class="font-mono font-semibold text-[#1d1d1f]">git push</div>
-              <div class="text-xs text-[#707070]">Envía tus cambios a la biblioteca central en GitHub.</div>
+              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git push</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Envía tus cambios a la biblioteca central en GitHub.</div>
             </div>
-            <button onclick="copyCmd('git push')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+            <button onclick="copyCmd('git push')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
@@ -686,45 +717,45 @@
 
       <!-- Solutions to 3 Common Beginner Headaches in Windows -->
       <div class="space-y-3 pt-2">
-        <h3 class="text-lg font-semibold text-[#1d1d1f] tracking-tight">
+        <h3 class="text-lg font-semibold tracking-tight" style="color: var(--color-primary-ink);">
           Solución a los 3 Dolores de Cabeza Más Comunes en Windows
         </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           
           <!-- Headache 1 -->
-          <div class="bg-[#ffffff] rounded-[28px] p-6 space-y-3 border border-[#d6d6d6]/40">
-            <span class="text-xs font-semibold text-[#b64400] uppercase tracking-wider block">Error 1</span>
-            <h4 class="font-semibold text-sm text-[#1d1d1f]">"fatal: not a git repository"</h4>
-            <p class="text-xs text-[#707070] leading-relaxed">
+          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 1</span>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"fatal: not a git repository"</h4>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
               <strong>Causa:</strong> Abriste la terminal fuera de la carpeta del proyecto.
             </p>
-            <div class="bg-[#f5f5f7] p-2.5 rounded-[12px] text-xs font-mono text-[#1d1d1f] border border-[#d6d6d6]/40">
+            <div class="p-2.5 rounded-[12px] text-xs font-mono border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               cd capacitacion-git-tdc
             </div>
           </div>
 
           <!-- Headache 2 -->
-          <div class="bg-[#ffffff] rounded-[28px] p-6 space-y-3 border border-[#d6d6d6]/40">
-            <span class="text-xs font-semibold text-[#b64400] uppercase tracking-wider block">Error 2</span>
-            <h4 class="font-semibold text-sm text-[#1d1d1f]">"Updates were rejected"</h4>
-            <p class="text-xs text-[#707070] leading-relaxed">
+          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 2</span>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"Updates were rejected"</h4>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
               <strong>Causa:</strong> Un compañero subió algo y tú diste push sin haber hecho pull primero.
             </p>
-            <div class="bg-[#f5f5f7] p-2.5 rounded-[12px] text-xs font-mono text-[#1d1d1f] space-y-1 border border-[#d6d6d6]/40">
+            <div class="p-2.5 rounded-[12px] text-xs font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               <div>git pull</div>
               <div>git push</div>
             </div>
           </div>
 
           <!-- Headache 3 -->
-          <div class="bg-[#ffffff] rounded-[28px] p-6 space-y-3 border border-[#d6d6d6]/40">
-            <span class="text-xs font-semibold text-[#b64400] uppercase tracking-wider block">Error 3</span>
-            <h4 class="font-semibold text-sm text-[#1d1d1f]">"Se abrió la pantalla de Vim"</h4>
-            <p class="text-xs text-[#707070] leading-relaxed">
+          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 3</span>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"Se abrió la pantalla de Vim"</h4>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
               <strong>Causa:</strong> Escribiste <code class="font-mono text-xs">git commit</code> sin poner <code class="font-mono text-xs">-m "..."</code>.
             </p>
-            <div class="bg-[#f5f5f7] p-2.5 rounded-[12px] text-xs font-mono text-[#1d1d1f] space-y-1 border border-[#d6d6d6]/40">
+            <div class="p-2.5 rounded-[12px] text-xs font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               <div>1. Presiona Esc</div>
               <div>2. Escribe :q! y da Enter</div>
             </div>
@@ -737,36 +768,69 @@
 
   </main>
 
-  <!-- ================= FOOTER (DESIGN.md: Canvas Gray, SF Pro Text 12px, color #707070) ================= -->
-  <footer class="bg-[#ffffff] border-t border-[#d6d6d6]/40 py-8 text-center text-xs text-[#707070]">
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t py-8 text-center text-xs transition-all" style="background-color: var(--color-surface); border-color: var(--color-hairline); color: var(--color-mid-gray);">
     <div class="max-w-[1200px] mx-auto px-4 space-y-1.5">
-      <p class="font-semibold text-[#1d1d1f]">Dirección de Riesgo de Crédito — Políticas y Estrategias TDC</p>
+      <p class="font-semibold" style="color: var(--color-primary-ink);">Dirección de Riesgo de Crédito — Políticas y Estrategias TDC</p>
       <p>Material de capacitación técnica interna para analistas en Visual Studio Code. Diseñado bajo las normas de estilo Apple.</p>
     </div>
   </footer>
 
-  <!-- ================= TOAST NOTIFICATION (Pill shape, Electric Blue) ================= -->
-  <div id="toast" class="fixed bottom-6 right-6 bg-[#0071e3] text-white px-5 py-2.5 rounded-full text-xs font-medium flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none shadow-lg">
+  <!-- ================= TOAST NOTIFICATION ================= -->
+  <div id="toast" class="fixed bottom-6 right-6 text-white px-5 py-2.5 rounded-full text-xs font-medium flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none shadow-lg" style="background-color: var(--color-electric-blue);">
     <span>✓</span>
     <span id="toast-text">Copiado al portapapeles</span>
   </div>
 
-  <!-- ================= SCRIPT LOGIC (Unchanged & 100% Functional) ================= -->
+  <!-- ================= SCRIPT LOGIC ================= -->
   <script>
+    // Theme Switcher Logic (Defaults to Dark Mode)
+    function initTheme() {
+      const saved = localStorage.getItem('theme_preference');
+      if (saved === 'light') {
+        document.documentElement.classList.add('light');
+        document.getElementById('theme-icon').textContent = '☀️';
+      } else {
+        document.documentElement.classList.remove('light');
+        document.getElementById('theme-icon').textContent = '🌙';
+      }
+      updateActiveTabPillStyles();
+    }
+
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.toggle('light');
+      localStorage.setItem('theme_preference', isLight ? 'light' : 'dark');
+      document.getElementById('theme-icon').textContent = isLight ? '☀️' : '🌙';
+      updateActiveTabPillStyles();
+      showToast(isLight ? 'Modo Claro activado' : 'Modo Oscuro activado');
+    }
+
     // Tab switching
+    let currentTab = 'tab-setup';
+
     function switchTab(targetId) {
+      currentTab = targetId;
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
       const active = document.getElementById(`content-${targetId}`);
       if (active) active.classList.remove('hidden');
+      updateActiveTabPillStyles();
+    }
+
+    function updateActiveTabPillStyles() {
+      const isLight = document.documentElement.classList.contains('light');
+      const activeBg = isLight ? '#1d1d1f' : '#f5f5f7';
+      const activeText = isLight ? '#ffffff' : '#000000';
+      const inactiveColor = isLight ? '#707070' : '#a1a1a6';
 
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-[#1d1d1f]', 'text-white');
-        btn.classList.add('text-[#707070]', 'hover:text-[#1d1d1f]', 'hover:bg-[#e8e8ed]');
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = inactiveColor;
       });
-      const activeBtn = document.getElementById(`btn-${targetId}`);
+
+      const activeBtn = document.getElementById(`btn-${currentTab}`);
       if (activeBtn) {
-        activeBtn.classList.remove('text-[#707070]', 'hover:text-[#1d1d1f]', 'hover:bg-[#e8e8ed]');
-        activeBtn.classList.add('bg-[#1d1d1f]', 'text-white');
+        activeBtn.style.backgroundColor = activeBg;
+        activeBtn.style.color = activeText;
       }
     }
 
@@ -831,6 +895,7 @@
 
     // Restore on load
     window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
       for (let i = 0; i < TOTAL_TASKS; i++) {
         const id = `check-step-${i}`;
         const el = document.getElementById(id);

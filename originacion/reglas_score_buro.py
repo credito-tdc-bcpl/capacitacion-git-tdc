@@ -12,5 +12,5 @@ OBJETIVO:       Filtros duros de Score Buró de Crédito
 
 def validar_score_minimo(score: int, producto: str = "CLASICA") -> bool:
     """Verifica si el score cumple con el umbral de política."""
-    umbral = 720 if producto in ["ORO", "PLATINUM"] else 650
+    umbral = 720 if producto in ["ORO", "PLATINUM"] else 660
     return score >= umbral

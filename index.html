@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-950 text-slate-100">
+<html lang="es" class="h-full bg-[#f5f5f7] text-[#1d1d1f]">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía de Acompañamiento Git | Políticas de Crédito TDC</title>
+  <title>Políticas TDC — Guía de Acompañamiento Git & GitHub</title>
   
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Typography: Inter & JetBrains Mono (Substitutes for SF Pro & SF Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'Consolas', 'monospace'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'SF Mono', 'Menlo', 'Consolas', 'monospace'],
           },
           colors: {
-            vscode: {
-              bg: '#1e1e1e',
-              panel: '#252526',
-              border: '#333333',
-              accent: '#007acc',
-              accentHover: '#0062a3',
-              terminal: '#0c1017',
+            apple: {
+              ink: '#1d1d1f',
+              midGray: '#707070',
+              deepGray: '#474747',
+              hairline: '#d6d6d6',
+              canvas: '#f5f5f7',
+              paper: '#ffffff',
+              coolWash: '#e8e8ed',
+              fadedSurface: '#fafafc',
+              blue: '#0071e3',
+              blueHover: '#0077ed',
+              linkBlue: '#0066cc',
+              ember: '#b64400',
             }
+          },
+          borderRadius: {
+            'card': '28px',
+            'pill': '980px',
           }
         }
       }
@@ -37,86 +46,100 @@
   </script>
 
   <style>
-    /* Smooth minimalist scrollbars */
+    /* DESIGN.md Tokens & Typography Specifications */
+    :root {
+      --color-primary-ink: #1d1d1f;
+      --color-mid-gray: #707070;
+      --color-deep-gray: #474747;
+      --color-hairline: #d6d6d6;
+      --color-canvas: #f5f5f7;
+      --color-paper: #ffffff;
+      --color-cool-wash: #e8e8ed;
+      --color-electric-blue: #0071e3;
+      --color-link-blue: #0066cc;
+      --color-ember: #b64400;
+      --radius-card: 28px;
+      --radius-pill: 980px;
+    }
+
+    body {
+      background-color: var(--color-canvas);
+      color: var(--color-primary-ink);
+      font-feature-settings: "numr";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Minimal scrollbars */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #090d16; }
-    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d6d6d6; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #707070; }
 
     /* Custom Checkbox Animation */
     .task-check:checked + label {
       text-decoration: line-through;
-      color: #94a3b8;
+      color: var(--color-mid-gray);
     }
   </style>
 </head>
 
-<body class="h-full flex flex-col font-sans selection:bg-sky-500 selection:text-white antialiased">
+<body class="h-full flex flex-col font-sans selection:bg-[#0071e3] selection:text-white">
 
-  <!-- ================= TOP COMPACT HEADER ================= -->
-  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-md">
-    <div class="max-w-6xl mx-auto px-4 py-2.5 sm:px-6 flex items-center justify-between gap-4">
+  <!-- ================= STICKY GLOBAL NAVIGATION (DESIGN.md: 44px height, frosted glass) ================= -->
+  <header class="sticky top-0 z-50 bg-[#ffffff]/85 backdrop-blur-md border-b border-[#d6d6d6]/60 transition-all">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-8 h-12 flex items-center justify-between gap-4">
       
-      <!-- Brand & Title -->
+      <!-- Brand & Eyebrow -->
       <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center font-bold text-white text-sm shadow">
-          💳
-        </div>
-        <div>
-          <div class="flex items-center space-x-2">
-            <span class="font-bold text-sm tracking-tight text-white">POLÍTICAS TDC</span>
-            <span class="bg-emerald-500/10 text-emerald-400 text-[10px] px-2 py-0.5 rounded border border-emerald-500/20 font-semibold uppercase tracking-wider">
-              Guía de Acompañamiento
-            </span>
-          </div>
-          <p class="text-[11px] text-slate-400">Ejecuta los comandos en tu propio VS Code a tu propio ritmo</p>
-        </div>
+        <span class="text-sm font-semibold tracking-tight text-[#1d1d1f]">Políticas TDC</span>
+        <span class="text-[#d6d6d6]">|</span>
+        <span class="text-xs text-[#707070] hidden sm:inline">Guía de Acompañamiento en Vivo</span>
       </div>
 
-      <!-- Live Checklist Progress in VS Code -->
-      <div class="flex items-center space-x-4">
-        <div class="text-right hidden sm:block">
-          <div class="text-[10px] uppercase font-semibold text-slate-400">Comandos ejecutados en tu PC</div>
-          <div class="text-xs font-bold text-emerald-400" id="progress-summary">0 de 8 Pasos</div>
+      <!-- Live Checklist Progress Bar & Shortcut -->
+      <div class="flex items-center space-x-3 sm:space-x-5">
+        <div class="flex items-center space-x-2 text-xs">
+          <span class="text-[#707070] text-[11px] hidden md:inline">Progreso en VS Code:</span>
+          <span class="font-semibold text-[#1d1d1f] text-xs font-mono" id="progress-summary">0 de 8</span>
+          <div class="w-16 sm:w-24 bg-[#e8e8ed] rounded-full h-1.5 overflow-hidden">
+            <div id="progress-fill" class="bg-[#0071e3] h-1.5 rounded-full transition-all duration-300" style="width: 0%;"></div>
+          </div>
+          <button onclick="resetAllChecks()" title="Reiniciar lista de verificación" class="text-[#707070] hover:text-[#1d1d1f] text-xs transition px-1">
+            ↺
+          </button>
         </div>
-        <div class="w-24 sm:w-32 bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700">
-          <div id="progress-fill" class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: 0%;"></div>
+
+        <div class="hidden sm:flex items-center space-x-1.5 bg-[#f5f5f7] px-2.5 py-1 rounded-full text-[11px] text-[#474747] border border-[#d6d6d6]/50">
+          <span>Terminal:</span>
+          <kbd class="font-mono font-medium text-[#1d1d1f]">Ctrl + Ñ</kbd>
         </div>
-        <button onclick="resetAllChecks()" title="Reiniciar lista de verificación" class="text-slate-500 hover:text-slate-300 text-xs px-1.5 py-1 rounded hover:bg-slate-800 transition">
-          ↺
-        </button>
       </div>
 
     </div>
 
-    <!-- Navigation Tabs (Distilled & Direct) -->
-    <div class="bg-slate-900/95 border-t border-slate-800/80">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <nav class="flex space-x-1 sm:space-x-2 overflow-x-auto py-2 text-xs font-medium no-scrollbar" id="nav-tabs">
+    <!-- Sub-navigation Tabs (Apple segmented control aesthetic) -->
+    <div class="bg-[#fafafc] border-t border-[#d6d6d6]/40">
+      <div class="max-w-[1200px] mx-auto px-4 sm:px-8">
+        <nav class="flex space-x-2 overflow-x-auto py-2 no-scrollbar" id="nav-tabs">
           
-          <button onclick="switchTab('tab-setup')" id="btn-tab-setup" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-sky-600 text-white font-semibold">
-            <span>🚀</span>
-            <span>1. Instalación y Primer Uso</span>
+          <button onclick="switchTab('tab-setup')" id="btn-tab-setup" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition bg-[#1d1d1f] text-white">
+            1. Instalación y Setup
           </button>
 
-          <button onclick="switchTab('tab-pull')" id="btn-tab-pull" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
-            <span>📥</span>
-            <span>2. Comenzar el Día (`git pull`)</span>
+          <button onclick="switchTab('tab-pull')" id="btn-tab-pull" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+            2. Comenzar el Día (pull)
           </button>
 
-          <button onclick="switchTab('tab-ciclo')" id="btn-tab-ciclo" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
-            <span>📦</span>
-            <span>3. Compartir Cambios (4 Pasos)</span>
+          <button onclick="switchTab('tab-ciclo')" id="btn-tab-ciclo" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+            3. Compartir en 4 Pasos
           </button>
 
-          <button onclick="switchTab('tab-seguridad')" id="btn-tab-seguridad" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
-            <span>🛡️</span>
-            <span>4. Qué NUNCA subir (.gitignore)</span>
+          <button onclick="switchTab('tab-seguridad')" id="btn-tab-seguridad" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+            4. Seguridad (.gitignore)
           </button>
 
-          <button onclick="switchTab('tab-cheatsheet')" id="btn-tab-cheatsheet" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
-            <span>⚡</span>
-            <span>5. Acordeón & Solución de Errores</span>
+          <button onclick="switchTab('tab-cheatsheet')" id="btn-tab-cheatsheet" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition text-[#707070] hover:text-[#1d1d1f] hover:bg-[#e8e8ed]">
+            5. Acordeón & Errores
           </button>
 
         </nav>
@@ -124,132 +147,152 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT ================= -->
-  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
+  <!-- ================= HERO PRESENTATION (DESIGN.md: Cathedral of white space with whispered headlines) ================= -->
+  <section class="bg-[#ffffff] pt-12 pb-10 border-b border-[#d6d6d6]/40">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-8 text-center space-y-3">
+      <div class="inline-block text-[13px] font-semibold text-[#b64400] tracking-normal uppercase">
+        Área de Riesgo de Crédito
+      </div>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1d1d1f] max-w-4xl mx-auto leading-tight">
+        Aprende Git en tu consola.<br class="hidden sm:inline"> Sin fricción ni confusión.
+      </h1>
+      <p class="text-base sm:text-lg text-[#707070] max-w-2xl mx-auto pt-1 leading-relaxed font-normal">
+        Una referencia limpia diseñada para trabajar en pantalla dividida. Copia el comando, ejecútalo en la terminal de Visual Studio Code y valida el resultado.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT PANES ================= -->
+  <main class="flex-1 max-w-[1200px] w-full mx-auto p-4 sm:p-8 space-y-8">
 
     <!-- ================================================================ -->
-    <!-- TAB 1: INSTALACIÓN Y CONFIGURACIÓN INICIAL (PASO 0) -->
+    <!-- TAB 1: INSTALACIÓN Y CONFIGURACIÓN INICIAL (SETUP) -->
     <!-- ================================================================ -->
-    <section id="content-tab-setup" class="tab-pane space-y-5">
+    <section id="content-tab-setup" class="tab-pane space-y-6">
       
-      <!-- Split-screen reminder banner -->
-      <div class="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-3.5 flex items-center justify-between gap-3 text-xs">
-        <div class="flex items-center space-x-2.5">
-          <span class="text-lg">🖥️</span>
-          <p class="text-indigo-200">
-            <strong>Modo recomendado de trabajo:</strong> Coloca este navegador en la mitad izquierda de tu pantalla y tu <strong>Visual Studio Code</strong> en la mitad derecha. Copia el comando con el botón y pégalo directo en tu terminal.
-          </p>
-        </div>
-        <span class="bg-indigo-500/20 text-indigo-300 font-mono text-[11px] px-2 py-0.5 rounded whitespace-nowrap">Ctrl + Ñ = Terminal</span>
+      <!-- Section Header (DESIGN.md: 28-32px weight 600) -->
+      <div class="space-y-1">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+          Paso 0. Preparar tu entorno
+        </h2>
+        <p class="text-sm text-[#707070]">
+          Verifica que tu computadora tenga Git listo antes de clonar el repositorio semilla.
+        </p>
       </div>
 
-      <!-- Action Card 0.1: Verificar instalación de Git -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 shadow-sm hover:border-slate-700 transition">
+      <!-- Feature Card 1: Comprobar Git -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40 transition hover:border-[#d6d6d6]">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-bold text-xs flex items-center justify-center">1</span>
-            <h3 class="font-bold text-sm text-white">Comprueba si tienes Git instalado en tu máquina</h3>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">1</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">Comprueba si tienes Git instalado</h3>
           </div>
-          <span class="text-[11px] text-slate-400">Paso previo</span>
+          <span class="text-xs text-[#b64400] font-medium">Verificación previa</span>
         </div>
-        
-        <p class="text-xs text-slate-300">
-          Abre la terminal de Windows (PowerShell) o abre VS Code y presiona <kbd class="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded font-mono text-sky-300">Ctrl + Ñ</kbd>. Ejecuta:
+
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Abre la terminal en Visual Studio Code (<kbd class="px-2 py-0.5 bg-[#f5f5f7] border border-[#d6d6d6] rounded font-mono text-xs text-[#1d1d1f]">Ctrl + Ñ</kbd>) o en PowerShell y corre:
         </p>
 
-        <!-- Command Box -->
-        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-sky-300">
+        <!-- Command Pill with Single Blue CTA Button -->
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
           <code>git --version</code>
-          <button onclick="copyCmd('git --version')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded font-sans transition flex items-center space-x-1">
-            <span>Copiar</span>
+          <button onclick="copyCmd('git --version')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition shadow-sm">
+            Copiar
           </button>
         </div>
 
-        <!-- Expected Output -->
-        <div class="bg-slate-950/70 p-3 rounded-lg border border-slate-800 text-[11px] space-y-1 font-mono">
-          <div class="text-slate-400 font-sans font-semibold">¿Qué deberías ver?</div>
-          <div class="text-emerald-400">git version 2.4x.x.windows.1</div>
-          <div class="text-slate-500 font-sans pt-1">
-            ⚠️ Si te sale en rojo *"git no se reconoce..."*, descárgalo en 2 minutos desde <a href="https://git-scm.com/download/win" target="_blank" class="text-sky-400 underline">git-scm.com</a> (64-bit Git for Windows) y luego <strong>reinicia VS Code</strong>.
+        <!-- Terminal Output Spec Card -->
+        <div class="bg-[#fafafc] p-4 rounded-[20px] border border-[#d6d6d6]/50 text-xs space-y-1.5 font-mono">
+          <div class="text-[#707070] font-sans font-semibold text-[11px] uppercase tracking-wider">Salida esperada</div>
+          <div class="text-[#1d1d1f] font-semibold">git version 2.4x.x.windows.1</div>
+          <div class="text-[#707070] font-sans text-xs pt-1">
+            Si arroja un error en rojo, instala Git en 2 minutos desde <a href="https://git-scm.com/download/win" target="_blank" class="text-[#0066cc] hover:underline font-medium">git-scm.com ›</a> y <strong>reinicia VS Code</strong>.
           </div>
         </div>
 
-        <!-- Verification Checkbox -->
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-0" onchange="toggleTask('check-step-0')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-0" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ya verifiqué que tengo Git instalado en mi computadora
+        <!-- Interactive Checklist Item -->
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-0" onchange="toggleTask('check-step-0')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-0" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ya confirmé que tengo Git instalado y funcionando en mi terminal.
           </label>
         </div>
       </div>
 
-      <!-- Action Card 0.2: Configurar tu identidad -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 shadow-sm hover:border-slate-700 transition">
+      <!-- Feature Card 2: Configurar Identidad -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40 transition hover:border-[#d6d6d6]">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-bold text-xs flex items-center justify-center">2</span>
-            <h3 class="font-bold text-sm text-white">Configura tu Nombre y Correo Institucional (Solo 1 vez en la vida)</h3>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">2</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">Configura tu nombre y correo (Solo 1 vez en la vida)</h3>
           </div>
-          <span class="text-[11px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-mono">Solo 1 vez</span>
+          <span class="text-xs text-[#707070] font-mono">Global</span>
         </div>
-        
-        <p class="text-xs text-slate-300">
-          Sirve para que el banco y tu equipo sepan quién creó o actualizó cada regla o query:
+
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Esto asocia tus cambios a tu identidad profesional para la trazabilidad y auditoría de las políticas de crédito:
         </p>
 
         <div class="space-y-2">
-          <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-slate-300">
+          <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
             <code>git config --global user.name "Tu Nombre y Apellido"</code>
-            <button onclick="copyCmd('git config --global user.name &quot;Tu Nombre y Apellido&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+            <button onclick="copyCmd('git config --global user.name &quot;Tu Nombre y Apellido&quot;')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+              Copiar
+            </button>
           </div>
-          <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-slate-300">
+          <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
             <code>git config --global user.email "tu.correo@banco.com"</code>
-            <button onclick="copyCmd('git config --global user.email &quot;tu.correo@bancoppel.com&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+            <button onclick="copyCmd('git config --global user.email &quot;tu.correo@bancoppel.com&quot;')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+              Copiar
+            </button>
           </div>
         </div>
 
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-1" onchange="toggleTask('check-step-1')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-1" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ya configuré mi nombre y correo con mis datos reales en la terminal
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-1" onchange="toggleTask('check-step-1')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-1" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ya ejecuté ambos comandos con mi nombre y correo institucional.
           </label>
         </div>
       </div>
 
-      <!-- Action Card 0.3: Clonar el Repositorio -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 shadow-sm hover:border-slate-700 transition">
+      <!-- Feature Card 3: Clonar Repositorio -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40 transition hover:border-[#d6d6d6]">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">3</span>
-            <h3 class="font-bold text-sm text-white">Descarga el Repositorio a tu Laptop (`git clone`)</h3>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">3</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">Descarga el repositorio a tu máquina (`git clone`)</h3>
           </div>
-          <span class="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-mono">Primera Vez</span>
+          <span class="text-xs text-[#0066cc] font-medium">Biblioteca central</span>
         </div>
-        
-        <p class="text-xs text-slate-300">
-          En tu terminal, ve a tu carpeta de Documentos y descarga la biblioteca de políticas:
+
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Posiciónate en tu carpeta de trabajo y clona el proyecto semilla de Políticas TDC:
         </p>
 
-        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-emerald-300">
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs text-[#1d1d1f]">
           <code class="truncate">git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git</code>
-          <button onclick="copyCmd('git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] px-2.5 py-1 rounded font-sans transition flex-shrink-0 ml-2">
+          <button onclick="copyCmd('git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0">
             Copiar URL
           </button>
         </div>
 
-        <div class="text-xs text-slate-400">
+        <p class="text-xs text-[#707070]">
           Luego entra a la carpeta y ábrela en Visual Studio Code:
-        </div>
+        </p>
 
-        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-slate-300">
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs text-[#1d1d1f]">
           <code>cd capacitacion-git-tdc ; code .</code>
-          <button onclick="copyCmd('cd capacitacion-git-tdc ; code .')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+          <button onclick="copyCmd('cd capacitacion-git-tdc ; code .')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+            Copiar
+          </button>
         </div>
 
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-2" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ya tengo la carpeta del repositorio abierta en mi Visual Studio Code
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-2" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ya descargué el repositorio y lo tengo abierto en Visual Studio Code.
           </label>
         </div>
       </div>
@@ -258,212 +301,213 @@
 
 
     <!-- ================================================================ -->
-    <!-- TAB 2: EL HÁBITO DIARIO: git pull -->
+    <!-- TAB 2: EL HÁBITO DIARIO (git pull) -->
     <!-- ================================================================ -->
-    <section id="content-tab-pull" class="tab-pane hidden space-y-5">
+    <section id="content-tab-pull" class="tab-pane hidden space-y-6">
       
-      <!-- Overview Card -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="text-xl">☀️</span>
-            <h3 class="font-bold text-sm text-white">Tu primer acto cada mañana: `git pull`</h3>
-          </div>
-          <span class="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-semibold">
-            Obligatorio Diario
-          </span>
-        </div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          Antes de comenzar a escribir o modificar un script de crédito, <strong>siempre</strong> debes asegurarte de tener lo que tus compañeros subieron el día anterior. Solo toma 2 segundos.
+      <div class="space-y-1">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+          Paso 1. Comenzar el día con `git pull`
+        </h2>
+        <p class="text-sm text-[#707070]">
+          Tu primer acto cada mañana antes de redactar código. Sincroniza las novedades de tus colegas en 2 segundos.
+        </p>
+      </div>
+
+      <!-- Main Action Card -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-5 border border-[#d6d6d6]/40">
+        
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Abre la terminal en VS Code (<kbd class="px-2 py-0.5 bg-[#f5f5f7] border border-[#d6d6d6] rounded font-mono text-xs text-[#1d1d1f]">Ctrl + Ñ</kbd>) y escribe:
         </p>
 
-        <!-- Command Pill -->
-        <div class="bg-slate-950 p-3 rounded-lg border border-emerald-500/30 flex items-center justify-between font-mono text-xs text-emerald-400">
-          <code>git pull</code>
-          <button onclick="copyCmd('git pull')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1 rounded font-sans font-medium transition">
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-sm text-[#1d1d1f]">
+          <code class="font-bold text-base">git pull</code>
+          <button onclick="copyCmd('git pull')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm">
             Copiar Comando
           </button>
         </div>
 
-        <!-- Expected Output Split -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-[11px] font-mono">
-          <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 space-y-1">
-            <div class="text-slate-400 font-sans font-semibold">Caso A: Nadie ha subido nada nuevo</div>
-            <div class="text-sky-300">Already up to date.</div>
-            <p class="text-slate-500 font-sans pt-1">Significa que ya tienes la versión más reciente en tu laptop.</p>
+        <!-- 2 Outcomes Grid (DESIGN.md: 2-column comparative layout) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          
+          <div class="bg-[#f5f5f7] p-5 rounded-[22px] space-y-2 border border-[#d6d6d6]/30">
+            <span class="text-xs font-semibold text-[#1d1d1f] block uppercase tracking-wider">Escenario A: Ya estás al día</span>
+            <div class="font-mono text-xs text-[#707070] bg-[#ffffff] p-3 rounded-[14px] border border-[#d6d6d6]/40">
+              Already up to date.
+            </div>
+            <p class="text-xs text-[#707070] pt-1">
+              Significa que ningún compañero ha subido cambios nuevos desde tu última sincronización. Puedes comenzar a trabajar con tranquilidad.
+            </p>
           </div>
 
-          <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 space-y-1">
-            <div class="text-slate-400 font-sans font-semibold">Caso B: Algún colega subió scripts</div>
-            <div class="text-emerald-400">Fast-forward</div>
-            <div class="text-slate-300">indicadores/cosechas.sql | 45 ++++</div>
-            <div class="text-slate-300">2 files changed, 107 insertions(+)</div>
-            <p class="text-slate-500 font-sans pt-1">Se descargaron automáticamente a tu carpeta.</p>
+          <div class="bg-[#f5f5f7] p-5 rounded-[22px] space-y-2 border border-[#d6d6d6]/30">
+            <span class="text-xs font-semibold text-[#1d1d1f] block uppercase tracking-wider">Escenario B: Descarga novedades</span>
+            <div class="font-mono text-xs text-[#1d1d1f] bg-[#ffffff] p-3 rounded-[14px] border border-[#d6d6d6]/40 space-y-0.5">
+              <div class="text-[#0066cc]">Fast-forward</div>
+              <div>indicadores/cosechas.sql | 45 ++++</div>
+              <div class="text-[#707070]">2 files changed, 107 insertions(+)</div>
+            </div>
+            <p class="text-xs text-[#707070] pt-1">
+              Git bajó los últimos scripts creados por el equipo directamente a tus carpetas locales.
+            </p>
           </div>
+
         </div>
 
-        <!-- Verification Checkbox -->
-        <div class="pt-2 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-3" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ejecuté `git pull` en la terminal de mi VS Code y vi la respuesta de Git
+        <div class="pt-2 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-3" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ya ejecuté `git pull` en mi terminal de VS Code y revisé la respuesta.
           </label>
         </div>
+
       </div>
 
-      <!-- Regla de convivencia rápida -->
-      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 text-xs space-y-1.5">
-        <span class="font-semibold text-slate-200 flex items-center space-x-1.5">
-          <span>🤝</span>
-          <span>Regla de Convivencia del Equipo</span>
-        </span>
-        <p class="text-slate-400 text-[11px] leading-relaxed">
-          Cada analista trabaja en su archivo dentro de su carpeta asignada (<code class="text-sky-300">originacion/</code>, <code class="text-emerald-300">lineas-credito/</code>, <code class="text-amber-300">indicadores-cosechas/</code>). Al no tocar el mismo archivo simultáneamente, <strong class="text-slate-200">nunca tendrás conflictos de código</strong> al hacer `git pull`.
-        </p>
+      <!-- Regla de convivencia: Clean text banner -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 border border-[#d6d6d6]/40 flex items-start space-x-4">
+        <span class="text-2xl">🏛️</span>
+        <div class="space-y-1">
+          <h4 class="font-semibold text-sm text-[#1d1d1f]">Regla de Oro: Cada analista en su carpeta</h4>
+          <p class="text-xs text-[#707070] leading-relaxed">
+            Al trabajar en <code class="text-[#1d1d1f] font-mono">originacion/</code>, <code class="text-[#1d1d1f] font-mono">lineas-credito/</code> o <code class="text-[#1d1d1f] font-mono">indicadores-cosechas/</code> sin modificar los archivos de otros compañeros al mismo tiempo, <strong>nunca tendrás conflictos de Git</strong> al hacer pull.
+          </p>
+        </div>
       </div>
 
     </section>
 
 
     <!-- ================================================================ -->
-    <!-- TAB 3: EL CICLO DE 4 PASOS PARA COMPARTIR TU CÓDIGO -->
+    <!-- TAB 3: EL CICLO DE 4 PASOS (STATUS -> ADD -> COMMIT -> PUSH) -->
     <!-- ================================================================ -->
-    <section id="content-tab-ciclo" class="tab-pane hidden space-y-5">
+    <section id="content-tab-ciclo" class="tab-pane hidden space-y-6">
       
-      <!-- Intro Banner -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-        <div>
-          <h3 class="font-bold text-white text-sm">El Ciclo de 4 Pasos: La Analogía de la Caja 📦</h3>
-          <p class="text-slate-400 text-[11px]">Cuando terminas o modificas un script y quieres subirlo a GitHub, sigue este orden exacto en tu terminal:</p>
-        </div>
-        <div class="text-[11px] bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-lg text-slate-300 font-mono whitespace-nowrap">
-          status ➔ add ➔ commit ➔ push
-        </div>
+      <div class="space-y-1">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+          El Ciclo de 4 Pasos. La Analogía de la Caja 📦
+        </h2>
+        <p class="text-sm text-[#707070]">
+          Cuando terminas o modificas un script y quieres subirlo a GitHub, sigue este orden en tu terminal:
+        </p>
       </div>
 
-      <!-- Step 1 Card: status -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+      <!-- Step 1: status -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-bold text-xs flex items-center justify-center">1</span>
-            <span class="font-bold text-sm text-white">git status</span>
-            <span class="text-xs text-slate-400">— Ver qué modificaste</span>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">1</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">git status</h3>
+            <span class="text-xs text-[#707070]">— Ver qué cambió</span>
           </div>
-          <span class="text-[10px] text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20 font-mono">Paso 1</span>
+          <span class="text-xs text-[#707070] font-mono">Paso 1 de 4</span>
         </div>
-        
-        <p class="text-xs text-slate-300">
-          Muestra en <span class="text-rose-400 font-semibold">rojo</span> los archivos que creaste o editaste y que aún no están listos para enviarse:
+
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Muestra en rojo los archivos que has creado o modificado y que aún están fuera de la caja:
         </p>
 
-        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-sky-300">
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
           <code>git status</code>
-          <button onclick="copyCmd('git status')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+          <button onclick="copyCmd('git status')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+            Copiar
+          </button>
         </div>
 
-        <div class="bg-slate-950/70 p-2.5 rounded border border-slate-800 text-[11px] font-mono text-slate-400">
-          <div>Untracked files:</div>
-          <div class="text-rose-400 ml-3">lineas-credito/mi_script_nuevo.py</div>
-        </div>
-
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-4" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ejecuté `git status` y vi mis archivos modificados en rojo
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-4" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ejecuté `git status` y vi mis archivos modificados en la consola.
           </label>
         </div>
       </div>
 
-      <!-- Step 2 Card: add -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+      <!-- Step 2: add -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-indigo-500 text-white font-bold text-xs flex items-center justify-center">2</span>
-            <span class="font-bold text-sm text-white">git add .</span>
-            <span class="text-xs text-slate-400">— Meter a la caja de envío</span>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">2</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">git add .</h3>
+            <span class="text-xs text-[#707070]">— Meter a la caja de envío</span>
           </div>
-          <span class="text-[10px] text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 font-mono">Paso 2</span>
+          <span class="text-xs text-[#707070] font-mono">Paso 2 de 4</span>
         </div>
-        
-        <p class="text-xs text-slate-300">
-          Prepara todos los archivos modificados. El punto (<code class="text-indigo-300">.</code>) significa "agrega todo lo que haya cambiado":
+
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Prepara todos los archivos modificados. El punto (<code class="font-mono text-[#0066cc]">.</code>) significa "incluye todo":
         </p>
 
-        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-indigo-300">
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs sm:text-sm text-[#1d1d1f]">
           <code>git add .</code>
-          <button onclick="copyCmd('git add .')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+          <button onclick="copyCmd('git add .')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition">
+            Copiar
+          </button>
         </div>
 
-        <p class="text-[11px] text-slate-400">
-          💡 Si vuelves a correr <code class="text-sky-300">git status</code>, verás que tus archivos ahora están en <span class="text-emerald-400 font-semibold">verde</span> ("Changes to be committed").
-        </p>
-
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-5" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ejecuté `git add .` en mi terminal
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-5" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ejecuté `git add .` en mi terminal (mis archivos pasaron a verde).
           </label>
         </div>
       </div>
 
-      <!-- Step 3 Card: commit -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+      <!-- Step 3: commit -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center">3</span>
-            <span class="font-bold text-sm text-white">git commit -m "..."</span>
-            <span class="text-xs text-slate-400">— Sellar la caja y etiquetarla</span>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">3</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">git commit -m "..."</h3>
+            <span class="text-xs text-[#707070]">— Sellar y etiquetar</span>
           </div>
-          <span class="text-[10px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-mono">Paso 3</span>
-        </div>
-        
-        <p class="text-xs text-slate-300">
-          Guarda la versión con una nota explicativa. Recuerda incluir siempre <code class="text-amber-300">-m "tu mensaje"</code> para no caer en el editor de consola:
-        </p>
-
-        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-amber-300">
-          <code class="truncate">git commit -m "feat(lineas): matriz de aumento de limites cosecha octubre"</code>
-          <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition flex-shrink-0 ml-2">Copiar Ejemplo</button>
+          <span class="text-xs text-[#707070] font-mono">Paso 3 de 4</span>
         </div>
 
-        <p class="text-[11px] text-slate-400">
-          📋 <strong>Regla del área:</strong> Los mensajes deben ser descriptivos (qué política o cálculo se modificó). Evita mensajes como "cambios" o "prueba".
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Guarda la versión con una nota explicativa. Recuerda siempre incluir <code class="font-mono text-[#0066cc]">-m "mensaje"</code> para no caer en el editor Vim:
         </p>
 
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-6" class="text-xs text-slate-300 cursor-pointer select-none">
-            Guardé mi commit con la bandera `-m "mensaje explicativo"`
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-xs text-[#1d1d1f]">
+          <code class="truncate">git commit -m "feat(lineas): actualiza matriz de aumento de limites"</code>
+          <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0">
+            Copiar Ejemplo
+          </button>
+        </div>
+
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-6" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Guardé el commit con un mensaje descriptivo de al menos 10 caracteres.
           </label>
         </div>
       </div>
 
-      <!-- Step 4 Card: push -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+      <!-- Step 4: push -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
         <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">4</span>
-            <span class="font-bold text-sm text-white">git push</span>
-            <span class="text-xs text-slate-400">— Enviar la caja a GitHub</span>
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full bg-[#f5f5f7] text-[#1d1d1f] font-semibold text-xs flex items-center justify-center border border-[#d6d6d6]">4</span>
+            <h3 class="font-semibold text-lg text-[#1d1d1f]">git push</h3>
+            <span class="text-xs text-[#707070]">— Enviar a la Organización</span>
           </div>
-          <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-mono">Paso 4 (Final)</span>
+          <span class="text-xs text-[#0066cc] font-medium font-mono">Paso 4 (Final)</span>
         </div>
-        
-        <p class="text-xs text-slate-300">
-          Sube tus cambios por internet al repositorio de la organización. Tus compañeros y líderes ahora podrán verlos:
+
+        <p class="text-[15px] text-[#474747] leading-relaxed">
+          Sube tus cambios por internet a GitHub para que queden disponibles para el equipo y tu líder:
         </p>
 
-        <div class="bg-slate-950 p-2.5 rounded-lg border border-emerald-500/30 flex items-center justify-between font-mono text-xs text-emerald-300">
-          <code>git push</code>
-          <button onclick="copyCmd('git push')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1 rounded font-sans font-medium transition">
+        <div class="bg-[#f5f5f7] p-2 pl-4 rounded-full border border-[#d6d6d6]/60 flex items-center justify-between font-mono text-sm text-[#1d1d1f]">
+          <code class="font-bold text-base">git push</code>
+          <button onclick="copyCmd('git push')" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm">
             Copiar Comando
           </button>
         </div>
 
-        <div class="pt-1 flex items-center space-x-2">
-          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
-          <label for="check-step-7" class="text-xs text-slate-300 cursor-pointer select-none">
-            Ejecuté `git push` y mis cambios ya están arriba en GitHub
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check w-4 h-4 rounded-full text-[#0071e3] focus:ring-0 cursor-pointer accent-[#0071e3]">
+          <label for="check-step-7" class="text-xs sm:text-sm text-[#1d1d1f] cursor-pointer select-none">
+            Ejecuté `git push` y mis archivos ya están subidos a GitHub.
           </label>
         </div>
       </div>
@@ -472,94 +516,93 @@
 
 
     <!-- ================================================================ -->
-    <!-- TAB 4: SEGURIDAD Y QUÉ NUNCA SUBIR (.gitignore) -->
+    <!-- TAB 4: SEGURIDAD Y ESTÁNDARES (.gitignore) -->
     <!-- ================================================================ -->
-    <section id="content-tab-seguridad" class="tab-pane hidden space-y-5">
+    <section id="content-tab-seguridad" class="tab-pane hidden space-y-6">
       
-      <!-- Warning Alert -->
-      <div class="bg-rose-950/40 border border-rose-500/40 rounded-xl p-4 text-xs space-y-2">
-        <div class="flex items-center space-x-2 font-bold text-rose-300 text-sm">
-          <span>🚨</span>
-          <span>Regla de Oro de Seguridad Bancaria y Regulatoria</span>
-        </div>
-        <p class="text-slate-300 leading-relaxed">
-          En este repositorio <strong>SOLO SE COMPARTE CÓDIGO</strong> (`.py`, `.sql`, `.md`). Por regulación bancaria y privacidad de datos, está estrictamente prohibido subir bases con información de clientes o contraseñas a GitHub.
+      <div class="space-y-1">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+          Gobernanza de Datos. El archivo `.gitignore`
+        </h2>
+        <p class="text-sm text-[#707070]">
+          En crédito, el código se comparte; los datos de los clientes y las contraseñas se protegen.
         </p>
       </div>
 
-      <!-- Comparative Columns: What to upload vs What NEVER to upload -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Comparative Two-Column Grid (DESIGN.md: 2-column feature cards with 28px radius) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <!-- PROHIBIDO -->
-        <div class="bg-slate-900 border border-rose-900/60 rounded-xl p-4 space-y-3">
-          <div class="flex items-center justify-between pb-2 border-b border-rose-900/40">
-            <span class="font-bold text-rose-400 text-xs flex items-center space-x-1.5">
-              <span>🚫</span>
-              <span>NUNCA SUBIR (Bloqueado por .gitignore)</span>
-            </span>
+        <!-- PROHIBIDO (Ember accent border) -->
+        <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/60">
+          <div class="flex items-center space-x-2 pb-2 border-b border-[#d6d6d6]/40">
+            <span class="w-3 h-3 rounded-full bg-[#b64400]"></span>
+            <span class="font-semibold text-sm text-[#1d1d1f] uppercase tracking-wider">Prohibido Subir</span>
           </div>
-          <ul class="space-y-2 text-xs text-slate-300">
-            <li class="flex items-start space-x-2">
-              <span class="text-rose-400 font-bold">•</span>
-              <div><strong class="text-white">Bases de datos:</strong> Archivos <code class="text-rose-300 font-mono">.csv</code>, <code class="text-rose-300 font-mono">.xlsx</code>, <code class="text-rose-300 font-mono">.parquet</code> con RFC, saldos o buró.</div>
+          <ul class="space-y-3 text-xs sm:text-sm text-[#474747]">
+            <li class="flex items-start space-x-2.5">
+              <span class="text-[#b64400] font-bold">—</span>
+              <div><strong class="text-[#1d1d1f]">Bases de clientes:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.csv</code>, <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.xlsx</code> o <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.parquet</code> con RFC, saldos o buró.</div>
             </li>
-            <li class="flex items-start space-x-2">
-              <span class="text-rose-400 font-bold">•</span>
-              <div><strong class="text-white">Contraseñas:</strong> Archivos <code class="text-rose-300 font-mono">.env</code> o credenciales de conexión a bases de datos.</div>
+            <li class="flex items-start space-x-2.5">
+              <span class="text-[#b64400] font-bold">—</span>
+              <div><strong class="text-[#1d1d1f]">Credenciales bancarias:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.env</code> o contraseñas de bases de datos.</div>
             </li>
-            <li class="flex items-start space-x-2">
-              <span class="text-rose-400 font-bold">•</span>
-              <div><strong class="text-white">Carpetas pesadas:</strong> Entornos virtuales (<code class="text-slate-400 font-mono">venv/</code>, <code class="text-slate-400 font-mono">__pycache__/</code>).</div>
+            <li class="flex items-start space-x-2.5">
+              <span class="text-[#b64400] font-bold">—</span>
+              <div><strong class="text-[#1d1d1f]">Entornos virtuales:</strong> Carpetas locales <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">venv/</code> o cachés.</div>
             </li>
           </ul>
         </div>
 
         <!-- PERMITIDO -->
-        <div class="bg-slate-900 border border-emerald-900/60 rounded-xl p-4 space-y-3">
-          <div class="flex items-center justify-between pb-2 border-b border-emerald-900/40">
-            <span class="font-bold text-emerald-400 text-xs flex items-center space-x-1.5">
-              <span>✅</span>
-              <span>SÍ SE SUBE (El trabajo del equipo)</span>
-            </span>
+        <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/60">
+          <div class="flex items-center space-x-2 pb-2 border-b border-[#d6d6d6]/40">
+            <span class="w-3 h-3 rounded-full bg-[#0071e3]"></span>
+            <span class="font-semibold text-sm text-[#1d1d1f] uppercase tracking-wider">Permitido Subir</span>
           </div>
-          <ul class="space-y-2 text-xs text-slate-300">
-            <li class="flex items-start space-x-2">
-              <span class="text-emerald-400 font-bold">•</span>
-              <div><strong class="text-white">Scripts en Python:</strong> Archivos <code class="text-emerald-300 font-mono">.py</code> con reglas de admisión, scorecuts y matrices.</div>
+          <ul class="space-y-3 text-xs sm:text-sm text-[#474747]">
+            <li class="flex items-start space-x-2.5">
+              <span class="text-[#0071e3] font-bold">—</span>
+              <div><strong class="text-[#1d1d1f]">Scripts en Python:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.py</code> con reglas de admisión, scorecuts y matrices.</div>
             </li>
-            <li class="flex items-start space-x-2">
-              <span class="text-emerald-400 font-bold">•</span>
-              <div><strong class="text-white">Queries en SQL:</strong> Archivos <code class="text-emerald-300 font-mono">.sql</code> para extracción de cosechas o roll rates.</div>
+            <li class="flex items-start space-x-2.5">
+              <span class="text-[#0071e3] font-bold">—</span>
+              <div><strong class="text-[#1d1d1f]">Queries en SQL:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">.sql</code> de cálculo de cosechas o roll rates.</div>
             </li>
-            <li class="flex items-start space-x-2">
-              <span class="text-emerald-400 font-bold">•</span>
-              <div><strong class="text-white">Documentación:</strong> Archivos <code class="text-sky-300 font-mono">README.md</code> explicando cómo usar cada script.</div>
+            <li class="flex items-start space-x-2.5">
+              <span class="text-[#0071e3] font-bold">—</span>
+              <div><strong class="text-[#1d1d1f]">Documentación:</strong> Archivos <code class="font-mono text-xs bg-[#f5f5f7] px-1 py-0.5 rounded">README.md</code> explicando cómo funciona tu modelo.</div>
             </li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Quick Copy Header Templates -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
-        <h4 class="font-bold text-white text-xs">Plantillas de Documentación Obligatoria (Copiar con 1 Clic)</h4>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button onclick="copyHeaderSQL()" class="p-3 bg-slate-950 hover:bg-slate-800/80 border border-slate-800 rounded-lg text-left transition space-y-1">
+      <!-- Header Templates (1-click copy cards) -->
+      <div class="bg-[#ffffff] rounded-[28px] p-6 sm:p-8 space-y-4 border border-[#d6d6d6]/40">
+        <h3 class="font-semibold text-base text-[#1d1d1f]">Plantillas oficiales de documentación obligatoria</h3>
+        <p class="text-xs text-[#707070]">
+          Todo archivo nuevo que crees debe comenzar con esta estructura para cumplir con los comités de auditoría interna:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+          
+          <button onclick="copyHeaderSQL()" class="p-5 bg-[#f5f5f7] hover:bg-[#e8e8ed] rounded-[20px] text-left transition space-y-2 border border-[#d6d6d6]/30">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold text-sky-400">📊 Cabecera para SQL (.sql)</span>
-              <span id="btn-lbl-sql" class="text-[10px] bg-sky-500/10 text-sky-300 px-1.5 py-0.5 rounded">Copiar</span>
+              <span class="font-semibold text-sm text-[#1d1d1f]">Cabecera SQL (.sql)</span>
+              <span id="btn-lbl-sql" class="text-xs text-[#0066cc] font-medium">Copiar plantilla ›</span>
             </div>
-            <p class="text-[11px] text-slate-400">Incluye autor, tablas fuente, tabla destino y periodicidad.</p>
+            <p class="text-xs text-[#707070]">Incluye autor, tablas de entrada, destino y periodicidad mensual.</p>
           </button>
 
-          <button onclick="copyHeaderPY()" class="p-3 bg-slate-950 hover:bg-slate-800/80 border border-slate-800 rounded-lg text-left transition space-y-1">
+          <button onclick="copyHeaderPY()" class="p-5 bg-[#f5f5f7] hover:bg-[#e8e8ed] rounded-[20px] text-left transition space-y-2 border border-[#d6d6d6]/30">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold text-emerald-400">🐍 Docstring para Python (.py)</span>
-              <span id="btn-lbl-py" class="text-[10px] bg-emerald-500/10 text-emerald-300 px-1.5 py-0.5 rounded">Copiar</span>
+              <span class="font-semibold text-sm text-[#1d1d1f]">Docstring Python (.py)</span>
+              <span id="btn-lbl-py" class="text-xs text-[#0066cc] font-medium">Copiar plantilla ›</span>
             </div>
-            <p class="text-[11px] text-slate-400">Explica la regla de crédito, entradas de datos y salidas.</p>
+            <p class="text-xs text-[#707070]">Explica la regla de política, inputs del cliente y dictamen final.</p>
           </button>
+
         </div>
       </div>
 
@@ -567,104 +610,123 @@
 
 
     <!-- ================================================================ -->
-    <!-- TAB 5: ACORDEÓN & SOLUCIÓN A LOS 3 ERRORES COMUNES -->
+    <!-- TAB 5: ACORDEÓN & SOLUCIÓN A LOS 3 DOLORES DE CABEZA -->
     <!-- ================================================================ -->
-    <section id="content-tab-cheatsheet" class="tab-pane hidden space-y-5">
+    <section id="content-tab-cheatsheet" class="tab-pane hidden space-y-6">
       
-      <!-- Top Cheat Sheet Table -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-        <div class="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-          <span class="font-bold text-xs text-white uppercase tracking-wider">Tabla de Comandos Diarios</span>
-          <span class="text-[11px] text-slate-400 font-mono">Terminal Windows</span>
+      <div class="space-y-1">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] tracking-tight">
+          Acordeón de Bolsillo y Rescate en Windows
+        </h2>
+        <p class="text-sm text-[#707070]">
+          La referencia compacta para tener abierta mientras trabajas en tus análisis de portafolio.
+        </p>
+      </div>
+
+      <!-- Quick Reference Table (Clean Apple table aesthetic) -->
+      <div class="bg-[#ffffff] rounded-[28px] overflow-hidden border border-[#d6d6d6]/40">
+        <div class="p-5 border-b border-[#d6d6d6]/40 flex items-center justify-between">
+          <span class="font-semibold text-sm text-[#1d1d1f]">Los 5 Comandos Esenciales</span>
+          <span class="text-xs text-[#707070] font-mono">Terminal PowerShell</span>
         </div>
 
-        <div class="divide-y divide-slate-800 text-xs">
+        <div class="divide-y divide-[#d6d6d6]/30 text-xs sm:text-sm">
           
-          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
-            <div>
-              <div class="font-mono font-bold text-emerald-400">git pull</div>
-              <div class="text-[11px] text-slate-400">Bajar novedades de tus compañeros (hacer todas las mañanas).</div>
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+            <div class="space-y-0.5">
+              <div class="font-mono font-semibold text-[#1d1d1f]">git pull</div>
+              <div class="text-xs text-[#707070]">Descarga novedades de tus compañeros (hacer todas las mañanas).</div>
             </div>
-            <button onclick="copyCmd('git pull')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+            <button onclick="copyCmd('git pull')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+              Copiar
+            </button>
           </div>
 
-          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
-            <div>
-              <div class="font-mono font-bold text-sky-400">git status</div>
-              <div class="text-[11px] text-slate-400">Ver qué archivos tienes modificados o creados.</div>
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+            <div class="space-y-0.5">
+              <div class="font-mono font-semibold text-[#1d1d1f]">git status</div>
+              <div class="text-xs text-[#707070]">Muestra qué archivos has creado o modificado.</div>
             </div>
-            <button onclick="copyCmd('git status')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+            <button onclick="copyCmd('git status')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+              Copiar
+            </button>
           </div>
 
-          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
-            <div>
-              <div class="font-mono font-bold text-indigo-400">git add .</div>
-              <div class="text-[11px] text-slate-400">Preparar todos tus cambios para empaquetar.</div>
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+            <div class="space-y-0.5">
+              <div class="font-mono font-semibold text-[#1d1d1f]">git add .</div>
+              <div class="text-xs text-[#707070]">Prepara todos tus cambios en la caja de envío.</div>
             </div>
-            <button onclick="copyCmd('git add .')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+            <button onclick="copyCmd('git add .')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+              Copiar
+            </button>
           </div>
 
-          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
-            <div>
-              <div class="font-mono font-bold text-amber-400">git commit -m "mensaje"</div>
-              <div class="text-[11px] text-slate-400">Sellar la versión con una nota clara de lo que hiciste.</div>
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+            <div class="space-y-0.5">
+              <div class="font-mono font-semibold text-[#1d1d1f]">git commit -m "..."</div>
+              <div class="text-xs text-[#707070]">Sella la versión con una nota explicativa de política.</div>
             </div>
-            <button onclick="copyCmd('git commit -m &quot;feat: actualiza regla de credito&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+            <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+              Copiar
+            </button>
           </div>
 
-          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
-            <div>
-              <div class="font-mono font-bold text-emerald-400">git push</div>
-              <div class="text-[11px] text-slate-400">Subir tus cambios a la organización en GitHub.</div>
+          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 hover:bg-[#f5f5f7]/60 transition">
+            <div class="space-y-0.5">
+              <div class="font-mono font-semibold text-[#1d1d1f]">git push</div>
+              <div class="text-xs text-[#707070]">Envía tus cambios a la biblioteca central en GitHub.</div>
             </div>
-            <button onclick="copyCmd('git push')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+            <button onclick="copyCmd('git push')" class="bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] text-xs px-3.5 py-1.5 rounded-full font-medium transition border border-[#d6d6d6]/50">
+              Copiar
+            </button>
           </div>
 
         </div>
       </div>
 
-      <!-- Solutions to 3 Beginner Headaches -->
-      <div class="space-y-3">
-        <h4 class="font-bold text-white text-xs uppercase tracking-wider text-slate-400">
-          🛠️ Solución a los 3 Dolores de Cabeza Más Comunes en Windows
-        </h4>
+      <!-- Solutions to 3 Common Beginner Headaches in Windows -->
+      <div class="space-y-3 pt-2">
+        <h3 class="text-lg font-semibold text-[#1d1d1f] tracking-tight">
+          Solución a los 3 Dolores de Cabeza Más Comunes en Windows
+        </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           
           <!-- Headache 1 -->
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
-            <span class="text-rose-400 font-bold text-xs">Error 1:</span>
-            <div class="font-bold text-white text-xs">"fatal: not a git repository"</div>
-            <p class="text-[11px] text-slate-400">
+          <div class="bg-[#ffffff] rounded-[28px] p-6 space-y-3 border border-[#d6d6d6]/40">
+            <span class="text-xs font-semibold text-[#b64400] uppercase tracking-wider block">Error 1</span>
+            <h4 class="font-semibold text-sm text-[#1d1d1f]">"fatal: not a git repository"</h4>
+            <p class="text-xs text-[#707070] leading-relaxed">
               <strong>Causa:</strong> Abriste la terminal fuera de la carpeta del proyecto.
             </p>
-            <div class="bg-slate-950 p-2 rounded text-[11px] font-mono text-sky-300">
+            <div class="bg-[#f5f5f7] p-2.5 rounded-[12px] text-xs font-mono text-[#1d1d1f] border border-[#d6d6d6]/40">
               cd capacitacion-git-tdc
             </div>
           </div>
 
           <!-- Headache 2 -->
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
-            <span class="text-rose-400 font-bold text-xs">Error 2:</span>
-            <div class="font-bold text-white text-xs">"Updates were rejected (hacer pull)"</div>
-            <p class="text-[11px] text-slate-400">
-              <strong>Causa:</strong> Un compañero subió algo a GitHub y tú intentaste dar push sin sincronizarte.
+          <div class="bg-[#ffffff] rounded-[28px] p-6 space-y-3 border border-[#d6d6d6]/40">
+            <span class="text-xs font-semibold text-[#b64400] uppercase tracking-wider block">Error 2</span>
+            <h4 class="font-semibold text-sm text-[#1d1d1f]">"Updates were rejected"</h4>
+            <p class="text-xs text-[#707070] leading-relaxed">
+              <strong>Causa:</strong> Un compañero subió algo y tú diste push sin haber hecho pull primero.
             </p>
-            <div class="bg-slate-950 p-2 rounded text-[11px] font-mono text-emerald-300 space-y-0.5">
+            <div class="bg-[#f5f5f7] p-2.5 rounded-[12px] text-xs font-mono text-[#1d1d1f] space-y-1 border border-[#d6d6d6]/40">
               <div>git pull</div>
               <div>git push</div>
             </div>
           </div>
 
           <!-- Headache 3 -->
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
-            <span class="text-rose-400 font-bold text-xs">Error 3:</span>
-            <div class="font-bold text-white text-xs">"Se abrió una pantalla extraña (Editor Vim)"</div>
-            <p class="text-[11px] text-slate-400">
-              <strong>Causa:</strong> Escribiste <code class="text-slate-300">git commit</code> sin poner <code class="text-slate-300">-m "..."</code>.
+          <div class="bg-[#ffffff] rounded-[28px] p-6 space-y-3 border border-[#d6d6d6]/40">
+            <span class="text-xs font-semibold text-[#b64400] uppercase tracking-wider block">Error 3</span>
+            <h4 class="font-semibold text-sm text-[#1d1d1f]">"Se abrió la pantalla de Vim"</h4>
+            <p class="text-xs text-[#707070] leading-relaxed">
+              <strong>Causa:</strong> Escribiste <code class="font-mono text-xs">git commit</code> sin poner <code class="font-mono text-xs">-m "..."</code>.
             </p>
-            <div class="bg-slate-950 p-2 rounded text-[11px] font-mono text-amber-300 space-y-0.5">
-              <div>1. Presiona tecla Esc</div>
+            <div class="bg-[#f5f5f7] p-2.5 rounded-[12px] text-xs font-mono text-[#1d1d1f] space-y-1 border border-[#d6d6d6]/40">
+              <div>1. Presiona Esc</div>
               <div>2. Escribe :q! y da Enter</div>
             </div>
           </div>
@@ -676,13 +738,21 @@
 
   </main>
 
-  <!-- ================= TOAST NOTIFICATION ================= -->
-  <div id="toast" class="fixed bottom-5 right-5 bg-sky-600 text-white px-3.5 py-2 rounded-lg shadow-xl text-xs font-semibold flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-200 z-50 pointer-events-none">
+  <!-- ================= FOOTER (DESIGN.md: Canvas Gray, SF Pro Text 12px, color #707070) ================= -->
+  <footer class="bg-[#ffffff] border-t border-[#d6d6d6]/40 py-8 text-center text-xs text-[#707070]">
+    <div class="max-w-[1200px] mx-auto px-4 space-y-1.5">
+      <p class="font-semibold text-[#1d1d1f]">Dirección de Riesgo de Crédito — Políticas y Estrategias TDC</p>
+      <p>Material de capacitación técnica interna para analistas en Visual Studio Code. Diseñado bajo las normas de estilo Apple.</p>
+    </div>
+  </footer>
+
+  <!-- ================= TOAST NOTIFICATION (Pill shape, Electric Blue) ================= -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-[#0071e3] text-white px-5 py-2.5 rounded-full text-xs font-medium flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none shadow-lg">
     <span>✓</span>
-    <span id="toast-text">Comando copiado</span>
+    <span id="toast-text">Copiado al portapapeles</span>
   </div>
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <!-- ================= SCRIPT LOGIC (Unchanged & 100% Functional) ================= -->
   <script>
     // Tab switching
     function switchTab(targetId) {
@@ -691,17 +761,17 @@
       if (active) active.classList.remove('hidden');
 
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-sky-600', 'text-white', 'font-semibold');
-        btn.classList.add('bg-slate-800', 'text-slate-300');
+        btn.classList.remove('bg-[#1d1d1f]', 'text-white');
+        btn.classList.add('text-[#707070]', 'hover:text-[#1d1d1f]', 'hover:bg-[#e8e8ed]');
       });
       const activeBtn = document.getElementById(`btn-${targetId}`);
       if (activeBtn) {
-        activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
-        activeBtn.classList.add('bg-sky-600', 'text-white', 'font-semibold');
+        activeBtn.classList.remove('text-[#707070]', 'hover:text-[#1d1d1f]', 'hover:bg-[#e8e8ed]');
+        activeBtn.classList.add('bg-[#1d1d1f]', 'text-white');
       }
     }
 
-    // Toast
+    // Toast notification
     function showToast(text) {
       const t = document.getElementById('toast');
       document.getElementById('toast-text').textContent = text;
@@ -746,7 +816,7 @@
       }
       const pct = Math.round((completed / TOTAL_TASKS) * 100);
       document.getElementById('progress-fill').style.width = `${pct}%`;
-      document.getElementById('progress-summary').textContent = `${completed} de ${TOTAL_TASKS} Pasos`;
+      document.getElementById('progress-summary').textContent = `${completed} de ${TOTAL_TASKS}`;
     }
 
     function resetAllChecks() {
@@ -760,7 +830,7 @@
       showToast('Lista de verificación reiniciada');
     }
 
-    // Restore checks on load
+    // Restore on load
     window.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < TOTAL_TASKS; i++) {
         const id = `check-step-${i}`;
@@ -772,13 +842,13 @@
       updateProgressUI();
     });
 
-    // Templates Copying
+    // Copy Documentation Templates
     function copyHeaderSQL() {
       const sql = `/*\n============================================================\nINSTITUCIÓN FINANCIERA - POLÍTICAS DE CRÉDITO TDC\n============================================================\nARCHIVO:        calculo_roll_rate.sql\nAUTOR:          [Tu Nombre Completo / Analista TDC]\nFECHA CREACIÓN: 2026-10-27\nOBJETIVO:       Cálculo mensual de matrices de transición\n                (Roll Rates) de buckets de morosidad.\nTABLAS FUENTE:  DWH_RIESGO.CARTERA_MENSUAL_TDC\nTABLA DESTINO:  BI_RIESGO.MATRIZ_ROLL_RATES_TDC\nPERIODICIDAD:   Mensual (Cierre de mes)\n============================================================\n*/`;
       copyCmd(sql);
       const lbl = document.getElementById('btn-lbl-sql');
       lbl.textContent = '¡Copiado!';
-      setTimeout(() => lbl.textContent = 'Copiar', 2000);
+      setTimeout(() => lbl.textContent = 'Copiar plantilla ›', 2000);
     }
 
     function copyHeaderPY() {
@@ -786,7 +856,7 @@
       copyCmd(py);
       const lbl = document.getElementById('btn-lbl-py');
       lbl.textContent = '¡Copiado!';
-      setTimeout(() => lbl.textContent = 'Copiar', 2000);
+      setTimeout(() => lbl.textContent = 'Copiar plantilla ›', 2000);
     }
   </script>
 

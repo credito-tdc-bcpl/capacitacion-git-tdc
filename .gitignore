@@ -1,0 +1,95 @@
+# ==============================================================================
+# .gitignore - POLÍTICAS DE CRÉDITO Y RIESGO TDC
+# ==============================================================================
+# REGLA FUNDAMENTAL DE SEGURIDAD BANCARIA Y REGULATORIA (CNBV / GDPR):
+# En este repositorio SOLO se comparte CÓDIGO (.py, .sql, .md).
+# NUNCA se suben bases de datos con RFC, saldos, buró ni credenciales.
+# ==============================================================================
+
+# --- BASES DE DATOS, ARCHIVOS DE CLIENTES Y EXTRACTOS (CRÍTICO) ---
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.pkl
+*.pickle
+*.h5
+*.jsonl
+*.sas7bdat
+*.dta
+
+# Carpetas de datos locales
+data/
+datos/
+raw/
+output/
+exports/
+descargas/
+temp/
+tmp/
+
+# --- CREDENCIALES, CONTRASEÑAS Y ACCESOS A BASES DE DATOS ---
+.env
+*.env
+.env.*
+config.ini
+credentials.json
+secrets.yaml
+*.pem
+*.key
+conexiones_bd.py
+
+# --- ENTORNOS VIRTUALES Y CACHÉ DE PYTHON ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# --- LOGS Y SALIDAS DE EJECUCIÓN TEMPORALES ---
+*.log
+query_results/
+*.bak
+*.swp
+
+# --- CONFIGURACIONES LOCALES DE IDE (VS Code, Windows, Mac) ---
+.vscode/
+!.vscode/settings.json.example
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de sistema operativo
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store

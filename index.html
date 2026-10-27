@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capacitación Git & GitHub | Políticas de Crédito TDC</title>
+  <title>Guía de Acompañamiento Git | Políticas de Crédito TDC</title>
   
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,16 +24,11 @@
           colors: {
             vscode: {
               bg: '#1e1e1e',
-              sidebar: '#252526',
-              border: '#3c3c3c',
+              panel: '#252526',
+              border: '#333333',
               accent: '#007acc',
               accentHover: '#0062a3',
               terminal: '#0c1017',
-              text: '#cccccc',
-              keyword: '#569cd6',
-              string: '#ce9178',
-              fn: '#dcdcaa',
-              comment: '#6a9955',
             }
           }
         }
@@ -42,116 +37,86 @@
   </script>
 
   <style>
-    /* Custom terminal scrollbars and glowing effects */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #18181b;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #3f3f46;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #52525b;
-    }
+    /* Smooth minimalist scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
-    .terminal-cursor {
-      display: inline-block;
-      width: 8px;
-      height: 16px;
-      background-color: #38bdf8;
-      vertical-align: middle;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-
-    .glow-blue {
-      box-shadow: 0 0 25px -5px rgba(0, 122, 204, 0.35);
-    }
-    .glow-emerald {
-      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
+    /* Custom Checkbox Animation */
+    .task-check:checked + label {
+      text-decoration: line-through;
+      color: #94a3b8;
     }
   </style>
 </head>
 
-<body class="h-full flex flex-col font-sans selection:bg-sky-500 selection:text-white">
+<body class="h-full flex flex-col font-sans selection:bg-sky-500 selection:text-white antialiased">
 
-  <!-- ================= TOP NAVIGATION BAR ================= -->
-  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        
-        <!-- Logo & Branding -->
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-sky-600 via-indigo-600 to-emerald-500 flex items-center justify-center shadow-md">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-            </svg>
-          </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <span class="font-bold text-base tracking-tight text-white">POLÍTICAS TDC</span>
-              <span class="bg-sky-500/10 text-sky-400 text-xs px-2 py-0.5 rounded border border-sky-500/20 font-medium">Git Corporativo</span>
-            </div>
-            <p class="text-xs text-slate-400">Capacitación de Supervivencia en Terminal VS Code (Windows)</p>
-          </div>
+  <!-- ================= TOP COMPACT HEADER ================= -->
+  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-2.5 sm:px-6 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center font-bold text-white text-sm shadow">
+          💳
         </div>
-
-        <!-- Progress Indicator -->
-        <div class="hidden md:flex items-center space-x-4">
-          <div class="text-right">
-            <div class="text-xs font-medium text-slate-400">Progreso del Programa</div>
-            <div class="text-xs font-semibold text-emerald-400" id="progress-text">1 de 5 Módulos visitados</div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-bold text-sm tracking-tight text-white">POLÍTICAS TDC</span>
+            <span class="bg-emerald-500/10 text-emerald-400 text-[10px] px-2 py-0.5 rounded border border-emerald-500/20 font-semibold uppercase tracking-wider">
+              Guía de Acompañamiento
+            </span>
           </div>
-          <div class="w-32 bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700">
-            <div id="progress-bar" class="bg-gradient-to-r from-sky-500 to-emerald-500 h-2 rounded-full transition-all duration-500" style="width: 20%;"></div>
-          </div>
+          <p class="text-[11px] text-slate-400">Ejecuta los comandos en tu propio VS Code a tu propio ritmo</p>
         </div>
-
-        <!-- Terminal Shortcut Pill -->
-        <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-xs">
-          <span class="text-slate-400">Atajo VS Code:</span>
-          <kbd class="px-1.5 py-0.5 bg-slate-900 border border-slate-600 rounded text-sky-300 font-mono font-semibold">Ctrl + Ñ</kbd>
-          <span class="text-slate-500 text-[10px]">(Terminal)</span>
-        </div>
-
       </div>
+
+      <!-- Live Checklist Progress in VS Code -->
+      <div class="flex items-center space-x-4">
+        <div class="text-right hidden sm:block">
+          <div class="text-[10px] uppercase font-semibold text-slate-400">Comandos ejecutados en tu PC</div>
+          <div class="text-xs font-bold text-emerald-400" id="progress-summary">0 de 8 Pasos</div>
+        </div>
+        <div class="w-24 sm:w-32 bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700">
+          <div id="progress-fill" class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: 0%;"></div>
+        </div>
+        <button onclick="resetAllChecks()" title="Reiniciar lista de verificación" class="text-slate-500 hover:text-slate-300 text-xs px-1.5 py-1 rounded hover:bg-slate-800 transition">
+          ↺
+        </button>
+      </div>
+
     </div>
 
-    <!-- Navigation Tabs -->
-    <div class="bg-slate-900/90 border-t border-slate-800/60 backdrop-blur">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="flex space-x-2 overflow-x-auto py-2 text-sm font-medium no-scrollbar" id="nav-tabs">
+    <!-- Navigation Tabs (Distilled & Direct) -->
+    <div class="bg-slate-900/95 border-t border-slate-800/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <nav class="flex space-x-1 sm:space-x-2 overflow-x-auto py-2 text-xs font-medium no-scrollbar" id="nav-tabs">
           
-          <button onclick="switchTab('mod1')" id="tab-mod1" class="tab-btn active-tab px-4 py-2 rounded-lg flex items-center space-x-2 transition bg-sky-600 text-white shadow-sm">
-            <span>🏛️</span>
-            <span>Módulo 1: Nuestra Organización</span>
+          <button onclick="switchTab('tab-setup')" id="btn-tab-setup" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-sky-600 text-white font-semibold">
+            <span>🚀</span>
+            <span>1. Instalación y Primer Uso</span>
           </button>
 
-          <button onclick="switchTab('mod2')" id="tab-mod2" class="tab-btn px-4 py-2 rounded-lg flex items-center space-x-2 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+          <button onclick="switchTab('tab-pull')" id="btn-tab-pull" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
             <span>📥</span>
-            <span>Módulo 2: Descargar y Actualizar</span>
+            <span>2. Comenzar el Día (`git pull`)</span>
           </button>
 
-          <button onclick="switchTab('mod3')" id="tab-mod3" class="tab-btn px-4 py-2 rounded-lg flex items-center space-x-2 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+          <button onclick="switchTab('tab-ciclo')" id="btn-tab-ciclo" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
             <span>📦</span>
-            <span>Módulo 3: El Ciclo de 4 Pasos</span>
+            <span>3. Compartir Cambios (4 Pasos)</span>
           </button>
 
-          <button onclick="switchTab('mod4')" id="tab-mod4" class="tab-btn px-4 py-2 rounded-lg flex items-center space-x-2 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+          <button onclick="switchTab('tab-seguridad')" id="btn-tab-seguridad" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
             <span>🛡️</span>
-            <span>Módulo 4: Seguridad y .gitignore</span>
+            <span>4. Qué NUNCA subir (.gitignore)</span>
           </button>
 
-          <button onclick="switchTab('cheatsheet')" id="tab-cheatsheet" class="tab-btn px-4 py-2 rounded-lg flex items-center space-x-2 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
+          <button onclick="switchTab('tab-cheatsheet')" id="btn-tab-cheatsheet" class="tab-btn px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition bg-slate-800 text-slate-300 hover:bg-slate-700">
             <span>⚡</span>
-            <span>Cheat Sheet & Cuentas</span>
+            <span>5. Acordeón & Solución de Errores</span>
           </button>
 
         </nav>
@@ -159,922 +124,548 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT CONTAINER ================= -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
 
     <!-- ================================================================ -->
-    <!-- MÓDULO 1: NUESTRA ORGANIZACIÓN, REGLAS DE ORDEN Y EL README -->
+    <!-- TAB 1: INSTALACIÓN Y CONFIGURACIÓN INICIAL (PASO 0) -->
     <!-- ================================================================ -->
-    <section id="content-mod1" class="tab-content space-y-6">
+    <section id="content-tab-setup" class="tab-pane space-y-5">
       
-      <!-- Banner Hero -->
-      <div class="bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div class="relative z-10 max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold">
-            <span>Módulo 1</span>
-            <span>•</span>
-            <span>Fundamentos de Arquitectura de Trabajo</span>
-          </div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Nuestra Organización en GitHub y las Reglas de Convivencia
-          </h1>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            En el equipo de <strong class="text-sky-300">Políticas de Tarjeta de Crédito (TDC)</strong> no usamos Git para complicarnos con ramas infinitas ni resolver choques de código complejos. Usamos GitHub como una <span class="text-emerald-400 font-semibold">Biblioteca Central Segura y Auditable</span> donde cada analista comparte sus scripts de Python y queries de SQL con orden y documentación ejemplar.
+      <!-- Split-screen reminder banner -->
+      <div class="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-3.5 flex items-center justify-between gap-3 text-xs">
+        <div class="flex items-center space-x-2.5">
+          <span class="text-lg">🖥️</span>
+          <p class="text-indigo-200">
+            <strong>Modo recomendado de trabajo:</strong> Coloca este navegador en la mitad izquierda de tu pantalla y tu <strong>Visual Studio Code</strong> en la mitad derecha. Copia el comando con el botón y pégalo directo en tu terminal.
           </p>
         </div>
+        <span class="bg-indigo-500/20 text-indigo-300 font-mono text-[11px] px-2 py-0.5 rounded whitespace-nowrap">Ctrl + Ñ = Terminal</span>
       </div>
 
-      <!-- 3 Key Concepts Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Action Card 0.1: Verificar instalación de Git -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 shadow-sm hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-bold text-xs flex items-center justify-center">1</span>
+            <h3 class="font-bold text-sm text-white">Comprueba si tienes Git instalado en tu máquina</h3>
+          </div>
+          <span class="text-[11px] text-slate-400">Paso previo</span>
+        </div>
         
-        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
-          <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold text-base mb-1">1. La Organización</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Es la cuenta corporativa del banco donde reside todo el equipo. Garantiza que el código pertenezca a la institución y no se pierda en laptops personales o unidades compartidas desordenadas.
-          </p>
-        </div>
+        <p class="text-xs text-slate-300">
+          Abre la terminal de Windows (PowerShell) o abre VS Code y presiona <kbd class="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded font-mono text-sky-300">Ctrl + Ñ</kbd>. Ejecuta:
+        </p>
 
-        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
-          <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold text-base mb-1">2. El Repositorio Semilla</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Nuestro repositorio principal es <code class="text-sky-300 font-mono text-xs">politicas-credito-tdc</code>. Es como una carpeta maestra con historial de cambios donde se guardan las políticas de originación y límites.
-          </p>
-        </div>
-
-        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition">
-          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          </div>
-          <h3 class="text-white font-semibold text-base mb-1">3. La Regla de Convivencia</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            <strong>Cero conflictos:</strong> Cada analista trabaja exclusivamente en los scripts de su indicador o proyecto. Si necesitas algo del script de un compañero, copias la función o le avisas, pero <em>nunca sobreescribes directamente su archivo</em>.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- COMPONENTE INTERACTIVO 1: SIMULADOR DE REPOSITORIO GITHUB TDC -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-        
-        <!-- GitHub Repo Header Bar -->
-        <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center space-x-2 text-sm">
-            <svg class="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-            <span class="text-sky-400 hover:underline cursor-pointer font-medium">organizacion-riesgo-banco</span>
-            <span class="text-slate-500">/</span>
-            <span class="text-white font-bold">politicas-credito-tdc</span>
-            <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full border border-slate-700">Internal</span>
-          </div>
-
-          <!-- The Green "<> Code" Button that beginners need to learn -->
-          <div class="relative">
-            <button onclick="toggleCloneModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-1.5 rounded-lg flex items-center space-x-2 text-xs shadow-md transition">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-              <span>&lt;&gt; Code (Clonar)</span>
-              <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-
-            <!-- Clone Dropdown Simulation -->
-            <div id="clone-modal" class="hidden absolute right-0 mt-2 w-80 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl p-4 z-50 text-xs space-y-3">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                <span class="font-semibold text-white">Clonar Repositorio</span>
-                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">HTTPS</span>
-              </div>
-              <p class="text-slate-400 text-[11px]">
-                Copia esta URL para clonar en tu VS Code la primera vez:
-              </p>
-              <div class="flex items-center bg-slate-950 border border-slate-700 rounded-lg p-1.5 font-mono text-[10px] text-slate-300 overflow-hidden">
-                <span class="truncate flex-1" id="clone-url-text">https://github.com/organizacion-riesgo-banco/politicas-credito-tdc.git</span>
-                <button onclick="copyCloneUrl()" class="ml-2 bg-sky-600 hover:bg-sky-500 text-white px-2 py-1 rounded text-[10px] transition font-sans flex items-center space-x-1">
-                  <span id="copy-btn-text">Copiar</span>
-                </button>
-              </div>
-              <div class="text-[10px] text-amber-300/90 bg-amber-500/10 p-2 rounded border border-amber-500/20">
-                💡 <strong>En tu terminal:</strong> escribe <code>git clone</code>, pega esta URL y da Enter.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Simulated Repo File Explorer -->
-        <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          <!-- File List Column -->
-          <div class="lg:col-span-5 space-y-3">
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center justify-between">
-              <span>Carpetas del Repositorio</span>
-              <span class="text-[10px] text-sky-400">Haz clic para explorar</span>
-            </div>
-            
-            <div class="space-y-1.5 font-mono text-xs">
-              
-              <!-- Folder: originacion -->
-              <div onclick="selectRepoItem('originacion')" class="repo-row p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between cursor-pointer transition">
-                <div class="flex items-center space-x-2.5">
-                  <span class="text-sky-400 text-base">📁</span>
-                  <span class="text-white font-medium">originacion/</span>
-                </div>
-                <span class="text-[10px] text-slate-400 font-sans">Scores, Admisión</span>
-              </div>
-
-              <!-- Folder: lineas-credito -->
-              <div onclick="selectRepoItem('lineas')" class="repo-row p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between cursor-pointer transition">
-                <div class="flex items-center space-x-2.5">
-                  <span class="text-emerald-400 text-base">📁</span>
-                  <span class="text-white font-medium">lineas-credito/</span>
-                </div>
-                <span class="text-[10px] text-slate-400 font-sans">Aumentos, Límites</span>
-              </div>
-
-              <!-- Folder: indicadores-cosechas -->
-              <div onclick="selectRepoItem('cosechas')" class="repo-row p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between cursor-pointer transition">
-                <div class="flex items-center space-x-2.5">
-                  <span class="text-amber-400 text-base">📁</span>
-                  <span class="text-white font-medium">indicadores-cosechas/</span>
-                </div>
-                <span class="text-[10px] text-slate-400 font-sans">Roll Rates, ICV</span>
-              </div>
-
-              <!-- File: README.md -->
-              <div onclick="selectRepoItem('readme')" class="repo-row p-2.5 rounded-lg bg-sky-950/40 hover:bg-sky-950/70 border border-sky-800/60 flex items-center justify-between cursor-pointer transition">
-                <div class="flex items-center space-x-2.5">
-                  <span class="text-slate-300 text-base">📄</span>
-                  <span class="text-sky-300 font-semibold">README.md</span>
-                </div>
-                <span class="text-[10px] bg-sky-500/20 text-sky-300 px-1.5 py-0.5 rounded font-sans">Catálogo Oficial</span>
-              </div>
-
-              <!-- File: .gitignore -->
-              <div onclick="selectRepoItem('gitignore')" class="repo-row p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between cursor-pointer transition">
-                <div class="flex items-center space-x-2.5">
-                  <span class="text-rose-400 text-base">🔒</span>
-                  <span class="text-slate-300">.gitignore</span>
-                </div>
-                <span class="text-[10px] text-rose-400 font-sans">Escudo de Datos</span>
-              </div>
-
-            </div>
-
-            <!-- Pro Tip Box -->
-            <div class="p-3 bg-indigo-950/30 border border-indigo-500/20 rounded-xl text-xs space-y-1">
-              <span class="font-semibold text-indigo-300 flex items-center space-x-1">
-                <span>💡</span>
-                <span>¿Por qué esta estructura?</span>
-              </span>
-              <p class="text-slate-400 text-[11px] leading-relaxed">
-                Al separar por carpetas temáticas, si el analista de Originación modifica <code class="text-indigo-300 font-mono">reglas_score.py</code> y el de Líneas modifica <code class="text-indigo-300 font-mono">aumentos.py</code>, <strong>jamás tendrán conflictos de Git</strong> al sincronizar.
-              </p>
-            </div>
-          </div>
-
-          <!-- File Content Preview Panel -->
-          <div class="lg:col-span-7 bg-slate-950 rounded-xl border border-slate-800 p-4 font-mono text-xs overflow-hidden flex flex-col justify-between min-h-[300px]">
-            <div>
-              <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 font-sans text-xs">
-                <span class="text-slate-400 font-semibold" id="preview-title">Vista Previa: README.md</span>
-                <span class="text-[10px] text-slate-500">Simulación GitHub Markdown</span>
-              </div>
-              
-              <div id="preview-content" class="text-slate-300 space-y-3 leading-relaxed max-h-72 overflow-y-auto pr-2">
-                <!-- Dynamic Content injected via JS -->
-              </div>
-            </div>
-
-            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-sans text-slate-400">
-              <span>Estatus del Repositorio: <strong class="text-emerald-400">Sincronizado</strong></span>
-              <span>Rama activa: <code class="text-sky-400 font-mono">main</code></span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================================================================ -->
-    <!-- MÓDULO 2: DESCARGAR Y ACTUALIZAR (git clone y git pull) -->
-    <!-- ================================================================ -->
-    <section id="content-mod2" class="tab-content hidden space-y-6">
-      
-      <!-- Hero Banner -->
-      <div class="bg-gradient-to-r from-slate-900 via-sky-950/60 to-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
-        <div class="max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold">
-            <span>Módulo 2</span>
-            <span>•</span>
-            <span>Tus Primeros Comandos en la Terminal de Windows</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Descargar la Primera Vez vs Actualizar Todos los Días
-          </h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            El 90% de la confusión de los principiantes se resuelve entendiendo esta regla de oro:
-            <strong class="text-amber-300"><code>git clone</code></strong> se hace <em>una sola vez en la vida</em> por máquina.
-            <strong class="text-emerald-300"><code>git pull</code></strong> se hace <em>todas las mañanas</em> antes de empezar a trabajar.
-          </p>
-        </div>
-      </div>
-
-      <!-- Comparative Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- git clone Card -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">Paso Inicial (Solo 1 vez)</span>
-            <span class="text-xs text-slate-500 font-mono">git clone &lt;url&gt;</span>
-          </div>
-          <h3 class="text-lg font-bold text-white">Descargar toda la biblioteca</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Crea una carpeta en tu computadora con todo el historial de scripts de crédito del banco. 
-            Si ya tienes la carpeta en tu equipo, <strong>NO vuelvas a clonar</strong>, porque te dará el error: <code class="text-rose-400">fatal: destination path already exists</code>.
-          </p>
-          <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 font-mono text-xs text-slate-300 flex items-center justify-between">
-            <code>git clone https://github.com/.../politicas-tdc.git</code>
-            <button onclick="copyToClipboard('git clone https://github.com/organizacion-riesgo-banco/politicas-credito-tdc.git')" class="text-sky-400 hover:text-sky-300 text-[10px]">Copiar</button>
-          </div>
-        </div>
-
-        <!-- git pull Card -->
-        <div class="bg-slate-900 border border-emerald-900/60 rounded-xl p-5 space-y-3 shadow-lg">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">Tu Hábito Diario Obligatorio</span>
-            <span class="text-xs text-emerald-400 font-mono font-bold">git pull</span>
-          </div>
-          <h3 class="text-lg font-bold text-white">Traer novedades de tus compañeros</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Imagina que ayer tu colega subió el nuevo cálculo de cosechas <code class="text-sky-300">indicador_icv.sql</code>. Con <code class="text-emerald-300 font-bold">git pull</code> tu computadora descarga esos cambios en 2 segundos para que siempre trabajes con la versión más reciente.
-          </p>
-          <div class="bg-slate-950 p-2.5 rounded-lg border border-emerald-500/30 font-mono text-xs text-emerald-300 flex items-center justify-between">
-            <code>git pull</code>
-            <button onclick="copyToClipboard('git pull')" class="text-emerald-400 hover:text-emerald-300 text-[10px]">Copiar</button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- COMPONENTE INTERACTIVO 2: EMULADOR DE TERMINAL VS CODE / POWERSHELL -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-        <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-          <div class="flex items-center space-x-3">
-            <div class="flex space-x-1.5">
-              <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
-              <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-              <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-            </div>
-            <div class="flex items-center space-x-2 text-xs font-mono text-slate-400">
-              <span class="text-sky-400 font-bold">TERMINAL: PowerShell (VS Code)</span>
-              <span>•</span>
-              <span>Ruta: C:\Users\analista.riesgo\Documents\GitHub\politicas-credito-tdc</span>
-            </div>
-          </div>
-          <button onclick="resetTerminalMod2()" class="text-xs text-slate-400 hover:text-white bg-slate-800 px-2.5 py-1 rounded border border-slate-700 transition">
-            Reiniciar Consola
+        <!-- Command Box -->
+        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-sky-300">
+          <code>git --version</code>
+          <button onclick="copyCmd('git --version')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded font-sans transition flex items-center space-x-1">
+            <span>Copiar</span>
           </button>
         </div>
 
-        <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          <!-- Interactive Terminal Window -->
-          <div class="lg:col-span-8 bg-vscode-terminal rounded-xl border border-slate-800 p-4 font-mono text-xs flex flex-col justify-between min-h-[360px] shadow-inner">
-            
-            <div id="term2-history" class="space-y-2 overflow-y-auto max-h-72 pr-2 text-slate-300">
-              <div class="text-slate-500">Windows PowerShell - Terminal Integrada de Visual Studio Code</div>
-              <div class="text-slate-500">Ubicación de trabajo: politicas-credito-tdc (rama main)</div>
-              <div class="text-slate-400 pt-1">
-                🎯 <strong>MISIÓN:</strong> Escribe <span class="text-emerald-400 font-bold">git pull</span> y presiona <kbd class="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-sky-300">Enter</kbd> para descargar las últimas reglas de crédito de tus compañeros.
-              </div>
-            </div>
-
-            <!-- Terminal Input Row -->
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center space-x-2">
-              <span class="text-sky-400 font-bold whitespace-nowrap">PS politicas-credito-tdc&gt;</span>
-              <input type="text" id="term2-input" autofocus placeholder="Escribe git pull aquí..." class="bg-transparent border-none text-emerald-300 focus:outline-none flex-1 font-mono text-xs placeholder-slate-600">
-              <button onclick="executeTerminalMod2()" class="bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 rounded text-xs font-sans transition">
-                Ejecutar
-              </button>
-            </div>
-
+        <!-- Expected Output -->
+        <div class="bg-slate-950/70 p-3 rounded-lg border border-slate-800 text-[11px] space-y-1 font-mono">
+          <div class="text-slate-400 font-sans font-semibold">¿Qué deberías ver?</div>
+          <div class="text-emerald-400">git version 2.4x.x.windows.1</div>
+          <div class="text-slate-500 font-sans pt-1">
+            ⚠️ Si te sale en rojo *"git no se reconoce..."*, descárgalo en 2 minutos desde <a href="https://git-scm.com/download/win" target="_blank" class="text-sky-400 underline">git-scm.com</a> (64-bit Git for Windows) y luego <strong>reinicia VS Code</strong>.
           </div>
-
-          <!-- Side Panel: Live File Tree Updated by Pull -->
-          <div class="lg:col-span-4 bg-slate-950 rounded-xl border border-slate-800 p-4 flex flex-col justify-between">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                <span class="text-xs font-semibold text-slate-300">Árbol de Archivos en tu PC</span>
-                <span id="badge-sync" class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded">Pendiente de Pull</span>
-              </div>
-              <p class="text-[11px] text-slate-400">
-                Observa cómo al ejecutar <code class="text-emerald-400">git pull</code> aparecerán los archivos nuevos creados por otros analistas:
-              </p>
-              
-              <div class="space-y-2 font-mono text-xs pt-1">
-                <div class="flex items-center space-x-2 text-slate-400">
-                  <span>📄</span>
-                  <span>README.md</span>
-                </div>
-                <div class="flex items-center space-x-2 text-slate-400">
-                  <span>🔒</span>
-                  <span>.gitignore</span>
-                </div>
-                
-                <!-- Dynamic files appearing upon pull -->
-                <div id="tree-file-sql" class="hidden flex items-center justify-between p-1.5 bg-emerald-500/10 border border-emerald-500/30 rounded text-emerald-300 animate-pulse">
-                  <div class="flex items-center space-x-2">
-                    <span>📊</span>
-                    <span>indicadores-cosechas/indicador_icv.sql</span>
-                  </div>
-                  <span class="text-[9px] bg-emerald-500 text-slate-950 font-bold px-1 rounded">NUEVO</span>
-                </div>
-
-                <div id="tree-file-py" class="hidden flex items-center justify-between p-1.5 bg-sky-500/10 border border-sky-500/30 rounded text-sky-300 animate-pulse">
-                  <div class="flex items-center space-x-2">
-                    <span>🐍</span>
-                    <span>originacion/reglas_score.py</span>
-                  </div>
-                  <span class="text-[9px] bg-sky-500 text-slate-950 font-bold px-1 rounded">NUEVO</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hint helper -->
-            <div class="mt-4 p-3 bg-slate-900 border border-slate-800 rounded-lg text-[11px] text-slate-400">
-              <span class="text-sky-400 font-semibold block mb-0.5">¿No quieres escribir?</span>
-              Haz clic aquí para autocompletar: 
-              <button onclick="fillAndRunMod2('git pull')" class="text-emerald-400 hover:underline font-mono font-bold ml-1">git pull</button>
-            </div>
-
-          </div>
-
         </div>
 
-      </div>
-
-    </section>
-
-
-    <!-- ================================================================ -->
-    <!-- MÓDULO 3: EL CICLO PARA COMPARTIR TU CÓDIGO (4 PASOS) -->
-    <!-- ================================================================ -->
-    <section id="content-mod3" class="tab-content hidden space-y-6">
-      
-      <!-- Banner Hero -->
-      <div class="bg-gradient-to-r from-slate-900 via-emerald-950/60 to-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
-        <div class="max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
-            <span>Módulo 3</span>
-            <span>•</span>
-            <span>El Flujo Central de Trabajo</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            El Ciclo para Compartir tu Código: La Analogía de la Paquetería 📦
-          </h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Cuando terminas tu script de crédito y quieres que el equipo lo vea, sigues exactamente 4 pasos. Piensa en esto como enviar un paquete por mensajería bancaria:
-          </p>
+        <!-- Verification Checkbox -->
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-0" onchange="toggleTask('check-step-0')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-0" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ya verifiqué que tengo Git instalado en mi computadora
+          </label>
         </div>
       </div>
 
-      <!-- 4 Steps Packaging Analogy Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        
-        <!-- Step 1 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2 relative">
-          <div class="w-7 h-7 rounded-full bg-sky-500 text-white font-bold text-xs flex items-center justify-center">1</div>
-          <div class="font-mono text-xs font-bold text-sky-400">git status</div>
-          <h4 class="font-semibold text-white text-sm">Ver qué cambió</h4>
-          <p class="text-slate-400 text-xs">
-            Miras tu escritorio. Git te muestra en <span class="text-rose-400 font-semibold">rojo</span> los archivos que creaste o modificaste y que aún no has preparado.
-          </p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2 relative">
-          <div class="w-7 h-7 rounded-full bg-indigo-500 text-white font-bold text-xs flex items-center justify-center">2</div>
-          <div class="font-mono text-xs font-bold text-indigo-400">git add .</div>
-          <h4 class="font-semibold text-white text-sm">Meter a la caja</h4>
-          <p class="text-slate-400 text-xs">
-            Tomas los archivos modificados y los colocas dentro de la caja de envío (Staging). Ahora aparecen en <span class="text-emerald-400 font-semibold">verde</span>.
-          </p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2 relative">
-          <div class="w-7 h-7 rounded-full bg-amber-500 text-white font-bold text-xs flex items-center justify-center">3</div>
-          <div class="font-mono text-xs font-bold text-amber-400">git commit -m "..."</div>
-          <h4 class="font-semibold text-white text-sm">Sellar y etiquetar</h4>
-          <p class="text-slate-400 text-xs">
-            Cierras la caja con cinta adhesiva y le pegas una etiqueta clara explicando qué cambio hiciste (mínimo 10 caracteres).
-          </p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2 relative">
-          <div class="w-7 h-7 rounded-full bg-emerald-500 text-white font-bold text-xs flex items-center justify-center">4</div>
-          <div class="font-mono text-xs font-bold text-emerald-400">git push</div>
-          <h4 class="font-semibold text-white text-sm">Enviar el camión</h4>
-          <p class="text-slate-400 text-xs">
-            Envías el paquete por la red hasta la Organización de GitHub. ¡Listo! Ya lo pueden ver tus compañeros y tu líder técnico.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- Tip: VS Code Source Control GUI equivalent -->
-      <div class="bg-slate-900/90 border border-indigo-500/30 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl">
-            🌿
-          </div>
-          <div>
-            <div class="font-semibold text-white text-sm">¿Sabías que VS Code te muestra esto en su interfaz gráfica?</div>
-            <p class="text-slate-400 text-xs">
-              En la barra lateral izquierda de VS Code, el ícono con 3 bolitas conectadas (Control de Código Fuente) muestra tus archivos con la letra <strong>U</strong> (Untracked) o <strong>M</strong> (Modified). El botón <strong>+</strong> equivale a <code class="text-sky-300">git add</code> y el botón de palomita a <code class="text-sky-300">git commit</code>.
-            </p>
-          </div>
-        </div>
-        <div class="text-xs bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 whitespace-nowrap">
-          Atajo: <kbd class="font-mono bg-slate-900 px-1 rounded text-sky-400">Ctrl + Shift + G</kbd>
-        </div>
-      </div>
-
-      <!-- COMPONENTE INTERACTIVO 3: LABORATORIO DE TERMINAL PASO A PASO -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-        <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
-          <div class="flex items-center space-x-3">
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-              Laboratorio Práctico
-            </span>
-            <span class="text-xs text-white font-medium">Misión: Subir el nuevo script <code class="text-sky-300 font-mono">incremento_lineas_octubre.py</code></span>
-          </div>
-
-          <!-- Step Progression Pill -->
-          <div class="flex items-center space-x-2 text-xs font-mono" id="mission-stepper">
-            <span id="step-badge-1" class="px-2 py-0.5 rounded bg-sky-600 text-white font-bold">1. status</span>
-            <span class="text-slate-600">→</span>
-            <span id="step-badge-2" class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">2. add</span>
-            <span class="text-slate-600">→</span>
-            <span id="step-badge-3" class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">3. commit</span>
-            <span class="text-slate-600">→</span>
-            <span id="step-badge-4" class="px-2 py-0.5 rounded bg-slate-800 text-slate-400">4. push</span>
-          </div>
-        </div>
-
-        <div class="p-6">
-          <div class="bg-vscode-terminal rounded-xl border border-slate-800 p-4 font-mono text-xs flex flex-col justify-between min-h-[400px]">
-            
-            <div id="term3-history" class="space-y-2 overflow-y-auto max-h-80 pr-2 text-slate-300">
-              <div class="text-slate-500">Terminal de Políticas TDC - Laboratorio Interactivo</div>
-              <div class="text-slate-400">
-                Situación: Acabas de crear en VS Code el script: <span class="text-sky-300 font-bold">lineas-credito/incremento_lineas_octubre.py</span>.
-              </div>
-              <div class="text-amber-300 bg-amber-500/10 p-2.5 rounded border border-amber-500/20">
-                👉 <strong>PASO 1:</strong> Verifica el estado de tu repositorio escribiendo <code class="text-white font-bold">git status</code> y presiona Enter.
-              </div>
-            </div>
-
-            <!-- Terminal Input -->
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center space-x-2">
-              <span class="text-sky-400 font-bold whitespace-nowrap">PS C:\politicas-credito-tdc&gt;</span>
-              <input type="text" id="term3-input" placeholder="Escribe el comando del paso actual..." class="bg-transparent border-none text-emerald-300 focus:outline-none flex-1 font-mono text-xs placeholder-slate-600">
-              <button onclick="executeTerminalMod3()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-1.5 rounded text-xs font-sans font-medium transition">
-                Enviar Comando
-              </button>
-              <button onclick="resetTerminalMod3()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded text-xs font-sans transition">
-                Reiniciar
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================================================================ -->
-    <!-- MÓDULO 4: ESTÁNDARES DE DOCUMENTACIÓN Y SEGURIDAD (.gitignore) -->
-    <!-- ================================================================ -->
-    <section id="content-mod4" class="tab-content hidden space-y-6">
-      
-      <!-- Hero Banner -->
-      <div class="bg-gradient-to-r from-slate-900 via-rose-950/40 to-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
-        <div class="max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-semibold">
-            <span>Módulo 4</span>
-            <span>•</span>
-            <span>Gobernanza Bancaria y Protección de Datos</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Documentación Profesional y Seguridad Estricta (.gitignore)
-          </h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            En un banco o institución de crédito, el código no es un borrador casual: es una <strong class="text-white">política financiera auditable</strong>. Además, subir una base con clientes o contraseñas a GitHub constituye una falta grave regulatoria.
-          </p>
-        </div>
-      </div>
-
-      <!-- Standards & Headers Row -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
-        <!-- SQL Template -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-sky-400 flex items-center space-x-1.5">
-              <span>📊</span>
-              <span>Cabecera Estándar para Queries SQL (.sql)</span>
-            </span>
-            <button onclick="copyHeaderSQL()" class="bg-sky-600/30 hover:bg-sky-600 text-sky-300 hover:text-white px-2.5 py-1 rounded text-xs font-sans transition flex items-center space-x-1">
-              <span id="btn-copy-sql">Copiar Plantilla</span>
-            </button>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-[11px] text-slate-300 overflow-x-auto max-h-56 leading-relaxed">
-<pre>/*
-============================================================
-INSTITUCIÓN FINANCIERA - POLÍTICAS DE CRÉDITO TDC
-============================================================
-ARCHIVO:        calculo_roll_rate.sql
-AUTOR:          [Tu Nombre Completo / Analista TDC]
-FECHA CREACIÓN: 2026-10-27
-OBJETIVO:       Cálculo mensual de matrices de transición
-                (Roll Rates) de buckets de morosidad.
-TABLAS FUENTE:  DWH_RIESGO.CARTERA_MENSUAL_TDC
-TABLA DESTINO:  BI_RIESGO.MATRIZ_ROLL_RATES_TDC
-PERIODICIDAD:   Mensual (Cierre de mes)
-============================================================
-*/</pre>
-          </div>
-          <p class="text-[11px] text-slate-400">
-            Incluye siempre tablas origen y periodicidad para que el equipo de soporte sepa cuándo ejecutarlo.
-          </p>
-        </div>
-
-        <!-- Python Template -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-emerald-400 flex items-center space-x-1.5">
-              <span>🐍</span>
-              <span>Docstring Estándar para Scripts Python (.py)</span>
-            </span>
-            <button onclick="copyHeaderPY()" class="bg-emerald-600/30 hover:bg-emerald-600 text-emerald-300 hover:text-white px-2.5 py-1 rounded text-xs font-sans transition flex items-center space-x-1">
-              <span id="btn-copy-py">Copiar Plantilla</span>
-            </button>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-[11px] text-slate-300 overflow-x-auto max-h-56 leading-relaxed">
-<pre>"""
-============================================================
-INSTITUCIÓN FINANCIERA - POLÍTICAS DE CRÉDITO TDC
-============================================================
-ARCHIVO:        reglas_originacion_tdc.py
-AUTOR:          [Tu Nombre Completo / Analista TDC]
-FECHA CREACIÓN: 2026-10-27
-OBJETIVO:       Evalúa filtros duros de Buró de Crédito
-                y calcula el Límite de Crédito Inicial.
-REGLA DE NEGOCIO: Score mínimo 650; DTI máximo 40%.
-ENTRADAS:       Diccionario con solicitud del prospecto.
-SALIDAS:        Dictamen (APROBADO/RECHAZADO) y límite ($).
-============================================================
-"""</pre>
-          </div>
-          <p class="text-[11px] text-slate-400">
-            Facilita que cualquier miembro del comité de auditoría comprenda la regla sin descifrar el código.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- COMPONENTE INTERACTIVO 4: SIMULADOR DE GIT STATUS PELIGROSO -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-        <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+      <!-- Action Card 0.2: Configurar tu identidad -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 shadow-sm hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
           <div class="flex items-center space-x-2">
-            <span class="text-base">🚨</span>
-            <span class="text-sm font-bold text-white">Simulador de Seguridad: El "git status" Peligroso</span>
+            <span class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-bold text-xs flex items-center justify-center">2</span>
+            <h3 class="font-bold text-sm text-white">Configura tu Nombre y Correo Institucional (Solo 1 vez en la vida)</h3>
           </div>
-          <span class="text-xs bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-0.5 rounded-full font-medium">
-            Caso Real en Crédito
+          <span class="text-[11px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-mono">Solo 1 vez</span>
+        </div>
+        
+        <p class="text-xs text-slate-300">
+          Sirve para que el banco y tu equipo sepan quién creó o actualizó cada regla o query:
+        </p>
+
+        <div class="space-y-2">
+          <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-slate-300">
+            <code>git config --global user.name "Tu Nombre y Apellido"</code>
+            <button onclick="copyCmd('git config --global user.name &quot;Tu Nombre y Apellido&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+          </div>
+          <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-slate-300">
+            <code>git config --global user.email "tu.correo@banco.com"</code>
+            <button onclick="copyCmd('git config --global user.email &quot;tu.correo@bancoppel.com&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+          </div>
+        </div>
+
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-1" onchange="toggleTask('check-step-1')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-1" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ya configuré mi nombre y correo con mis datos reales en la terminal
+          </label>
+        </div>
+      </div>
+
+      <!-- Action Card 0.3: Clonar el Repositorio -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 shadow-sm hover:border-slate-700 transition">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">3</span>
+            <h3 class="font-bold text-sm text-white">Descarga el Repositorio a tu Laptop (`git clone`)</h3>
+          </div>
+          <span class="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-mono">Primera Vez</span>
+        </div>
+        
+        <p class="text-xs text-slate-300">
+          En tu terminal, ve a tu carpeta de Documentos y descarga la biblioteca de políticas:
+        </p>
+
+        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-emerald-300">
+          <code class="truncate">git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git</code>
+          <button onclick="copyCmd('git clone https://github.com/jaguzmanbcpl/capacitacion-git-tdc.git')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] px-2.5 py-1 rounded font-sans transition flex-shrink-0 ml-2">
+            Copiar URL
+          </button>
+        </div>
+
+        <div class="text-xs text-slate-400">
+          Luego entra a la carpeta y ábrela en Visual Studio Code:
+        </div>
+
+        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-slate-300">
+          <code>cd capacitacion-git-tdc ; code .</code>
+          <button onclick="copyCmd('cd capacitacion-git-tdc ; code .')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+        </div>
+
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-2" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ya tengo la carpeta del repositorio abierta en mi Visual Studio Code
+          </label>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- TAB 2: EL HÁBITO DIARIO: git pull -->
+    <!-- ================================================================ -->
+    <section id="content-tab-pull" class="tab-pane hidden space-y-5">
+      
+      <!-- Overview Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">☀️</span>
+            <h3 class="font-bold text-sm text-white">Tu primer acto cada mañana: `git pull`</h3>
+          </div>
+          <span class="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-semibold">
+            Obligatorio Diario
           </span>
         </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Antes de comenzar a escribir o modificar un script de crédito, <strong>siempre</strong> debes asegurarte de tener lo que tus compañeros subieron el día anterior. Solo toma 2 segundos.
+        </p>
 
-        <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          <!-- Danger Scenario Console -->
-          <div class="lg:col-span-6 bg-vscode-terminal rounded-xl border border-rose-900/40 p-4 font-mono text-xs flex flex-col justify-between shadow-inner">
-            <div class="space-y-2">
-              <div class="text-slate-400">PS C:\politicas-credito-tdc&gt; <span class="text-white font-bold">git status</span></div>
-              <div class="text-slate-300">On branch main</div>
-              <div class="text-slate-400">Untracked files:</div>
-              <div class="text-slate-500 text-[11px] ml-2">(use "git add &lt;file&gt;..." to include in what will be committed)</div>
-              
-              <!-- The 6 Files -->
-              <div class="space-y-1.5 pt-2 ml-4">
-                <div class="text-rose-400">cosechas_tdc.sql</div>
-                <div class="text-rose-400">modelo_originacion.py</div>
-                <div class="text-rose-400 font-bold bg-rose-500/10 px-1 py-0.5 rounded inline-block">base_clientes_rfc.csv ⚠️</div>
-                <div class="text-rose-400 font-bold bg-rose-500/10 px-1 py-0.5 rounded inline-block">credenciales_bd.env ⚠️</div>
-                <div class="text-rose-400">README.md</div>
-                <div class="text-rose-400 font-bold bg-rose-500/10 px-1 py-0.5 rounded inline-block">extraccion_cruda.xlsx ⚠️</div>
-              </div>
-            </div>
-
-            <!-- Danger Alert Warning -->
-            <div id="danger-alert-box" class="mt-4 p-3 bg-rose-950/40 border border-rose-500/40 rounded-lg text-rose-300 text-[11px] leading-relaxed">
-              ⚠️ <strong>¡ALERTA!:</strong> Un analista corrió extracciones de base de datos y guardó credenciales locales. Si ejecutas <code class="text-white font-mono bg-rose-900 px-1 rounded">git add .</code> ahora mismo, ¡subirás datos bancarios confidenciales a GitHub!
-            </div>
-          </div>
-
-          <!-- Interactive Checklist -->
-          <div class="lg:col-span-6 bg-slate-950 rounded-xl border border-slate-800 p-5 flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-                <h4 class="text-sm font-semibold text-white">Selecciona cuáles bloquear en el <code class="text-sky-300 font-mono">.gitignore</code>:</h4>
-              </div>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Marca únicamente los archivos que <strong>NUNCA</strong> deben subirse a la organización de GitHub por razones de seguridad o privacidad de datos:
-              </p>
-
-              <!-- Checkbox List -->
-              <div class="space-y-2 text-xs font-mono">
-                <label class="flex items-center space-x-3 p-2 bg-slate-900 rounded-lg border border-slate-800 hover:border-slate-700 cursor-pointer">
-                  <input type="checkbox" id="check-file-1" class="rounded text-sky-600 focus:ring-0">
-                  <span class="text-slate-300">cosechas_tdc.sql (Script de cálculo)</span>
-                </label>
-
-                <label class="flex items-center space-x-3 p-2 bg-slate-900 rounded-lg border border-slate-800 hover:border-slate-700 cursor-pointer">
-                  <input type="checkbox" id="check-file-2" class="rounded text-sky-600 focus:ring-0">
-                  <span class="text-slate-300">modelo_originacion.py (Script de admisión)</span>
-                </label>
-
-                <label class="flex items-center space-x-3 p-2 bg-rose-950/20 rounded-lg border border-rose-800/40 hover:border-rose-700 cursor-pointer">
-                  <input type="checkbox" id="check-file-3" class="rounded text-rose-600 focus:ring-0">
-                  <span class="text-rose-300 font-semibold">base_clientes_rfc.csv (Base con RFC y saldos)</span>
-                </label>
-
-                <label class="flex items-center space-x-3 p-2 bg-rose-950/20 rounded-lg border border-rose-800/40 hover:border-rose-700 cursor-pointer">
-                  <input type="checkbox" id="check-file-4" class="rounded text-rose-600 focus:ring-0">
-                  <span class="text-rose-300 font-semibold">credenciales_bd.env (Password de Snowflake/Oracle)</span>
-                </label>
-
-                <label class="flex items-center space-x-3 p-2 bg-slate-900 rounded-lg border border-slate-800 hover:border-slate-700 cursor-pointer">
-                  <input type="checkbox" id="check-file-5" class="rounded text-sky-600 focus:ring-0">
-                  <span class="text-slate-300">README.md (Documentación del repo)</span>
-                </label>
-
-                <label class="flex items-center space-x-3 p-2 bg-rose-950/20 rounded-lg border border-rose-800/40 hover:border-rose-700 cursor-pointer">
-                  <input type="checkbox" id="check-file-6" class="rounded text-rose-600 focus:ring-0">
-                  <span class="text-rose-300 font-semibold">extraccion_cruda.xlsx (Excel de clientes)</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Action buttons & feedback -->
-            <div class="space-y-2 pt-3 border-t border-slate-800">
-              <div class="flex items-center space-x-3">
-                <button onclick="validateGitignoreSimulation()" class="bg-rose-600 hover:bg-rose-500 text-white px-4 py-2 rounded-lg text-xs font-semibold shadow transition">
-                  Actualizar .gitignore y Proteger Repo
-                </button>
-                <button onclick="resetGitignoreSimulation()" class="text-xs text-slate-400 hover:text-white underline">
-                  Reiniciar
-                </button>
-              </div>
-              <div id="gitignore-feedback" class="text-xs pt-1 hidden">
-                <!-- Injected feedback -->
-              </div>
-            </div>
-
-          </div>
-
+        <!-- Command Pill -->
+        <div class="bg-slate-950 p-3 rounded-lg border border-emerald-500/30 flex items-center justify-between font-mono text-xs text-emerald-400">
+          <code>git pull</code>
+          <button onclick="copyCmd('git pull')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1 rounded font-sans font-medium transition">
+            Copiar Comando
+          </button>
         </div>
 
+        <!-- Expected Output Split -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-[11px] font-mono">
+          <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 space-y-1">
+            <div class="text-slate-400 font-sans font-semibold">Caso A: Nadie ha subido nada nuevo</div>
+            <div class="text-sky-300">Already up to date.</div>
+            <p class="text-slate-500 font-sans pt-1">Significa que ya tienes la versión más reciente en tu laptop.</p>
+          </div>
+
+          <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 space-y-1">
+            <div class="text-slate-400 font-sans font-semibold">Caso B: Algún colega subió scripts</div>
+            <div class="text-emerald-400">Fast-forward</div>
+            <div class="text-slate-300">indicadores/cosechas.sql | 45 ++++</div>
+            <div class="text-slate-300">2 files changed, 107 insertions(+)</div>
+            <p class="text-slate-500 font-sans pt-1">Se descargaron automáticamente a tu carpeta.</p>
+          </div>
+        </div>
+
+        <!-- Verification Checkbox -->
+        <div class="pt-2 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-3" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ejecuté `git pull` en la terminal de mi VS Code y vi la respuesta de Git
+          </label>
+        </div>
+      </div>
+
+      <!-- Regla de convivencia rápida -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 text-xs space-y-1.5">
+        <span class="font-semibold text-slate-200 flex items-center space-x-1.5">
+          <span>🤝</span>
+          <span>Regla de Convivencia del Equipo</span>
+        </span>
+        <p class="text-slate-400 text-[11px] leading-relaxed">
+          Cada analista trabaja en su archivo dentro de su carpeta asignada (<code class="text-sky-300">originacion/</code>, <code class="text-emerald-300">lineas-credito/</code>, <code class="text-amber-300">indicadores-cosechas/</code>). Al no tocar el mismo archivo simultáneamente, <strong class="text-slate-200">nunca tendrás conflictos de código</strong> al hacer `git pull`.
+        </p>
       </div>
 
     </section>
 
 
     <!-- ================================================================ -->
-    <!-- PESTAÑA EXTRA: CHEAT SHEET & CUENTAS SECUNDARIAS DE GITHUB -->
+    <!-- TAB 3: EL CICLO DE 4 PASOS PARA COMPARTIR TU CÓDIGO -->
     <!-- ================================================================ -->
-    <section id="content-cheatsheet" class="tab-content hidden space-y-6">
+    <section id="content-tab-ciclo" class="tab-pane hidden space-y-5">
       
-      <!-- Banner Hero -->
-      <div class="bg-gradient-to-r from-slate-900 via-sky-950/40 to-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
-        <div class="max-w-3xl space-y-3">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold">
-            <span>Guía Rápida & Troubleshooting</span>
-            <span>•</span>
-            <span>Acordeón de Bolsillo</span>
+      <!-- Intro Banner -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div>
+          <h3 class="font-bold text-white text-sm">El Ciclo de 4 Pasos: La Analogía de la Caja 📦</h3>
+          <p class="text-slate-400 text-[11px]">Cuando terminas o modificas un script y quieres subirlo a GitHub, sigue este orden exacto en tu terminal:</p>
+        </div>
+        <div class="text-[11px] bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-lg text-slate-300 font-mono whitespace-nowrap">
+          status ➔ add ➔ commit ➔ push
+        </div>
+      </div>
+
+      <!-- Step 1 Card: status -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-sky-500 text-slate-950 font-bold text-xs flex items-center justify-center">1</span>
+            <span class="font-bold text-sm text-white">git status</span>
+            <span class="text-xs text-slate-400">— Ver qué modificaste</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Acordeón de Terminal y Solución a los 3 Dolores de Cabeza Típicos
-          </h2>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Conserva esta tabla a la mano durante tus primeras semanas. Incluye los comandos exactos y cómo salir de los atolladeros más frecuentes en Windows.
-          </p>
+          <span class="text-[10px] text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20 font-mono">Paso 1</span>
+        </div>
+        
+        <p class="text-xs text-slate-300">
+          Muestra en <span class="text-rose-400 font-semibold">rojo</span> los archivos que creaste o editaste y que aún no están listos para enviarse:
+        </p>
+
+        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-sky-300">
+          <code>git status</code>
+          <button onclick="copyCmd('git status')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
+        </div>
+
+        <div class="bg-slate-950/70 p-2.5 rounded border border-slate-800 text-[11px] font-mono text-slate-400">
+          <div>Untracked files:</div>
+          <div class="text-rose-400 ml-3">lineas-credito/mi_script_nuevo.py</div>
+        </div>
+
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-4" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ejecuté `git status` y vi mis archivos modificados en rojo
+          </label>
         </div>
       </div>
 
-      <!-- Quick Reference Table -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-        <div class="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-          <h3 class="font-bold text-white text-sm">Los 5 Comandos de Supervivencia + Navegación Básica</h3>
-          <span class="text-xs text-slate-400">Terminal Windows / VS Code</span>
+      <!-- Step 2 Card: add -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-500 text-white font-bold text-xs flex items-center justify-center">2</span>
+            <span class="font-bold text-sm text-white">git add .</span>
+            <span class="text-xs text-slate-400">— Meter a la caja de envío</span>
+          </div>
+          <span class="text-[10px] text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 font-mono">Paso 2</span>
+        </div>
+        
+        <p class="text-xs text-slate-300">
+          Prepara todos los archivos modificados. El punto (<code class="text-indigo-300">.</code>) significa "agrega todo lo que haya cambiado":
+        </p>
+
+        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-indigo-300">
+          <code>git add .</code>
+          <button onclick="copyCmd('git add .')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition">Copiar</button>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs font-sans">
-            <thead class="bg-slate-950/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
-              <tr>
-                <th class="px-6 py-3">Comando</th>
-                <th class="px-6 py-3">Momento de Uso</th>
-                <th class="px-6 py-3">¿Qué hace exactamente?</th>
-                <th class="px-6 py-3 text-right">Acción</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-800 text-slate-300">
-              
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="px-6 py-3 font-mono font-bold text-amber-400">cd politicas-credito-tdc</td>
-                <td class="px-6 py-3">Al abrir la terminal</td>
-                <td class="px-6 py-3 text-slate-400">Entra a la carpeta de trabajo del repositorio.</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('cd politicas-credito-tdc')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
+        <p class="text-[11px] text-slate-400">
+          💡 Si vuelves a correr <code class="text-sky-300">git status</code>, verás que tus archivos ahora están en <span class="text-emerald-400 font-semibold">verde</span> ("Changes to be committed").
+        </p>
 
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="px-6 py-3 font-mono font-bold text-sky-400">git clone &lt;url&gt;</td>
-                <td class="px-6 py-3">Solo la 1ra vez</td>
-                <td class="px-6 py-3 text-slate-400">Descarga todo el repositorio por primera ocasión a tu PC.</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('git clone https://github.com/organizacion-riesgo-banco/politicas-credito-tdc.git')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-slate-800/40 transition bg-emerald-950/10">
-                <td class="px-6 py-3 font-mono font-bold text-emerald-400">git pull</td>
-                <td class="px-6 py-3">Todas las mañanas</td>
-                <td class="px-6 py-3 text-slate-300">Descarga los cambios y scripts nuevos subidos por tus colegas.</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('git pull')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="px-6 py-3 font-mono font-bold text-sky-400">git status</td>
-                <td class="px-6 py-3">Frecuentemente</td>
-                <td class="px-6 py-3 text-slate-400">Muestra en rojo/verde qué archivos has editado o creado.</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('git status')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="px-6 py-3 font-mono font-bold text-indigo-400">git add .</td>
-                <td class="px-6 py-3">Al terminar un script</td>
-                <td class="px-6 py-3 text-slate-400">Prepara todos tus cambios en la caja de envío (Staging).</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('git add .')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="px-6 py-3 font-mono font-bold text-amber-400">git commit -m "..."</td>
-                <td class="px-6 py-3">Después del add</td>
-                <td class="px-6 py-3 text-slate-400">Guarda la versión con una nota explicativa de política de crédito.</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('git commit -m &quot;feat(politica): actualiza matriz de score&quot;')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="px-6 py-3 font-mono font-bold text-emerald-400">git push</td>
-                <td class="px-6 py-3">Al final de la tarea</td>
-                <td class="px-6 py-3 text-slate-400">Envía tus cambios a la Organización de GitHub.</td>
-                <td class="px-6 py-3 text-right">
-                  <button onclick="copyToClipboard('git push')" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-2.5 py-1 rounded text-[11px] transition">Copiar</button>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-5" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ejecuté `git add .` en mi terminal
+          </label>
         </div>
       </div>
 
-      <!-- Top 3 Beginner Problems in Windows -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-bold text-white flex items-center space-x-2">
-          <span>🛠️</span>
-          <span>Solución a los 3 Problemas Más Comunes en Windows</span>
-        </h3>
+      <!-- Step 3 Card: commit -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center">3</span>
+            <span class="font-bold text-sm text-white">git commit -m "..."</span>
+            <span class="text-xs text-slate-400">— Sellar la caja y etiquetarla</span>
+          </div>
+          <span class="text-[10px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-mono">Paso 3</span>
+        </div>
+        
+        <p class="text-xs text-slate-300">
+          Guarda la versión con una nota explicativa. Recuerda incluir siempre <code class="text-amber-300">-m "tu mensaje"</code> para no caer en el editor de consola:
+        </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between font-mono text-xs text-amber-300">
+          <code class="truncate">git commit -m "feat(lineas): matriz de aumento de limites cosecha octubre"</code>
+          <button onclick="copyCmd('git commit -m &quot;feat(lineas): actualiza matriz de aumento de limites&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2 py-1 rounded font-sans transition flex-shrink-0 ml-2">Copiar Ejemplo</button>
+        </div>
+
+        <p class="text-[11px] text-slate-400">
+          📋 <strong>Regla del área:</strong> Los mensajes deben ser descriptivos (qué política o cálculo se modificó). Evita mensajes como "cambios" o "prueba".
+        </p>
+
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-6" class="text-xs text-slate-300 cursor-pointer select-none">
+            Guardé mi commit con la bandera `-m "mensaje explicativo"`
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 4 Card: push -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">4</span>
+            <span class="font-bold text-sm text-white">git push</span>
+            <span class="text-xs text-slate-400">— Enviar la caja a GitHub</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-mono">Paso 4 (Final)</span>
+        </div>
+        
+        <p class="text-xs text-slate-300">
+          Sube tus cambios por internet al repositorio de la organización. Tus compañeros y líderes ahora podrán verlos:
+        </p>
+
+        <div class="bg-slate-950 p-2.5 rounded-lg border border-emerald-500/30 flex items-center justify-between font-mono text-xs text-emerald-300">
+          <code>git push</code>
+          <button onclick="copyCmd('git push')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1 rounded font-sans font-medium transition">
+            Copiar Comando
+          </button>
+        </div>
+
+        <div class="pt-1 flex items-center space-x-2">
+          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check rounded text-emerald-500 focus:ring-0 w-4 h-4 cursor-pointer">
+          <label for="check-step-7" class="text-xs text-slate-300 cursor-pointer select-none">
+            Ejecuté `git push` y mis cambios ya están arriba en GitHub
+          </label>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- TAB 4: SEGURIDAD Y QUÉ NUNCA SUBIR (.gitignore) -->
+    <!-- ================================================================ -->
+    <section id="content-tab-seguridad" class="tab-pane hidden space-y-5">
+      
+      <!-- Warning Alert -->
+      <div class="bg-rose-950/40 border border-rose-500/40 rounded-xl p-4 text-xs space-y-2">
+        <div class="flex items-center space-x-2 font-bold text-rose-300 text-sm">
+          <span>🚨</span>
+          <span>Regla de Oro de Seguridad Bancaria y Regulatoria</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed">
+          En este repositorio <strong>SOLO SE COMPARTE CÓDIGO</strong> (`.py`, `.sql`, `.md`). Por regulación bancaria y privacidad de datos, está estrictamente prohibido subir bases con información de clientes o contraseñas a GitHub.
+        </p>
+      </div>
+
+      <!-- Comparative Columns: What to upload vs What NEVER to upload -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- PROHIBIDO -->
+        <div class="bg-slate-900 border border-rose-900/60 rounded-xl p-4 space-y-3">
+          <div class="flex items-center justify-between pb-2 border-b border-rose-900/40">
+            <span class="font-bold text-rose-400 text-xs flex items-center space-x-1.5">
+              <span>🚫</span>
+              <span>NUNCA SUBIR (Bloqueado por .gitignore)</span>
+            </span>
+          </div>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-rose-400 font-bold">•</span>
+              <div><strong class="text-white">Bases de datos:</strong> Archivos <code class="text-rose-300 font-mono">.csv</code>, <code class="text-rose-300 font-mono">.xlsx</code>, <code class="text-rose-300 font-mono">.parquet</code> con RFC, saldos o buró.</div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-rose-400 font-bold">•</span>
+              <div><strong class="text-white">Contraseñas:</strong> Archivos <code class="text-rose-300 font-mono">.env</code> o credenciales de conexión a bases de datos.</div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-rose-400 font-bold">•</span>
+              <div><strong class="text-white">Carpetas pesadas:</strong> Entornos virtuales (<code class="text-slate-400 font-mono">venv/</code>, <code class="text-slate-400 font-mono">__pycache__/</code>).</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- PERMITIDO -->
+        <div class="bg-slate-900 border border-emerald-900/60 rounded-xl p-4 space-y-3">
+          <div class="flex items-center justify-between pb-2 border-b border-emerald-900/40">
+            <span class="font-bold text-emerald-400 text-xs flex items-center space-x-1.5">
+              <span>✅</span>
+              <span>SÍ SE SUBE (El trabajo del equipo)</span>
+            </span>
+          </div>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold">•</span>
+              <div><strong class="text-white">Scripts en Python:</strong> Archivos <code class="text-emerald-300 font-mono">.py</code> con reglas de admisión, scorecuts y matrices.</div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold">•</span>
+              <div><strong class="text-white">Queries en SQL:</strong> Archivos <code class="text-emerald-300 font-mono">.sql</code> para extracción de cosechas o roll rates.</div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold">•</span>
+              <div><strong class="text-white">Documentación:</strong> Archivos <code class="text-sky-300 font-mono">README.md</code> explicando cómo usar cada script.</div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Quick Copy Header Templates -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+        <h4 class="font-bold text-white text-xs">Plantillas de Documentación Obligatoria (Copiar con 1 Clic)</h4>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button onclick="copyHeaderSQL()" class="p-3 bg-slate-950 hover:bg-slate-800/80 border border-slate-800 rounded-lg text-left transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-sky-400">📊 Cabecera para SQL (.sql)</span>
+              <span id="btn-lbl-sql" class="text-[10px] bg-sky-500/10 text-sky-300 px-1.5 py-0.5 rounded">Copiar</span>
+            </div>
+            <p class="text-[11px] text-slate-400">Incluye autor, tablas fuente, tabla destino y periodicidad.</p>
+          </button>
+
+          <button onclick="copyHeaderPY()" class="p-3 bg-slate-950 hover:bg-slate-800/80 border border-slate-800 rounded-lg text-left transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-emerald-400">🐍 Docstring para Python (.py)</span>
+              <span id="btn-lbl-py" class="text-[10px] bg-emerald-500/10 text-emerald-300 px-1.5 py-0.5 rounded">Copiar</span>
+            </div>
+            <p class="text-[11px] text-slate-400">Explica la regla de crédito, entradas de datos y salidas.</p>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- TAB 5: ACORDEÓN & SOLUCIÓN A LOS 3 ERRORES COMUNES -->
+    <!-- ================================================================ -->
+    <section id="content-tab-cheatsheet" class="tab-pane hidden space-y-5">
+      
+      <!-- Top Cheat Sheet Table -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+        <div class="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+          <span class="font-bold text-xs text-white uppercase tracking-wider">Tabla de Comandos Diarios</span>
+          <span class="text-[11px] text-slate-400 font-mono">Terminal Windows</span>
+        </div>
+
+        <div class="divide-y divide-slate-800 text-xs">
           
-          <!-- Problem 1 -->
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-            <div class="text-rose-400 font-bold text-xs">Problema 1:</div>
-            <h4 class="font-bold text-white text-sm">"fatal: not a git repository"</h4>
-            <p class="text-slate-400 text-xs leading-relaxed">
-              <strong>Causa:</strong> Abriste la terminal en tu carpeta personal (<code class="text-slate-300">C:\Users\tu.nombre</code>) y no dentro de la carpeta del proyecto.
+          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
+            <div>
+              <div class="font-mono font-bold text-emerald-400">git pull</div>
+              <div class="text-[11px] text-slate-400">Bajar novedades de tus compañeros (hacer todas las mañanas).</div>
+            </div>
+            <button onclick="copyCmd('git pull')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+          </div>
+
+          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
+            <div>
+              <div class="font-mono font-bold text-sky-400">git status</div>
+              <div class="text-[11px] text-slate-400">Ver qué archivos tienes modificados o creados.</div>
+            </div>
+            <button onclick="copyCmd('git status')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+          </div>
+
+          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
+            <div>
+              <div class="font-mono font-bold text-indigo-400">git add .</div>
+              <div class="text-[11px] text-slate-400">Preparar todos tus cambios para empaquetar.</div>
+            </div>
+            <button onclick="copyCmd('git add .')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+          </div>
+
+          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
+            <div>
+              <div class="font-mono font-bold text-amber-400">git commit -m "mensaje"</div>
+              <div class="text-[11px] text-slate-400">Sellar la versión con una nota clara de lo que hiciste.</div>
+            </div>
+            <button onclick="copyCmd('git commit -m &quot;feat: actualiza regla de credito&quot;')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+          </div>
+
+          <div class="p-3 flex items-center justify-between gap-2 hover:bg-slate-800/40">
+            <div>
+              <div class="font-mono font-bold text-emerald-400">git push</div>
+              <div class="text-[11px] text-slate-400">Subir tus cambios a la organización en GitHub.</div>
+            </div>
+            <button onclick="copyCmd('git push')" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] px-2.5 py-1 rounded transition">Copiar</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Solutions to 3 Beginner Headaches -->
+      <div class="space-y-3">
+        <h4 class="font-bold text-white text-xs uppercase tracking-wider text-slate-400">
+          🛠️ Solución a los 3 Dolores de Cabeza Más Comunes en Windows
+        </h4>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          
+          <!-- Headache 1 -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+            <span class="text-rose-400 font-bold text-xs">Error 1:</span>
+            <div class="font-bold text-white text-xs">"fatal: not a git repository"</div>
+            <p class="text-[11px] text-slate-400">
+              <strong>Causa:</strong> Abriste la terminal fuera de la carpeta del proyecto.
             </p>
-            <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-[11px] font-mono text-sky-300 space-y-1">
-              <div class="text-slate-500"># Solución: entra a la carpeta</div>
-              <div>cd politicas-credito-tdc</div>
+            <div class="bg-slate-950 p-2 rounded text-[11px] font-mono text-sky-300">
+              cd capacitacion-git-tdc
             </div>
           </div>
 
-          <!-- Problem 2 -->
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-            <div class="text-rose-400 font-bold text-xs">Problema 2:</div>
-            <h4 class="font-bold text-white text-sm">"Updates were rejected (hacer pull antes)"</h4>
-            <p class="text-slate-400 text-xs leading-relaxed">
-              <strong>Causa:</strong> Un colega subió un cambio a GitHub y tú intentaste hacer <code class="text-slate-300">git push</code> sin haberte sincronizado primero.
+          <!-- Headache 2 -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+            <span class="text-rose-400 font-bold text-xs">Error 2:</span>
+            <div class="font-bold text-white text-xs">"Updates were rejected (hacer pull)"</div>
+            <p class="text-[11px] text-slate-400">
+              <strong>Causa:</strong> Un compañero subió algo a GitHub y tú intentaste dar push sin sincronizarte.
             </p>
-            <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-[11px] font-mono text-emerald-300 space-y-1">
-              <div class="text-slate-500"># Solución: baja cambios y reintenta</div>
+            <div class="bg-slate-950 p-2 rounded text-[11px] font-mono text-emerald-300 space-y-0.5">
               <div>git pull</div>
               <div>git push</div>
             </div>
           </div>
 
-          <!-- Problem 3 -->
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-            <div class="text-rose-400 font-bold text-xs">Problema 3:</div>
-            <h4 class="font-bold text-white text-sm">"Se abrió una pantalla extraña (Editor Vim)"</h4>
-            <p class="text-slate-400 text-xs leading-relaxed">
-              <strong>Causa:</strong> Escribiste <code class="text-slate-300">git commit</code> sin poner <code class="text-slate-300">-m "mensaje"</code> y Windows te abrió el editor de texto Vim de consola.
-            </p>
-            <div class="bg-slate-950 p-2.5 rounded border border-slate-800 text-[11px] font-mono text-amber-300 space-y-1">
-              <div class="text-slate-500"># Solución de escape:</div>
-              <div>1. Presiona la tecla Esc</div>
-              <div>2. Escribe :q! y presiona Enter</div>
-              <div>3. Corre: git commit -m "..."</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- SECCIÓN ESPECIAL: SUBIR A GITHUB CON OTRA CUENTA (CUENTA SECUNDARIA) -->
-      <div class="bg-gradient-to-r from-slate-900 via-indigo-950/80 to-slate-900 border border-indigo-500/40 rounded-2xl p-6 sm:p-8 space-y-5 shadow-2xl">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl font-bold">
-            🔑
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-white">Guía Especial: Cómo subir cambios usando una Cuenta Secundaria de GitHub</h3>
-            <p class="text-slate-300 text-xs">Configuración limpia y segura en Windows sin alterar tu cuenta personal/global.</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-          
-          <!-- Step A -->
-          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
-            <div class="text-xs font-bold text-sky-400">Paso 1: Identidad Local (Solo este repo)</div>
+          <!-- Headache 3 -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+            <span class="text-rose-400 font-bold text-xs">Error 3:</span>
+            <div class="font-bold text-white text-xs">"Se abrió una pantalla extraña (Editor Vim)"</div>
             <p class="text-[11px] text-slate-400">
-              Configura el autor para que los commits queden a nombre de tu cuenta secundaria (sin la bandera <code class="text-slate-300">--global</code>):
+              <strong>Causa:</strong> Escribiste <code class="text-slate-300">git commit</code> sin poner <code class="text-slate-300">-m "..."</code>.
             </p>
-            <div class="bg-slate-900 p-2 rounded font-mono text-[10px] text-slate-300 space-y-1">
-              <div>git config user.name "TuUsuarioSecundario"</div>
-              <div>git config user.email "correo@secundario.com"</div>
-            </div>
-          </div>
-
-          <!-- Step B -->
-          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
-            <div class="text-xs font-bold text-indigo-400">Paso 2: Generar Token en GitHub (PAT)</div>
-            <p class="text-[11px] text-slate-400">
-              En tu cuenta secundaria de GitHub: <em>Settings &gt; Developer Settings &gt; Personal Access Tokens (Classic)</em>. Marca permisos <code class="text-indigo-300">repo</code> y copia el token generado (<code class="text-indigo-300">ghp_xxxx</code>).
-            </p>
-          </div>
-
-          <!-- Step C -->
-          <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
-            <div class="text-xs font-bold text-emerald-400">Paso 3: Subir con Token en la URL</div>
-            <p class="text-[11px] text-slate-400">
-              Para que Windows no use las credenciales guardadas de tu otra cuenta, asigna el token directo en el remote:
-            </p>
-            <div class="bg-slate-900 p-2 rounded font-mono text-[10px] text-emerald-400 space-y-1 overflow-x-auto">
-              <div>git remote set-url origin https://TOKEN@github.com/usuario/repo.git</div>
-              <div>git push -u origin main</div>
+            <div class="bg-slate-950 p-2 rounded text-[11px] font-mono text-amber-300 space-y-0.5">
+              <div>1. Presiona tecla Esc</div>
+              <div>2. Escribe :q! y da Enter</div>
             </div>
           </div>
 
@@ -1085,583 +676,118 @@ SALIDAS:        Dictamen (APROBADO/RECHAZADO) y límite ($).
 
   </main>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-slate-950 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-1">
-      <p class="font-medium text-slate-400">Dirección de Riesgo de Crédito — Equipo de Políticas y Estrategias TDC</p>
-      <p>Material de capacitación interna para terminal de Visual Studio Code en Windows. 100% interactivo.</p>
-    </div>
-  </footer>
-
-  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
-  <div id="toast" class="fixed bottom-5 right-5 bg-sky-600 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-medium flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
-    <span id="toast-icon">📋</span>
-    <span id="toast-message">Copiado al portapapeles</span>
+  <!-- ================= TOAST NOTIFICATION ================= -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-sky-600 text-white px-3.5 py-2 rounded-lg shadow-xl text-xs font-semibold flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-200 z-50 pointer-events-none">
+    <span>✓</span>
+    <span id="toast-text">Comando copiado</span>
   </div>
 
-
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <!-- ================= JAVASCRIPT ================= -->
   <script>
-    // State management
-    const visitedModules = new Set(['mod1']);
-    let mod3Step = 1;
-
-    // Toast helper
-    function showToast(message, icon = '📋') {
-      const toast = document.getElementById('toast');
-      const msg = document.getElementById('toast-message');
-      const icn = document.getElementById('toast-icon');
-      msg.textContent = message;
-      icn.textContent = icon;
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-      setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 2500);
-    }
-
-    // Clipboard copy
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast(`Copiado: ${text}`);
-      }).catch(() => {
-        // Fallback for older browsers
-        const temp = document.createElement('textarea');
-        temp.value = text;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand('copy');
-        document.body.removeChild(temp);
-        showToast(`Copiado: ${text}`);
-      });
-    }
-
-    // Tab Navigation
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(section => {
-        section.classList.add('hidden');
-      });
-      const activeContent = document.getElementById(`content-${tabId}`);
-      if (activeContent) {
-        activeContent.classList.remove('hidden');
-      }
+    // Tab switching
+    function switchTab(targetId) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+      const active = document.getElementById(`content-${targetId}`);
+      if (active) active.classList.remove('hidden');
 
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-sky-600', 'text-white', 'shadow-sm');
+        btn.classList.remove('bg-sky-600', 'text-white', 'font-semibold');
         btn.classList.add('bg-slate-800', 'text-slate-300');
       });
-      const activeBtn = document.getElementById(`tab-${tabId}`);
+      const activeBtn = document.getElementById(`btn-${targetId}`);
       if (activeBtn) {
         activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
-        activeBtn.classList.add('bg-sky-600', 'text-white', 'shadow-sm');
-      }
-
-      // Track visited progress
-      visitedModules.add(tabId);
-      updateProgress();
-    }
-
-    function updateProgress() {
-      const total = 5;
-      const count = visitedModules.size;
-      const pct = Math.min(100, Math.round((count / total) * 100));
-      document.getElementById('progress-bar').style.width = `${pct}%`;
-      document.getElementById('progress-text').textContent = `${count} de ${total} Módulos explorados`;
-    }
-
-    // ==========================================================
-    // MÓDULO 1: SIMULADOR DE REPO Y CLONE MODAL
-    // ==========================================================
-    function toggleCloneModal() {
-      const modal = document.getElementById('clone-modal');
-      modal.classList.toggle('hidden');
-    }
-
-    function copyCloneUrl() {
-      const url = document.getElementById('clone-url-text').textContent;
-      copyToClipboard(url);
-      const btn = document.getElementById('copy-btn-text');
-      btn.textContent = '¡Copiado!';
-      setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
-    }
-
-    const repoPreviews = {
-      readme: {
-        title: 'Vista Previa: README.md (Catálogo Oficial)',
-        html: `
-          <h2 class="text-base font-bold text-white border-b border-slate-800 pb-1">💳 Repositorio de Políticas y Estrategias TDC</h2>
-          <p class="text-slate-300">Biblioteca oficial de scripts de admisión, límites de crédito y cosechas de la cartera.</p>
-          <div class="bg-slate-900 p-2.5 rounded border border-slate-800">
-            <span class="text-sky-300 font-semibold block mb-1">📌 Regla de Oro del Equipo:</span>
-            <p class="text-slate-400 text-xs">Cada analista trabaja en su subcarpeta sin sobreescribir scripts ajenos. Toda modificación se sincroniza antes de comenzar el día con <code>git pull</code>.</p>
-          </div>
-          <table class="w-full text-left text-xs border border-slate-800 rounded">
-            <thead class="bg-slate-900 text-slate-400">
-              <tr><th class="p-1.5">Carpeta</th><th class="p-1.5">Objetivo</th><th class="p-1.5">Periodicidad</th></tr>
-            </thead>
-            <tbody class="divide-y divide-slate-800 text-slate-300 text-[11px]">
-              <tr><td class="p-1.5 font-mono text-sky-400">originacion/</td><td class="p-1.5">Filtros duros y Score Buró</td><td class="p-1.5">Diaria</td></tr>
-              <tr><td class="p-1.5 font-mono text-emerald-400">lineas-credito/</td><td class="p-1.5">Aumentos proactivos (CLI)</td><td class="p-1.5">Mensual</td></tr>
-              <tr><td class="p-1.5 font-mono text-amber-400">indicadores-cosechas/</td><td class="p-1.5">Roll Rates e ICV IFRS9</td><td class="p-1.5">Cierre de mes</td></tr>
-            </tbody>
-          </table>
-        `
-      },
-      originacion: {
-        title: 'Carpeta: /originacion',
-        html: `
-          <div class="text-sky-400 font-bold mb-2">📁 Archivos en originacion/:</div>
-          <ul class="space-y-1.5 text-xs">
-            <li class="flex items-center space-x-2 text-slate-300">
-              <span>🐍</span>
-              <span class="font-mono text-sky-300">reglas_score_buro.py</span>
-              <span class="text-slate-500">— Filtro duro: Score &ge; 650 para Clásica</span>
-            </li>
-            <li class="flex items-center space-x-2 text-slate-300">
-              <span>📊</span>
-              <span class="font-mono text-emerald-300">matriz_capacidad_pago.sql</span>
-              <span class="text-slate-500">— Extracción de DTI máximo 40%</span>
-            </li>
-          </ul>
-          <p class="text-slate-400 text-xs mt-3 pt-2 border-t border-slate-800">
-            Analista responsable: <em>Especialista en Admisión de Crédito</em>.
-          </p>
-        `
-      },
-      lineas: {
-        title: 'Carpeta: /lineas-credito',
-        html: `
-          <div class="text-emerald-400 font-bold mb-2">📁 Archivos en lineas-credito/:</div>
-          <ul class="space-y-1.5 text-xs">
-            <li class="flex items-center space-x-2 text-slate-300">
-              <span>🐍</span>
-              <span class="font-mono text-sky-300">reglas_incremento_lineas.py</span>
-              <span class="text-slate-500">— Motor de CLI mensual para cuentas al corriente</span>
-            </li>
-            <li class="flex items-center space-x-2 text-slate-300">
-              <span>📊</span>
-              <span class="font-mono text-emerald-300">query_elegibilidad_linea.sql</span>
-              <span class="text-slate-500">— Filtro de facturación en últimos 6 meses</span>
-            </li>
-          </ul>
-          <p class="text-slate-400 text-xs mt-3 pt-2 border-t border-slate-800">
-            Analista responsable: <em>Estratega de Portafolio y Límites</em>.
-          </p>
-        `
-      },
-      cosechas: {
-        title: 'Carpeta: /indicadores-cosechas',
-        html: `
-          <div class="text-amber-400 font-bold mb-2">📁 Archivos en indicadores-cosechas/:</div>
-          <ul class="space-y-1.5 text-xs">
-            <li class="flex items-center space-x-2 text-slate-300">
-              <span>📊</span>
-              <span class="font-mono text-amber-300">seguimiento_cosechas_tdc.sql</span>
-              <span class="text-slate-500">— ICV acumulado a 3, 6 y 12 meses</span>
-            </li>
-            <li class="flex items-center space-x-2 text-slate-300">
-              <span>🐍</span>
-              <span class="font-mono text-sky-300">matriz_transicion_roll_rates.py</span>
-              <span class="text-slate-500">— Probabilidad de migración de buckets B0 a B4</span>
-            </li>
-          </ul>
-          <p class="text-slate-400 text-xs mt-3 pt-2 border-t border-slate-800">
-            Analista responsable: <em>Analista Cuantitativo de Riesgo</em>.
-          </p>
-        `
-      },
-      gitignore: {
-        title: 'Vista Previa: .gitignore (Protección Bancaria)',
-        html: `
-          <div class="text-rose-400 font-bold mb-2">🔒 Reglas de Exclusión Regulatoria:</div>
-          <p class="text-slate-300 text-xs">Git ignora automáticamente cualquier archivo con estas extensiones para proteger datos confidenciales:</p>
-          <pre class="bg-slate-900 p-2.5 rounded border border-slate-800 text-[11px] text-amber-300 font-mono mt-2">
-# Bases de datos y clientes (PROHIBIDO SUBIR)
-*.csv
-*.xlsx
-*.parquet
-
-# Credenciales bancarias y conexiones
-.env
-credentials.json
-*.pem
-
-# Entornos virtuales
-venv/
-__pycache__/</pre>
-        `
-      }
-    };
-
-    function selectRepoItem(key) {
-      const data = repoPreviews[key];
-      if (data) {
-        document.getElementById('preview-title').textContent = data.title;
-        document.getElementById('preview-content').innerHTML = data.html;
+        activeBtn.classList.add('bg-sky-600', 'text-white', 'font-semibold');
       }
     }
-    // Initial preview
-    selectRepoItem('readme');
 
+    // Toast
+    function showToast(text) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = text;
+      t.classList.remove('translate-y-20', 'opacity-0');
+      t.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        t.classList.add('translate-y-20', 'opacity-0');
+        t.classList.remove('translate-y-0', 'opacity-100');
+      }, 1800);
+    }
 
-    // ==========================================================
-    // MÓDULO 2: EMULADOR DE TERMINAL (git pull)
-    // ==========================================================
-    const term2Input = document.getElementById('term2-input');
-    const term2History = document.getElementById('term2-history');
+    // Copy helper
+    function copyCmd(cmd) {
+      navigator.clipboard.writeText(cmd).then(() => {
+        showToast(`Copiado: ${cmd}`);
+      }).catch(() => {
+        const input = document.createElement('textarea');
+        input.value = cmd;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast(`Copiado: ${cmd}`);
+      });
+    }
 
-    term2Input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        executeTerminalMod2();
+    // Checklist persistence in localStorage
+    const TOTAL_TASKS = 8;
+
+    function toggleTask(id) {
+      const el = document.getElementById(id);
+      localStorage.setItem(id, el.checked ? 'true' : 'false');
+      updateProgressUI();
+    }
+
+    function updateProgressUI() {
+      let completed = 0;
+      for (let i = 0; i < TOTAL_TASKS; i++) {
+        const id = `check-step-${i}`;
+        const el = document.getElementById(id);
+        if (el && el.checked) completed++;
       }
+      const pct = Math.round((completed / TOTAL_TASKS) * 100);
+      document.getElementById('progress-fill').style.width = `${pct}%`;
+      document.getElementById('progress-summary').textContent = `${completed} de ${TOTAL_TASKS} Pasos`;
+    }
+
+    function resetAllChecks() {
+      for (let i = 0; i < TOTAL_TASKS; i++) {
+        const id = `check-step-${i}`;
+        const el = document.getElementById(id);
+        if (el) el.checked = false;
+        localStorage.removeItem(id);
+      }
+      updateProgressUI();
+      showToast('Lista de verificación reiniciada');
+    }
+
+    // Restore checks on load
+    window.addEventListener('DOMContentLoaded', () => {
+      for (let i = 0; i < TOTAL_TASKS; i++) {
+        const id = `check-step-${i}`;
+        const el = document.getElementById(id);
+        if (el && localStorage.getItem(id) === 'true') {
+          el.checked = true;
+        }
+      }
+      updateProgressUI();
     });
 
-    function fillAndRunMod2(cmd) {
-      term2Input.value = cmd;
-      executeTerminalMod2();
-    }
-
-    function executeTerminalMod2() {
-      const rawCmd = term2Input.value.trim();
-      if (!rawCmd) return;
-      term2Input.value = '';
-
-      // Print user command
-      const cmdRow = document.createElement('div');
-      cmdRow.innerHTML = `<span class="text-sky-400 font-bold">PS politicas-credito-tdc&gt;</span> <span class="text-white">${rawCmd}</span>`;
-      term2History.appendChild(cmdRow);
-
-      const norm = rawCmd.toLowerCase().replace(/\s+/g, ' ');
-
-      if (norm === 'git pull') {
-        // SUCCESS OUTPUT
-        const res = document.createElement('div');
-        res.className = 'space-y-1 text-slate-300 pl-2 border-l-2 border-emerald-500 py-1';
-        res.innerHTML = `
-          <div class="text-slate-400">remote: Enumerating objects: 7, done.</div>
-          <div class="text-slate-400">remote: Counting objects: 100% (7/7), done.</div>
-          <div class="text-slate-400">remote: Compressing objects: 100% (5/5), done.</div>
-          <div class="text-slate-400">remote: Total 5 (delta 2), reused 5 (delta 2)</div>
-          <div class="text-slate-300">From https://github.com/organizacion-riesgo-banco/politicas-credito-tdc</div>
-          <div class="text-sky-400 font-mono">   a4f8912..d8e2091  main  -&gt; origin/main</div>
-          <div class="text-white font-semibold">Fast-forward</div>
-          <div class="text-slate-300 font-mono"> indicadores-cosechas/indicador_icv.sql | 45 +++++++++++++++++++++++++++</div>
-          <div class="text-slate-300 font-mono"> originacion/reglas_score.py           | 62 +++++++++++++++++++++++++++++++++++</div>
-          <div class="text-emerald-400 font-bold"> 2 files changed, 107 insertions(+)</div>
-          <div class="text-slate-400"> create mode 100644 indicadores-cosechas/indicador_icv.sql</div>
-          <div class="text-slate-400"> create mode 100644 originacion/reglas_score.py</div>
-          <div class="text-emerald-300 font-bold pt-2">🎉 ¡Éxito! Tu repositorio local está al día con los scripts de tus compañeros.</div>
-        `;
-        term2History.appendChild(res);
-
-        // Update file tree
-        document.getElementById('tree-file-sql').classList.remove('hidden');
-        document.getElementById('tree-file-py').classList.remove('hidden');
-        const badge = document.getElementById('badge-sync');
-        badge.textContent = '✓ Actualizado';
-        badge.className = 'text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold';
-
-        showToast('¡git pull ejecutado exitosamente!', '📥');
-
-      } else if (norm === 'pull') {
-        const hint = document.createElement('div');
-        hint.className = 'text-amber-300 text-xs bg-amber-500/10 p-2 rounded border border-amber-500/20';
-        hint.innerHTML = '💡 <strong>Pista amigable:</strong> En Git todos los comandos inician con la palabra <code>git</code>. Intenta escribiendo: <code class="text-white font-bold">git pull</code>.';
-        term2History.appendChild(hint);
-      } else if (norm === 'git pul' || norm === 'git p向け') {
-        const hint = document.createElement('div');
-        hint.className = 'text-amber-300 text-xs bg-amber-500/10 p-2 rounded border border-amber-500/20';
-        hint.innerHTML = '💡 <strong>Casi lo tienes:</strong> Se escribe con doble "l": <code class="text-white font-bold">git pull</code>.';
-        term2History.appendChild(hint);
-      } else if (norm === 'git clone' || norm.startsWith('git clone')) {
-        const hint = document.createElement('div');
-        hint.className = 'text-sky-300 text-xs bg-sky-500/10 p-2 rounded border border-sky-500/20';
-        hint.innerHTML = '💡 <strong>Recuerda:</strong> <code>git clone</code> solo se usa la primera vez que descargas el repo. Como ya estás dentro de la carpeta, usa <code class="text-emerald-300 font-bold">git pull</code> para sincronizar.';
-        term2History.appendChild(hint);
-      } else {
-        const hint = document.createElement('div');
-        hint.className = 'text-slate-400 text-xs';
-        hint.innerHTML = `El comando '${rawCmd}' no es el necesario en este paso. Escribe <code class="text-emerald-400 font-bold">git pull</code> y da Enter.`;
-        term2History.appendChild(hint);
-      }
-
-      term2History.scrollTop = term2History.scrollHeight;
-    }
-
-    function resetTerminalMod2() {
-      term2History.innerHTML = `
-        <div class="text-slate-500">Windows PowerShell - Terminal Integrada de Visual Studio Code</div>
-        <div class="text-slate-500">Ubicación de trabajo: politicas-credito-tdc (rama main)</div>
-        <div class="text-slate-400 pt-1">
-          🎯 <strong>MISIÓN:</strong> Escribe <span class="text-emerald-400 font-bold">git pull</span> y presiona <kbd class="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-sky-300">Enter</kbd> para descargar las últimas reglas de crédito de tus compañeros.
-        </div>
-      `;
-      document.getElementById('tree-file-sql').classList.add('hidden');
-      document.getElementById('tree-file-py').classList.add('hidden');
-      const badge = document.getElementById('badge-sync');
-      badge.textContent = 'Pendiente de Pull';
-      badge.className = 'text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded';
-      term2Input.value = '';
-      term2Input.focus();
-    }
-
-
-    // ==========================================================
-    // MÓDULO 3: LABORATORIO DE 4 PASOS
-    // ==========================================================
-    const term3Input = document.getElementById('term3-input');
-    const term3History = document.getElementById('term3-history');
-
-    term3Input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        executeTerminalMod3();
-      }
-    });
-
-    function updateStepperUI(step) {
-      mod3Step = step;
-      for (let s = 1; s <= 4; s++) {
-        const b = document.getElementById(`step-badge-${s}`);
-        if (s < step) {
-          b.className = 'px-2 py-0.5 rounded bg-emerald-600 text-white font-bold';
-        } else if (s === step) {
-          b.className = 'px-2 py-0.5 rounded bg-sky-600 text-white font-bold ring-2 ring-sky-400';
-        } else {
-          b.className = 'px-2 py-0.5 rounded bg-slate-800 text-slate-400';
-        }
-      }
-    }
-
-    function executeTerminalMod3() {
-      const rawCmd = term3Input.value.trim();
-      if (!rawCmd) return;
-      term3Input.value = '';
-
-      // Print user input
-      const cmdRow = document.createElement('div');
-      cmdRow.innerHTML = `<span class="text-sky-400 font-bold">PS C:\\politicas-credito-tdc&gt;</span> <span class="text-white">${rawCmd}</span>`;
-      term3History.appendChild(cmdRow);
-
-      const norm = rawCmd.toLowerCase().replace(/\s+/g, ' ');
-
-      if (mod3Step === 1) {
-        // EXPECT: git status
-        if (norm === 'git status') {
-          const out = document.createElement('div');
-          out.className = 'space-y-1 text-slate-300 pl-2 border-l-2 border-sky-500 py-1 text-xs';
-          out.innerHTML = `
-            <div>On branch main</div>
-            <div>Your branch is up to date with 'origin/main'.</div>
-            <div class="text-slate-400 pt-1">Untracked files:</div>
-            <div class="text-slate-500 text-[11px] ml-2">(use "git add &lt;file&gt;..." to include in what will be committed)</div>
-            <div class="text-rose-400 font-bold ml-4">lineas-credito/incremento_lineas_octubre.py</div>
-            <div class="text-slate-400 pt-1">nothing added to commit but untracked files present (use "git add" to track)</div>
-          `;
-          term3History.appendChild(out);
-
-          const nextMsg = document.createElement('div');
-          nextMsg.className = 'text-indigo-300 bg-indigo-500/10 p-2.5 rounded border border-indigo-500/20 text-xs mt-2';
-          nextMsg.innerHTML = '👉 <strong>PASO 2:</strong> ¡Excelente! El archivo aparece en rojo (fuera de la caja). Mételo a la caja escribiendo: <code class="text-white font-bold">git add .</code> (o <code>git add lineas-credito/incremento_lineas_octubre.py</code>).';
-          term3History.appendChild(nextMsg);
-
-          updateStepperUI(2);
-        } else {
-          const hint = document.createElement('div');
-          hint.className = 'text-amber-300 text-xs';
-          hint.innerHTML = '💡 En el Paso 1 debes verificar el estado. Escribe: <code class="text-white font-bold">git status</code>';
-          term3History.appendChild(hint);
-        }
-      } 
-      else if (mod3Step === 2) {
-        // EXPECT: git add . OR git add lineas-credito/incremento_lineas_octubre.py
-        if (norm === 'git add .' || norm.startsWith('git add')) {
-          const out = document.createElement('div');
-          out.className = 'space-y-1 text-slate-300 pl-2 border-l-2 border-indigo-500 py-1 text-xs';
-          out.innerHTML = `
-            <div class="text-emerald-400">Changes to be committed:</div>
-            <div class="text-slate-500 text-[11px] ml-2">(use "git restore --staged &lt;file&gt;..." to unstage)</div>
-            <div class="text-emerald-400 font-semibold ml-4">new file:   lineas-credito/incremento_lineas_octubre.py</div>
-            <div class="text-slate-300 pt-1">El archivo ahora está en la caja (Staged y en verde).</div>
-          `;
-          term3History.appendChild(out);
-
-          const nextMsg = document.createElement('div');
-          nextMsg.className = 'text-amber-300 bg-amber-500/10 p-2.5 rounded border border-amber-500/20 text-xs mt-2';
-          nextMsg.innerHTML = '👉 <strong>PASO 3:</strong> Sella la caja y ponle una etiqueta descriptiva. Escribe: <code class="text-white font-bold">git commit -m "feat(lineas): algoritmo de aumento proactivo octubre"</code> (debe tener al menos 10 caracteres).';
-          term3History.appendChild(nextMsg);
-
-          updateStepperUI(3);
-        } else {
-          const hint = document.createElement('div');
-          hint.className = 'text-amber-300 text-xs';
-          hint.innerHTML = '💡 En el Paso 2 debes meter el archivo a la caja. Escribe: <code class="text-white font-bold">git add .</code>';
-          term3History.appendChild(hint);
-        }
-      }
-      else if (mod3Step === 3) {
-        // EXPECT: git commit -m "descriptive message"
-        if (norm.startsWith('git commit')) {
-          // Check for -m flag
-          const match = rawCmd.match(/-m\s+["'](.+?)["']/i);
-          if (!match) {
-            const err = document.createElement('div');
-            err.className = 'text-rose-400 text-xs bg-rose-500/10 p-2 rounded border border-rose-500/20';
-            err.innerHTML = '⚠️ <strong>Falta la etiqueta:</strong> Debes incluir la bandera <code>-m "tu mensaje entre comillas"</code> para no caer en el editor Vim.';
-            term3History.appendChild(err);
-          } else {
-            const msg = match[1].trim();
-            if (msg.length < 10) {
-              const err = document.createElement('div');
-              err.className = 'text-amber-300 text-xs bg-amber-500/10 p-2 rounded border border-amber-500/20';
-              err.innerHTML = `⚠️ <strong>Mensaje muy corto ("${msg}"):</strong> En auditoría de crédito requerimos notas descriptivas de al menos 10 caracteres. Ejemplo: <code class="text-white font-bold">git commit -m "feat(lineas): regla de CLI para cosecha 2026"</code>.`;
-              term3History.appendChild(err);
-            } else {
-              // Valid commit
-              const out = document.createElement('div');
-              out.className = 'space-y-1 text-slate-300 pl-2 border-l-2 border-amber-500 py-1 text-xs';
-              out.innerHTML = `
-                <div class="text-sky-300 font-mono">[main 7b29a1c] ${msg}</div>
-                <div class="text-slate-400 font-mono"> 1 file changed, 84 insertions(+)</div>
-                <div class="text-slate-400 font-mono"> create mode 100644 lineas-credito/incremento_lineas_octubre.py</div>
-                <div class="text-amber-300 font-bold pt-1">📦 ¡Caja sellada y etiquetada con éxito!</div>
-              `;
-              term3History.appendChild(out);
-
-              const nextMsg = document.createElement('div');
-              nextMsg.className = 'text-emerald-300 bg-emerald-500/10 p-2.5 rounded border border-emerald-500/20 text-xs mt-2';
-              nextMsg.innerHTML = '👉 <strong>PASO 4 (FINAL):</strong> Envía el paquete al servidor de GitHub escribiendo: <code class="text-white font-bold">git push</code>.';
-              term3History.appendChild(nextMsg);
-
-              updateStepperUI(4);
-            }
-          }
-        } else {
-          const hint = document.createElement('div');
-          hint.className = 'text-amber-300 text-xs';
-          hint.innerHTML = '💡 En el Paso 3 debes sellar tu versión. Escribe: <code class="text-white font-bold">git commit -m "mensaje claro de al menos 10 caracteres"</code>.';
-          term3History.appendChild(hint);
-        }
-      }
-      else if (mod3Step === 4) {
-        // EXPECT: git push
-        if (norm === 'git push') {
-          const out = document.createElement('div');
-          out.className = 'space-y-1 text-slate-300 pl-2 border-l-2 border-emerald-500 py-1 text-xs';
-          out.innerHTML = `
-            <div class="text-slate-400">Enumerating objects: 6, done.</div>
-            <div class="text-slate-400">Counting objects: 100% (6/6), done.</div>
-            <div class="text-slate-400">Delta compression using up to 8 threads</div>
-            <div class="text-slate-400">Compressing objects: 100% (4/4), done.</div>
-            <div class="text-slate-400">Writing objects: 100% (4/4), 1.62 KiB | 1.62 MiB/s, done.</div>
-            <div class="text-slate-400">Total 4 (delta 1), reused 0 (delta 0)</div>
-            <div class="text-sky-300">To https://github.com/organizacion-riesgo-banco/politicas-credito-tdc.git</div>
-            <div class="text-emerald-400 font-mono font-bold">   d8e2091..7b29a1c  main -&gt; main</div>
-            <div class="text-emerald-300 text-sm font-bold pt-2">🚀 ¡MISIÓN CUMPLIDA! Tu código ya está disponible en la Organización de GitHub.</div>
-          `;
-          term3History.appendChild(out);
-
-          for (let s = 1; s <= 4; s++) {
-            document.getElementById(`step-badge-${s}`).className = 'px-2 py-0.5 rounded bg-emerald-600 text-white font-bold';
-          }
-
-          showToast('¡Misión de 4 Pasos Completada con Éxito!', '🎉');
-        } else {
-          const hint = document.createElement('div');
-          hint.className = 'text-amber-300 text-xs';
-          hint.innerHTML = '💡 Paso final: Sube tus cambios a GitHub con <code class="text-white font-bold">git push</code>.';
-          term3History.appendChild(hint);
-        }
-      }
-
-      term3History.scrollTop = term3History.scrollHeight;
-    }
-
-    function resetTerminalMod3() {
-      updateStepperUI(1);
-      term3History.innerHTML = `
-        <div class="text-slate-500">Terminal de Políticas TDC - Laboratorio Interactivo</div>
-        <div class="text-slate-400">
-          Situación: Acabas de crear en VS Code el script: <span class="text-sky-300 font-bold">lineas-credito/incremento_lineas_octubre.py</span>.
-        </div>
-        <div class="text-amber-300 bg-amber-500/10 p-2.5 rounded border border-amber-500/20">
-          👉 <strong>PASO 1:</strong> Verifica el estado de tu repositorio escribiendo <code class="text-white font-bold">git status</code> y presiona Enter.
-        </div>
-      `;
-      term3Input.value = '';
-      term3Input.focus();
-    }
-
-
-    // ==========================================================
-    // MÓDULO 4: PLANTILLAS Y SIMULADOR DE .gitignore
-    // ==========================================================
+    // Templates Copying
     function copyHeaderSQL() {
       const sql = `/*\n============================================================\nINSTITUCIÓN FINANCIERA - POLÍTICAS DE CRÉDITO TDC\n============================================================\nARCHIVO:        calculo_roll_rate.sql\nAUTOR:          [Tu Nombre Completo / Analista TDC]\nFECHA CREACIÓN: 2026-10-27\nOBJETIVO:       Cálculo mensual de matrices de transición\n                (Roll Rates) de buckets de morosidad.\nTABLAS FUENTE:  DWH_RIESGO.CARTERA_MENSUAL_TDC\nTABLA DESTINO:  BI_RIESGO.MATRIZ_ROLL_RATES_TDC\nPERIODICIDAD:   Mensual (Cierre de mes)\n============================================================\n*/`;
-      copyToClipboard(sql);
-      const b = document.getElementById('btn-copy-sql');
-      b.textContent = '¡Copiado!';
-      setTimeout(() => b.textContent = 'Copiar Plantilla', 2000);
+      copyCmd(sql);
+      const lbl = document.getElementById('btn-lbl-sql');
+      lbl.textContent = '¡Copiado!';
+      setTimeout(() => lbl.textContent = 'Copiar', 2000);
     }
 
     function copyHeaderPY() {
       const py = `"""\n============================================================\nINSTITUCIÓN FINANCIERA - POLÍTICAS DE CRÉDITO TDC\n============================================================\nARCHIVO:        reglas_originacion_tdc.py\nAUTOR:          [Tu Nombre Completo / Analista TDC]\nFECHA CREACIÓN: 2026-10-27\nOBJETIVO:       Evalúa filtros duros de Buró de Crédito\n                y calcula el Límite de Crédito Inicial.\nREGLA DE NEGOCIO: Score mínimo 650; DTI máximo 40%.\nENTRADAS:       Diccionario con solicitud del prospecto.\nSALIDAS:        Dictamen (APROBADO/RECHAZADO) y límite ($).\n============================================================\n"""`;
-      copyToClipboard(py);
-      const b = document.getElementById('btn-copy-py');
-      b.textContent = '¡Copiado!';
-      setTimeout(() => b.textContent = 'Copiar Plantilla', 2000);
+      copyCmd(py);
+      const lbl = document.getElementById('btn-lbl-py');
+      lbl.textContent = '¡Copiado!';
+      setTimeout(() => lbl.textContent = 'Copiar', 2000);
     }
-
-    function validateGitignoreSimulation() {
-      const c1 = document.getElementById('check-file-1').checked; // sql
-      const c2 = document.getElementById('check-file-2').checked; // py
-      const c3 = document.getElementById('check-file-3').checked; // csv (DANGEROUS)
-      const c4 = document.getElementById('check-file-4').checked; // env (DANGEROUS)
-      const c5 = document.getElementById('check-file-5').checked; // readme
-      const c6 = document.getElementById('check-file-6').checked; // xlsx (DANGEROUS)
-
-      const fb = document.getElementById('gitignore-feedback');
-      fb.classList.remove('hidden');
-
-      if (c3 && c4 && c6 && !c1 && !c2 && !c5) {
-        // PERFECT SCORE
-        fb.innerHTML = `
-          <div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-lg text-emerald-300 text-xs space-y-1">
-            <span class="font-bold flex items-center space-x-1">
-              <span>🛡️</span>
-              <span>¡EXCELENTE DECISIÓN DE GOBERNANZA!</span>
-            </span>
-            <p>Has bloqueado con precisión los 3 archivos peligrosos: <code class="text-white">base_clientes_rfc.csv</code>, <code class="text-white">credenciales_bd.env</code> y <code class="text-white">extraccion_cruda.xlsx</code>.</p>
-            <p class="text-[11px] text-slate-300">Ahora tu repositorio está protegido. Git solo subirá los scripts de SQL, Python y el README.</p>
-          </div>
-        `;
-        showToast('¡Repositorio blindado correctamente!', '🛡️');
-      } else {
-        let msg = 'Recuerda: Los scripts (.sql, .py) y el README SÍ deben subirse porque son el código del equipo. ';
-        if (!c3 || !c4 || !c6) {
-          msg += '¡Te faltó marcar algún archivo con datos de clientes o contraseñas (.csv, .env o .xlsx)!';
-        }
-        if (c1 || c2 || c5) {
-          msg += 'Marcaste por error archivos de código o documentación legítimos.';
-        }
-        fb.innerHTML = `
-          <div class="bg-rose-500/10 border border-rose-500/30 p-3 rounded-lg text-rose-300 text-xs space-y-1">
-            <span class="font-bold">⚠️ Atención:</span>
-            <p>${msg}</p>
-          </div>
-        `;
-      }
-    }
-
-    function resetGitignoreSimulation() {
-      for (let i = 1; i <= 6; i++) {
-        document.getElementById(`check-file-${i}`).checked = false;
-      }
-      const fb = document.getElementById('gitignore-feedback');
-      fb.classList.add('hidden');
-      fb.innerHTML = '';
-    }
-
   </script>
 
 </body>

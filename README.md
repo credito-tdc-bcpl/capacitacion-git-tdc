@@ -20,10 +20,10 @@ La Dirección de Políticas TDC opera mediante una **arquitectura de 4 repositor
 
 | Repositorio | Tipo | Stack Principal | Foco Funcional y Alcance |
 | :--- | :---: | :--- | :--- |
-| [**`politicas-tdc-originacion-y-modelos`**](https://github.com/credito-tdc-bcpl/politicas-tdc-originacion-y-modelos) | Privado | Python 3.10+, Polars, Yellowbrick, `shared.db` | Admisión, Scoring, Modelos PD M4, deciles, curvas Song-Yonho, desentrame SIC (Buró/Círculo) en DWH, One Click y canales Coppel. |
-| [**`politicas-tdc-cartera-y-monitoreo`**](https://github.com/credito-tdc-bcpl/politicas-tdc-cartera-y-monitoreo) | Privado | Python 3.10+, Polars, `shared.db`, `shared.metricas` | Cartera en vida útil, las 5 rutinas mensuales permanentes (BAU), cosechas (vintages), límites de crédito (PTCSF-33, CLI día 11) y depuración. |
-| [**`tdc-automatizacion-y-gestion`**](https://github.com/credito-tdc-bcpl/tdc-automatizacion-y-gestion) | Privado | Python, Telegram API, Trello API, AI Agents | Suite interna de la Gerencia: sincronización Trello-Obsidian, bots ejecutivos de Telegram, automatización de correo y vault de gestión. |
-| [**`certificacion_buro`**](https://github.com/credito-tdc-bcpl/certificacion_buro) | Privado | Python, Polars, Banxico API, Yellowbrick | Pipeline ETL Medallion (Bronce, Plata, Oro), desentramado TL y SC, conversión UDI Banxico y auditoría de rechazos SICs. |
+| [**`originacion-credito`**](https://github.com/credito-tdc-bcpl/originacion-credito) | Privado | Python 3.10+, Polars, Yellowbrick | Modelos probabilísticos, admisión, scoring PD M4, prospección One Click, desentrame SIC (Buró/Círculo) y parametrización de políticas de entrada. *(8 proyectos)* |
+| [**`administracion-cartera`**](https://github.com/credito-tdc-bcpl/administracion-cartera) | Privado | Python 3.10+, Polars, Yellowbrick | Mantenimiento de cuentas en vida útil, administración y aumento de líneas (PTCSF-33, incrementos CLI día 11), cancelaciones masivas, reducción de reservas y auditoría de tasas. *(6 proyectos)* |
+| [**`indicadores-mensuales-permanentes`**](https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes) | Privado | Python 3.10+, Polars, Yellowbrick | Procesos recurrentes de cierre mensual, cosechas (*vintages*), las 5 rutinas mensuales permanentes (BAU), monitoreos normativos y tableros directivos. *(10 procesos)* |
+| [**`herramientas-utiles`**](https://github.com/credito-tdc-bcpl/herramientas-utiles) | Privado | Python, Polars, SQL, API Telegram/Trello | Funciones reutilizables de conexión a Yellowbrick (`conexiones-db`), snippets de métricas y fechas (`snippets-python`), queries maestras y automatizaciones internas. |
 | [**`capacitacion-git-tdc`**](https://github.com/credito-tdc-bcpl/capacitacion-git-tdc) *(Este repo)* | Público | HTML5, Vanilla CSS / Tailwind, JS Vanilla | Portal educativo de autoservicio para analistas, manual interactivo de comandos, plantillas y generador en vivo. |
 
 ---
@@ -34,15 +34,15 @@ Cada colaborador tiene carpetas y submódulos asignados. El aislamiento por carp
 
 | Colaborador | Rol / Especialidad | Repositorios Asignados | Carpetas / Submódulos Clave |
 | :--- | :--- | :--- | :--- |
-| **Luis Enrique Arriola** | Modelos Cuantitativos & Scoring | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `modelos-scoring/pd-m4-lineas-optimas/`<br>`politicas-y-canales/disposiciones-efectivo/`<br>`indicadores-y-cosechas/cosechas-originacion/` |
-| **Andrea Placencia** | Segmentación & Estrategias Portafolio | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `modelos-scoring/segmentacion-riesgo/`<br>`politicas-y-canales/originacion-coppel/`<br>`administracion-de-lineas/incrementos-linea/`<br>`auditoria-y-tasas/conciliacion-tasas-mci/` |
-| **Elizabeth Gómez** | One Click Prime & Cosechas | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `prospectos-one-click/evaluacion-hipo-autos/`<br>`indicadores-y-cosechas/cosechas-originacion/`<br>`auditoria-y-tasas/certificacion-mensual-brm/` |
-| **Armando Morales** | Líder Operativo Cartera & BAU | `cartera-y-monitoreo` | `monitoreo-procesos-bau/` (Las 5 rutinas mensuales)<br>`administracion-de-lineas/aplicativo-ptcsf-33/`<br>`cancelacion-y-depuracion/depuracion-masiva/`<br>`indicadores-y-cosechas/uso-linea-cartera/` |
-| **Laura Anaid** | Operación BAU & Depuración | `cartera-y-monitoreo` | `monitoreo-procesos-bau/01-decremento-linea/`<br>`monitoreo-procesos-bau/02-pago-minimo-clasica/`<br>`monitoreo-procesos-bau/03-cancelacion-cuentas/`<br>`cancelacion-y-depuracion/depuracion-masiva/` |
-| **Naidelin Coronel & Juan José López** | Tramas SICs en Yellowbrick | `originacion-y-modelos` | `buro-y-tramas-sic/desentrame-cadenas/`<br>(Segmento CR y homologación Círculo en DWH) |
-| **Sergio Herrera** | Especificación SICs & Resiliencia | `originacion-y-modelos` | `buro-y-tramas-sic/def-tramas-consultas/`<br>(Reglas de contingencia ante caídas de proveedores) |
-| **Luis Ernesto Álvarez** | Certificación Variables & Auditoría | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `certificacion-variables/variables-coppel/`<br>`politicas-y-canales/disposiciones-efectivo/`<br>`auditoria-y-tasas/certificacion-mensual-brm/` |
-| **Jorge Adrián Guzmán** | Gerente de Políticas TDC | `tdc-automatizacion-y-gestion`<br>Todos los repositorios | `trello-obsidian-sync/`, `telegram-bots/`, `ai-agent/`<br>Supervisión y aprobación de Pull Requests (PRs). |
+| **Luis Enrique Arriola Padua** | Modelos Cuantitativos & Scoring | `originacion-credito`<br>`indicadores-mensuales-permanentes` | `modelos-scoring/lineas-optimas-pd-m4/`<br>`politicas-canales/disposiciones-efectivo/`<br>`indicadores-originacion/cosechas-originacion/` |
+| **Andrea Placencia** | Segmentación & Estrategias Portafolio | `originacion-credito`<br>`administracion-cartera` | `modelos-scoring/segmentacion-riesgo/`<br>`politicas-canales/tiendas-coppel/`<br>`gestion-lineas/incrementos-linea/`<br>`auditoria-y-tasas/conciliacion-tasas-mci/` |
+| **Elizabeth Gómez Soto** | One Click Prime & Cosechas | `originacion-credito`<br>`administracion-cartera`<br>`indicadores-mensuales-permanentes` | `prospectos-one-click/evaluacion-hipo-autos/`<br>`auditoria-y-tasas/certificacion-mensual-brm/`<br>`indicadores-originacion/cosechas-originacion/`<br>`indicadores-originacion/seguimiento-one-click/`<br>`indicadores-cartera-y-administracion/vistas-alternativas-mora/` |
+| **Armando Morales Verdugo** | Líder Operativo Cartera & BAU | `administracion-cartera`<br>`indicadores-mensuales-permanentes` | `gestion-lineas/aplicativo-ptcsf-33/`<br>`gestion-lineas/incrementos-linea/`<br>`cancelacion-depuracion/depuracion-masiva/`<br>`cancelacion-depuracion/saldos-a-favor/`<br>`indicadores-cartera-y-administracion/` (Las 5 rutinas BAU)<br>`indicadores-cartera-y-administracion/uso-linea-general/` |
+| **Laura Anaid Álvarez Zamudio** | Operación BAU & Depuración | `administracion-cartera`<br>`indicadores-mensuales-permanentes` | `cancelacion-depuracion/depuracion-masiva/`<br>`cancelacion-depuracion/saldos-a-favor/`<br>`indicadores-cartera-y-administracion/01-decremento-linea/`<br>`indicadores-cartera-y-administracion/02-pago-minimo-clasica/`<br>`indicadores-cartera-y-administracion/03-cancelacion-cuentas/`<br>`indicadores-cartera-y-administracion/04-reactivacion-inactivas/`<br>`indicadores-cartera-y-administracion/05-indicadores-imor/` |
+| **Naidelin Coronel & Juan José López** | Tramas SICs en Yellowbrick | `originacion-credito` | `buro-y-tramas-sic/desentrame-cadenas/`<br>(Segmento CR y homologación Círculo en DWH) |
+| **Sergio Herrera López** | Especificación SICs & Resiliencia | `originacion-credito` | `buro-y-tramas-sic/def-consultas/`<br>(Reglas de contingencia ante caídas de proveedores) |
+| **Luis Ernesto Álvarez García** | Certificación Variables & Auditoría | `originacion-credito`<br>`administracion-cartera`<br>`indicadores-mensuales-permanentes` | `certificacion-variables/variables-coppel/`<br>`politicas-canales/disposiciones-efectivo/`<br>`auditoria-y-tasas/certificacion-mensual-brm/`<br>`indicadores-originacion/certificacion-mensual-origin/` |
+| **Jorge Adrián Guzmán Inzunza** | Gerente de Políticas TDC | `herramientas-utiles`<br>Todos los repositorios | `automatizaciones/` (`trello_obsidian.py`, `telegram_notificador.py`), `plantillas/`<br>Supervisión y aprobación de Pull Requests (PRs). |
 
 ---
 
@@ -51,13 +51,13 @@ Cada colaborador tiene carpetas y submódulos asignados. El aislamiento por carp
 Para asegurar la reproducibilidad y el cumplimiento normativo bancario:
 
 1. **Python 3.10+ y Polars:** Todo procesamiento matricial de cartera se realiza con `polars` por su alta velocidad multihilo en millones de cuentas.
-2. **Conexión Centralizada a Yellowbrick (`shared.db`):** Está prohibido incrustar credenciales o cadenas de conexión en tus scripts. Usa siempre:
+2. **Conexión Centralizada a Yellowbrick (`herramientas-utiles`):** Está prohibido incrustar credenciales o cadenas de conexión en tus scripts. Usa siempre el conector oficial:
    ```python
-   from shared.db import query_to_polars
+   from conexiones_db.yellowbrick import query_to_polars
    ```
-3. **Métricas Homologadas (`shared.metricas`):** En el repositorio de Cartera, las definiciones de morosidad y cosechas están estandarizadas:
+3. **Métricas Homologadas (`snippets-python`):** En los procesos de monitoreo e indicadores, las métricas de morosidad están estandarizadas:
    ```python
-   from shared.metricas import calcular_mora_90_plus, resumen_por_cosecha
+   from snippets_python.metricas import calcular_mora_90_plus
    ```
 4. **Entornos Virtuales Obligatorios:** Trabaja siempre en tu `.venv` local:
    ```powershell
@@ -74,8 +74,8 @@ Para asegurar la reproducibilidad y el cumplimiento normativo bancario:
 Para actualizar tu código y subir tus avances al repositorio que te corresponde:
 
 ```powershell
-# 1. Navegar a tu repositorio de trabajo (ejemplo: originacion o cartera)
-cd C:\Users\$env:USERNAME\Documents\GitHub\politicas-tdc-cartera-y-monitoreo
+# 1. Navegar a tu repositorio de trabajo (ejemplo: originacion-credito o administracion-cartera)
+cd C:\Users\$env:USERNAME\Documents\GitHub\administracion-cartera
 
 # 2. HÁBITO MATUTINO OBLIGATORIO: Traer los avances del equipo
 git pull origin main
@@ -87,10 +87,10 @@ git pull origin main
 git status
 
 # 5. Agregar tu script modificado dentro de tu submódulo asignado
-git add monitoreo-procesos-bau/01-decremento-linea/tu_script.py
+git add gestion-lineas/incrementos-linea/mi_script.py
 
 # 6. Crear un commit semántico oficial
-git commit -m "feat(cartera): actualiza criterio de saldo mínimo para decremento"
+git commit -m "feat(cartera): actualiza curva de incremento para corte dia 11"
 
 # 7. Publicar tu trabajo de forma segura en GitHub
 git push origin main

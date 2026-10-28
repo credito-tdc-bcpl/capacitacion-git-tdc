@@ -173,7 +173,7 @@
 
           <button onclick="switchTab('tab-plantillas-repo')" id="btn-tab-plantillas-repo" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill border flex items-center space-x-1.5" style="border-color: var(--color-electric-blue);">
             <span class="w-1.5 h-1.5 rounded-full inline-block" style="background-color: var(--color-electric-blue);"></span>
-            <span>6. Plantillas & Repositorio Oficial</span>
+            <span>6. Monorepos & Módulos Oficiales</span>
           </button>
 
         </nav>
@@ -182,17 +182,41 @@
   </header>
 
   <!-- ================= HERO PRESENTATION ================= -->
-  <section class="pt-12 pb-10 border-b transition-all" style="background-color: var(--color-surface); border-color: var(--color-hairline);">
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-8 text-center space-y-3">
-      <div class="inline-block text-[13px] font-semibold tracking-normal uppercase" style="color: var(--color-ember);">
-        Políticas de Tarjetas de Crédito
+  <section class="pt-10 pb-8 border-b transition-all" style="background-color: var(--color-surface); border-color: var(--color-hairline);">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-8 text-center space-y-4">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold tracking-normal uppercase border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-ember);">
+        <span>Organización Oficial: credito-tdc-bcpl</span>
       </div>
       <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-tight" style="color: var(--color-primary-ink);">
-        Aprende Git en tu consola.<br class="hidden sm:inline"> Con los scripts reales de tu equipo.
+        Aprende Git en tu consola.<br class="hidden sm:inline"> En los monorepos reales de tu equipo.
       </h1>
-      <p class="text-base sm:text-lg max-w-2xl mx-auto pt-1 leading-relaxed font-normal" style="color: var(--color-mid-gray);">
-        No corres código en el navegador: ejecutas comandos y pruebas reales en la terminal integrada de tu Visual Studio Code sobre los archivos de originación, líneas de crédito y cosechas.
+      <p class="text-base sm:text-lg max-w-3xl mx-auto pt-1 leading-relaxed font-normal" style="color: var(--color-mid-gray);">
+        Guía de capacitación y trabajo colaborativo para los monorepos de producción de Políticas TDC BanCoppel en Python, Polars y Yellowbrick. Conoce a qué repositorio y carpeta perteneces según tu rol.
       </p>
+
+      <!-- Quick Ecosystem Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
+        <a href="https://github.com/credito-tdc-bcpl/politicas-tdc-originacion-y-modelos" target="_blank" class="px-3.5 py-1.5 rounded-full border transition hover:opacity-80 flex items-center space-x-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+          <span class="font-semibold">🎯 Originación y Modelos</span>
+          <span class="text-[10px] font-mono opacity-70">8 módulos</span>
+        </a>
+        <a href="https://github.com/credito-tdc-bcpl/politicas-tdc-cartera-y-monitoreo" target="_blank" class="px-3.5 py-1.5 rounded-full border transition hover:opacity-80 flex items-center space-x-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="font-semibold">📊 Cartera y Monitoreo</span>
+          <span class="text-[10px] font-mono opacity-70">15 módulos (5 BAU)</span>
+        </a>
+        <a href="https://github.com/credito-tdc-bcpl/tdc-automatizacion-y-gestion" target="_blank" class="px-3.5 py-1.5 rounded-full border transition hover:opacity-80 flex items-center space-x-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+          <span class="font-semibold">🤖 Automatización y Gestión</span>
+          <span class="text-[10px] font-mono opacity-70">5 herramientas</span>
+        </a>
+        <a href="https://github.com/credito-tdc-bcpl/certificacion_buro" target="_blank" class="px-3.5 py-1.5 rounded-full border transition hover:opacity-80 flex items-center space-x-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+          <span class="font-semibold">🔍 Certificación Buró ETL</span>
+          <span class="text-[10px] font-mono opacity-70">Medallion</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -816,154 +840,462 @@
     </section>
 
     <!-- ================================================================ -->
-    <!-- TAB 6: MANUAL DE PLANTILLAS Y NUEVO REPOSITORIO OFICIAL -->
+    <!-- TAB 6: GUÍA MAESTRA DE MONOREPOS Y MÓDULOS OFICIALES -->
     <!-- ================================================================ -->
     <section id="content-tab-plantillas-repo" class="tab-pane hidden space-y-8">
 
       <!-- Header Hero of the Tab -->
       <div class="rounded-[28px] p-8 sm:p-10 border transition relative overflow-hidden" style="background-color: var(--color-surface); border-color: var(--color-hairline);">
-        <div class="max-w-3xl space-y-3 relative z-10">
+        <div class="max-w-4xl space-y-3 relative z-10">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold tracking-normal uppercase border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-ember);">
-            <span>Nuevo Repositorio Oficial</span>
+            <span>Ecosistema Oficial</span>
             <span>•</span>
-            <span class="font-mono lowercase text-[11px]" style="color: var(--color-mid-gray);">credito-tdc-bcpl / politicas-tdc-originacion-y-administracion</span>
+            <span class="font-mono lowercase text-[11px]" style="color: var(--color-mid-gray);">credito-tdc-bcpl</span>
           </div>
           <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Manual Oficial: Cómo usar las plantillas y subir tus códigos
+            Guía Maestra: Monorepos, Módulos y Responsables de Políticas TDC
           </h2>
           <p class="text-base leading-relaxed" style="color: var(--color-mid-gray);">
-            Este repositorio es la <strong>Fuente Única de la Verdad</strong> de las políticas del banco. Para evitar confusiones, el repositorio se entrega con <strong>directorios limpios</strong> (sin códigos dummy). Sigue esta guía para estructurar tus scripts en Python o consultas en SQL con el estándar corporativo de auditoría.
+            La Dirección de Políticas TDC opera mediante una arquitectura de <strong>monorepos por pilar de negocio</strong> en GitHub. Cada analista y científico de datos trabaja en su módulo asignado utilizando el entorno común en Python, Polars y Yellowbrick.
           </p>
 
           <div class="pt-2 flex flex-wrap gap-2 text-xs">
-            <span class="px-3 py-1 rounded-full border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              📁 Directorios con <code class="font-mono text-[11px]">.gitkeep</code>
+            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              🏛️ 4 Repositorios Oficiales
             </span>
-            <span class="px-3 py-1 rounded-full border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              🛡️ Blindaje PII (Prohibido .csv / .xlsx)
+            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              ⚡ Stack: Python 3.10+ / Polars / Yellowbrick
             </span>
-            <span class="px-3 py-1 rounded-full border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              ⚡ Formatos: Python 3.10+ y SQL Snowflake/Oracle
+            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              🛡️ Cero Datos PII (Consultas DWH)
+            </span>
+            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              📁 Submódulos Aislados = Cero Conflictos
             </span>
           </div>
         </div>
       </div>
 
-      <!-- Card 1: Arquitectura de Carpetas y Mapeo de Responsabilidades -->
+      <!-- Card 1: Los 4 Repositorios Oficiales de la Organización -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
-          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Arquitectura de Carpetas</div>
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Arquitectura del Ecosistema</div>
           <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            ¿En qué carpeta debe ir mi código?
+            Los 4 Repositorios Oficiales en credito-tdc-bcpl
           </h3>
           <p class="text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-            Cada científico de datos y estratega trabaja dentro de su carpeta asignada. Esto garantiza que <strong>nunca existan conflictos de fusión (merge conflicts)</strong> en Git, ya que cada dominio evoluciona de forma autónoma.
+            Cada repositorio concentra un dominio funcional completo. Los colaboradores clonan únicamente el o los monorepos donde tienen asignados proyectos de investigación, modelos o rutinas BAU:
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           
-          <!-- Folder 1: Originacion -->
-          <div class="rounded-[20px] p-5 border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <span class="text-lg">🎯</span>
-                <span class="font-mono font-semibold text-sm" style="color: var(--color-primary-ink);">originacion/</span>
+          <!-- Repo 1: Originacion y Modelos -->
+          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                  <span class="text-xl">🎯</span>
+                  <div>
+                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">politicas-tdc-originacion-y-modelos</h4>
+                    <span class="text-[11px] font-mono" style="color: var(--color-electric-blue);">credito-tdc-bcpl / Privado</span>
+                  </div>
+                </div>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-blue-500/10 text-blue-400 border-blue-500/30">8 Módulos</span>
               </div>
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-mid-gray);">Admisión</span>
-            </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Qué va aquí:</strong> Reglas de admisión, scorecuts de Buró (BC Score), filtros duros de edad o MOP histórico, cálculo de capacidad de pago (DTI) y queries de extracción de prospectos.
-            </p>
-            <div class="text-[11px] font-mono p-2 rounded-[10px] border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              Ejemplo: motor_scorecuts_admision.py
-            </div>
-          </div>
-
-          <!-- Folder 2: Lineas de Credito -->
-          <div class="rounded-[20px] p-5 border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <span class="text-lg">📈</span>
-                <span class="font-mono font-semibold text-sm" style="color: var(--color-primary-ink);">administracion-cartera/lineas-credito/</span>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Admisión, Scoring, Modelos PD M4, deciles, curvas Song-Yonho, desentrame de tramas SIC (Buró/Círculo) en Yellowbrick, evaluación One Click y políticas en canales Coppel.
+              </p>
+              <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div class="text-[10px] uppercase font-sans text-stone-400">Submódulos principales:</div>
+                <div class="truncate text-blue-400">• modelos-scoring/ (pd-m4, segmentacion)</div>
+                <div class="truncate text-blue-400">• prospectos-one-click/ (evaluacion-hipo-autos)</div>
+                <div class="truncate text-blue-400">• buro-y-tramas-sic/ (desentrame, def-tramas)</div>
+                <div class="truncate text-blue-400">• politicas-y-canales/ (disposiciones, originacion)</div>
               </div>
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-mid-gray);">Límites</span>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Qué va aquí:</strong> Motores de Incremento Proactivo de Línea (CLI), Reducción Preventiva por deterioro de riesgo (CLD) y queries de elegibilidad mensual de campañas.
-            </p>
-            <div class="text-[11px] font-mono p-2 rounded-[10px] border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              Ejemplo: query_extraccion_campana_cli.sql
+            <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/politicas-tdc-originacion-y-modelos.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <span>Copiar Clone</span>
+              </button>
+              <a href="https://github.com/credito-tdc-bcpl/politicas-tdc-originacion-y-modelos" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
+                <span>Ver en GitHub</span>
+                <span>›</span>
+              </a>
             </div>
           </div>
 
-          <!-- Folder 3: Cancelaciones y Bloqueos -->
-          <div class="rounded-[20px] p-5 border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <span class="text-lg">🔒</span>
-                <span class="font-mono font-semibold text-sm" style="color: var(--color-primary-ink);">administracion-cartera/cancelaciones-bloqueos/</span>
+          <!-- Repo 2: Cartera y Monitoreo -->
+          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                  <span class="text-xl">📊</span>
+                  <div>
+                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">politicas-tdc-cartera-y-monitoreo</h4>
+                    <span class="text-[11px] font-mono text-emerald-400">credito-tdc-bcpl / Privado</span>
+                  </div>
+                </div>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-emerald-500/10 text-emerald-400 border-emerald-500/30">15 Módulos</span>
               </div>
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-mid-gray);">Contención</span>
-            </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Qué va aquí:</strong> Reglas regulatorias de cancelación de cuentas inactivas (12 meses sin compras y saldo $0), suspensión preventiva por atraso (MOP 1+) y alertas de fraude.
-            </p>
-            <div class="text-[11px] font-mono p-2 rounded-[10px] border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              Ejemplo: reglas_cancelacion_inactividad.py
-            </div>
-          </div>
-
-          <!-- Folder 4: Monitoreo e Indicadores -->
-          <div class="rounded-[20px] p-5 border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2.5">
-                <span class="text-lg">📊</span>
-                <span class="font-mono font-semibold text-sm" style="color: var(--color-primary-ink);">monitoreo-indicadores/</span>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Operación de cartera en vida útil, las 5 rutinas mensuales permanentes (BAU), monitoreo de cosechas (vintages), administración de límites de crédito, depuración y auditoría de tasas.
+              </p>
+              <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div class="text-[10px] uppercase font-sans text-stone-400">Submódulos principales:</div>
+                <div class="truncate text-emerald-400">• monitoreo-procesos-bau/ (01 a 05 permanentes)</div>
+                <div class="truncate text-emerald-400">• indicadores-y-cosechas/ (cosechas, uso-linea)</div>
+                <div class="truncate text-emerald-400">• administracion-de-lineas/ (ptcsf-33, incrementos)</div>
+                <div class="truncate text-emerald-400">• cancelacion-y-depuracion/ (depuracion-masiva)</div>
               </div>
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-mid-gray);">Cuantitativo</span>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Qué va aquí:</strong> Matrices mensuales de transición de buckets de morosidad (Roll Rates B0 a B4), análisis de maduración de cosechas (Vintages) y seguimiento de ICV para IFRS 9.
-            </p>
-            <div class="text-[11px] font-mono p-2 rounded-[10px] border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              Ejemplo: matriz_roll_rates_mensual.sql
+            <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/politicas-tdc-cartera-y-monitoreo.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <span>Copiar Clone</span>
+              </button>
+              <a href="https://github.com/credito-tdc-bcpl/politicas-tdc-cartera-y-monitoreo" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
+                <span>Ver en GitHub</span>
+                <span>›</span>
+              </a>
             </div>
           </div>
 
-        </div>
-
-        <div class="p-4 rounded-[20px] border flex items-start space-x-3 text-xs" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <span class="text-base">💡</span>
-          <div class="space-y-1">
-            <span class="font-semibold" style="color: var(--color-primary-ink);">¿Por qué no hay códigos de ejemplo dentro de las carpetas?</span>
-            <p style="color: var(--color-mid-gray);">
-              En el repositorio oficial dejamos únicamente el archivo oculto <code class="font-mono text-xs">.gitkeep</code> en cada carpeta. Esto mantiene viva la estructura en GitHub sin saturar a los científicos con códigos de prueba, para que cada quien coloque sus scripts definitivos de producción.
-            </p>
+          <!-- Repo 3: Automatizacion y Gestion -->
+          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                  <span class="text-xl">🤖</span>
+                  <div>
+                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">tdc-automatizacion-y-gestion</h4>
+                    <span class="text-[11px] font-mono text-purple-400">credito-tdc-bcpl / Privado</span>
+                  </div>
+                </div>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-purple-500/10 text-purple-400 border-purple-500/30">Gerencia</span>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Suite de herramientas internas, sincronización automática entre Trello y Obsidian, bots ejecutivos de Telegram, procesamiento de correos de gestión y AI Agent organizer.
+              </p>
+              <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div class="text-[10px] uppercase font-sans text-stone-400">Módulos:</div>
+                <div class="truncate text-purple-400">• trello-obsidian-sync/ & telegram-bots/</div>
+                <div class="truncate text-purple-400">• email-automation/ & kpi-automation/</div>
+                <div class="truncate text-purple-400">• ai-agent/ (bóveda inteligente)</div>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/tdc-automatizacion-y-gestion.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <span>Copiar Clone</span>
+              </button>
+              <a href="https://github.com/credito-tdc-bcpl/tdc-automatizacion-y-gestion" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
+                <span>Ver en GitHub</span>
+                <span>›</span>
+              </a>
+            </div>
           </div>
+
+          <!-- Repo 4: Certificacion Buro -->
+          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                  <span class="text-xl">🔍</span>
+                  <div>
+                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">certificacion_buro</h4>
+                    <span class="text-[11px] font-mono text-amber-400">credito-tdc-bcpl / Privado</span>
+                  </div>
+                </div>
+                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-amber-500/10 text-amber-400 border-amber-500/30">Pipeline ETL</span>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                ETL de certificación y auditoría de rechazos por consulta a las SIC. Arquitectura Medallion (Bronce, Plata, Oro), desentramado TL y SC, API Banxico para saldos en UDI y carga en Yellowbrick.
+              </p>
+              <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div class="text-[10px] uppercase font-sans text-stone-400">Pipeline:</div>
+                <div class="truncate text-amber-400">• src/main.py, extract.py, transform.py</div>
+                <div class="truncate text-amber-400">• config/buro_diccionario.py</div>
+                <div class="truncate text-amber-400">• codigos_sistemas/ (referencia SQL)</div>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/certificacion_buro.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <span>Copiar Clone</span>
+              </button>
+              <a href="https://github.com/credito-tdc-bcpl/certificacion_buro" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
+                <span>Ver en GitHub</span>
+                <span>›</span>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- Card 2: Las 2 Plantillas Estándar Oficiales (Con selector interactivo) -->
+      <!-- Card 2: Directorio Interactivo por Analista / Responsable -->
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+        <div class="space-y-1">
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Directorio de Responsabilidades</div>
+          <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
+            ¿Qué me toca a mí? (Directorio Interactivo)
+          </h3>
+          <p class="text-sm" style="color: var(--color-mid-gray);">
+            Selecciona tu nombre para ver exactamente qué repositorios debes clonar, en qué carpetas debes trabajar y cuáles son tus focos clave:
+          </p>
+        </div>
+
+        <!-- Filter pills by Team Member -->
+        <div class="flex flex-wrap gap-2 pt-1" id="team-filter-pills">
+          <button onclick="filterTeamMember('all')" id="btn-team-all" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition active-team-pill">
+            👥 Todos
+          </button>
+          <button onclick="filterTeamMember('luis-enrique')" id="btn-team-luis-enrique" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Luis Enrique Arriola
+          </button>
+          <button onclick="filterTeamMember('andrea')" id="btn-team-andrea" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Andrea Placencia
+          </button>
+          <button onclick="filterTeamMember('elizabeth')" id="btn-team-elizabeth" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Elizabeth Gómez
+          </button>
+          <button onclick="filterTeamMember('armando')" id="btn-team-armando" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Armando Morales
+          </button>
+          <button onclick="filterTeamMember('laura')" id="btn-team-laura" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Laura Anaid
+          </button>
+          <button onclick="filterTeamMember('naidelin-juanjose')" id="btn-team-naidelin-juanjose" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Naidelin & Juan José
+          </button>
+          <button onclick="filterTeamMember('sergio')" id="btn-team-sergio" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Sergio Herrera
+          </button>
+          <button onclick="filterTeamMember('luis-ernesto')" id="btn-team-luis-ernesto" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            👤 Luis Ernesto Álvarez
+          </button>
+          <button onclick="filterTeamMember('jorge')" id="btn-team-jorge" class="team-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-team-pill">
+            ⭐ Jorge Adrián Guzmán
+          </button>
+        </div>
+
+        <!-- Team Members Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2" id="team-cards-container">
+          
+          <!-- Card Luis Enrique -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="luis-enrique" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Luis Enrique Arriola</h4>
+                <div class="text-xs text-blue-400 font-medium">Modelos Cuantitativos & Scoring</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-blue-500/10 text-blue-400 border-blue-500/30">Originación + Cartera</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-blue-400">politicas-tdc-originacion-y-modelos:</span></div>
+                <div class="pl-3">• modelos-scoring/pd-m4-lineas-optimas/</div>
+                <div class="pl-3">• politicas-y-canales/disposiciones-efectivo/</div>
+                <div class="pt-1">📁 <span class="text-emerald-400">politicas-tdc-cartera-y-monitoreo:</span></div>
+                <div class="pl-3">• indicadores-y-cosechas/cosechas-originacion/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Modelo PD M4 (AUC 0.7311, -$35 MDP), deciles, curvas Song-Yonho y políticas de cajeros.</div>
+            </div>
+          </div>
+
+          <!-- Card Andrea -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="andrea" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Andrea Placencia</h4>
+                <div class="text-xs text-blue-400 font-medium">Segmentación & Estrategias de Portafolio</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-blue-500/10 text-blue-400 border-blue-500/30">Originación + Cartera</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-blue-400">politicas-tdc-originacion-y-modelos:</span></div>
+                <div class="pl-3">• modelos-scoring/segmentacion-riesgo/</div>
+                <div class="pl-3">• politicas-y-canales/originacion-coppel/</div>
+                <div class="pt-1">📁 <span class="text-emerald-400">politicas-tdc-cartera-y-monitoreo:</span></div>
+                <div class="pl-3">• administracion-de-lineas/incrementos-linea/</div>
+                <div class="pl-3">• auditoria-y-tasas/conciliacion-tasas-mci/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Recalibración bimestral 2.47M cuentas, aumentos CLI (día 11) y conciliación de discrepancia de tasas (3.9k créditos).</div>
+            </div>
+          </div>
+
+          <!-- Card Elizabeth -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="elizabeth" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Elizabeth Gómez</h4>
+                <div class="text-xs text-blue-400 font-medium">Prospectos One Click & Cosechas</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-blue-500/10 text-blue-400 border-blue-500/30">Originación + Cartera</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-blue-400">politicas-tdc-originacion-y-modelos:</span></div>
+                <div class="pl-3">• prospectos-one-click/evaluacion-hipo-autos/</div>
+                <div class="pt-1">📁 <span class="text-emerald-400">politicas-tdc-cartera-y-monitoreo:</span></div>
+                <div class="pl-3">• indicadores-y-cosechas/cosechas-originacion/</div>
+                <div class="pl-3">• auditoria-y-tasas/certificacion-mensual-brm/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Embudo One Click 1,819 clientes prime (Hipotecario/Autos), facturación y mora vintage por cohorte.</div>
+            </div>
+          </div>
+
+          <!-- Card Armando -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="armando" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Armando Morales</h4>
+                <div class="text-xs text-emerald-400 font-medium">Líder Operativo de Cartera & Procesos BAU</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-emerald-500/10 text-emerald-400 border-emerald-500/30">Cartera y Monitoreo</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-emerald-400">politicas-tdc-cartera-y-monitoreo:</span></div>
+                <div class="pl-3">• monitoreo-procesos-bau/ (las 5 rutinas mensuales)</div>
+                <div class="pl-3">• administracion-de-lineas/aplicativo-ptcsf-33/</div>
+                <div class="pl-3">• cancelacion-y-depuracion/depuracion-masiva/</div>
+                <div class="pl-3">• indicadores-y-cosechas/uso-linea-cartera/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Las 5 rutinas mensuales permanentes, aplicativo PTCSF-33 en Control-M, y depuración acelerada de cartera.</div>
+            </div>
+          </div>
+
+          <!-- Card Laura Anaid -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="laura" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Laura Anaid</h4>
+                <div class="text-xs text-emerald-400 font-medium">Operación de Rutinas BAU & Depuración</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-emerald-500/10 text-emerald-400 border-emerald-500/30">Cartera y Monitoreo</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-emerald-400">politicas-tdc-cartera-y-monitoreo:</span></div>
+                <div class="pl-3">• monitoreo-procesos-bau/01-decremento-linea/</div>
+                <div class="pl-3">• monitoreo-procesos-bau/02-pago-minimo-clasica/</div>
+                <div class="pl-3">• monitoreo-procesos-bau/03-cancelacion-cuentas/</div>
+                <div class="pl-3">• cancelacion-y-depuracion/depuracion-masiva/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Relevo operativo de las 5 rutinas mensuales permanentes y depuración de cuentas nunca e inactivas.</div>
+            </div>
+          </div>
+
+          <!-- Card Naidelin y Juan Jose -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="naidelin-juanjose" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Naidelin Coronel & Juan José López</h4>
+                <div class="text-xs text-blue-400 font-medium">Ingeniería de Tramas Buró & Círculo</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-blue-500/10 text-blue-400 border-blue-500/30">Originación y Modelos</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-blue-400">politicas-tdc-originacion-y-modelos:</span></div>
+                <div class="pl-3">• buro-y-tramas-sic/desentrame-cadenas/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Desentrame del Segmento CR y tramas de Círculo de Crédito en Yellowbrick, homologación de variables SICs.</div>
+            </div>
+          </div>
+
+          <!-- Card Sergio Herrera -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="sergio" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Sergio Herrera</h4>
+                <div class="text-xs text-blue-400 font-medium">Especificación de Tramas & Resiliencia</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-blue-500/10 text-blue-400 border-blue-500/30">Originación y Modelos</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-blue-400">politicas-tdc-originacion-y-modelos:</span></div>
+                <div class="pl-3">• buro-y-tramas-sic/def-tramas-consultas/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Definición formal de tramas de consultas SICs, reglas de contingencia y resiliencia ante caídas de proveedores.</div>
+            </div>
+          </div>
+
+          <!-- Card Luis Ernesto -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="luis-ernesto" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Luis Ernesto Álvarez</h4>
+                <div class="text-xs text-blue-400 font-medium">Certificación de Variables & Auditoría</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-blue-500/10 text-blue-400 border-blue-500/30">Originación + Cartera</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-blue-400">politicas-tdc-originacion-y-modelos:</span></div>
+                <div class="pl-3">• certificacion-variables/variables-coppel/</div>
+                <div class="pl-3">• politicas-y-canales/disposiciones-efectivo/</div>
+                <div class="pt-1">📁 <span class="text-emerald-400">politicas-tdc-cartera-y-monitoreo:</span></div>
+                <div class="pl-3">• auditoria-y-tasas/certificacion-mensual-brm/</div>
+              </div>
+              <div><strong>Foco clave:</strong> Validación de 44.5k solicitudes de originación, variables linea_cred y puntualidad, y auditoría mensual BRM.</div>
+            </div>
+          </div>
+
+          <!-- Card Jorge Guzman -->
+          <div class="team-member-card rounded-[20px] p-5 border space-y-3 transition" data-member="jorge" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">Jorge Adrián Guzmán Inzunza</h4>
+                <div class="text-xs text-purple-400 font-medium">Gerente de Políticas de Crédito TDC</div>
+              </div>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-mono bg-purple-500/10 text-purple-400 border-purple-500/30">Líder & Automatización</span>
+            </div>
+            <div class="text-xs space-y-1.5" style="color: var(--color-mid-gray);">
+              <div><strong>Carpetas asignadas:</strong></div>
+              <div class="font-mono text-[11px] p-2 rounded-[10px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <div>📁 <span class="text-purple-400">tdc-automatizacion-y-gestion:</span></div>
+                <div class="pl-3">• trello-obsidian-sync/ & telegram-bots/</div>
+                <div class="pl-3">• email-automation/ & kpi-automation/ & ai-agent/</div>
+                <div class="pt-1">📁 <span class="text-blue-400">Gobernanza General:</span></div>
+                <div class="pl-3">• Supervisión y aprobación de Pull Requests en todos los monorepos.</div>
+              </div>
+              <div><strong>Foco clave:</strong> Gobernanza institucional de políticas, arquitectura de repositorios, bots de reporte ejecutivo y vault organizer.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Card 3: Estándar Tecnológico (Python + Polars + Yellowbrick) -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div class="space-y-1">
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Estándar de Documentación y Auditoría</div>
+            <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Estándar Técnico de Código</div>
             <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-              Las 2 Plantillas Oficiales de Código
+              Conexión Yellowbrick y Métricas Compartidas
             </h3>
             <p class="text-sm" style="color: var(--color-mid-gray);">
-              Todo script o consulta que se suba a la organización debe utilizar una de estas dos plantillas base.
+              Cada monorepo incluye un paquete interno <code class="font-mono text-xs text-blue-400">shared/</code> para no reescribir conexiones ni métricas de mora.
             </p>
           </div>
 
-          <!-- Selector de Lenguaje de Plantilla -->
+          <!-- Selector Python vs SQL -->
           <div class="flex space-x-2 p-1 rounded-full border self-start sm:self-auto" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
             <button onclick="switchTemplateView('py')" id="btn-tpl-py" class="px-4 py-1 rounded-full text-xs font-medium transition" style="background-color: var(--color-btn-active-bg); color: var(--color-btn-active-text);">
-              Python (.py)
+              Python + Polars (.py)
             </button>
             <button onclick="switchTemplateView('sql')" id="btn-tpl-sql" class="px-4 py-1 rounded-full text-xs font-medium transition opacity-70 hover:opacity-100" style="color: var(--color-mid-gray);">
-              SQL (.sql)
+              SQL Yellowbrick (.sql)
             </button>
           </div>
         </div>
@@ -971,81 +1303,78 @@
         <!-- Vista Plantilla Python -->
         <div id="view-tpl-py" class="space-y-4">
           <div class="p-4 rounded-[20px] border text-xs space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="font-semibold text-sm" style="color: var(--color-primary-ink);">Componentes Obligatorios en Python:</div>
+            <div class="font-semibold text-sm" style="color: var(--color-primary-ink);">Reglas Oficiales del Stack Python:</div>
             <ul class="list-disc pl-5 space-y-1 text-xs" style="color: var(--color-mid-gray);">
-              <li><strong>Cabecera Docstring:</strong> Autor, fecha, ticket/Jira, objetivo de negocio y fuentes de datos.</li>
-              <li><strong>Tipado estricto (Type Hinting):</strong> Utiliza <code class="font-mono text-[11px]">Dict</code>, <code class="font-mono text-[11px]">Tuple</code>, <code class="font-mono text-[11px]">float</code> para parámetros y retornos.</li>
-              <li><strong>Bloque Main con Datos Sintéticos:</strong> Permite probar la lógica con <kbd>F5</kbd> sin necesidad de leer archivos locales de clientes.</li>
+              <li><strong>Conexión centralizada:</strong> Usa <code class="font-mono text-[11px] text-blue-400">from shared.db import query_to_polars</code> en lugar de quemar conexiones con credenciales.</li>
+              <li><strong>Métricas oficiales:</strong> En Cartera y Monitoreo, usa <code class="font-mono text-[11px] text-emerald-400">from shared.metricas import calcular_mora_90_plus</code>.</li>
+              <li><strong>Entorno virtual obligatorio:</strong> Crea siempre tu <code class="font-mono text-[11px]">.venv</code> e instala con <code class="font-mono text-[11px]">pip install -r requirements.txt</code>.</li>
             </ul>
           </div>
 
           <div class="rounded-[20px] border overflow-hidden" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
             <div class="px-4 py-2.5 border-b flex items-center justify-between" style="border-color: var(--color-hairline);">
-              <span class="font-mono text-xs font-semibold" style="color: var(--color-electric-blue);">plantillas/plantilla_docstring.py</span>
+              <span class="font-mono text-xs font-semibold" style="color: var(--color-electric-blue);">modelo_script_equipo_tdc.py</span>
               <button onclick="copyOfficialPythonTemplate()" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar Plantilla Python (.py)
+                Copiar Código Python (.py)
               </button>
             </div>
             <pre class="p-4 text-xs font-mono overflow-x-auto leading-relaxed max-h-[380px]" style="color: var(--color-primary-ink);"><code>"""
 ================================================================================
 INSTITUCIÓN FINANCIERA - DIRECCIÓN DE RIESGO DE CRÉDITO TDC
 ================================================================================
-ARCHIVO:            &lt;nombre_del_script&gt;.py
-DOMINIO:            [Originación / Líneas de Crédito / Cancelaciones / Monitoreo]
-AUTOR:              [Nombre y Apellidos del Analista / Científico de Datos]
-CORREO:             [nombre.apellido@bancoppel.com]
-FECHA CREACIÓN:     2026-10-27
-TICKET / JIRA:      POL-TDC-[1234]
+ARCHIVO:            calculo_score_y_mora_cartera.py
+DOMINIO:            [Originación / Cartera / Monitoreo]
+AUTOR:              [Tu Nombre Completo / Analista TDC]
+CORREO:             [tu.nombre@bancoppel.com]
+FECHA CREACIÓN:     2026-10-28
+TICKET / JIRA:      POL-TDC-2026-Q4
 
 OBJETIVO DE NEGOCIO:
-    Evaluación de filtros duros de Buró y asignación de Límite de Crédito.
-
-REGLAS CUANTITATIVAS / POLÍTICAS APLICADAS:
-    1. Score Buró mínimo requerido: >= 655 puntos (BC Score).
-    2. Nivel de endeudamiento (DTI) máximo: <= 40% del ingreso comprobable.
-    3. MOP histórico en tarjeta de crédito: 00 (sin atrasos en los últimos 12 meses).
-
-TABLAS Y FUENTES DE DATOS:
-    - DWH_RIESGO.SOLICITUDES_DIGITALES_TDC
-    - DWH_RIESGO.CONSULTAS_BURO_CREDITO
-
-SALIDAS ESPERADAS:
-    - Dictamen de crédito: 'APROBADO', 'RECHAZADO', 'REVISION_MANUAL'
-    - Límite de Crédito Asignado ($ MXN)
+    Extracción optimizada desde Yellowbrick y cálculo de banderas de morosidad
+    utilizando Polars y el módulo corporativo shared.
 ================================================================================
 """
 
 import sys
-import logging
-from typing import Dict, Any, Tuple
+import polars as pl
+from shared.db import query_to_polars
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("PoliticasTDC")
+# Parámetros de Política Institucional
+SCORE_CORTE_MINIMO: int = 655
+DIAS_MORA_CRITICA: int = 90
 
-SCORE_MINIMO_ADMISION: int = 655
-DTI_MAXIMO_PERMITIDO: float = 0.40
 
-def evaluar_politica(solicitud: Dict[str, Any]) -> Tuple[str, str, float]:
-    """Evalúa la solicitud y retorna dictamen, motivo y límite aprobado."""
-    score = int(solicitud['bc_score'])
-    ingreso = float(solicitud['ingreso_mensual'])
-    pago_deuda = float(solicitud['pago_deuda_mensual'])
+def extraer_datos_segmento() -> pl.DataFrame:
+    """Extrae cuentas activas desde Yellowbrick utilizando query_to_polars."""
+    query = """
+        SELECT 
+            numero_cuenta_hash,
+            fecha_apertura,
+            bc_score,
+            dias_atraso,
+            saldo_capital,
+            limite_credito
+        FROM dwh_riesgo.cartera_activa_tdc
+        WHERE fecha_corte = CURRENT_DATE()
+        LIMIT 10000;
+    """
+    return query_to_polars(query)
 
-    if score < SCORE_MINIMO_ADMISION:
-        return 'RECHAZADO', f'Score insuficiente ({score} < {SCORE_MINIMO_ADMISION})', 0.0
 
-    dti = pago_deuda / ingreso if ingreso > 0 else 1.0
-    if dti > DTI_MAXIMO_PERMITIDO:
-        return 'RECHAZADO', f'Endeudamiento excesivo ({dti:.1%} > {DTI_MAXIMO_PERMITIDO:.1%})', 0.0
+def calcular_indicadores_riesgo(df: pl.DataFrame) -> pl.DataFrame:
+    """Calcula banderas de riesgo y porcentaje de utilización de línea."""
+    return df.with_columns([
+        (pl.col("bc_score") >= SCORE_CORTE_MINIMO).alias("flag_score_aprobado"),
+        (pl.col("dias_atraso") >= DIAS_MORA_CRITICA).alias("flag_mora_90_plus"),
+        (pl.col("saldo_capital") / pl.col("limite_credito") * 100).round(2).alias("pct_utilizacion")
+    ])
 
-    limite = round(min((ingreso - pago_deuda) * 1.5, 50000.0), -2)
-    return 'APROBADO', 'Cumple con scorecuts y DTI dentro de política', limite
 
 if __name__ == "__main__":
-    logger.info("=== Prueba sintética en memoria ===")
-    ejemplo = {"bc_score": 690, "ingreso_mensual": 30000, "pago_deuda_mensual": 6000}
-    dictamen, motivo, limite = evaluar_politica(ejemplo)
-    logger.info(f"Resultado: {dictamen} | {motivo} | Línea: ${limite:,.2f}")
+    print("=== Corriendo análisis con Polars y Yellowbrick ===")
+    df_raw = extraer_datos_segmento()
+    df_resultado = calcular_indicadores_riesgo(df_raw)
+    print(df_resultado.head(5))
 </code></pre>
           </div>
         </div>
@@ -1053,331 +1382,131 @@ if __name__ == "__main__":
         <!-- Vista Plantilla SQL -->
         <div id="view-tpl-sql" class="hidden space-y-4">
           <div class="p-4 rounded-[20px] border text-xs space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="font-semibold text-sm" style="color: var(--color-primary-ink);">Componentes Obligatorios en SQL:</div>
+            <div class="font-semibold text-sm" style="color: var(--color-primary-ink);">Reglas Oficiales del Stack SQL (Yellowbrick):</div>
             <ul class="list-disc pl-5 space-y-1 text-xs" style="color: var(--color-mid-gray);">
-              <li><strong>Cabecera de Auditoría:</strong> Archivo, autor, periodicidad, tablas fuente y tabla/vista destino.</li>
-              <li><strong>Particionado Obligatorio:</strong> Filtrar siempre por <code class="font-mono text-[11px]">FECHA_CORTE = CURRENT_DATE()</code> para optimizar cómputo en Snowflake/Oracle.</li>
-              <li><strong>Estructura con CTEs (WITH):</strong> Evita subconsultas anidadas y prohíbe el uso de <code class="font-mono text-[11px]">SELECT *</code>.</li>
+              <li><strong>Estructura con CTEs (WITH):</strong> Modulariza pasos con expresiones de tabla comunes.</li>
+              <li><strong>Filtrar siempre por partición:</strong> Incluye <code class="font-mono text-[11px]">fecha_corte = CURRENT_DATE()</code> para no saturar memoria.</li>
+              <li><strong>Prohibido SELECT *:</strong> Nombra explícitamente las columnas necesarias para auditoría.</li>
             </ul>
           </div>
 
           <div class="rounded-[20px] border overflow-hidden" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
             <div class="px-4 py-2.5 border-b flex items-center justify-between" style="border-color: var(--color-hairline);">
-              <span class="font-mono text-xs font-semibold" style="color: var(--color-electric-blue);">plantillas/plantilla_cabecera.sql</span>
+              <span class="font-mono text-xs font-semibold" style="color: var(--color-electric-blue);">consulta_yellowbrick_oficial.sql</span>
               <button onclick="copyOfficialSQLTemplate()" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar Plantilla SQL (.sql)
+                Copiar Consulta SQL (.sql)
               </button>
             </div>
             <pre class="p-4 text-xs font-mono overflow-x-auto leading-relaxed max-h-[380px]" style="color: var(--color-primary-ink);"><code>/*
 ================================================================================
 INSTITUCIÓN FINANCIERA - DIRECCIÓN DE RIESGO DE CRÉDITO TDC
 ================================================================================
-ARCHIVO:            &lt;nombre_de_la_consulta&gt;.sql
-DOMINIO:            [Originación / Líneas de Crédito / Cancelaciones / Monitoreo]
-AUTOR:              [Nombre y Apellidos del Analista / Científico de Datos]
-CORREO:             [nombre.apellido@bancoppel.com]
-FECHA CREACIÓN:     2026-10-27
-MOTOR / DIALECTO:   Snowflake SQL / Oracle ANSI
-PERIODICIDAD:       Mensual (Día hábil 3 de cada mes)
-TICKET / JIRA:      POL-TDC-[1234]
-
-OBJETIVO DE NEGOCIO:
-    Extracción mensual de clientes elegibles para Campaña de Líneas de Crédito (CLI).
-
-REGLAS DE FILTRADO Y ELEGIBILIDAD:
-    1. Antigüedad de la cuenta >= 6 meses cumplidos.
-    2. Sin morosidad en los últimos 6 meses (MOP = '00').
-    3. Utilización promedio en los últimos 3 meses entre 50% y 85%.
-
-TABLAS FUENTE (DATA WAREHOUSE):
-    - DWH_RIESGO.MAESTRO_CUENTAS_TDC
-    - DWH_RIESGO.FACTURACION_MENSUAL_TDC
-
-TABLA / VISTA DESTINO:
-    - BI_RIESGO.CAMPANA_CLI_CANDIDATOS_OCT2026
+ARCHIVO:            extraccion_cuentas_candidatas_cli.sql
+MOTOR:              Yellowbrick SQL (PostgreSQL Dialect)
+AUTOR:              [Tu Nombre Completo / Analista TDC]
+PERIODICIDAD:       Mensual (Día 11 de cada mes)
 ================================================================================
 */
 
-WITH cuentas_elegibles AS (
+WITH base_cuentas AS (
     SELECT 
         numero_cuenta_hash,
         fecha_apertura,
-        limite_credito_actual,
-        DATEDIFF(month, fecha_apertura, CURRENT_DATE()) AS antiguedad_meses
-    FROM DWH_RIESGO.MAESTRO_CUENTAS_TDC
-    WHERE estatus_cuenta = 'ACTIVA'
-      AND fecha_apertura <= DATEADD(month, -6, CURRENT_DATE())
+        limite_credito,
+        saldo_actual,
+        bc_score,
+        dias_atraso
+    FROM dwh_riesgo.cartera_activa_tdc
+    WHERE fecha_corte = CURRENT_DATE()
+      AND dias_atraso = 0
+      AND bc_score >= 655
 ),
 
-metricas_comportamiento AS (
+metricas_utilizacion AS (
     SELECT 
         numero_cuenta_hash,
-        AVG(saldo_promedio / NULLIF(limite_credito_promedio, 0)) AS utilizacion_promedio_3m,
-        MAX(mop_cierre) AS max_mop_ultimos_6m
-    FROM DWH_RIESGO.FACTURACION_MENSUAL_TDC
-    WHERE fecha_corte >= DATEADD(month, -6, CURRENT_DATE())
-    GROUP BY numero_cuenta_hash
+        ROUND((saldo_actual / NULLIF(limite_credito, 0)) * 100, 2) AS pct_utilizacion
+    FROM base_cuentas
 )
 
 SELECT 
-    ce.numero_cuenta_hash,
-    ce.antiguedad_meses,
-    ce.limite_credito_actual,
-    ROUND(mc.utilizacion_promedio_3m * 100, 2) AS pct_utilizacion_promedio,
-    ROUND(ce.limite_credito_actual * 1.30, -2) AS nuevo_limite_propuesto,
-    CURRENT_DATE()                             AS fecha_extraccion
-FROM cuentas_elegibles ce
-INNER JOIN metricas_comportamiento mc
-    ON ce.numero_cuenta_hash = mc.numero_cuenta_hash
-WHERE mc.max_mop_ultimos_6m = '00'
-  AND mc.utilizacion_promedio_3m BETWEEN 0.50 AND 0.85;
+    bc.numero_cuenta_hash,
+    bc.bc_score,
+    bc.limite_credito,
+    mu.pct_utilizacion,
+    ROUND(bc.limite_credito * 1.30, -2) AS nuevo_limite_propuesto
+FROM base_cuentas bc
+INNER JOIN metricas_utilizacion mu
+    ON bc.numero_cuenta_hash = mu.numero_cuenta_hash
+WHERE mu.pct_utilizacion BETWEEN 50.0 AND 85.0
+ORDER BY nuevo_limite_propuesto DESC;
 </code></pre>
           </div>
         </div>
       </div>
 
-      <!-- Card 3: 4 Casos Prácticos de la Vida Real por Rol -->
+      <!-- Card 4: Generador Dinámico de Comandos Multirrepositorio -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
-          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Casos Reales de Producción</div>
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Herramienta Interactiva Multirrepositorio</div>
           <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            4 Casos de Uso: Cómo opera cada rol en el nuevo repositorio
+            Generador de Comandos para tu Consola
           </h3>
           <p class="text-sm" style="color: var(--color-mid-gray);">
-            Selecciona tu dominio para ver el flujo exacto de archivos y los comandos de consola necesarios:
+            Selecciona el repositorio donde trabajas y el submódulo de tu proyecto para generar la secuencia completa de terminal:
           </p>
         </div>
 
-        <!-- Role Selector Pills -->
-        <div class="flex flex-wrap gap-2 pt-1" id="case-pills">
-          <button onclick="showUseCase('case-originacion')" id="btn-case-originacion" class="case-btn px-4 py-2 rounded-full text-xs font-medium transition active-case-pill">
-            1. Originación (Admisión & Scorecuts)
-          </button>
-          <button onclick="showUseCase('case-lineas')" id="btn-case-lineas" class="case-btn px-4 py-2 rounded-full text-xs font-medium transition inactive-case-pill">
-            2. Líneas de Crédito (CLI & CLD)
-          </button>
-          <button onclick="showUseCase('case-cancelaciones')" id="btn-case-cancelaciones" class="case-btn px-4 py-2 rounded-full text-xs font-medium transition inactive-case-pill">
-            3. Cancelaciones & Bloqueos
-          </button>
-          <button onclick="showUseCase('case-monitoreo')" id="btn-case-monitoreo" class="case-btn px-4 py-2 rounded-full text-xs font-medium transition inactive-case-pill">
-            4. Monitoreo & Roll Rates
-          </button>
-        </div>
-
-        <!-- Caso 1: Originacion Content -->
-        <div id="content-case-originacion" class="case-content space-y-4">
-          <div class="p-5 rounded-[20px] border space-y-3" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg">🎯</span>
-              <h4 class="font-semibold text-base" style="color: var(--color-primary-ink);">Caso 1: Científico de Datos en Originación</h4>
-            </div>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Situación de Negocio:</strong> El comité de riesgo acordó incrementar el Scorecut mínimo de Buró de Crédito a <strong>655 puntos</strong> y fijar un límite máximo de DTI del <strong>40%</strong> para reducir morosidad temprana en el segmento digital.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Carpeta destino:</div>
-                <div class="font-bold text-sky-400">originacion/</div>
-              </div>
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Archivo propuesto:</div>
-                <div class="font-bold text-sky-400">reglas_score_y_filtros_admision.py</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-mid-gray);">Comandos exactos en tu terminal:</div>
-            <div class="p-3 rounded-[16px] font-mono text-xs border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div class="text-stone-400"># 1. Asegúrate de estar en el repositorio oficial y actualizado</div>
-              <div>cd C:\Users\tu.usuario\Documents\GitHub\politicas-tdc-originacion-y-administracion</div>
-              <div>git pull</div>
-              <div class="text-stone-400 pt-1"># 2. Guarda tu script dentro de originacion/ usando la plantilla</div>
-              <div class="text-stone-400"># 3. Comprueba, añade y confirma:</div>
-              <div>git status</div>
-              <div>git add originacion/reglas_score_y_filtros_admision.py</div>
-              <div>git commit -m "feat(originacion): implementa scorecut 655 y limite DTI 40%"</div>
-              <div>git push origin main</div>
-            </div>
-            <button onclick="copyCmd('cd C:\\Users\\tu.usuario\\Documents\\GitHub\\politicas-tdc-originacion-y-administracion\ngit pull\ngit status\ngit add originacion/reglas_score_y_filtros_admision.py\ngit commit -m \"feat(originacion): implementa scorecut 655 y limite DTI 40%\"\ngit push origin main')" class="text-xs px-4 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-              Copiar Comandos de Consola
-            </button>
-          </div>
-        </div>
-
-        <!-- Caso 2: Lineas de Credito Content -->
-        <div id="content-case-lineas" class="case-content hidden space-y-4">
-          <div class="p-5 rounded-[20px] border space-y-3" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg">📈</span>
-              <h4 class="font-semibold text-base" style="color: var(--color-primary-ink);">Caso 2: Estratega de Portafolio en Líneas de Crédito</h4>
-            </div>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Situación de Negocio:</strong> Se corre la campaña mensual de Aumento Proactivo de Línea (CLI). Necesitas subir la consulta SQL que selecciona cuentas con al menos 6 meses de maduración, utilización entre 50% y 85%, y asigna un incremento de línea del +30%.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Carpeta destino:</div>
-                <div class="font-bold text-sky-400">administracion-cartera/lineas-credito/</div>
-              </div>
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Archivo propuesto:</div>
-                <div class="font-bold text-sky-400">query_elegibilidad_campana_cli.sql</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-mid-gray);">Comandos exactos en tu terminal:</div>
-            <div class="p-3 rounded-[16px] font-mono text-xs border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div>cd C:\Users\tu.usuario\Documents\GitHub\politicas-tdc-originacion-y-administracion</div>
-              <div>git pull</div>
-              <div>git add administracion-cartera/lineas-credito/query_elegibilidad_campana_cli.sql</div>
-              <div>git commit -m "feat(lineas): consulta mensual de candidatos a incremento CLI"</div>
-              <div>git push origin main</div>
-            </div>
-            <button onclick="copyCmd('cd C:\\Users\\tu.usuario\\Documents\\GitHub\\politicas-tdc-originacion-y-administracion\ngit pull\ngit add administracion-cartera/lineas-credito/query_elegibilidad_campana_cli.sql\ngit commit -m \"feat(lineas): consulta mensual de candidatos a incremento CLI\"\ngit push origin main')" class="text-xs px-4 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-              Copiar Comandos de Consola
-            </button>
-          </div>
-        </div>
-
-        <!-- Caso 3: Cancelaciones Content -->
-        <div id="content-case-cancelaciones" class="case-content hidden space-y-4">
-          <div class="p-5 rounded-[20px] border space-y-3" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg">🔒</span>
-              <h4 class="font-semibold text-base" style="color: var(--color-primary-ink);">Caso 3: Analista de Riesgo en Cancelaciones y Bloqueos</h4>
-            </div>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Situación de Negocio:</strong> Implementación de la política regulatoria de depuración de cartera: cancelación automática de contratos de TDC que cumplan 12 meses consecutivos sin compras facturadas y mantengan saldo deudor en cero pesos.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Carpeta destino:</div>
-                <div class="font-bold text-sky-400">administracion-cartera/cancelaciones-bloqueos/</div>
-              </div>
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Archivo propuesto:</div>
-                <div class="font-bold text-sky-400">reglas_cancelacion_inactividad.py</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-mid-gray);">Comandos exactos en tu terminal:</div>
-            <div class="p-3 rounded-[16px] font-mono text-xs border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div>cd C:\Users\tu.usuario\Documents\GitHub\politicas-tdc-originacion-y-administracion</div>
-              <div>git pull</div>
-              <div>git add administracion-cartera/cancelaciones-bloqueos/reglas_cancelacion_inactividad.py</div>
-              <div>git commit -m "feat(cancelaciones): reglas para depuracion trimestral por inactividad 12m"</div>
-              <div>git push origin main</div>
-            </div>
-            <button onclick="copyCmd('cd C:\\Users\\tu.usuario\\Documents\\GitHub\\politicas-tdc-originacion-y-administracion\ngit pull\ngit add administracion-cartera/cancelaciones-bloqueos/reglas_cancelacion_inactividad.py\ngit commit -m \"feat(cancelaciones): reglas para depuracion trimestral por inactividad 12m\"\ngit push origin main')" class="text-xs px-4 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-              Copiar Comandos de Consola
-            </button>
-          </div>
-        </div>
-
-        <!-- Caso 4: Monitoreo Content -->
-        <div id="content-case-monitoreo" class="case-content hidden space-y-4">
-          <div class="p-5 rounded-[20px] border space-y-3" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg">📊</span>
-              <h4 class="font-semibold text-base" style="color: var(--color-primary-ink);">Caso 4: Analista Cuantitativo en Monitoreo y Cosechas</h4>
-            </div>
-            <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Situación de Negocio:</strong> Se crea la matriz mensual de transición de buckets (Roll Rates de B0 a B4) para modelar la probabilidad de incumplimiento y calcular las provisiones crediticias bajo normativa IFRS 9 / CNBV al cierre de mes.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Carpeta destino:</div>
-                <div class="font-bold text-sky-400">monitoreo-indicadores/</div>
-              </div>
-              <div class="p-3 rounded-[12px] border font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Archivo propuesto:</div>
-                <div class="font-bold text-sky-400">matriz_roll_rates_mensual.sql</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-mid-gray);">Comandos exactos en tu terminal:</div>
-            <div class="p-3 rounded-[16px] font-mono text-xs border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div>cd C:\Users\tu.usuario\Documents\GitHub\politicas-tdc-originacion-y-administracion</div>
-              <div>git pull</div>
-              <div>git add monitoreo-indicadores/matriz_roll_rates_mensual.sql</div>
-              <div>git commit -m "feat(monitoreo): matriz mensual de transicion de mora para provisiones"</div>
-              <div>git push origin main</div>
-            </div>
-            <button onclick="copyCmd('cd C:\\Users\\tu.usuario\\Documents\\GitHub\\politicas-tdc-originacion-y-administracion\ngit pull\ngit add monitoreo-indicadores/matriz_roll_rates_mensual.sql\ngit commit -m \"feat(monitoreo): matriz mensual de transicion de mora para provisiones\"\ngit push origin main')" class="text-xs px-4 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-              Copiar Comandos de Consola
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Card 4: Generador Interactivo de Comandos para el Nuevo Repositorio -->
-      <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-        <div class="space-y-1">
-          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Herramienta Interactiva</div>
-          <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Generador de Comandos para tu Terminal
-          </h3>
-          <p class="text-sm" style="color: var(--color-mid-gray);">
-            Selecciona tu carpeta, escribe el nombre de tu archivo y genera los comandos listos para copiar y pegar:
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
           <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">1. Carpeta de tu dominio:</label>
-            <select id="gen-folder" onchange="updateCommandGen()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <option value="originacion">originacion/</option>
-              <option value="administracion-cartera/lineas-credito">administracion-cartera/lineas-credito/</option>
-              <option value="administracion-cartera/cancelaciones-bloqueos">administracion-cartera/cancelaciones-bloqueos/</option>
-              <option value="monitoreo-indicadores">monitoreo-indicadores/</option>
-              <option value="plantillas">plantillas/</option>
+            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">1. Repositorio Oficial:</label>
+            <select id="gen-repo-select" onchange="onRepoChanged()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <option value="politicas-tdc-originacion-y-modelos">🎯 politicas-tdc-originacion-y-modelos</option>
+              <option value="politicas-tdc-cartera-y-monitoreo">📊 politicas-tdc-cartera-y-monitoreo</option>
+              <option value="tdc-automatizacion-y-gestion">🤖 tdc-automatizacion-y-gestion</option>
+              <option value="certificacion_buro">🔍 certificacion_buro</option>
             </select>
           </div>
 
           <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">2. Nombre del archivo (.py o .sql):</label>
-            <input type="text" id="gen-filename" oninput="updateCommandGen()" placeholder="mi_nuevo_script.py" value="reglas_score_admision.py" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">2. Submódulo de tu proyecto:</label>
+            <select id="gen-module-select" onchange="updateCommandGen()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <!-- Dinámicamente poblado vía JS -->
+            </select>
           </div>
 
           <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">3. Breve motivo del cambio:</label>
-            <input type="text" id="gen-msg" oninput="updateCommandGen()" placeholder="actualiza scorecut a 655" value="actualiza scorecut a 655 y DTI maximo 40%" class="w-full text-xs p-2.5 rounded-[12px] border outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">3. Nombre de tu archivo:</label>
+            <input type="text" id="gen-filename" oninput="updateCommandGen()" placeholder="motor_reglas.py" value="analisis_pd_m4.py" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">4. Motivo del commit:</label>
+            <input type="text" id="gen-msg" oninput="updateCommandGen()" placeholder="actualiza deciles de corte" value="actualiza curva de corte decil 3" class="w-full text-xs p-2.5 rounded-[12px] border outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           </div>
         </div>
 
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Comandos generados en tiempo real:</span>
+            <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia de terminal generada en tiempo real:</span>
             <button onclick="copyGeneratedCommands()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
               Copiar Todo al Portapapeles
             </button>
           </div>
-          <pre id="gen-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">cd C:\Users\tu.usuario\Documents\GitHub\politicas-tdc-originacion-y-administracion
-git pull
-git status
-git add originacion/reglas_score_admision.py
-git commit -m "feat(originacion): actualiza scorecut a 655 y DTI maximo 40%"
-git push origin main</pre>
+          <pre id="gen-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);"><!-- JS Output --></pre>
         </div>
       </div>
 
-      <!-- Card 5: Los 4 Mandamientos del Repositorio TDC (Gobernanza) -->
+      <!-- Card 5: Los 4 Mandamientos del Trabajo en Monorepos -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
           <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Gobernanza Institucional</div>
           <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Los 4 Mandamientos de Convivencia y Seguridad
+            Los 4 Mandamientos del Trabajo en Monorepos TDC
           </h3>
           <p class="text-sm" style="color: var(--color-mid-gray);">
-            Reglas de cumplimiento estricto para garantizar la continuidad y auditoría de la Dirección de Riesgo:
+            Reglas esenciales para garantizar la armonía y continuidad operativa entre 8 científicos de datos:
           </p>
         </div>
 
@@ -1385,41 +1514,41 @@ git push origin main</pre>
           
           <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="text-red-500 font-bold text-sm">1.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Prohibido subir Datos Personales (PII)</h4>
+              <span class="text-emerald-500 font-bold text-sm">1.</span>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Aislamiento por Submódulo = Cero Conflictos</h4>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Por regulación de la CNBV y la Ley de Datos Personales, <strong>jamás</strong> agregues archivos <code class="font-mono text-[11px]">.csv</code>, <code class="font-mono text-[11px]">.xlsx</code>, <code class="font-mono text-[11px]">.parquet</code> ni credenciales en <code class="font-mono text-[11px]">.env</code>. Todo dato debe residir y consultarse dentro del Data Warehouse seguro.
+              Cada científico de datos trabaja dentro de su carpeta asignada. Si Luis Enrique edita <code class="font-mono text-[11px]">pd-m4-lineas-optimas/</code> y Andrea trabaja en <code class="font-mono text-[11px]">segmentacion-riesgo/</code>, Git fusiona ambos trabajos de forma automática sin pedir resolución de conflictos.
             </p>
           </div>
 
           <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
               <span class="text-blue-500 font-bold text-sm">2.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">El Hábito Sagrado del "git pull" Diario</h4>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">El Hábito Sagrado del "git pull" Matutino</h4>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Todas las mañanas al abrir tu Visual Studio Code, el primer comando obligatorio antes de editar cualquier archivo siempre es <code class="font-mono text-[11px]">git pull</code>. Esto sincroniza en 2 segundos los cambios que tus compañeros subieron el día anterior.
+              En un monorepo activo, tus compañeros suben avances a diario. Todas las mañanas al abrir tu Visual Studio Code, el primer comando obligatorio antes de escribir una sola línea siempre es <code class="font-mono text-[11px]">git pull</code>.
             </p>
           </div>
 
           <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="text-green-500 font-bold text-sm">3.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Independencia de Carpetas = Cero Conflictos</h4>
+              <span class="text-amber-500 font-bold text-sm">3.</span>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Gobernanza del Paquete "shared/"</h4>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Trabaja únicamente en la carpeta de tu dominio. Si el analista de límites trabaja en <code class="font-mono text-[11px]">lineas-credito/</code> y el de admisión en <code class="font-mono text-[11px]">originacion/</code>, Git fusiona ambos trabajos automáticamente sin pedir resolución de conflictos.
+              Los archivos <code class="font-mono text-[11px]">shared/db.py</code> y <code class="font-mono text-[11px]">shared/metricas.py</code> son de uso común para todo el equipo. <strong>No modifiques su código</strong> sin previa coordinación y autorización de la Gerencia de Políticas TDC.
             </p>
           </div>
 
           <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="text-amber-500 font-bold text-sm">4.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Mensajes de Commit Claros y Semánticos</h4>
+              <span class="text-red-500 font-bold text-sm">4.</span>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Blindaje de PII y Credenciales (.env)</h4>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Evita mensajes ambiguos como <em>"cambios"</em> o <em>"actualizacion"</em>. Usa la convención profesional: <code class="font-mono text-[11px]">feat(lineas): ...</code> para nuevas reglas, <code class="font-mono text-[11px]">fix(originacion): ...</code> para correcciones, y <code class="font-mono text-[11px]">docs(readme): ...</code> para documentación.
+              Toda consulta a Yellowbrick se hace en código. <strong>Jamás subas extractos .csv, .xlsx ni contraseñas en .env</strong>. El <code class="font-mono text-[11px]">.gitignore</code> del repositorio ya los bloquea, pero es responsabilidad de cada analista cuidar los datos de los clientes.
             </p>
           </div>
 
@@ -1457,6 +1586,7 @@ git push origin main</pre>
         document.getElementById('theme-icon').textContent = '🌙';
       }
       updateActiveTabPillStyles();
+      filterTeamMember(currentFilteredMember);
     }
 
     function toggleTheme() {
@@ -1464,7 +1594,7 @@ git push origin main</pre>
       localStorage.setItem('theme_preference', isLight ? 'light' : 'dark');
       document.getElementById('theme-icon').textContent = isLight ? '☀️' : '🌙';
       updateActiveTabPillStyles();
-      updateCasePillStyles();
+      filterTeamMember(currentFilteredMember);
       switchTemplateView(currentTemplateLang);
       showToast(isLight ? 'Modo Claro activado' : 'Modo Oscuro activado');
     }
@@ -1557,22 +1687,6 @@ git push origin main</pre>
       showToast('Lista de verificación reiniciada');
     }
 
-    // Restore on load
-    window.addEventListener('DOMContentLoaded', () => {
-      initTheme();
-      for (let i = 0; i < TOTAL_TASKS; i++) {
-        const id = `check-step-${i}`;
-        const el = document.getElementById(id);
-        if (el && localStorage.getItem(id) === 'true') {
-          el.checked = true;
-        }
-      }
-      updateProgressUI();
-      switchTemplateView('py');
-      updateCasePillStyles();
-      updateCommandGen();
-    });
-
     // Copy Documentation Templates
     function copyHeaderSQL() {
       const sql = `/*\n============================================================\nINSTITUCIÓN FINANCIERA - POLÍTICAS DE CRÉDITO TDC\n============================================================\nARCHIVO:        calculo_roll_rate.sql\nAUTOR:          [Tu Nombre Completo / Analista TDC]\nFECHA CREACIÓN: 2026-10-27\nOBJETIVO:       Cálculo mensual de matrices de transición\n                (Roll Rates) de buckets de morosidad.\nTABLAS FUENTE:  DWH_RIESGO.CARTERA_MENSUAL_TDC\nTABLA DESTINO:  BI_RIESGO.MATRIZ_ROLL_RATES_TDC\nPERIODICIDAD:   Mensual (Cierre de mes)\n============================================================\n*/`;
@@ -1591,10 +1705,10 @@ git push origin main</pre>
     }
 
     // =========================================================================
-    // NUEVO REPOSITORIO & PLANTILLAS LOGIC
+    // ECOSISTEMA MULTIRREPOSITORIO & DIRECTISMO LOGIC
     // =========================================================================
     let currentTemplateLang = 'py';
-    let currentCase = 'case-originacion';
+    let currentFilteredMember = 'all';
 
     function switchTemplateView(lang) {
       currentTemplateLang = lang;
@@ -1631,54 +1745,145 @@ git push origin main</pre>
       }
     }
 
-    function showUseCase(caseId) {
-      currentCase = caseId;
-      document.querySelectorAll('.case-content').forEach(el => el.classList.add('hidden'));
-      const active = document.getElementById(`content-${caseId}`);
-      if (active) active.classList.remove('hidden');
-      updateCasePillStyles();
-    }
-
-    function updateCasePillStyles() {
+    function filterTeamMember(memberId) {
+      currentFilteredMember = memberId;
       const isLight = document.documentElement.classList.contains('light');
       const activeBg = isLight ? '#1d1d1f' : '#f5f5f7';
       const activeText = isLight ? '#ffffff' : '#000000';
       const inactiveColor = isLight ? '#707070' : '#a1a1a6';
 
-      document.querySelectorAll('.case-btn').forEach(btn => {
+      document.querySelectorAll('#team-filter-pills .team-btn').forEach(btn => {
         btn.style.backgroundColor = 'transparent';
         btn.style.color = inactiveColor;
       });
 
-      const activeBtn = document.getElementById(`btn-${currentCase}`);
+      const activeBtn = document.getElementById(`btn-team-${memberId}`);
       if (activeBtn) {
         activeBtn.style.backgroundColor = activeBg;
         activeBtn.style.color = activeText;
       }
+
+      const cards = document.querySelectorAll('.team-member-card');
+      cards.forEach(card => {
+        if (memberId === 'all' || card.dataset.member === memberId) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Datos maestros de los 4 repositorios oficiales
+    const REPO_DATA = {
+      'politicas-tdc-originacion-y-modelos': {
+        repoName: 'politicas-tdc-originacion-y-modelos',
+        domain: 'originacion',
+        modules: [
+          { value: 'modelos-scoring/pd-m4-lineas-optimas', label: 'modelos-scoring/pd-m4-lineas-optimas/ (Luis Enrique)' },
+          { value: 'modelos-scoring/segmentacion-riesgo', label: 'modelos-scoring/segmentacion-riesgo/ (Andrea)' },
+          { value: 'prospectos-one-click/evaluacion-hipo-autos', label: 'prospectos-one-click/evaluacion-hipo-autos/ (Elizabeth)' },
+          { value: 'buro-y-tramas-sic/desentrame-cadenas', label: 'buro-y-tramas-sic/desentrame-cadenas/ (Naidelin & Juan José)' },
+          { value: 'buro-y-tramas-sic/def-tramas-consultas', label: 'buro-y-tramas-sic/def-tramas-consultas/ (Sergio)' },
+          { value: 'politicas-y-canales/disposiciones-efectivo', label: 'politicas-y-canales/disposiciones-efectivo/ (Luis Enrique & Luis Ernesto)' },
+          { value: 'politicas-y-canales/originacion-coppel', label: 'politicas-y-canales/originacion-coppel/ (Andrea)' },
+          { value: 'certificacion-variables/variables-coppel', label: 'certificacion-variables/variables-coppel/ (Luis Ernesto)' }
+        ]
+      },
+      'politicas-tdc-cartera-y-monitoreo': {
+        repoName: 'politicas-tdc-cartera-y-monitoreo',
+        domain: 'cartera',
+        modules: [
+          { value: 'monitoreo-procesos-bau/01-decremento-linea', label: 'monitoreo-procesos-bau/01-decremento-linea/ (Armando & Laura)' },
+          { value: 'monitoreo-procesos-bau/02-pago-minimo-clasica', label: 'monitoreo-procesos-bau/02-pago-minimo-clasica/ (Armando & Laura)' },
+          { value: 'monitoreo-procesos-bau/03-cancelacion-cuentas', label: 'monitoreo-procesos-bau/03-cancelacion-cuentas/ (Armando & Laura)' },
+          { value: 'monitoreo-procesos-bau/04-reactivacion-inactivas', label: 'monitoreo-procesos-bau/04-reactivacion-inactivas/ (Armando)' },
+          { value: 'monitoreo-procesos-bau/05-indicadores-imor', label: 'monitoreo-procesos-bau/05-indicadores-imor/ (Armando)' },
+          { value: 'indicadores-y-cosechas/cosechas-originacion', label: 'indicadores-y-cosechas/cosechas-originacion/ (Luis Enrique & Elizabeth)' },
+          { value: 'indicadores-y-cosechas/uso-linea-cartera', label: 'indicadores-y-cosechas/uso-linea-cartera/ (Armando)' },
+          { value: 'indicadores-y-cosechas/indicadores-one-click', label: 'indicadores-y-cosechas/indicadores-one-click/ (Elizabeth)' },
+          { value: 'administracion-de-lineas/aplicativo-ptcsf-33', label: 'administracion-de-lineas/aplicativo-ptcsf-33/ (Armando)' },
+          { value: 'administracion-de-lineas/incrementos-linea', label: 'administracion-de-lineas/incrementos-linea/ (Andrea & Armando)' },
+          { value: 'cancelacion-y-depuracion/depuracion-masiva', label: 'cancelacion-y-depuracion/depuracion-masiva/ (Armando & Laura)' },
+          { value: 'cancelacion-y-depuracion/saldos-a-favor', label: 'cancelacion-y-depuracion/saldos-a-favor/ (Armando)' },
+          { value: 'auditoria-y-tasas/conciliacion-tasas-mci', label: 'auditoria-y-tasas/conciliacion-tasas-mci/ (Andrea)' },
+          { value: 'auditoria-y-tasas/certificacion-mensual-brm', label: 'auditoria-y-tasas/certificacion-mensual-brm/ (Luis Ernesto & Elizabeth)' }
+        ]
+      },
+      'tdc-automatizacion-y-gestion': {
+        repoName: 'tdc-automatizacion-y-gestion',
+        domain: 'gestion',
+        modules: [
+          { value: 'trello-obsidian-sync', label: 'trello-obsidian-sync/ (Jorge Guzmán)' },
+          { value: 'telegram-bots', label: 'telegram-bots/ (Jorge Guzmán)' },
+          { value: 'email-automation', label: 'email-automation/ (Jorge Guzmán)' },
+          { value: 'kpi-automation', label: 'kpi-automation/ (Jorge Guzmán)' },
+          { value: 'ai-agent', label: 'ai-agent/ (Jorge Guzmán)' }
+        ]
+      },
+      'certificacion_buro': {
+        repoName: 'certificacion_buro',
+        domain: 'buro',
+        modules: [
+          { value: 'src', label: 'src/ (ETL Medallion Bronce-Plata-Oro)' },
+          { value: 'config', label: 'config/ (buro_diccionario.py)' },
+          { value: 'codigos_sistemas', label: 'codigos_sistemas/ (Consultas SQL DWH)' },
+          { value: 'data/raw', label: 'data/raw/ (Tramas Crudas Círculo/Buró)' }
+        ]
+      }
+    };
+
+    function onRepoChanged() {
+      const repoSelect = document.getElementById('gen-repo-select');
+      const moduleSelect = document.getElementById('gen-module-select');
+      if (!repoSelect || !moduleSelect) return;
+
+      const selectedKey = repoSelect.value;
+      const repoInfo = REPO_DATA[selectedKey] || REPO_DATA['politicas-tdc-originacion-y-modelos'];
+
+      moduleSelect.innerHTML = '';
+      repoInfo.modules.forEach(mod => {
+        const opt = document.createElement('option');
+        opt.value = mod.value;
+        opt.textContent = mod.label;
+        moduleSelect.appendChild(opt);
+      });
+
+      updateCommandGen();
     }
 
     function updateCommandGen() {
-      const folderEl = document.getElementById('gen-folder');
+      const repoSelect = document.getElementById('gen-repo-select');
+      const modSelect = document.getElementById('gen-module-select');
       const fileEl = document.getElementById('gen-filename');
       const msgEl = document.getElementById('gen-msg');
-      if (!folderEl || !fileEl || !msgEl) return;
+      if (!repoSelect || !modSelect || !fileEl || !msgEl) return;
 
-      const folder = folderEl.value;
-      const filename = fileEl.value.trim() || 'mi_script.py';
-      const msg = msgEl.value.trim() || 'actualiza reglas de politica';
+      const repoKey = repoSelect.value;
+      const repoData = REPO_DATA[repoKey] || { domain: 'politicas' };
+      const modulePath = modSelect.value || 'modulo';
+      const filename = fileEl.value.trim() || 'script.py';
+      const msg = msgEl.value.trim() || 'actualiza logica de politica';
+      const domain = repoData.domain;
 
-      let domain = 'politicas';
-      if (folder.includes('originacion')) domain = 'originacion';
-      else if (folder.includes('lineas-credito')) domain = 'lineas';
-      else if (folder.includes('cancelaciones-bloqueos')) domain = 'cancelaciones';
-      else if (folder.includes('monitoreo')) domain = 'monitoreo';
-      else if (folder.includes('plantillas')) domain = 'plantillas';
+      const script = `# 1. Navegar a la carpeta local de tu repositorio
+cd C:\\Users\\tu.usuario\\Documents\\GitHub\\${repoKey}
 
-      const script = `cd C:\\Users\\tu.usuario\\Documents\\GitHub\\politicas-tdc-originacion-y-administracion
-git pull
+# 2. Descargar los avances más recientes de tus compañeros (Hábito Matutino)
+git pull origin main
+
+# 3. Activar el entorno virtual corporativo
+.\\.venv\\Scripts\\Activate.ps1
+
+# 4. Verificar qué archivos modificaste dentro de tu submódulo
 git status
-git add ${folder}/${filename}
+
+# 5. Agregar tu script modificado al stage
+git add ${modulePath}/${filename}
+
+# 6. Crear un commit semántico oficial
 git commit -m "feat(${domain}): ${msg}"
+
+# 7. Publicar tu trabajo de forma segura en GitHub
 git push origin main`;
 
       const out = document.getElementById('gen-output');
@@ -1689,6 +1894,7 @@ git push origin main`;
       const out = document.getElementById('gen-output');
       if (out) {
         copyCmd(out.textContent);
+        showToast('Secuencia de comandos copiada al portapapeles');
       }
     }
 
@@ -1707,6 +1913,22 @@ git push origin main`;
         showToast('Plantilla SQL copiada al portapapeles');
       }
     }
+
+    // Restore on load
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      for (let i = 0; i < TOTAL_TASKS; i++) {
+        const id = `check-step-${i}`;
+        const el = document.getElementById(id);
+        if (el && localStorage.getItem(id) === 'true') {
+          el.checked = true;
+        }
+      }
+      updateProgressUI();
+      switchTemplateView('py');
+      onRepoChanged();
+      filterTeamMember('all');
+    });
   </script>
 
 </body>

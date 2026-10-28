@@ -1,187 +1,117 @@
-# Repositorio de Políticas y Estrategias de Crédito TDC 💳
+# Portal de Capacitación Git & Monorepos Oficiales TDC 💳
 
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
-[![SQL ANSI / Snowflake](https://img.shields.io/badge/SQL-Snowflake%20%7C%20Oracle-brightgreen.svg)](https://www.snowflake.com/)
-[![Área: Riesgo de Crédito](https://img.shields.io/badge/%C3%81rea-Pol%C3%ADticas%20TDC-orange.svg)]()
+[![GitHub Pages](https://img.shields.io/badge/Portal_Web-GitHub_Pages-blue?style=flat-square&logo=github)](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)
+[![Organización](https://img.shields.io/badge/Org-credito--tdc--bcpl-2997ff?style=flat-square)](https://github.com/credito-tdc-bcpl)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg?style=flat-square&logo=python)](https://www.python.org/)
+[![Polars DataFrames](https://img.shields.io/badge/Polars-0.20%2B-blueviolet?style=flat-square)](https://pola.rs/)
+[![DWH Yellowbrick](https://img.shields.io/badge/DWH-Yellowbrick%20SQL-orange?style=flat-square)]()
+[![Área: Riesgo de Crédito](https://img.shields.io/badge/%C3%81rea-Pol%C3%ADticas%20TDC-emerald?style=flat-square)]()
 
-Repositorio centralizado del equipo de **Políticas y Estrategia de Crédito para Tarjetas de Crédito (TDC)**. Este espacio sirve como biblioteca oficial de scripts de originación, calibración de líneas de crédito, matrices de decisión, monitoreo de cosechas (vintages) e indicadores de riesgo de la cartera.
+Portal interactivo de capacitación técnica y guía de acompañamiento en terminal para el equipo de **Políticas y Estrategias de Tarjetas de Crédito (TDC)** en BanCoppel.
+
+👉 **Accede a la plataforma web interactiva del curso:**  
+### 🌐 **[https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)**
 
 ---
 
-## 🐣 Guía de Instalación y Primer Uso (Para Principiantes Absolutos)
+## 🏛️ Ecosistema Oficial de la Organización `credito-tdc-bcpl`
 
-> **¿Es tu primer día usando Git o no sabes si lo tienes instalado?**  
-> Sigue estos 5 pasos ordenados para dejar tu entorno listo en menos de 5 minutos y poder abrir el curso interactivo a la par de tu Visual Studio Code.
+La Dirección de Políticas TDC opera mediante una **arquitectura de 4 repositorios oficiales** por pilar de negocio. Cada científico de datos clona y trabaja en los repositorios donde tiene asignados proyectos:
 
-### Paso 0: Verificar o Instalar Git en Windows
+| Repositorio | Tipo | Stack Principal | Foco Funcional y Alcance |
+| :--- | :---: | :--- | :--- |
+| [**`politicas-tdc-originacion-y-modelos`**](https://github.com/credito-tdc-bcpl/politicas-tdc-originacion-y-modelos) | Privado | Python 3.10+, Polars, Yellowbrick, `shared.db` | Admisión, Scoring, Modelos PD M4, deciles, curvas Song-Yonho, desentrame SIC (Buró/Círculo) en DWH, One Click y canales Coppel. |
+| [**`politicas-tdc-cartera-y-monitoreo`**](https://github.com/credito-tdc-bcpl/politicas-tdc-cartera-y-monitoreo) | Privado | Python 3.10+, Polars, `shared.db`, `shared.metricas` | Cartera en vida útil, las 5 rutinas mensuales permanentes (BAU), cosechas (vintages), límites de crédito (PTCSF-33, CLI día 11) y depuración. |
+| [**`tdc-automatizacion-y-gestion`**](https://github.com/credito-tdc-bcpl/tdc-automatizacion-y-gestion) | Privado | Python, Telegram API, Trello API, AI Agents | Suite interna de la Gerencia: sincronización Trello-Obsidian, bots ejecutivos de Telegram, automatización de correo y vault de gestión. |
+| [**`certificacion_buro`**](https://github.com/credito-tdc-bcpl/certificacion_buro) | Privado | Python, Polars, Banxico API, Yellowbrick | Pipeline ETL Medallion (Bronce, Plata, Oro), desentramado TL y SC, conversión UDI Banxico y auditoría de rechazos SICs. |
+| [**`capacitacion-git-tdc`**](https://github.com/credito-tdc-bcpl/capacitacion-git-tdc) *(Este repo)* | Público | HTML5, Vanilla CSS / Tailwind, JS Vanilla | Portal educativo de autoservicio para analistas, manual interactivo de comandos, plantillas y generador en vivo. |
 
-1. Abre la terminal de Windows (**PowerShell**) o abre Visual Studio Code y presiona <kbd>Ctrl</kbd> + <kbd>Ñ</kbd>.
-2. Escribe el siguiente comando y presiona <kbd>Enter</kbd>:
-   ```powershell
-   git --version
+---
+
+## 👥 Matriz de Responsabilidades por Científico de Datos
+
+Cada colaborador tiene carpetas y submódulos asignados. El aislamiento por carpetas garantiza que dos personas trabajen simultáneamente sin experimentar conflictos de fusión (`merge conflicts`):
+
+| Colaborador | Rol / Especialidad | Repositorios Asignados | Carpetas / Submódulos Clave |
+| :--- | :--- | :--- | :--- |
+| **Luis Enrique Arriola** | Modelos Cuantitativos & Scoring | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `modelos-scoring/pd-m4-lineas-optimas/`<br>`politicas-y-canales/disposiciones-efectivo/`<br>`indicadores-y-cosechas/cosechas-originacion/` |
+| **Andrea Placencia** | Segmentación & Estrategias Portafolio | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `modelos-scoring/segmentacion-riesgo/`<br>`politicas-y-canales/originacion-coppel/`<br>`administracion-de-lineas/incrementos-linea/`<br>`auditoria-y-tasas/conciliacion-tasas-mci/` |
+| **Elizabeth Gómez** | One Click Prime & Cosechas | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `prospectos-one-click/evaluacion-hipo-autos/`<br>`indicadores-y-cosechas/cosechas-originacion/`<br>`auditoria-y-tasas/certificacion-mensual-brm/` |
+| **Armando Morales** | Líder Operativo Cartera & BAU | `cartera-y-monitoreo` | `monitoreo-procesos-bau/` (Las 5 rutinas mensuales)<br>`administracion-de-lineas/aplicativo-ptcsf-33/`<br>`cancelacion-y-depuracion/depuracion-masiva/`<br>`indicadores-y-cosechas/uso-linea-cartera/` |
+| **Laura Anaid** | Operación BAU & Depuración | `cartera-y-monitoreo` | `monitoreo-procesos-bau/01-decremento-linea/`<br>`monitoreo-procesos-bau/02-pago-minimo-clasica/`<br>`monitoreo-procesos-bau/03-cancelacion-cuentas/`<br>`cancelacion-y-depuracion/depuracion-masiva/` |
+| **Naidelin Coronel & Juan José López** | Tramas SICs en Yellowbrick | `originacion-y-modelos` | `buro-y-tramas-sic/desentrame-cadenas/`<br>(Segmento CR y homologación Círculo en DWH) |
+| **Sergio Herrera** | Especificación SICs & Resiliencia | `originacion-y-modelos` | `buro-y-tramas-sic/def-tramas-consultas/`<br>(Reglas de contingencia ante caídas de proveedores) |
+| **Luis Ernesto Álvarez** | Certificación Variables & Auditoría | `originacion-y-modelos`<br>`cartera-y-monitoreo` | `certificacion-variables/variables-coppel/`<br>`politicas-y-canales/disposiciones-efectivo/`<br>`auditoria-y-tasas/certificacion-mensual-brm/` |
+| **Jorge Adrián Guzmán** | Gerente de Políticas TDC | `tdc-automatizacion-y-gestion`<br>Todos los repositorios | `trello-obsidian-sync/`, `telegram-bots/`, `ai-agent/`<br>Supervisión y aprobación de Pull Requests (PRs). |
+
+---
+
+## ⚡ Estándar Tecnológico Institucional
+
+Para asegurar la reproducibilidad y el cumplimiento normativo bancario:
+
+1. **Python 3.10+ y Polars:** Todo procesamiento matricial de cartera se realiza con `polars` por su alta velocidad multihilo en millones de cuentas.
+2. **Conexión Centralizada a Yellowbrick (`shared.db`):** Está prohibido incrustar credenciales o cadenas de conexión en tus scripts. Usa siempre:
+   ```python
+   from shared.db import query_to_polars
    ```
-3. **¿Qué resultado obtuviste?**
-   - **Caso A (Ya lo tienes):** Aparece algo como `git version 2.4x.x.windows.1`. 👉 Pasa directo al **Paso 1**.
-   - **Caso B (No está instalado):** Aparece en rojo *"git no se reconoce como un comando interno o externo..."*.
-
-   **Para instalar Git en Windows (Solo toma 2 minutos):**
-   - Opción 1 (Descarga directa): Entra a [https://git-scm.com/download/win](https://git-scm.com/download/win) y descarga el instalador **64-bit Git for Windows Setup**.
-   - Opción 2 (Rápida desde PowerShell como Administrador):
-     ```powershell
-     winget install --id Git.Git -e --source winget
-     ```
-   - Al instalar, da clic en **"Next"** a todas las opciones por defecto sin cambiar nada.
-   - ⚠️ **MUY IMPORTANTE:** Al terminar la instalación, **cierra y vuelve a abrir Visual Studio Code** para que reconozca a Git.
+3. **Métricas Homologadas (`shared.metricas`):** En el repositorio de Cartera, las definiciones de morosidad y cosechas están estandarizadas:
+   ```python
+   from shared.metricas import calcular_mora_90_plus, resumen_por_cosecha
+   ```
+4. **Entornos Virtuales Obligatorios:** Trabaja siempre en tu `.venv` local:
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   pip install -r requirements.txt
+   ```
+5. **Blindaje PII (.gitignore):** No se suben extractos `.csv`, `.xlsx`, `.parquet` ni archivos `.env`. Todo dato se consulta directamente a Yellowbrick en tiempo de ejecución.
 
 ---
 
-### Paso 1: Configurar tu Identidad por Primera Vez (Solo 1 vez en tu máquina)
+## 🐣 Flujo Diario de Trabajo en Terminal (PowerShell)
 
-Para que el banco sepa quién es el autor de cada script o política de crédito, abre la terminal en VS Code (<kbd>Ctrl</kbd> + <kbd>Ñ</kbd>) y ejecuta tus datos:
+Para actualizar tu código y subir tus avances al repositorio que te corresponde:
 
 ```powershell
-git config --global user.name "Tu Nombre y Apellido"
-git config --global user.email "tu.correo@bancoppel.com"
-```
+# 1. Navegar a tu repositorio de trabajo (ejemplo: originacion o cartera)
+cd C:\Users\$env:USERNAME\Documents\GitHub\politicas-tdc-cartera-y-monitoreo
 
----
+# 2. HÁBITO MATUTINO OBLIGATORIO: Traer los avances del equipo
+git pull origin main
 
-### Paso 2: Descargar este Repositorio a tu Computadora (`git clone`)
+# 3. Activar el entorno virtual de Python
+.\.venv\Scripts\Activate.ps1
 
-1. En la terminal de Windows o PowerShell, ve a tu carpeta de trabajo preferida (por ejemplo, `Documents`):
-   ```powershell
-   cd C:\Users\$env:USERNAME\Documents
-   ```
-2. Descarga la biblioteca completa del equipo con el comando `git clone`:
-   ```powershell
-   git clone https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git
-   ```
-3. Entra a la carpeta recién descargada:
-   ```powershell
-   cd capacitacion-git-tdc
-   ```
-
----
-
-### Paso 3: Abrir la Carpeta en Visual Studio Code
-
-Desde esa misma terminal, escribe:
-```powershell
-code .
-```
-*(O bien abre VS Code, ve al menú superior **Archivo > Abrir Carpeta...** y selecciona la carpeta `capacitacion-git-tdc`).*
-
-Verás todas las carpetas del equipo (`originacion/`, `lineas-credito/`, `indicadores-cosechas/`, `ejemplos/`) en la barra lateral izquierda.
-
----
-
-### Paso 4: Abrir el Portal de Capacitación Interactivo (`index.html`)
-
-En la raíz de este proyecto tienes el archivo **`index.html`**, que es una plataforma interactiva completa con emuladores de terminal, explicaciones visuales y laboratorios prácticos.
-
-Para abrirlo a la par de tu VS Code:
-- **Opción A (Recomendada):** Ábrelo directamente en tu navegador desde GitHub Pages:  
-  👉 **[https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)**
-- **Opción B (Local):** En el explorador lateral de VS Code, dale **clic derecho a `index.html`** ➔ **"Reveal in File Explorer"** y haz doble clic sobre el archivo.
-
-💡 **Tip de trabajo:** Coloca tu navegador en la mitad izquierda de tu pantalla y Visual Studio Code en la mitad derecha. Así podrás leer las lecciones e ir ejecutando los comandos reales en tu terminal.
-
----
-
-### Paso 5: Tu Primer `git pull` Real en Visual Studio Code
-
-Una vez abierto el proyecto en VS Code:
-1. Abre la terminal integrada con el atajo: <kbd>Ctrl</kbd> + <kbd>Ñ</kbd> (o menú **Terminal > New Terminal**).
-2. Asegúrate de estar dentro de la carpeta y ejecuta tu primer comando:
-   ```powershell
-   git pull
-   ```
-3. Verás la respuesta:
-   ```text
-   Already up to date.
-   ```
-¡Felicidades! Tu entorno local está sincronizado con el repositorio central. A partir de este momento, cada mañana antes de comenzar tus análisis, tu primer paso siempre será correr `git pull`.
-
----
-
-## 📌 Reglas de Convivencia y Operación del Repositorio
-
-Para mantener el orden, la trazabilidad y la seguridad regulatoria del banco:
-
-1. **Estructura por Proyectos e Indicadores:** Cada analista trabaja dentro de su carpeta temática asignada (`originacion/`, `lineas-credito/`, `indicadores-cosechas/`). No edites scripts de otros compañeros sin previa coordinación.
-2. **Prohibido subir Datos de Clientes:** Bajo **ninguna circunstancia** se autoriza subir archivos con información de clientes (`.csv`, `.xlsx`, `.parquet`), RFC, buró de crédito ni credenciales (`.env`). Todo dato debe ser procesado localmente o consultado directamente en el Data Warehouse.
-3. **El Hábito Diario (`git pull`):** Todas las mañanas antes de iniciar el trabajo, abre tu terminal en VS Code (`Ctrl + Ñ`) y ejecuta:
-   ```powershell
-   git pull
-   ```
-4. **Documentación Obligatoria:** Todo script (`.py` o `.sql`) debe iniciar con la cabecera estándar de documentación (ver plantilla en carpeta `ejemplos/`).
-
----
-
-## 🗂️ Estructura del Repositorio
-
-```text
-capacitacion-git-tdc/
-│
-├── index.html                      # Portal web interactivo de capacitación (simulador en navegador)
-├── .gitignore                      # Protección contra subida de datos confidenciales (.csv, .xlsx, .env)
-├── README.md                       # Catálogo general y reglas del equipo
-│
-├── originacion/                    # Scripts de otorgamiento, scorecuts y matrices de riesgo
-│   ├── reglas_score_buro.py
-│   └── matriz_capacidad_pago.sql
-│
-├── lineas-credito/                 # Estrategias de límites: asignación inicial, incrementos (CLI) y decrementos
-│   ├── reglas_incremento_lineas.py
-│   └── query_elegibilidad_linea.sql
-│
-├── indicadores-cosechas/           # Monitoreo de vintage, roll rates, morosidad y provisiones
-│   ├── seguimiento_cosechas_tdc.sql
-│   └── matriz_transicion_roll_rates.py
-│
-└── ejemplos/                       # Plantillas base con documentación modelo
-    ├── calculo_roll_rate.sql
-    └── reglas_originacion_tdc.py
-```
-
----
-
-## 📋 Catálogo de Scripts y Responsables
-
-| Carpeta / Script | Objetivo de Política | Tablas Fuente | Periodicidad | Responsable Principal |
-| :--- | :--- | :--- | :--- | :--- |
-| `originacion/reglas_score_buro.py` | Filtros duros y asignación de tasa según Score Buró | `DWH_RIESGO.SOLICITUDES_TDC` | Diaria / En línea | Analista de Originación |
-| `originacion/matriz_capacidad_pago.sql` | Extracción de Razón Deuda-Ingreso (DTI) para límite máx. | `DWH_RIESGO.INFO_FINANCIERA` | Bajo demanda | Analista de Admisión |
-| `lineas-credito/reglas_incremento_lineas.py` | Campaña mensual de aumento de línea (CLI proactivo) | `DWH_CARTERA.FACTURACION_TDC` | Mensual (Día 5) | Estratega de Portafolio |
-| `indicadores-cosechas/seguimiento_cosechas_tdc.sql` | ICV a 3, 6 y 12 meses por cohorte de colocación | `DWH_RIESGO.HISTORICO_CARTERA` | Mensual (Cierre) | Analista de Monitoreo |
-| `indicadores-cosechas/matriz_transicion_roll_rates.py`| Probabilidad de migración de buckets (B0 a B1, B1 a B2) | `DWH_RIESGO.ESTATUS_CUENTAS` | Mensual | Especialista Cuantitativo |
-
----
-
-## 🚀 Guía de los 5 Comandos de Supervivencia
-
-Una vez instalado y configurado tu entorno, tu ciclo diario se resume en estos 5 comandos:
-
-```powershell
-# 1. Al comenzar el día en tu terminal de VS Code:
-git pull
-
-# 2. Cuando hayas terminado de modificar o crear tu script:
+# 4. Verificar el estado de tus archivos modificados
 git status
 
-# 3. Preparar tus cambios (meter a la caja):
-git add .
+# 5. Agregar tu script modificado dentro de tu submódulo asignado
+git add monitoreo-procesos-bau/01-decremento-linea/tu_script.py
 
-# 4. Guardar versión con mensaje descriptivo (mínimo 10 caracteres):
-git commit -m "feat(lineas): se actualiza regla de incremento para cosecha 2026-Q1"
+# 6. Crear un commit semántico oficial
+git commit -m "feat(cartera): actualiza criterio de saldo mínimo para decremento"
 
-# 5. Enviar tus cambios a la organización en GitHub:
-git push
+# 7. Publicar tu trabajo de forma segura en GitHub
+git push origin main
 ```
 
 ---
 
-## 👥 Contacto y Soporte del Equipo
-* **Gerencia de Políticas de Tarjetas de Crédito**: `politicas.tdc@banco.com`
-* **Canal Teams**: `#Riesgo-Credito-TDC-Git`
-* **Horario de sincronización de cartera**: Cierres mensuales a las 18:00 hrs.
+## 🧭 ¿Cómo usar este Portal de Capacitación?
+
+1. Abre el sitio oficial en tu navegador:  
+   👉 **[https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)**
+2. Consulta la pestaña **"6. Monorepos & Módulos Oficiales"** para:
+   - Ver los 4 monorepos y copiar su comando `git clone`.
+   - Filtrar el directorio por tu nombre para confirmar tus carpetas.
+   - Usar el **Generador Interactivo de Comandos** para obtener la secuencia exacta de terminal para tu módulo y tarea.
+   - Copiar las plantillas base oficiales en Python y SQL Yellowbrick.
+3. Avanza por los módulos 1 al 5 para dominar Git desde cero y completar las 8 misiones prácticas en tu consola de Visual Studio Code (`Ctrl + Ñ`).
+
+---
+
+## 👥 Gobernanza y Contacto
+* **Gerencia de Políticas de Tarjetas de Crédito**: Jorge Adrián Guzmán Inzunza
+* **Organización en GitHub**: [`credito-tdc-bcpl`](https://github.com/credito-tdc-bcpl)
+* **Horario de Sincronización BAU**: Cierres mensuales a las 18:00 hrs.

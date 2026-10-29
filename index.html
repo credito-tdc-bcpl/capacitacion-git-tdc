@@ -113,7 +113,7 @@
       <div class="flex items-center space-x-3">
         <span class="text-sm font-semibold tracking-tight" style="color: var(--color-primary-ink);">Políticas TDC</span>
         <span class="text-xs" style="color: var(--color-deep-gray);">|</span>
-        <span class="text-xs hidden sm:inline" style="color: var(--color-mid-gray);">Biblioteca Oficial & Acompañamiento en Terminal</span>
+        <span class="text-xs hidden sm:inline" style="color: var(--color-mid-gray);">Guía Oficial Git & Monorepos</span>
       </div>
 
       <!-- Controls: Progress, VS Code Shortcut, Theme Toggle -->
@@ -152,19 +152,19 @@
         <nav class="flex space-x-2 overflow-x-auto py-2 no-scrollbar" id="nav-tabs">
           
           <button onclick="switchTab('tab-setup')" id="btn-tab-setup" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition active-tab-pill">
-            1. Setup y Primer Script (.py)
+            1. Setup Inicial
           </button>
 
           <button onclick="switchTab('tab-pull')" id="btn-tab-pull" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
-            2. Comenzar el Día (pull de cosechas y líneas)
+            2. Sincronizar (pull)
           </button>
 
           <button onclick="switchTab('tab-ciclo')" id="btn-tab-ciclo" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
-            3. Compartir Cambios (editar reglas_score)
+            3. Flujo Diario (commit)
           </button>
 
           <button onclick="switchTab('tab-seguridad')" id="btn-tab-seguridad" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
-            4. Seguridad (Roll Rates y .gitignore)
+            4. Seguridad (.gitignore)
           </button>
 
           <button onclick="switchTab('tab-cheatsheet')" id="btn-tab-cheatsheet" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill">
@@ -173,7 +173,7 @@
 
           <button onclick="switchTab('tab-plantillas-repo')" id="btn-tab-plantillas-repo" class="tab-btn px-4 py-1.5 rounded-full text-xs font-medium transition inactive-tab-pill border flex items-center space-x-1.5" style="border-color: var(--color-electric-blue);">
             <span class="w-1.5 h-1.5 rounded-full inline-block" style="background-color: var(--color-electric-blue);"></span>
-            <span>6. Monorepos & Módulos Oficiales</span>
+            <span>6. Monorepos & Permisos</span>
           </button>
 
         </nav>
@@ -191,7 +191,7 @@
         Aprende Git en tu consola.<br class="hidden sm:inline"> En los monorepos reales de tu equipo.
       </h1>
       <p class="text-base sm:text-lg max-w-3xl mx-auto pt-1 leading-relaxed font-normal" style="color: var(--color-mid-gray);">
-        Guía de capacitación y trabajo colaborativo para los monorepos de producción de Políticas TDC BanCoppel en Python, Polars y Yellowbrick. Conoce a qué repositorio y carpeta perteneces según tu rol.
+        Guía técnica y flujo de trabajo colaborativo para los monorepos de Políticas TDC BanCoppel.
       </p>
 
       <!-- Quick Ecosystem Badges -->
@@ -230,10 +230,10 @@
       
       <div class="space-y-1">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Paso 0. Clonar y verificar tu entorno con un script real
+          1. Preparación del Entorno
         </h2>
         <p class="text-sm" style="color: var(--color-mid-gray);">
-          Prepara tu máquina y ejecuta tu primer motor de admisión de crédito en Python desde tu consola.
+          Verifica herramientas, clona el repositorio y ejecuta el primer script de prueba.
         </p>
       </div>
 
@@ -242,13 +242,13 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">1</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Comprueba si tienes Git instalado en tu terminal</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Verifica si tienes Git instalado</h3>
           </div>
           <span class="text-xs font-medium" style="color: var(--color-ember);">Paso previo</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Abre la terminal de Windows (PowerShell) o abre VS Code (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>) y ejecuta:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Abre la terminal en VS Code (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>) y ejecuta:
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
@@ -259,10 +259,10 @@
         </div>
 
         <div class="p-4 rounded-[20px] border text-xs space-y-1.5 font-mono" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">¿Qué debes ver en tu terminal?</div>
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Salida esperada:</div>
           <div class="font-semibold text-emerald-400">git version 2.4x.x.windows.1</div>
           <div class="font-sans text-xs pt-0.5" style="color: var(--color-mid-gray);">
-            Si ves el número de versión, pasa al punto 2. Si recibiste un error en rojo ("el término 'git' no se reconoce..."), sigue la sección de abajo:
+            Si muestra la versión, pasa al punto 2. Si marca error de comando no reconocido, instálalo a continuación:
           </div>
         </div>
 
@@ -272,12 +272,12 @@
             <div class="flex items-center space-x-2">
               <span class="text-lg">⚡</span>
               <div>
-                <h4 class="font-semibold text-xs sm:text-sm text-amber-400">¿No tienes Git instalado? Instálalo directo desde la terminal:</h4>
-                <p class="text-[11px]" style="color: var(--color-mid-gray);">Usa el gestor oficial de Windows (winget) sin necesidad de descargar ejecutables a mano:</p>
+                <h4 class="font-semibold text-xs sm:text-sm text-amber-400">¿No tienes Git? Instálalo con winget:</h4>
+                <p class="text-[11px]" style="color: var(--color-mid-gray);">Gestor nativo de Windows (sin descargas manuales):</p>
               </div>
             </div>
             <button onclick="copyCmd('winget install --id Git.Git -e --source winget')" class="text-white text-xs px-3.5 py-1.5 rounded-full font-medium transition shadow-sm hover:opacity-90" style="background-color: var(--color-electric-blue);">
-              Copiar comando de instalación
+              Copiar comando
             </button>
           </div>
 
@@ -285,22 +285,15 @@
             <code>winget install --id Git.Git -e --source winget</code>
           </div>
 
-          <div class="p-3 rounded-[12px] text-xs leading-relaxed border space-y-1" style="background-color: rgba(255, 69, 58, 0.08); border-color: rgba(255, 69, 58, 0.3); color: var(--color-primary-ink);">
-            <div class="font-semibold text-red-400 flex items-center space-x-1.5">
-              <span>⚠️</span>
-              <span>PASO OBLIGATORIO TRAS LA INSTALACIÓN:</span>
-            </div>
-            <p class="text-[11px]" style="color: var(--color-mid-gray);">
-              <strong>Cierra tu terminal o reinicia Visual Studio Code por completo.</strong> Windows necesita actualizar las variables de entorno (<code class="font-mono text-amber-300">PATH</code>). Si mantienes la misma terminal abierta, seguirá diciendo que no reconoce <code class="font-mono text-amber-300">git</code>.
-            </p>
+          <div class="p-3 rounded-[12px] text-xs leading-relaxed border flex items-center space-x-2" style="background-color: rgba(255, 69, 58, 0.08); border-color: rgba(255, 69, 58, 0.3); color: var(--color-primary-ink);">
+            <span>⚠️</span>
+            <span class="text-[11px]" style="color: var(--color-mid-gray);"><strong>Requisito:</strong> Reinicia VS Code tras instalar para actualizar las variables de entorno (<code class="font-mono text-amber-300">PATH</code>).</span>
           </div>
 
           <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t text-[11px]" style="border-color: var(--color-hairline); color: var(--color-mid-gray);">
-            <div>
-              <span>¿No tienes permisos de administrador para ejecutar winget? </span>
-            </div>
+            <span>Sin permisos de admin:</span>
             <a href="https://git-scm.com/download/win" target="_blank" class="hover:underline font-medium text-blue-400">
-              O descargar instalador clásico ejecutable (.exe) ›
+              Descargar instalador ejecutable (.exe) ›
             </a>
           </div>
         </div>
@@ -308,7 +301,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-0" onchange="toggleTask('check-step-0')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-0" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Confirmé que tengo Git instalado y funcionando en mi consola.
+            Git instalado y verificado en la consola.
           </label>
         </div>
       </div>
@@ -318,13 +311,13 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">2</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Configura tu identidad en tu terminal (Solo 1 vez en tu máquina)</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Configura tu identidad (una sola vez)</h3>
           </div>
           <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Global</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Para que el banco identifique quién es el autor de cada regla o query, ejecuta tus datos:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Identifica la autoría de tus commits con tu nombre y correo institucional:
         </p>
 
         <div class="space-y-2">
@@ -345,7 +338,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-1" onchange="toggleTask('check-step-1')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-1" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Ejecuté ambos comandos en la consola con mi nombre y correo institucional.
+            Nombre y correo corporativo configurados.
           </label>
         </div>
       </div>
@@ -355,91 +348,68 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">3</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Clona el repositorio desde Visual Studio Code (Sin permisos de Administrador)</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Clona el repositorio desde VS Code</h3>
           </div>
-          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border bg-emerald-500/10 text-emerald-400 border-emerald-500/30">Método Oficial Banco</span>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border bg-emerald-500/10 text-emerald-400 border-emerald-500/30">Sin permisos de Admin</span>
         </div>
 
-        <div class="p-4 rounded-[20px] border text-xs space-y-2 leading-relaxed" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-semibold text-sm flex items-center space-x-2" style="color: var(--color-primary-ink);">
-            <span class="text-emerald-400">💡</span>
-            <span>¿Por qué lo hacemos directo desde la interfaz de VS Code?</span>
-          </div>
+        <div class="p-3.5 rounded-[18px] border text-xs flex items-center space-x-2.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <span class="text-emerald-400 text-base">💡</span>
           <p style="color: var(--color-mid-gray);">
-            En equipos de trabajo bancarios, muchas laptops corporativas no tienen permisos de administrador para instalar utilidades de terminal (como GitHub CLI) o bloquean tokens en consola. <strong>Visual Studio Code resuelve esto de forma nativa:</strong> incluye un asistente visual para clonar repositorios y autenticarse con tu cuenta corporativa de GitHub vía navegador, sin comandos de consola complejos ni contraseñas manuales.
+            En equipos bancarios no requieres GitHub CLI: <strong>VS Code clona y se autentica directamente</strong> con tu navegador corporativo.
           </p>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Sigue estos pasos dentro de tu <strong>Visual Studio Code</strong>:
-        </p>
-
         <!-- Visual Step-by-Step Guide -->
-        <div class="space-y-3.5">
+        <div class="space-y-3">
 
           <!-- Paso A -->
-          <div class="p-4 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2.5">
               <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">A</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">En la pestaña de Bienvenida (Welcome), haz clic en "Clonar repositorio Git..."</h4>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Pestaña Welcome</h4>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Abre VS Code. En la pantalla inicial o pestaña <strong>Welcome / Introducción</strong> (sección <em>Comenzar / Start</em>), haz clic en el botón <strong>"Clonar repositorio Git..."</strong> (o <em>Clone Git Repository...</em>).
-            </p>
-            <p class="text-[11px]" style="color: var(--color-mid-gray);">
-              <em>¿No ves la pestaña de Bienvenida?</em> Puedes presionar el atajo <kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Shift + P</kbd>, escribir <code class="font-mono text-blue-400">Git: Clonar</code> y presionar Enter; o bien hacer clic en el ícono de <strong>Control de código fuente</strong> en la barra lateral izquierda y presionar el botón azul <strong>Clonar repositorio</strong>.
+              Abre VS Code y en la pantalla inicial haz clic en <strong>"Clonar repositorio Git..."</strong> (o presiona <kbd class="px-1.5 py-0.5 rounded font-mono text-[11px] border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Shift + P</kbd> > <em>Git: Clonar</em>).
             </p>
           </div>
 
           <!-- Paso B -->
-          <div class="p-4 rounded-[20px] border space-y-2.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center justify-between">
               <div class="flex items-center space-x-2.5">
                 <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">B</span>
-                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Pega la URL del repositorio oficial en la barra superior</h4>
+                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Pega la URL del repositorio</h4>
               </div>
-              <button onclick="copyCmd('https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git')" class="text-xs px-3.5 py-1.5 rounded-full text-white font-medium transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar URL del Repo
+              <button onclick="copyCmd('https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git')" class="text-xs px-3 py-1 rounded-full text-white font-medium transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar URL
               </button>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Se desplegará una barra en la parte superior de VS Code pidiéndote la URL del repositorio. Copia y pega esta dirección:
-            </p>
-            <div class="p-2.5 rounded-[12px] font-mono text-xs border truncate" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <div class="p-2 rounded-[10px] font-mono text-xs border truncate" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               <code>https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git</code>
             </div>
-            <p class="text-[11px]" style="color: var(--color-mid-gray);">
-              Presiona <strong>Enter</strong> o haz clic en <em>"Clonar desde URL de GitHub"</em>.
-            </p>
           </div>
 
           <!-- Paso C -->
-          <div class="p-4 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2.5">
               <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">C</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Inicia sesión en GitHub en tu navegador (Autorizar BanCoppel)</h4>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Autoriza en el navegador</h4>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Si es la primera vez que sincronizas VS Code con GitHub:
+              Haz clic en <strong>Permitir</strong>, inicia sesión con tu usuario corporativo y concede acceso a la organización <code class="font-mono text-emerald-400 font-bold">credito-tdc-bcpl</code>.
             </p>
-            <ul class="list-disc pl-5 text-xs space-y-1" style="color: var(--color-mid-gray);">
-              <li>VS Code mostrará un aviso: <em>"¿Permitir que la extensión 'GitHub' inicie sesión mediante GitHub?"</em>. Haz clic en <strong>Permitir (Allow)</strong>.</li>
-              <li>Se abrirá automáticamente tu navegador web. Inicia sesión con tu usuario de BanCoppel (ej. <code class="font-mono text-blue-400 font-bold">jaguzmanbcpl</code>).</li>
-              <li><strong class="text-emerald-400">Paso vital:</strong> Si la pantalla solicita acceso o Single Sign-On (SSO) a la organización <code class="font-mono text-emerald-400 font-bold">credito-tdc-bcpl</code>, haz clic en el botón verde <strong>Authorize / Grant</strong>.</li>
-              <li>El navegador te devolverá a VS Code con tu acceso autorizado.</li>
-            </ul>
           </div>
 
           <!-- Paso D -->
-          <div class="p-4 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2.5">
               <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">D</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Elige tu carpeta de guardado y abre el proyecto</h4>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Selecciona carpeta y abre el proyecto</h4>
             </div>
-            <ul class="list-disc pl-5 text-xs space-y-1" style="color: var(--color-mid-gray);">
-              <li>Se abrirá una ventana del explorador de archivos de Windows. Selecciona tu carpeta base: <code class="font-mono text-[11px]">C:\Users\tu.usuario\Documents\GitHub</code> (o dentro de tus Documentos) y haz clic en <strong>"Seleccionar como destino del repositorio"</strong>.</li>
-              <li>En la esquina inferior derecha de VS Code verás la notificación: <em>"¿Desea abrir el repositorio clonado?"</em>. Haz clic en <strong>Abrir (Open)</strong>.</li>
-            </ul>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              Elige tu carpeta destino (ej. <code class="font-mono text-[11px]">C:\Users\tu.usuario\Documents\GitHub</code>) y haz clic en <strong>Abrir</strong> en el aviso de VS Code.
+            </p>
           </div>
 
         </div>
@@ -447,7 +417,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-2" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Cloné el repositorio desde la pestaña Welcome de VS Code, autoricé la organización en el navegador y abrí el proyecto.
+            Repositorio clonado y abierto en VS Code.
           </label>
         </div>
       </div>
@@ -457,13 +427,13 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">4</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Abre la terminal integrada de VS Code y verifica tu proyecto</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Verifica el estado del proyecto</h3>
           </div>
           <span class="text-xs font-medium" style="color: var(--color-link-blue);">Verificación</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Al haber abierto la carpeta desde VS Code, tu terminal integrada ya estará ubicada automáticamente dentro del proyecto. Abre la consola con <kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd> y ejecuta:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Abre la terminal integrada (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>) y comprueba la rama:
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
@@ -474,7 +444,7 @@
         </div>
 
         <div class="p-4 rounded-[20px] border text-xs space-y-1 font-mono" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">¿Qué verás en tu consola?</div>
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Salida esperada:</div>
           <div class="text-emerald-400 font-semibold">On branch main</div>
           <div style="color: var(--color-primary-ink);">Your branch is up to date with 'origin/main'.</div>
           <div style="color: var(--color-mid-gray);">nothing to commit, working tree clean</div>
@@ -483,7 +453,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-3" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Abrí la terminal con Ctrl + Ñ y verifiqué con `git status` que estoy en la rama main limpia.
+            Verifiqué con `git status` que estoy en la rama main limpia.
           </label>
         </div>
       </div>
@@ -493,25 +463,25 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">5</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Comprueba tu entorno ejecutando <code class="text-sm font-mono" style="color: var(--color-electric-blue);">ejemplos/reglas_originacion_tdc.py</code></h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Prueba el motor de crédito de ejemplo</h3>
           </div>
           <span class="text-xs font-medium" style="color: var(--color-ember);">Prueba en consola</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          En la terminal integrada de VS Code (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>), ejecuta el script de ejemplo para probar las reglas de admisión:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Ejecuta el script de admisión en la terminal (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>):
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
           <code>python ejemplos/reglas_originacion_tdc.py</code>
           <button onclick="copyCmd('python ejemplos/reglas_originacion_tdc.py')" class="text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm" style="background-color: var(--color-electric-blue);">
-            Copiar Comando
+            Copiar
           </button>
         </div>
 
         <!-- Real Terminal Output -->
         <div class="p-4 rounded-[20px] border text-xs space-y-1 font-mono" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">¿Qué verás en tu consola de VS Code?</div>
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Salida de ejecución:</div>
           <div style="color: var(--color-ember);" class="font-semibold">=== DICTAMEN DE POLÍTICA DE CRÉDITO TDC ===</div>
           <div style="color: var(--color-primary-ink);">  dictamen: APROBADO</div>
           <div style="color: var(--color-primary-ink);">  motivo: Cumple filtros duros, score de corte y capacidad de pago.</div>
@@ -524,7 +494,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-4" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Ejecuté el script en mi terminal y vi el dictamen de crédito autorizado por $80,000.
+            Script ejecutado con dictamen de crédito autorizado por $80,000.
           </label>
         </div>
       </div>
@@ -539,21 +509,18 @@
       
       <div class="space-y-1">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Paso 1. Comenzar el día sincronizando las carpetas del equipo
+          2. Sincronización Diaria (`git pull`)
         </h2>
         <p class="text-sm" style="color: var(--color-mid-gray);">
-          Descarga en tu consola las últimas queries de cosechas y reglas de incrementos que subieron tus colegas.
+          Descarga las últimas actualizaciones publicadas por tu equipo antes de comenzar tu jornada.
         </p>
       </div>
 
       <!-- Action Card -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-5 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Imagina que ayer el equipo de Monitoreo subió la query <code class="font-mono text-sm px-1.5 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">indicadores-cosechas/seguimiento_cosechas_tdc.sql</code> y el de Portafolio actualizó <code class="font-mono text-sm px-1.5 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">lineas-credito/reglas_incremento_lineas.py</code>.
-        </p>
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Abre la terminal en VS Code (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>) y corre:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          En la terminal (<kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd>), ejecuta para sincronizar tu copia local con el repositorio remoto:
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
@@ -564,50 +531,50 @@
         </div>
 
         <!-- Real Terminal Outputs -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
           
-          <div class="p-5 rounded-[22px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <span class="text-xs font-semibold block uppercase tracking-wider" style="color: var(--color-primary-ink);">Caso A: Ya estás sincronizado</span>
-            <div class="font-mono text-xs p-3 rounded-[14px] border" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-mid-gray);">
+          <div class="p-4 rounded-[18px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <span class="text-xs font-semibold block uppercase tracking-wider text-emerald-400">Caso A: Ya estás al día</span>
+            <div class="font-mono text-xs p-2.5 rounded-[10px] border" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-mid-gray);">
               Already up to date.
             </div>
-            <p class="text-xs pt-1" style="color: var(--color-mid-gray);">
-              Significa que ya tienes la versión más reciente de todas las carpetas.
+            <p class="text-xs" style="color: var(--color-mid-gray);">
+              Tu copia local tiene la versión más reciente del repositorio.
             </p>
           </div>
 
-          <div class="p-5 rounded-[22px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <span class="text-xs font-semibold block uppercase tracking-wider" style="color: var(--color-primary-ink);">Caso B: Novedades en tu pantalla</span>
-            <div class="font-mono text-xs p-3 rounded-[14px] border space-y-0.5" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          <div class="p-4 rounded-[18px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <span class="text-xs font-semibold block uppercase tracking-wider text-blue-400">Caso B: Nuevos cambios</span>
+            <div class="font-mono text-xs p-2.5 rounded-[10px] border space-y-0.5" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               <div style="color: var(--color-link-blue);">Fast-forward</div>
-              <div>indicadores-cosechas/seguimiento_cosechas_tdc.sql | 18 +++</div>
-              <div>lineas-credito/reglas_incremento_lineas.py        | 22 +++</div>
+              <div>indicadores-cosechas/seguimiento.sql | 18 +++</div>
+              <div>lineas-credito/incrementos.py        | 22 +++</div>
               <div style="color: var(--color-mid-gray);">2 files changed, 40 insertions(+)</div>
             </div>
-            <p class="text-xs pt-1" style="color: var(--color-mid-gray);">
-              Los archivos se descargan en segundos a tu explorador de VS Code.
+            <p class="text-xs" style="color: var(--color-mid-gray);">
+              Los archivos modificados por tu equipo se descargan automáticamente.
             </p>
           </div>
 
         </div>
 
         <!-- Task Checklist -->
-        <div class="pt-2 flex items-center space-x-3">
+        <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-5" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Ejecuté `git pull` en mi terminal y exploré en VS Code el script de `lineas-credito/` o `indicadores-cosechas/`.
+            Ejecuté `git pull` en mi terminal y sincronicé las carpetas del equipo.
           </label>
         </div>
 
       </div>
 
       <!-- Notice -->
-      <div class="rounded-[28px] p-6 border flex items-start space-x-4" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-        <span class="text-2xl">💡</span>
-        <div class="space-y-1">
-          <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿Por qué no hay conflictos al hacer pull?</h4>
+      <div class="rounded-[24px] p-5 border flex items-center space-x-3.5" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+        <span class="text-xl">💡</span>
+        <div class="space-y-0.5">
+          <h3 class="font-semibold text-xs sm:text-sm" style="color: var(--color-primary-ink);">Cero colisiones de código</h3>
           <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-            Porque el científico de cosechas trabaja en <code class="font-mono" style="color: var(--color-primary-ink);">indicadores-cosechas/</code> y el estratega de límites en <code class="font-mono" style="color: var(--color-primary-ink);">lineas-credito/</code>. Cada uno es dueño de su script y Git los sincroniza sin colisiones.
+            Al trabajar en submódulos separados por proyecto, Git fusiona las ramas automáticamente sin requerir resolución de conflictos.
           </p>
         </div>
       </div>
@@ -622,10 +589,10 @@
       
       <div class="space-y-1">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Paso 2. Editar y compartir una política real (`originacion/reglas_score_buro.py`)
+          3. Flujo de Publicación (4 Pasos)
         </h2>
         <p class="text-sm" style="color: var(--color-mid-gray);">
-          Sigue el ciclo de los 4 pasos en tu terminal tras hacer un ajuste de negocio real en VS Code.
+          Ciclo estándar: editar en VS Code, inspeccionar (`status`), preparar (`add`), registrar (`commit`) y publicar (`push`).
         </p>
       </div>
 
@@ -634,25 +601,20 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">1</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Edita el archivo en VS Code y corre `git status` en la terminal</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Edita el archivo y verifica con `git status`</h3>
           </div>
           <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Paso 1 de 4</span>
         </div>
 
-        <div class="p-4 rounded-[20px] border text-xs space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-semibold text-sm" style="color: var(--color-ember);">📋 Caso de negocio:</div>
+        <div class="p-3.5 rounded-[18px] border text-xs space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="font-semibold" style="color: var(--color-ember);">📋 Caso práctico:</div>
           <p style="color: var(--color-primary-ink);">
-            El Comité de Riesgos acordó subir el score de corte de 650 a <strong>660 puntos</strong>.
+            Abre <code class="font-mono text-xs px-1 rounded border" style="background-color: var(--color-card); border-color: var(--color-hairline);">originacion/reglas_score_buro.py</code>, actualiza el corte de <code class="font-mono">650</code> a <strong class="text-emerald-400 font-mono">660</strong> y guarda (<kbd class="px-1.5 py-0.5 rounded font-mono text-[11px] border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + S</kbd>).
           </p>
-          <ol class="list-decimal list-inside space-y-1 pt-1" style="color: var(--color-mid-gray);">
-            <li>Abre en tu VS Code el archivo: <code class="font-mono text-xs px-1 rounded border" style="background-color: var(--color-card); border-color: var(--color-hairline); color: var(--color-primary-ink);">originacion/reglas_score_buro.py</code>.</li>
-            <li>Cambia el valor <code class="font-mono">650</code> por <code class="font-mono text-emerald-400">660</code> en la función <code class="font-mono">validar_score_minimo</code>.</li>
-            <li>Guarda el archivo presionando <kbd class="px-1.5 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + S</kbd>.</li>
-          </ol>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Ahora en tu terminal de VS Code ejecuta:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          En la terminal, comprueba la detección del cambio:
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
@@ -663,7 +625,7 @@
         </div>
 
         <div class="p-4 rounded-[20px] border text-xs font-mono space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Lo que verás en tu consola:</div>
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Salida en consola:</div>
           <div style="color: var(--color-primary-ink);">Changes not staged for commit:</div>
           <div class="text-rose-400 font-semibold ml-3">modified:   originacion/reglas_score_buro.py</div>
         </div>
@@ -671,7 +633,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-6" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Modifiqué el umbral en `reglas_score_buro.py` y vi el archivo en rojo al correr `git status`.
+            Modifiqué el archivo y confirmé que aparece en rojo con `git status`.
           </label>
         </div>
       </div>
@@ -681,24 +643,24 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">2</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Prepara el archivo en la caja de envío (`git add .`)</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Prepara el archivo (`git add`)</h3>
           </div>
           <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Paso 2 de 4</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          En tu terminal, ejecuta para meter tu script modificado a la caja de envío (Staging):
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Coloca el archivo modificado en el área de preparación (staging):
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-          <code>git add .</code>
-          <button onclick="copyCmd('git add .')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
+          <code>git add originacion/reglas_score_buro.py</code>
+          <button onclick="copyCmd('git add originacion/reglas_score_buro.py')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
             Copiar
           </button>
         </div>
 
         <p class="text-xs" style="color: var(--color-mid-gray);">
-          💡 Si vuelves a correr <code class="font-mono text-xs px-1 rounded" style="background-color: var(--color-subcard); color: var(--color-primary-ink);">git status</code>, verás que <code class="font-mono text-emerald-400">originacion/reglas_score_buro.py</code> ahora aparece en <strong class="text-emerald-400">verde</strong> ("Changes to be committed").
+          💡 Al correr <code class="font-mono text-xs px-1 rounded" style="background-color: var(--color-subcard); color: var(--color-primary-ink);">git status</code>, el archivo cambiará a <strong class="text-emerald-400">verde</strong> (<em>Changes to be committed</em>).
         </p>
       </div>
 
@@ -707,13 +669,13 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">3</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Sella la versión con la justificación del cambio (`git commit -m`)</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Registra el commit (`git commit`)</h3>
           </div>
           <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Paso 3 de 4</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          En auditoría bancaria, cada commit debe explicar qué política se calibró. Corre en tu consola:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Guarda la versión con un mensaje descriptivo para auditoría:
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
@@ -724,7 +686,7 @@
         </div>
 
         <div class="p-4 rounded-[20px] border text-xs font-mono space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Respuesta en tu terminal:</div>
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">Confirmación en consola:</div>
           <div style="color: var(--color-link-blue);">[main 8a1b2c3] feat(originacion): ajuste de score minimo a 660 segun comite Q4</div>
           <div style="color: var(--color-mid-gray);"> 1 file changed, 1 insertion(+), 1 deletion(-)</div>
         </div>
@@ -732,7 +694,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-7" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Ejecuté el commit con el mensaje de política de crédito en mi terminal.
+            Registré el commit con mensaje semántico en mi terminal.
           </label>
         </div>
       </div>
@@ -742,18 +704,18 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">4</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Sube la nueva regla a GitHub (`git push`)</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Publica en GitHub (`git push`)</h3>
           </div>
           <span class="text-xs font-medium font-mono" style="color: var(--color-link-blue);">Paso 4 (Final)</span>
         </div>
 
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Envía la actualización a la organización para que todo el equipo cuente con el nuevo corte de admisión:
+        <p class="text-sm leading-relaxed" style="color: var(--color-primary-ink);">
+          Envía los commits locales al repositorio remoto de la organización:
         </p>
 
         <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-          <code class="font-bold text-base">git push</code>
-          <button onclick="copyCmd('git push')" class="text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm" style="background-color: var(--color-electric-blue);">
+          <code class="font-bold text-base">git push origin main</code>
+          <button onclick="copyCmd('git push origin main')" class="text-white text-xs px-5 py-2 rounded-full font-sans font-medium transition shadow-sm" style="background-color: var(--color-electric-blue);">
             Copiar Comando
           </button>
         </div>
@@ -761,7 +723,7 @@
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-8" onchange="toggleTask('check-step-8')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-8" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Ejecuté `git push` y verifiqué en GitHub que mi cambio ya está publicado.
+            Ejecuté `git push` y verifiqué la publicación en GitHub.
           </label>
         </div>
       </div>
@@ -776,47 +738,40 @@
       
       <div class="space-y-1">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Gobernanza con `ejemplos/calculo_roll_rate.sql` y `.gitignore`
+          4. Seguridad y Gobernanza (.gitignore)
         </h2>
         <p class="text-sm" style="color: var(--color-mid-gray);">
-          En crédito, las fórmulas de transición se comparten; las extracciones con RFC o saldos nunca se suben.
+          El código analítico se versiona; los datos con RFC o saldos nunca se suben al repositorio.
         </p>
       </div>
 
-      <!-- Context Story -->
+      <!-- Comparative Columns Card -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-        <h3 class="font-semibold text-base" style="color: var(--color-primary-ink);">El caso real de Roll Rates y datos confidenciales:</h3>
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          En tu carpeta tienes <code class="font-mono text-sm px-1.5 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-electric-blue);">ejemplos/calculo_roll_rate.sql</code>. Ese archivo <strong>SÍ</strong> debe estar en GitHub porque contiene la matemática de migración entre buckets (B0, B1, B2) para estimar provisiones IFRS 9.
-        </p>
-        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Sin embargo, cuando corres esa query en Snowflake o Databricks y descargas a tu computadora un archivo como <code class="font-mono text-rose-400">data/cartera_clientes_mora.csv</code> con saldos y RFCs, el archivo <code class="font-mono text-sm px-1.5 py-0.5 rounded border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">.gitignore</code> entra en acción:
-        </p>
+        <h3 class="font-semibold text-base" style="color: var(--color-primary-ink);">Criterio de exclusión en Políticas TDC</h3>
 
-        <!-- Comparative Columns -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
           
-          <div class="p-5 rounded-[22px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="w-3 h-3 rounded-full" style="background-color: var(--color-ember);"></span>
-              <span class="font-semibold text-xs uppercase tracking-wider" style="color: var(--color-primary-ink);">Ignorado por .gitignore</span>
+              <span class="w-2.5 h-2.5 rounded-full" style="background-color: var(--color-ember);"></span>
+              <span class="font-semibold text-xs uppercase tracking-wider" style="color: var(--color-primary-ink);">Ignorado por .gitignore (Nunca subir)</span>
             </div>
-            <ul class="text-xs space-y-2 pt-1" style="color: var(--color-mid-gray);">
-              <li>• <code class="font-mono text-rose-400">*.csv</code> y <code class="font-mono text-rose-400">*.xlsx</code> (Bases de clientes y extracciones).</li>
-              <li>• <code class="font-mono text-rose-400">.env</code> (Contraseñas de conexión a Snowflake/Oracle).</li>
-              <li>• Carpetas de datos locales (<code class="font-mono">data/</code>, <code class="font-mono">raw/</code>).</li>
+            <ul class="text-xs space-y-1.5 pt-1" style="color: var(--color-mid-gray);">
+              <li>• <code class="font-mono text-rose-400">*.csv</code> y <code class="font-mono text-rose-400">*.xlsx</code> (Extracciones y saldos de clientes).</li>
+              <li>• <code class="font-mono text-rose-400">.env</code> (Credenciales de conexión a bases de datos).</li>
+              <li>• Carpetas locales de datos (<code class="font-mono">data/</code>, <code class="font-mono">raw/</code>).</li>
             </ul>
           </div>
 
-          <div class="p-5 rounded-[22px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="w-3 h-3 rounded-full" style="background-color: var(--color-electric-blue);"></span>
-              <span class="font-semibold text-xs uppercase tracking-wider" style="color: var(--color-primary-ink);">Controlado por Git</span>
+              <span class="w-2.5 h-2.5 rounded-full" style="background-color: var(--color-electric-blue);"></span>
+              <span class="font-semibold text-xs uppercase tracking-wider" style="color: var(--color-primary-ink);">Versionado en Git (Compartido)</span>
             </div>
-            <ul class="text-xs space-y-2 pt-1" style="color: var(--color-mid-gray);">
-              <li>• <code class="font-mono text-emerald-400">ejemplos/calculo_roll_rate.sql</code> (Query maestro).</li>
-              <li>• <code class="font-mono text-emerald-400">ejemplos/reglas_originacion_tdc.py</code> (Lógica de negocio).</li>
-              <li>• <code class="font-mono text-emerald-400">README.md</code> (Catálogo y documentación).</li>
+            <ul class="text-xs space-y-1.5 pt-1" style="color: var(--color-mid-gray);">
+              <li>• <code class="font-mono text-emerald-400">*.sql</code> (Queries maestras y matrices de transición).</li>
+              <li>• <code class="font-mono text-emerald-400">*.py</code> (Motores de reglas, scoring y modelos).</li>
+              <li>• <code class="font-mono text-emerald-400">README.md</code> (Documentación metodológica).</li>
             </ul>
           </div>
 
@@ -825,27 +780,24 @@
 
       <!-- Documentation Header Templates -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-        <h3 class="font-semibold text-base" style="color: var(--color-primary-ink);">Plantillas de documentación obligatoria (Copiar con 1 Clic)</h3>
-        <p class="text-xs" style="color: var(--color-mid-gray);">
-          Basadas en los estándares de auditoría de <code class="font-mono">calculo_roll_rate.sql</code> y <code class="font-mono">reglas_originacion_tdc.py</code>:
-        </p>
+        <h3 class="font-semibold text-base" style="color: var(--color-primary-ink);">Plantillas de documentación de auditoría (1 Clic)</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
           
-          <button onclick="copyHeaderSQL()" class="p-5 rounded-[20px] text-left transition space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <button onclick="copyHeaderSQL()" class="p-4 rounded-[18px] text-left transition space-y-1.5 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-sm" style="color: var(--color-primary-ink);">Cabecera SQL (.sql)</span>
               <span id="btn-lbl-sql" class="text-xs font-medium" style="color: var(--color-link-blue);">Copiar plantilla ›</span>
             </div>
-            <p class="text-xs" style="color: var(--color-mid-gray);">Incluye autor, tablas fuente, destino y periodicidad de cierre.</p>
+            <p class="text-xs" style="color: var(--color-mid-gray);">Autor, tablas fuente, destino y periodicidad de cierre.</p>
           </button>
 
-          <button onclick="copyHeaderPY()" class="p-5 rounded-[20px] text-left transition space-y-2 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <button onclick="copyHeaderPY()" class="p-4 rounded-[18px] text-left transition space-y-1.5 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-sm" style="color: var(--color-primary-ink);">Docstring Python (.py)</span>
               <span id="btn-lbl-py" class="text-xs font-medium" style="color: var(--color-link-blue);">Copiar plantilla ›</span>
             </div>
-            <p class="text-xs" style="color: var(--color-mid-gray);">Explica los filtros duros, scorecuts de buró y límites asignados.</p>
+            <p class="text-xs" style="color: var(--color-mid-gray);">Filtros duros, scorecuts de buró y reglas de negocio.</p>
           </button>
 
         </div>
@@ -861,68 +813,68 @@
       
       <div class="space-y-1">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Acordeón de Bolsillo y Rescate en Windows
+          5. Acordeón Rápido y Errores Comunes
         </h2>
         <p class="text-sm" style="color: var(--color-mid-gray);">
-          La referencia rápida para tener a mano en tu día a día de análisis de portafolio.
+          Referencia de comandos cotidianos y soluciones a los errores más frecuentes en Windows.
         </p>
       </div>
 
       <!-- Command Quick Reference Table -->
       <div class="rounded-[28px] overflow-hidden border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-        <div class="p-5 border-b flex items-center justify-between" style="border-color: var(--color-hairline);">
+        <div class="p-4 sm:p-5 border-b flex items-center justify-between" style="border-color: var(--color-hairline);">
           <span class="font-semibold text-sm" style="color: var(--color-primary-ink);">Los 5 Comandos Diarios</span>
-          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">Terminal PowerShell</span>
+          <span class="text-xs font-mono" style="color: var(--color-mid-gray);">PowerShell</span>
         </div>
 
         <div class="divide-y text-xs sm:text-sm" style="border-color: var(--color-hairline);">
           
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
+          <div class="p-3.5 sm:p-4 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
               <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git pull</div>
-              <div class="text-xs" style="color: var(--color-mid-gray);">Descarga los cambios de tus compañeros en `indicadores/` o `lineas/`.</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Descarga los cambios publicados por tu equipo.</div>
             </div>
-            <button onclick="copyCmd('git pull')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <button onclick="copyCmd('git pull')" class="text-xs px-3 py-1 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
+          <div class="p-3.5 sm:p-4 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
               <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git status</div>
-              <div class="text-xs" style="color: var(--color-mid-gray);">Muestra en rojo los archivos de política que has modificado.</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Muestra el estado de archivos modificados o en staging.</div>
             </div>
-            <button onclick="copyCmd('git status')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <button onclick="copyCmd('git status')" class="text-xs px-3 py-1 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
+          <div class="p-3.5 sm:p-4 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
-              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git add .</div>
-              <div class="text-xs" style="color: var(--color-mid-gray);">Prepara los scripts modificados en la caja de envío (se pintan de verde).</div>
+              <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git add &lt;ruta/archivo&gt;</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Prepara los archivos modificados para el commit.</div>
             </div>
-            <button onclick="copyCmd('git add .')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <button onclick="copyCmd('git add .')" class="text-xs px-3 py-1 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
+          <div class="p-3.5 sm:p-4 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
               <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git commit -m "..."</div>
-              <div class="text-xs" style="color: var(--color-mid-gray);">Sella la versión con la justificación del cambio de política.</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Guarda la instantánea con mensaje de auditoría.</div>
             </div>
-            <button onclick="copyCmd('git commit -m &quot;feat(originacion): actualiza corte de score buro&quot;')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <button onclick="copyCmd('git commit -m &quot;feat(originacion): actualiza corte de score buro&quot;')" class="text-xs px-3 py-1 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
 
-          <div class="p-4 sm:p-5 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
+          <div class="p-3.5 sm:p-4 flex items-center justify-between gap-4 transition hover:opacity-90" style="border-color: var(--color-hairline);">
             <div class="space-y-0.5">
               <div class="font-mono font-semibold" style="color: var(--color-primary-ink);">git push</div>
-              <div class="text-xs" style="color: var(--color-mid-gray);">Sube tu script a la organización central en GitHub.</div>
+              <div class="text-xs" style="color: var(--color-mid-gray);">Sube tus commits a GitHub.</div>
             </div>
-            <button onclick="copyCmd('git push')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <button onclick="copyCmd('git push')" class="text-xs px-3 py-1 rounded-full font-medium transition border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               Copiar
             </button>
           </div>
@@ -933,79 +885,59 @@
       <!-- Solutions to Common Beginner Headaches in Windows -->
       <div class="space-y-3 pt-2">
         <h3 class="text-lg font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Solución a los 5 Dolores de Cabeza Más Comunes en Windows
+          Solución a Errores Comunes en Windows
         </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
           
-          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+          <div class="rounded-[22px] p-4 space-y-2 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold uppercase tracking-wider block text-red-400">Error 0</span>
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-red-400">Error 0</span>
               <button onclick="copyCmd('winget install --id Git.Git -e --source winget')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
                 Copiar fix
               </button>
             </div>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"'git' no se reconoce como comando..."</h4>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Falta instalar Git o no se reinició la terminal/VS Code tras instalar.
+            <h4 class="font-semibold text-xs text-primary-ink">"git no se reconoce..."</h4>
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Instala Git con winget y reinicia VS Code por completo.
             </p>
-            <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div class="text-blue-400 truncate">winget install --id Git.Git -e</div>
-              <div class="text-amber-400">Reinicia VS Code por completo</div>
-            </div>
           </div>
           
-          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-            <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 1</span>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"fatal: not a git repository"</h4>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Abriste la terminal fuera de la carpeta del proyecto.
+          <div class="rounded-[22px] p-4 space-y-2 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <span class="text-[11px] font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 1</span>
+            <h4 class="font-semibold text-xs text-primary-ink">"fatal: not a git repo"</h4>
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Abre la terminal dentro de la carpeta del proyecto (<code class="font-mono text-[10px]">cd &lt;repo&gt;</code>).
             </p>
-            <div class="p-2.5 rounded-[12px] text-xs font-mono border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              cd C:\Users\tu.usuario\Documents\GitHub\originacion-credito
-            </div>
           </div>
 
-          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-            <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 2</span>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"Updates were rejected"</h4>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Un compañero subió algo a main y diste push sin haber hecho pull primero.
+          <div class="rounded-[22px] p-4 space-y-2 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <span class="text-[11px] font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 2</span>
+            <h4 class="font-semibold text-xs text-primary-ink">"Updates were rejected"</h4>
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Hubo cambios remotos. Corre <code class="font-mono text-[10px]">git pull --rebase</code> y luego <code class="font-mono text-[10px]">git push</code>.
             </p>
-            <div class="p-2.5 rounded-[12px] text-xs font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div>git pull --rebase origin main</div>
-              <div>git push origin main</div>
-            </div>
           </div>
 
-          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-            <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 3</span>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"Se abrió la pantalla de Vim"</h4>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Escribiste <code class="font-mono text-xs">git commit</code> sin poner <code class="font-mono text-xs">-m "..."</code>.
+          <div class="rounded-[22px] p-4 space-y-2 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <span class="text-[11px] font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 3</span>
+            <h4 class="font-semibold text-xs text-primary-ink">"Se abrió Vim"</h4>
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Presiona <kbd class="px-1 py-0.5 rounded font-mono text-[10px] border">Esc</kbd>, escribe <code class="font-mono text-[10px]">:q!</code> y pulsa Enter.
             </p>
-            <div class="p-2.5 rounded-[12px] text-xs font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div>1. Presiona Esc</div>
-              <div>2. Escribe :q! y da Enter</div>
-            </div>
           </div>
 
-          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+          <div class="rounded-[22px] p-4 space-y-2 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold uppercase tracking-wider block text-amber-400">Error 4</span>
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-400">Error 4</span>
               <button onclick="copyCmd('https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
                 Copiar URL
               </button>
             </div>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿Error 401 o la carpeta desaparece?</h4>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Falla de credenciales en terminal o falta de permisos de administrador en Windows.
+            <h4 class="font-semibold text-xs text-primary-ink">Error 401 / Auth</h4>
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Clona desde la pestaña Welcome de VS Code y autoriza en navegador.
             </p>
-            <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div class="text-blue-400">Usa VS Code > Pestaña Welcome</div>
-              <div class="text-emerald-400">Clic en "Clonar repositorio"</div>
-              <div class="text-amber-400">Pega URL y autoriza vía web</div>
-            </div>
           </div>
 
         </div>
@@ -1019,79 +951,78 @@
     <section id="content-tab-plantillas-repo" class="tab-pane hidden space-y-8">
 
       <!-- Header Hero of the Tab -->
-      <div class="rounded-[28px] p-8 sm:p-10 border transition relative overflow-hidden" style="background-color: var(--color-surface); border-color: var(--color-hairline);">
-        <div class="max-w-4xl space-y-3 relative z-10">
+      <div class="rounded-[28px] p-6 sm:p-8 border transition relative overflow-hidden" style="background-color: var(--color-surface); border-color: var(--color-hairline);">
+        <div class="max-w-4xl space-y-2.5 relative z-10">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold tracking-normal uppercase border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-ember);">
             <span>Ecosistema Oficial</span>
             <span>•</span>
             <span class="font-mono lowercase text-[11px]" style="color: var(--color-mid-gray);">credito-tdc-bcpl</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Guía Maestra: Monorepos, Módulos y Responsables de Políticas TDC
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
+            Monorepos, Módulos y Permisos de Políticas TDC
           </h2>
-          <p class="text-base leading-relaxed" style="color: var(--color-mid-gray);">
-            La Dirección de Políticas TDC opera mediante una arquitectura de <strong>monorepos por pilar de negocio</strong> en GitHub. Cada analista y científico de datos trabaja en su módulo asignado utilizando el entorno común en Python, Polars y Yellowbrick.
+          <p class="text-sm leading-relaxed" style="color: var(--color-mid-gray);">
+            Estructura de repositorios por pilar de negocio, asignación de submódulos y matriz oficial de permisos.
           </p>
 
-          <div class="pt-2 flex flex-wrap gap-2 text-xs">
-            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              🏛️ 4 Repositorios Oficiales
+          <div class="pt-1 flex flex-wrap gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              🏛️ 4 Repositorios
             </span>
-            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              ⚡ Stack: Python 3.10+ / Polars / Yellowbrick
+            <span class="px-2.5 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              ⚡ Stack: Python / Polars / Yellowbrick
             </span>
-            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              🛡️ Cero Datos PII (Consultas DWH)
+            <span class="px-2.5 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              🛡️ Cero Datos PII
             </span>
-            <span class="px-3 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              📁 Submódulos Aislados = Cero Conflictos
+            <span class="px-2.5 py-1 rounded-full border font-medium" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              📁 Submódulos Aislados
             </span>
           </div>
         </div>
       </div>
 
       <!-- Card 1: Los 4 Repositorios Oficiales de la Organización -->
-      <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-5 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
           <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Arquitectura del Ecosistema</div>
-          <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Los 4 Repositorios Oficiales en credito-tdc-bcpl
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
+            4 Repositorios Oficiales
           </h3>
-          <p class="text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-            Cada repositorio concentra un dominio funcional completo. Los colaboradores clonan únicamente el o los monorepos donde tienen asignados proyectos de investigación, modelos o rutinas BAU:
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-mid-gray);">
+            Cada repositorio concentra un dominio funcional. Clona únicamente el o los proyectos donde colaboras:
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           <!-- Repo 1: originacion-credito -->
-          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="space-y-3">
+          <div class="rounded-[20px] p-5 border space-y-3.5 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2.5">
+                <div class="flex items-center space-x-2">
                   <span class="text-xl">🎯</span>
                   <div>
-                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">originacion-credito</h4>
-                    <span class="text-[11px] font-mono" style="color: var(--color-electric-blue);">credito-tdc-bcpl / Privado</span>
+                    <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">originacion-credito</h4>
+                    <span class="text-[10px] font-mono text-blue-400">Privado</span>
                   </div>
                 </div>
-                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-blue-500/10 text-blue-400 border-blue-500/30">8 Proyectos</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full border font-medium bg-blue-500/10 text-blue-400 border-blue-500/30">8 Proyectos</span>
               </div>
               <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Modelos probabilísticos, reglas de admisión, evaluación de prospectos One Click, desentrame de consultas a Buró/Círculo de Crédito y parametrización de políticas de entrada.
+                Admisión, scoring PD M4, prospección One Click y reglas normativas de entrada.
               </p>
               <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Submódulos principales:</div>
+                <div class="text-[10px] uppercase font-sans text-stone-400">Submódulos:</div>
                 <div class="truncate text-blue-400">• modelos-scoring/ (lineas-optimas-pd-m4, segmentacion)</div>
                 <div class="truncate text-blue-400">• prospectos-one-click/ (evaluacion-hipo-autos)</div>
                 <div class="truncate text-blue-400">• buro-y-tramas-sic/ (desentrame-cadenas, def-consultas)</div>
-                <div class="truncate text-blue-400">• politicas-canales/ (disposiciones-efectivo, tiendas-coppel)</div>
-                <div class="truncate text-blue-400">• certificacion-variables/ (variables-coppel)</div>
+                <div class="truncate text-blue-400">• politicas-canales/ (disposiciones, tiendas-coppel)</div>
               </div>
             </div>
             <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
-              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/originacion-credito.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <span>Copiar Clone</span>
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/originacion-credito.git')" class="text-xs px-3 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar Clone
               </button>
               <a href="https://github.com/credito-tdc-bcpl/originacion-credito" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
                 <span>Ver en GitHub</span>
@@ -1101,31 +1032,31 @@
           </div>
 
           <!-- Repo 2: administracion-cartera -->
-          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="space-y-3">
+          <div class="rounded-[20px] p-5 border space-y-3.5 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2.5">
+                <div class="flex items-center space-x-2">
                   <span class="text-xl">📊</span>
                   <div>
-                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">administracion-cartera</h4>
-                    <span class="text-[11px] font-mono text-emerald-400">credito-tdc-bcpl / Privado</span>
+                    <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">administracion-cartera</h4>
+                    <span class="text-[10px] font-mono text-emerald-400">Privado</span>
                   </div>
                 </div>
-                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-emerald-500/10 text-emerald-400 border-emerald-500/30">6 Proyectos</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full border font-medium bg-emerald-500/10 text-emerald-400 border-emerald-500/30">6 Proyectos</span>
               </div>
               <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Estrategias y motores para el mantenimiento de cuentas activas en vida útil, administración y aumento de líneas, cancelaciones masivas, reducción de reservas y auditoría de tasas.
+                Mantenimiento de cartera, aumentos PTCSF-33, cortes CLI día 11, cancelaciones y reservas.
               </p>
               <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Submódulos principales:</div>
-                <div class="truncate text-emerald-400">• gestion-lineas/ (aplicativo-ptcsf-33, incrementos-linea)</div>
-                <div class="truncate text-emerald-400">• cancelacion-depuracion/ (depuracion-masiva, saldos-a-favor)</div>
-                <div class="truncate text-emerald-400">• auditoria-y-tasas/ (conciliacion-tasas-mci, certificacion-brm)</div>
+                <div class="text-[10px] uppercase font-sans text-stone-400">Submódulos:</div>
+                <div class="truncate text-emerald-400">• gestion-lineas/ (ptcsf-33, incrementos-linea)</div>
+                <div class="truncate text-emerald-400">• cancelacion-depuracion/ (depuracion-masiva, saldos)</div>
+                <div class="truncate text-emerald-400">• auditoria-y-tasas/ (conciliacion-tasas-mci, brm)</div>
               </div>
             </div>
             <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
-              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/administracion-cartera.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <span>Copiar Clone</span>
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/administracion-cartera.git')" class="text-xs px-3 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar Clone
               </button>
               <a href="https://github.com/credito-tdc-bcpl/administracion-cartera" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
                 <span>Ver en GitHub</span>
@@ -1135,31 +1066,31 @@
           </div>
 
           <!-- Repo 3: indicadores-mensuales-permanentes -->
-          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="space-y-3">
+          <div class="rounded-[20px] p-5 border space-y-3.5 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2.5">
+                <div class="flex items-center space-x-2">
                   <span class="text-xl">📈</span>
                   <div>
-                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">indicadores-mensuales-permanentes</h4>
-                    <span class="text-[11px] font-mono text-amber-400">credito-tdc-bcpl / Privado</span>
+                    <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">indicadores-mensuales-permanentes</h4>
+                    <span class="text-[10px] font-mono text-amber-400">Privado</span>
                   </div>
                 </div>
-                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-amber-500/10 text-amber-400 border-amber-500/30">10 Procesos BAU</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full border font-medium bg-amber-500/10 text-amber-400 border-amber-500/30">10 Procesos BAU</span>
               </div>
               <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Procesos recurrentes de cierre mensual, cosechas (vintages), monitoreos normativos (las 5 rutinas BAU permanentes), uso de línea y tableros de morosidad directivos.
+                Cierres mensuales, cosechas (vintages), monitoreos normativos (5 rutinas BAU) y tableros directivos.
               </p>
               <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <div class="text-[10px] uppercase font-sans text-stone-400">Estructura de monitoreos:</div>
-                <div class="truncate text-amber-400">• indicadores-originacion/ (cosechas, one-click, certificacion)</div>
+                <div class="text-[10px] uppercase font-sans text-stone-400">Monitoreos:</div>
+                <div class="truncate text-amber-400">• indicadores-originacion/ (cosechas, one-click)</div>
                 <div class="truncate text-amber-400">• indicadores-cartera/ (01 decremento a 05 imor)</div>
-                <div class="truncate text-amber-400">• indicadores-cartera/ (uso-linea-general, vistas-mora)</div>
+                <div class="truncate text-amber-400">• indicadores-cartera/ (uso-linea, vistas-mora)</div>
               </div>
             </div>
             <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
-              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <span>Copiar Clone</span>
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes.git')" class="text-xs px-3 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar Clone
               </button>
               <a href="https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
                 <span>Ver en GitHub</span>
@@ -1169,32 +1100,31 @@
           </div>
 
           <!-- Repo 4: herramientas-utiles -->
-          <div class="rounded-[20px] p-6 border space-y-4 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="space-y-3">
+          <div class="rounded-[20px] p-5 border space-y-3.5 transition flex flex-col justify-between" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="space-y-2.5">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2.5">
+                <div class="flex items-center space-x-2">
                   <span class="text-xl">🛠️</span>
                   <div>
-                    <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">herramientas-utiles</h4>
-                    <span class="text-[11px] font-mono text-purple-400">credito-tdc-bcpl / Privado</span>
+                    <h4 class="font-bold text-sm" style="color: var(--color-primary-ink);">herramientas-utiles</h4>
+                    <span class="text-[10px] font-mono text-purple-400">Privado</span>
                   </div>
                 </div>
-                <span class="text-[11px] px-2.5 py-0.5 rounded-full border font-medium bg-purple-500/10 text-purple-400 border-purple-500/30">Todo el Equipo</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full border font-medium bg-purple-500/10 text-purple-400 border-purple-500/30">Todo el Equipo</span>
               </div>
               <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Espacio centralizado para compartir funciones reutilizables de conexión a Yellowbrick, snippets de Python y SQL, plantillas de configuración y automatizaciones de productividad (Trello, Telegram).
+                Conexiones a Yellowbrick, snippets analíticos, utilidades y automatizaciones comunes.
               </p>
               <div class="text-[11px] font-mono p-2.5 rounded-[12px] border space-y-0.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
                 <div class="text-[10px] uppercase font-sans text-stone-400">Módulos:</div>
-                <div class="truncate text-purple-400">• conexiones-db/ (yellowbrick.py, consultas_comunes.sql)</div>
-                <div class="truncate text-purple-400">• snippets-python/ (metricas.py, exportadores, fechas)</div>
-                <div class="truncate text-purple-400">• automatizaciones/ (trello_obsidian.py, telegram)</div>
-                <div class="truncate text-purple-400">• plantillas/ (config.example.json, env.example)</div>
+                <div class="truncate text-purple-400">• conexiones-db/ (yellowbrick.py, queries)</div>
+                <div class="truncate text-purple-400">• snippets-python/ (metricas, exportadores)</div>
+                <div class="truncate text-purple-400">• automatizaciones/ (trello, telegram)</div>
               </div>
             </div>
             <div class="pt-2 flex items-center justify-between gap-2 border-t" style="border-color: var(--color-hairline);">
-              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/herramientas-utiles.git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium transition border hover:opacity-90 flex items-center space-x-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                <span>Copiar Clone</span>
+              <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/herramientas-utiles.git')" class="text-xs px-3 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar Clone
               </button>
               <a href="https://github.com/credito-tdc-bcpl/herramientas-utiles" target="_blank" class="text-xs font-medium hover:underline flex items-center space-x-1" style="color: var(--color-link-blue);">
                 <span>Ver en GitHub</span>
@@ -1208,16 +1138,13 @@
 
       <!-- Card: Equipos Oficiales y Matriz de Permisos por Repositorio -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
-        <div class="space-y-1.5">
-          <div class="flex items-center space-x-2">
-            <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Gobernanza y Accesos Oficiales</span>
-            <span class="text-[11px] px-2 py-0.5 rounded-full font-mono border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-link-blue);">credito-tdc-bcpl</span>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            👥 Equipos Oficiales y Matriz de Permisos por Repositorio
+        <div class="space-y-1">
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Gobernanza Oficial</div>
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
+            Equipos Oficiales y Matriz de Permisos
           </h3>
-          <p class="text-sm leading-relaxed" style="color: var(--color-mid-gray);">
-            Para salvaguardar el código productivo bancario y evitar sobreescrituras accidentales entre diferentes pilares de negocio, la Dirección de Políticas TDC opera bajo un esquema de <strong>permisos segregados por equipo</strong>. Cada colaborador cuenta con permisos de <strong>Escritura (`Write`)</strong> únicamente en los repositorios donde es responsable titular, y permisos de <strong>Lectura (`Read`)</strong> para auditoría y consulta en el resto del ecosistema:
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-mid-gray);">
+            Permisos segregados por equipo: <strong>Escritura (`Write`)</strong> en tu repositorio titular y <strong>Lectura (`Read`)</strong> para auditoría en el resto de la organización.
           </p>
         </div>
 
@@ -1497,35 +1424,35 @@
         </div>
 
         <!-- Reglas de Trabajo y Pull Requests -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-2">
           
-          <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="text-emerald-400 text-base">🟢</span>
+              <span class="text-emerald-400 text-sm">🟢</span>
               <h5 class="font-bold text-xs sm:text-sm" style="color: var(--color-primary-ink);">Permiso de Escritura (Write)</h5>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Los miembros titulares pueden hacer <code class="font-mono text-[11px] text-emerald-400">git push origin main</code> directamente en los submódulos de su pilar para actualizar motores, reglas y tableros sin cuellos de botella.
+              Push directo a <code class="font-mono text-[11px] text-emerald-400">main</code> en los submódulos asignados a tu equipo.
             </p>
           </div>
 
-          <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="text-blue-400 text-base">🔵</span>
+              <span class="text-blue-400 text-sm">🔵</span>
               <h5 class="font-bold text-xs sm:text-sm" style="color: var(--color-primary-ink);">Permiso de Lectura (Read)</h5>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Todo el equipo tiene acceso de lectura en todos los repositorios para consultar código, reutilizar funciones y auditar modelos. Si alguien intenta hacer push a un repositorio ajeno, Git lo rechazará automáticamente.
+              Lectura y consulta en todos los repositorios para reutilización y auditoría.
             </p>
           </div>
 
-          <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="p-4 rounded-[18px] border space-y-1.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
             <div class="flex items-center space-x-2">
-              <span class="text-purple-400 text-base">🔀</span>
-              <h5 class="font-bold text-xs sm:text-sm" style="color: var(--color-primary-ink);">Colaboración Cruzada (Pull Request)</h5>
+              <span class="text-purple-400 text-sm">🔀</span>
+              <h5 class="font-bold text-xs sm:text-sm" style="color: var(--color-primary-ink);">Colaboración Cruzada (PR)</h5>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Si un científico de datos necesita proponer cambios en un repositorio fuera de su equipo titular, crea una rama de trabajo o se coordina con los titulares del repositorio para su revisión y aprobación oficial.
+              Cambios en repositorios ajenos requieren coordinación o Pull Request.
             </p>
           </div>
 
@@ -1536,25 +1463,25 @@
       <!-- Card 2: Generador Interactivo & Guía del Proceso Completo Git -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
-          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Herramienta Interactiva & Guía Completa de Terminal</div>
-          <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Generador de Comandos y Ciclo de Vida Git TDC
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Herramienta Interactiva</div>
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
+            Generador de Comandos y Ciclo de Vida
           </h3>
-          <p class="text-sm" style="color: var(--color-mid-gray);">
-            Cubre el proceso de punta a punta: desde clonar y preparar tu entorno el día 1, el flujo diario de edición y publicación con explicación detallada de cada comando, hasta herramientas de rescate y auditoría ante cualquier eventualidad.
+          <p class="text-xs sm:text-sm" style="color: var(--color-mid-gray);">
+            Genera la secuencia PowerShell para tu submódulo o consulta la guía operativa paso a paso.
           </p>
         </div>
 
         <!-- Sub-navigation Pills -->
         <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-[16px] border w-fit" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
           <button id="btn-subtab-daily" onclick="switchGenSubTab('daily')" class="subtab-btn px-4 py-2 rounded-[12px] text-xs font-semibold transition" style="background-color: var(--color-btn-active-bg); color: var(--color-btn-active-text);">
-            🚀 Flujo Diario (Pull, Commit y Push)
+            🚀 Flujo Diario (7 Pasos)
           </button>
           <button id="btn-subtab-clone" onclick="switchGenSubTab('clone')" class="subtab-btn px-4 py-2 rounded-[12px] text-xs font-semibold transition opacity-70" style="color: var(--color-mid-gray);">
-            📥 Día 1: Clonar y Preparar Entorno
+            📥 Día 1: Clonar y Entorno
           </button>
           <button id="btn-subtab-rescue" onclick="switchGenSubTab('rescue')" class="subtab-btn px-4 py-2 rounded-[12px] text-xs font-semibold transition opacity-70" style="color: var(--color-mid-gray);">
-            🛡️ Comandos de Rescate y Auditoría
+            🛡️ Rescate y Auditoría
           </button>
         </div>
 
@@ -1592,214 +1519,162 @@
           <!-- Secuencia Consolidada -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia completa de terminal (PowerShell):</span>
+              <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia de terminal (PowerShell):</span>
               <button onclick="copyGeneratedCommands()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar Todo al Portapapeles
+                Copiar Secuencia
               </button>
             </div>
             <pre id="gen-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);"><!-- JS Output --></pre>
           </div>
 
           <!-- Desglose Paso a Paso con Explicación de Cada Comando -->
-          <div class="space-y-4 pt-2">
+          <div class="space-y-3 pt-2">
             <div class="border-t pt-4" style="border-color: var(--color-hairline);">
               <h4 class="font-bold text-sm sm:text-base flex items-center space-x-2" style="color: var(--color-primary-ink);">
                 <span>📖</span>
-                <span>Explicación Paso a Paso de Cada Comando en tu Flujo Diario</span>
+                <span>Referencia de los 7 Pasos Diarios</span>
               </h4>
-              <p class="text-xs" style="color: var(--color-mid-gray);">
-                Entiende qué hace cada instrucción en tu sistema, por qué es obligatoria y qué mensaje debes esperar en la terminal:
-              </p>
             </div>
 
-            <div class="space-y-3">
+            <div class="space-y-2.5">
               <!-- Paso 1 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">Paso 1 · Navegación</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">1 · Navegación</span>
                     <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Posicionar la terminal en tu repositorio local</span>
                   </div>
                   <button onclick="copyCmd(document.getElementById('step-cmd-1').textContent)" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code id="step-cmd-1">cd C:\Users\tu.usuario\Documents\GitHub\originacion-credito</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué se ejecuta?</strong>
-                    Git opera exclusivamente dentro de carpetas que contienen el directorio oculto <code class="font-mono text-[10px]">.git/</code>. Si intentas ejecutar comandos fuera de este directorio, la consola arrojará el error <code class="font-mono text-[10px] text-red-400">fatal: not a git repository</code>.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    El indicador de ruta de PowerShell cambiará a la carpeta del repositorio, reconociendo que ya estás dentro del espacio de trabajo.
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Ubica la terminal dentro de la carpeta del proyecto para que Git reconozca el repositorio.
+                </p>
               </div>
 
               <!-- Paso 2 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Paso 2 · Hábito Matutino</span>
-                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Descargar los avances más recientes de tus compañeros</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">2 · Hábito Matutino</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Descargar avances del equipo</span>
                   </div>
                   <button onclick="copyCmd('git pull origin main')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code>git pull origin main</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué es sagrado?</strong>
-                    En un monorepo activo con 8 analistas, tus compañeros suben mejoras continuamente. Si empiezas a programar sobre una versión desfasada de <code class="font-mono text-[10px]">main</code>, al final del día tu <code class="font-mono text-[10px]">git push</code> será rechazado por desincronización.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    Si nadie subió nada verás <code class="font-mono text-[10px] text-emerald-400">Already up to date.</code> Si hubo cambios, Git descargará los archivos y mostrará un resumen tipo <code class="font-mono text-[10px]">Fast-forward</code>.
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Sincroniza antes de programar para evitar rechazos de push por desfase con tus compañeros.
+                </p>
               </div>
 
               <!-- Paso 3 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">Paso 3 · Entorno Virtual</span>
-                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Activar el entorno aislado corporativo de Python</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">3 · Entorno</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Activar entorno virtual (.venv)</span>
                   </div>
                   <button onclick="copyCmd('.\\.venv\\Scripts\\Activate.ps1')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code>.\.venv\Scripts\Activate.ps1</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué se ejecuta?</strong>
-                    Garantiza que la ejecución de tus scripts utilice las librerías homologadas del equipo (Polars, conectores, paquetes estadísticos) y no las versiones globales de Windows, evitando fallos por dependencias desalineadas.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    Aparecerá el prefijo <code class="font-mono text-[10px] text-purple-400 font-bold">(.venv)</code> al inicio del prompt en tu terminal de PowerShell.
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Asegura el uso de librerías homologadas del equipo (Polars, conectores) sin interferir con Windows.
+                </p>
               </div>
 
               <!-- Paso 4 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">Paso 4 · Inspección</span>
-                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Auditar qué archivos detectó Git en tu espacio de trabajo</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">4 · Inspección</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Auditar archivos modificados</span>
                   </div>
                   <button onclick="copyCmd('git status')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code>git status</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué es indispensable?</strong>
-                    Es tu semáforo de control. Te avisa qué archivos modificaste y si creaste archivos nuevos. Te permite detectar si dejaste sin querer un archivo temporal (<code class="font-mono text-[10px]">.xlsx</code>, <code class="font-mono text-[10px]">.csv</code>) antes de agregarlo al repositorio.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    Verás tus archivos modificados en color <span class="text-red-400 font-semibold">rojo</span> indicando que están en el disco pero aún no en el área de preparación (Staging Area).
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Revisa qué archivos cambiaste y previene agregar por accidente archivos temporales o datos.
+                </p>
               </div>
 
               <!-- Paso 5 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">Paso 5 · Staging Selectivo</span>
-                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Preparar únicamente tu archivo específico para el commit</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">5 · Staging</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Preparar selectivamente tu archivo</span>
                   </div>
                   <button onclick="copyCmd(document.getElementById('step-cmd-5').textContent)" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code id="step-cmd-5">git add modelos-scoring/lineas-optimas-pd-m4/analisis_pd_m4.py</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué ser selectivo?</strong>
-                    <strong>Regla de oro institucional:</strong> Prohibido usar <code class="font-mono text-[10px] text-red-400">git add .</code> a ciegas. Agregar por ruta exacta asegura que solo subas el script que trabajaste, sin riesgo de subir archivos con contraseñas o datos sensibles de clientes.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    No arroja salida si tiene éxito. Si vuelves a correr <code class="font-mono text-[10px]">git status</code>, tu archivo ahora aparecerá en color <span class="text-emerald-400 font-semibold">verde</span> bajo <code class="font-mono text-[10px]">Changes to be committed</code>.
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Agrega por ruta exacta para garantizar que solo subas código productivo sin datos sensibles.
+                </p>
               </div>
 
               <!-- Paso 6 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-green-500/10 text-green-400 border border-green-500/20">Paso 6 · Snapshot Semántico</span>
-                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Guardar una instantánea auditada y permanente en tu historial</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-green-500/10 text-green-400 border border-green-500/20">6 · Snapshot</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Guardar versión con mensaje de auditoría</span>
                   </div>
                   <button onclick="copyCmd(document.getElementById('step-cmd-6').textContent)" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code id="step-cmd-6">git commit -m "feat(originacion): actualiza curva de corte decil 3"</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué usar convención semántica?</strong>
-                    Un commit es un documento de auditoría. Usar <code class="font-mono text-[10px]">feat()</code>, <code class="font-mono text-[10px]">fix()</code> o <code class="font-mono text-[10px]">docs()</code> permite a la Gerencia y a tus compañeros entender qué cambió en una política crediticia sin tener que descifrar líneas de código.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    Un mensaje de confirmación con el hash del commit: <code class="font-mono text-[10px] text-emerald-400">[main a1b2c3d] feat(...): ... 1 file changed, X insertions(+)</code>.
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Usa prefijos semánticos (<code class="font-mono text-[10px]">feat</code>, <code class="font-mono text-[10px]">fix</code>, <code class="font-mono text-[10px]">docs</code>) para documentar el motivo del cambio de política.
+                </p>
               </div>
 
               <!-- Paso 7 -->
-              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="p-3.5 rounded-[16px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="flex items-center space-x-2">
-                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Paso 7 · Publicación Remota</span>
-                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Publicar tus commits en la organización de GitHub</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">7 · Publicación</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Subir commits a GitHub</span>
                   </div>
                   <button onclick="copyCmd('git push origin main')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                    Copiar comando
+                    Copiar
                   </button>
                 </div>
-                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <div class="p-2 rounded-[8px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                   <code>git push origin main</code>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué se ejecuta?</strong>
-                    Hasta el paso 6, todo ocurrió únicamente en tu laptop. Al ejecutar <code class="font-mono text-[10px]">git push</code>, tus commits se transfieren al servidor remoto corporativo en GitHub, quedando respaldados de inmediato y listos para producción.
-                  </div>
-                  <div>
-                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
-                    El progreso de transferencia: <code class="font-mono text-[10px] text-cyan-400">Writing objects: 100% (X/X) ... To https://github.com/credito-tdc-bcpl/... main -> main</code>.
-                  </div>
-                </div>
+                <p class="text-xs" style="color: var(--color-mid-gray);">
+                  Transfiere y respalda de forma permanente tus commits en el servidor corporativo de GitHub.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- ================= SUBTAB 2: DÍA 1 (CLONAR Y ENTORNO) ================= -->
-        <div id="view-subtab-clone" class="hidden space-y-6">
+        <div id="view-subtab-clone" class="hidden space-y-5">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-1.5">
               <label class="text-xs font-medium" style="color: var(--color-primary-ink);">Repositorio a clonar:</label>
@@ -1817,49 +1692,36 @@
           </div>
 
           <!-- Tarjeta de Solución: Clonación Oficial desde VS Code (Sin permisos de Admin) -->
-          <div class="rounded-[24px] p-6 border space-y-4" style="background-color: var(--color-subcard); border-color: rgba(41, 151, 255, 0.4);">
+          <div class="rounded-[22px] p-5 border space-y-3.5" style="background-color: var(--color-subcard); border-color: rgba(41, 151, 255, 0.4);">
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <div class="flex items-center space-x-2.5">
-                <span class="text-xl">💻</span>
+              <div class="flex items-center space-x-2">
+                <span class="text-lg">💻</span>
                 <div>
-                  <h4 class="font-bold text-sm sm:text-base text-blue-400">Método Oficial: Clonar desde la pestaña Welcome de VS Code</h4>
-                  <span class="text-xs" style="color: var(--color-mid-gray);">Evita el error 401 Unauthorized y no requiere permisos de administrador</span>
+                  <h4 class="font-bold text-xs sm:text-sm text-blue-400">Método Oficial: Clonar desde VS Code</h4>
+                  <span class="text-[11px]" style="color: var(--color-mid-gray);">Sin errores 401 y sin requerir permisos de administrador</span>
                 </div>
               </div>
-              <button onclick="copySelectedRepoUrl()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar URL del Repo Seleccionado
+              <button onclick="copySelectedRepoUrl()" class="text-xs px-3 py-1 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar URL del Repo
               </button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="font-semibold text-xs text-amber-400 uppercase tracking-wide">¿Por qué falla el clonado por consola?</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              <div class="p-3.5 rounded-[14px] border space-y-1.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
+                <div class="font-semibold text-xs text-amber-400">¿Por qué usar la interfaz de VS Code?</div>
                 <p>
-                  Cuando ejecutas <code class="font-mono text-[11px]">git clone</code> por terminal en una máquina corporativa, Windows suele usar tokens expirados o cuentas personales anteriores, causando el error <strong class="text-red-400">401 Unauthorized</strong> y borrando la carpeta por seguridad. Además, instalar clientes de terminal adicionales requiere permisos de administrador.
-                </p>
-                <p class="pt-1">
-                  <strong>La solución recomendada por la Dirección:</strong> clonar directamente desde Visual Studio Code. VS Code abre tu navegador, almacena la sesión oficial y gestiona los permisos bancarios sin tocar la consola.
+                  Clonar por terminal en laptops corporativas suele fallar con error <strong>401 Unauthorized</strong> por credenciales desactualizadas. VS Code abre tu navegador, almacena la sesión oficial y gestiona los permisos bancarios de forma nativa.
                 </p>
               </div>
 
-              <div class="p-4 rounded-[18px] border space-y-2.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="font-semibold text-xs text-emerald-400 uppercase tracking-wide">Paso a paso en Visual Studio Code:</div>
-                <div class="space-y-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">1. En la pestaña Welcome (Bienvenida):</div>
-                  <p class="text-[11px]">Haz clic en el botón <strong>"Clonar repositorio Git..."</strong> (o presiona <code class="font-mono text-blue-400">Ctrl + Shift + P</code> y busca <em>Git: Clonar</em>).</p>
-                </div>
-                <div class="space-y-1 pt-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">2. Pegar la URL oficial:</div>
-                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-blue-400" id="selected-repo-url" style="background-color: var(--color-subcard);">https://github.com/credito-tdc-bcpl/originacion-credito.git</code>
-                </div>
-                <div class="space-y-1 pt-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">3. Autorizar en el navegador:</div>
-                  <p class="text-[11px]">Haz clic en <strong>Permitir (Allow)</strong>, inicia sesión con tu usuario BanCoppel y presiona <strong>Authorize / Grant</strong> para la organización <code class="font-mono text-emerald-400">credito-tdc-bcpl</code>.</p>
-                </div>
-                <div class="space-y-1 pt-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">4. Seleccionar carpeta y abrir:</div>
-                  <p class="text-[11px]">Elige <code class="font-mono text-amber-300">C:\Users\tu.usuario\Documents\GitHub</code> y haz clic en <strong>Abrir (Open)</strong> en la notificación de VS Code.</p>
-                </div>
+              <div class="p-3.5 rounded-[14px] border space-y-1" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
+                <div class="font-semibold text-xs text-emerald-400">Paso a paso en VS Code:</div>
+                <ol class="list-decimal pl-4 space-y-0.5 text-[11px]">
+                  <li>Pestaña <strong>Welcome</strong> > clic en <strong>"Clonar repositorio Git..."</strong>.</li>
+                  <li>Pega la URL: <code class="font-mono text-blue-400" id="selected-repo-url">https://github.com/credito-tdc-bcpl/originacion-credito.git</code></li>
+                  <li>Inicia sesión y autoriza a <code class="font-mono text-emerald-400">credito-tdc-bcpl</code>.</li>
+                  <li>Selecciona tu carpeta local y haz clic en <strong>Abrir</strong>.</li>
+                </ol>
               </div>
             </div>
           </div>
@@ -1867,60 +1729,59 @@
           <!-- Secuencia Consolidada Clone -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia completa de inicialización y clonado (PowerShell):</span>
+              <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia de inicialización (PowerShell):</span>
               <button onclick="copyCloneCommands()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar Secuencia de Inicialización
+                Copiar Secuencia
               </button>
             </div>
             <pre id="gen-clone-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);"><!-- Clone JS Output --></pre>
           </div>
 
           <!-- Guía y Explicación del Clonado -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
             
-            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-              <div class="flex items-center space-x-2">
-                <span class="text-blue-400 font-bold text-sm">📥</span>
-                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿Qué hace exactamente "git clone"?</h4>
+            <div class="p-4 rounded-[16px] border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-blue-400 text-sm">📥</span>
+                <h4 class="font-semibold text-xs text-primary-ink">¿Qué hace "git clone"?</h4>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Crea una copia idéntica y completa del repositorio en tu laptop: descarga todas las carpetas, ramas, archivos y el historial criptográfico de commits. Además, vincula de forma automática el puntero remoto <code class="font-mono text-[11px]">origin</code> hacia GitHub para que no tengas que configurar URLs manualmente.
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                Descarga una copia completa con ramas, archivos e historial, configurando automáticamente el puntero remoto <code class="font-mono">origin</code>.
               </p>
             </div>
 
-            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-              <div class="flex items-center space-x-2">
-                <span class="text-amber-400 font-bold text-sm">🔑</span>
-                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Autenticación Visual sin Administrador</h4>
+            <div class="p-4 rounded-[16px] border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-amber-400 text-sm">🔑</span>
+                <h4 class="font-semibold text-xs text-primary-ink">Autenticación Segura</h4>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Los repositorios de <code class="font-mono text-[11px]">credito-tdc-bcpl</code> son privados. En lugar de lidiar con tokens manuales o instalar clientes de consola que exijan permisos de Administrador, <strong>clona desde la pestaña Welcome de VS Code</strong>: se autentica directamente con tu navegador web de forma nativa y segura.
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                Clonar desde VS Code valida tu identidad corporativa vía navegador sin requerir tokens manuales ni permisos de Administrador.
               </p>
             </div>
 
-            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-              <div class="flex items-center space-x-2">
-                <span class="text-purple-400 font-bold text-sm">🐍</span>
-                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Aislamiento con Entorno Virtual (.venv)</h4>
+            <div class="p-4 rounded-[16px] border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-purple-400 text-sm">🐍</span>
+                <h4 class="font-semibold text-xs text-primary-ink">Aislamiento (.venv)</h4>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Ejecutar <code class="font-mono text-[11px]">python -m venv .venv</code> crea un sandbox aislado en la carpeta del proyecto. Así, cuando instales librerías como Polars o paquetes de analítica, nunca entrarán en conflicto con otros proyectos de tu máquina ni con la instalación base de Python.
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                Crea un sandbox local para que las dependencias de Python (Polars, paquetes) no interfieran con otros proyectos.
               </p>
             </div>
 
-            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="p-4 rounded-[16px] border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="text-emerald-400 font-bold text-sm">⚡</span>
-                  <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Error "Scripts Disabled" en PowerShell</h4>
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-emerald-400 text-sm">⚡</span>
+                  <h4 class="font-semibold text-xs text-primary-ink">Scripts Disabled en PowerShell</h4>
                 </div>
-                <button onclick="copyCmd('Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned')" class="text-[11px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                  Copiar solución
+                <button onclick="copyCmd('Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar fix
                 </button>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Si al activar <code class="font-mono text-[11px]">Activate.ps1</code> recibes el mensaje <em class="text-red-400">"execution of scripts is disabled on this system"</em>, Windows tiene bloqueada la ejecución por defecto. Se soluciona ejecutando este comando una sola vez en PowerShell:
-                <code class="block font-mono text-[11px] p-2 rounded-[8px] mt-1 text-emerald-400" style="background-color: var(--color-pill-bg);">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code>
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                Si PowerShell bloquea scripts al activar el venv, ejecuta: <code class="font-mono text-[10px] text-emerald-400">Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code>.
               </p>
             </div>
 
@@ -1929,124 +1790,94 @@
 
         <!-- ================= SUBTAB 3: COMANDOS DE RESCATE ================= -->
         <div id="view-subtab-rescue" class="hidden space-y-4">
-          <div class="border-b pb-3" style="border-color: var(--color-hairline);">
-            <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">
-              🛡️ Lo que necesitas para cubrir el proceso completo: Guía de Rescate y Auditoría
+          <div class="border-b pb-2.5" style="border-color: var(--color-hairline);">
+            <h4 class="font-bold text-xs sm:text-sm" style="color: var(--color-primary-ink);">
+              🛡️ Comandos de Rescate y Auditoría
             </h4>
             <p class="text-xs" style="color: var(--color-mid-gray);">
-              Los 5 escenarios cotidianos más comunes en equipos de ciencia de datos y cómo resolverlos con seguridad en segundos:
+              Soluciones inmediatas para los 5 escenarios cotidianos en consola:
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             
             <!-- Rescate 1 -->
-            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="text-amber-400 font-bold">1.</span>
-                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Push Rechazado (Alguien subió cambios antes)</h5>
-                </div>
-                <button onclick="copyCmd('git pull --rebase origin main; git push origin main')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                  Copiar solución
+                <span class="font-bold text-xs text-amber-400">1. Push rechazado (cambios remotos)</span>
+                <button onclick="copyCmd('git pull --rebase origin main; git push origin main')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar
                 </button>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Situación:</strong> Ejecutaste <code class="font-mono text-[11px]">git push</code> y la terminal arrojó <span class="text-red-400 font-mono">[rejected - fetch first]</span> porque un compañero publicó en <code class="font-mono text-[11px]">main</code> mientras tú trabajabas.
-              </p>
-              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+              <div class="p-2 rounded-[8px] font-mono text-[11px]" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                 <code>git pull --rebase origin main<br>git push origin main</code>
               </div>
-              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>¿Por qué rebase?</strong> Descarga los cambios de tu compañero y coloca tus commits locales por encima de forma lineal, sin crear commits feos de mezcla (<code class="font-mono text-[10px]">Merge branch 'main'</code>).
+              <p class="text-[11px]" style="color: var(--color-mid-gray);">
+                Descarga cambios del equipo y coloca tus commits encima de forma lineal.
               </p>
             </div>
 
             <!-- Rescate 2 -->
-            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="text-red-400 font-bold">2.</span>
-                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Descartar Modificaciones Locales en un Script</h5>
-                </div>
-                <button onclick="copyCmd('git restore ruta/a/tu/script.py')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                  Copiar comando
+                <span class="font-bold text-xs text-rose-400">2. Descartar cambios locales</span>
+                <button onclick="copyCmd('git restore ruta/a/tu/script.py')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar
                 </button>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Situación:</strong> Hiciste modificaciones experimentales en tu código, las pruebas salieron mal y quieres reiniciar el archivo exactamente como estaba en GitHub.
-              </p>
-              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+              <div class="p-2 rounded-[8px] font-mono text-[11px]" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                 <code>git restore ruta/a/tu/script.py</code>
               </div>
-              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Efecto:</strong> Descarta al instante todos los cambios locales no confirmados y recupera la versión limpia del último commit.
+              <p class="text-[11px]" style="color: var(--color-mid-gray);">
+                Revierte el archivo al estado limpio del último commit confirmado.
               </p>
             </div>
 
             <!-- Rescate 3 -->
-            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="text-purple-400 font-bold">3.</span>
-                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Deshacer "git add" por Accidente (Staging)</h5>
-                </div>
-                <button onclick="copyCmd('git restore --staged ruta/al/archivo')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                  Copiar comando
+                <span class="font-bold text-xs text-purple-400">3. Deshacer "git add" (Staging)</span>
+                <button onclick="copyCmd('git restore --staged ruta/al/archivo')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar
                 </button>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Situación:</strong> Agregaste un archivo por descuido al Staging Area (aparece en verde en <code class="font-mono text-[11px]">git status</code>) y quieres sacarlo antes de hacer commit.
-              </p>
-              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+              <div class="p-2 rounded-[8px] font-mono text-[11px]" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                 <code>git restore --staged ruta/al/archivo</code>
               </div>
-              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Efecto:</strong> Saca el archivo de la lista de preparación pero <em>NO borra tu trabajo ni altera el archivo</em>; simplemente regresa a color rojo.
+              <p class="text-[11px]" style="color: var(--color-mid-gray);">
+                Saca el archivo del staging area sin borrar ni alterar tu código.
               </p>
             </div>
 
             <!-- Rescate 4 -->
-            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="text-sky-400 font-bold">4.</span>
-                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Auditar Cambios Línea por Línea (git diff)</h5>
-                </div>
-                <button onclick="copyCmd('git diff ruta/a/tu/script.py')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                  Copiar comando
+                <span class="font-bold text-xs text-sky-400">4. Auditar diferencias (diff)</span>
+                <button onclick="copyCmd('git diff ruta/a/tu/script.py')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar
                 </button>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Situación:</strong> Quieres revisar exactamente qué líneas agregaste o borraste antes de armar el commit definitivo.
-              </p>
-              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+              <div class="p-2 rounded-[8px] font-mono text-[11px]" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                 <code>git diff ruta/a/tu/script.py</code>
               </div>
-              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Efecto:</strong> Te muestra en <span class="text-emerald-400 font-semibold">+ verde</span> las adiciones y en <span class="text-red-400 font-semibold">- rojo</span> las eliminaciones para validar la calidad de tus fórmulas.
+              <p class="text-[11px]" style="color: var(--color-mid-gray);">
+                Muestra adiciones (<span class="text-emerald-400 font-semibold">+</span>) y supresiones (<span class="text-red-400 font-semibold">-</span>) línea por línea.
               </p>
             </div>
 
             <!-- Rescate 5 -->
-            <div class="p-5 rounded-[20px] border space-y-3 transition md:col-span-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="p-4 rounded-[18px] border space-y-2 transition md:col-span-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                  <span class="text-emerald-400 font-bold">5.</span>
-                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Consultar Historial Reciente del Equipo (git log)</h5>
-                </div>
-                <button onclick="copyCmd('git log --oneline -n 6')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                  Copiar comando
+                <span class="font-bold text-xs text-emerald-400">5. Consultar historial reciente (log)</span>
+                <button onclick="copyCmd('git log --oneline -n 6')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar
                 </button>
               </div>
-              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Situación:</strong> Necesitas verificar cuáles fueron los últimos commits publicados por tus compañeros de equipo y en qué fecha se modificaron las políticas.
-              </p>
-              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+              <div class="p-2 rounded-[8px] font-mono text-[11px]" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
                 <code>git log --oneline -n 6</code>
               </div>
-              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
-                <strong>Efecto:</strong> Despliega un resumen visual y condensado de los 6 commits más recientes con sus hashes y mensajes semánticos.
+              <p class="text-[11px]" style="color: var(--color-mid-gray);">
+                Muestra un resumen conciso de los últimos 6 commits con sus hashes y mensajes.
               </p>
             </div>
 
@@ -2056,56 +1887,53 @@
       </div>
 
       <!-- Card 3: Los 4 Mandamientos del Trabajo en Monorepos -->
-      <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-5 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
-          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Gobernanza Institucional</div>
-          <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Los 4 Mandamientos del Trabajo en Monorepos TDC
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Gobernanza</div>
+          <h3 class="text-lg sm:text-xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
+            Los 4 Mandamientos en Monorepos TDC
           </h3>
-          <p class="text-sm" style="color: var(--color-mid-gray);">
-            Reglas esenciales para garantizar la armonía y continuidad operativa entre 8 científicos de datos:
-          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           
-          <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-emerald-500 font-bold text-sm">1.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Aislamiento por Submódulo = Cero Conflictos</h4>
+          <div class="rounded-[18px] p-4 border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-emerald-400 font-bold text-xs">1.</span>
+              <h4 class="font-semibold text-xs text-primary-ink">Aislamiento por Submódulo</h4>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Cada científico de datos trabaja dentro de su carpeta asignada. Si Luis Enrique edita <code class="font-mono text-[11px]">lineas-optimas-pd-m4/</code> y Andrea trabaja en <code class="font-mono text-[11px]">segmentacion-riesgo/</code>, Git fusiona ambos trabajos de forma automática sin pedir resolución de conflictos.
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Trabaja dentro de tu carpeta asignada. Git fusiona submódulos separados automáticamente sin conflictos.
             </p>
           </div>
 
-          <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-blue-500 font-bold text-sm">2.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">El Hábito Sagrado del "git pull" Matutino</h4>
+          <div class="rounded-[18px] p-4 border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-blue-400 font-bold text-xs">2.</span>
+              <h4 class="font-semibold text-xs text-primary-ink">Git Pull Matutino</h4>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              En un monorepo activo, tus compañeros suben avances a diario. Todas las mañanas al abrir tu Visual Studio Code, el primer comando obligatorio antes de escribir una sola línea siempre es <code class="font-mono text-[11px]">git pull</code>.
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Primer comando del día al abrir VS Code: sincroniza para programar siempre sobre la versión más reciente.
             </p>
           </div>
 
-          <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-purple-500 font-bold text-sm">3.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Centralización en "herramientas-utiles/"</h4>
+          <div class="rounded-[18px] p-4 border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-purple-400 font-bold text-xs">3.</span>
+              <h4 class="font-semibold text-xs text-primary-ink">Herramientas Centralizadas</h4>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Las conexiones a Yellowbrick y las funciones de métricas comunes viven en el repositorio <code class="font-mono text-[11px]">herramientas-utiles</code>. <strong>No reinventes la rueda</strong> ni quemes credenciales; aprovecha los snippets probados por la Gerencia.
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Las funciones de conexión y snippets analíticos viven en <code class="font-mono text-[10px]">herramientas-utiles</code>. Reutiliza código probado.
             </p>
           </div>
 
-          <div class="rounded-[20px] p-5 border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
-            <div class="flex items-center space-x-2">
-              <span class="text-red-500 font-bold text-sm">4.</span>
-              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Blindaje de PII y Credenciales (.env)</h4>
+          <div class="rounded-[18px] p-4 border space-y-1" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-red-400 font-bold text-xs">4.</span>
+              <h4 class="font-semibold text-xs text-primary-ink">Cero Datos Confidenciales</h4>
             </div>
-            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              Toda consulta a Yellowbrick se hace en código. <strong>Jamás subas extractos .csv, .xlsx ni contraseñas en .env</strong>. El <code class="font-mono text-[11px]">.gitignore</code> del repositorio ya los bloquea, pero es responsabilidad de cada analista cuidar los datos de los clientes.
+            <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+              Jamás subas archivos CSV, XLSX con clientes ni contraseñas en <code class="font-mono text-[10px]">.env</code>. La lógica vive en código.
             </p>
           </div>
 

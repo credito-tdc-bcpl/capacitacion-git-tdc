@@ -69,22 +69,19 @@ Para asegurar la reproducibilidad y el cumplimiento normativo bancario:
 
 ---
 
-## 💻 Requisito Previo: Instalación de Git y GitHub CLI desde la Terminal
+## 💻 Requisito Previo: Instalación de Git en Windows
 
 Si al abrir PowerShell o la consola integrada de VS Code (`Ctrl + Ñ`) y escribir `git --version` aparece el error:
 > *"El término 'git' no se reconoce como un nombre de un cmdlet, función, archivo de script o programa ejecutable..."*
 
-Significa que tu equipo aún no tiene Git instalado. Puedes instalarlo en segundos directamente desde la terminal de Windows sin descargar ejecutables manualmente en el navegador:
+Significa que tu equipo aún no tiene Git instalado. Puedes instalarlo directamente en Windows:
 
-### 1. Instalación rápida con `winget` (Windows 10 y 11)
+### 1. Instalación rápida desde PowerShell (`winget`)
 Abre PowerShell y ejecuta:
 
 ```powershell
-# 1. Instalar el cliente oficial de Git para Windows
+# Instalar el cliente oficial de Git para Windows
 winget install --id Git.Git -e --source winget
-
-# 2. (Recomendado) Instalar GitHub CLI para autenticación institucional sin contraseñas
-winget install --id GitHub.cli -e --source winget
 ```
 
 > [!IMPORTANT]
@@ -96,12 +93,9 @@ Abre una terminal limpia y ejecuta:
 ```powershell
 git --version
 # Salida esperada: git version 2.4x.x.windows.1
-
-gh --version
-# Salida esperada: gh version 2.x.x (...)
 ```
 
-*(Alternativa: Si `winget` no estuviera disponible en tu equipo por políticas corporativas, puedes descargar el instalador tradicional desde [git-scm.com/download/win](https://git-scm.com/download/win)).*
+*(Alternativa: Si `winget` no estuviera disponible en tu equipo o no tienes permisos, descarga el instalador tradicional de un solo clic desde [git-scm.com/download/win](https://git-scm.com/download/win)).*
 
 ---
 
@@ -134,43 +128,35 @@ git push origin main
 
 ---
 
-## 🔑 Autenticación Corporativa y Resolución de Errores al Clonar
+## 🔑 Clonación Oficial desde Visual Studio Code (Método sin Administrador)
 
-### ⚠️ ¿Por qué se crea la carpeta y luego desaparece al hacer `git clone`?
-Cuando ejecutas `git clone`, Git realiza el proceso en dos etapas:
-1. **Etapa 1:** Crea la carpeta local vacía con el nombre del repositorio.
-2. **Etapa 2:** Se conecta a GitHub para autenticarse y descargar los archivos.
+### ⚠️ ¿Por qué clonar desde la interfaz de VS Code y no por consola?
+1. En laptops corporativas, las políticas del banco suelen impedir la instalación de herramientas adicionales en terminal (como `gh`) al requerir permisos de Administrador.
+2. Al clonar por terminal, Windows suele utilizar credenciales expiradas o cuentas personales previas, ocasionando el **error 401 Unauthorized** (ante el cual Git elimina la carpeta vacía por seguridad).
+3. **Visual Studio Code resuelve todo esto de forma nativa**: gestiona la autenticación con tu cuenta corporativa de GitHub directamente en el navegador web y guarda el acceso seguro en Windows sin necesidad de tokens manuales.
 
-Los repositorios de `credito-tdc-bcpl` son **privados de la organización**. Al intentar autenticarse, Git suele encontrar credenciales de otra cuenta personal (o un token expirado) en el Administrador de Credenciales de Windows. Al fallar la autenticación (**error 401 Unauthorized**), **el mecanismo de seguridad predeterminado de Git es eliminar la carpeta recién creada** para no dejar carpetas vacías o corruptas en tu equipo.
-
-### 🛠️ Paso a paso para solucionarlo:
-1. **Ubicarte en tu carpeta de trabajo:**
-   ```powershell
-   cd C:\Users\$env:USERNAME\Documents\GitHub
-   ```
-2. **Autenticar tu cuenta corporativa con GitHub CLI:**
-   *(Si te sale el error "El término 'gh' no se reconoce...", instálalo con `winget install --id GitHub.cli -e --source winget` y reinicia tu terminal).*
-   ```powershell
-   gh auth login --hostname github.com -p https -w
-   ```
-   * Presiona Enter para iniciar sesión vía navegador web.
-   * Te mostrará un **código de 8 dígitos de un solo uso** (ejemplo: `ABCD-1234`). Presiona Enter para abrir el navegador.
-   * Pega el código e inicia sesión con tu usuario de BanCoppel (ej. `jaguzmanbcpl`).
-   * **Paso crítico:** Si la pantalla solicita acceso o Single Sign-On (SSO) a la organización `credito-tdc-bcpl`, haz clic en **Authorize / Grant**.
-3. **Configurar Git para usar tu autenticación institucional:**
-   ```powershell
-   gh auth setup-git
-   ```
-4. **Clonar el repositorio sin conflictos:**
-   ```powershell
-   gh repo clone credito-tdc-bcpl/herramientas-utiles
-   # O bien: git clone https://github.com/credito-tdc-bcpl/herramientas-utiles.git
-   ```
-5. **Entrar a la carpeta y verificar:**
-   ```powershell
-   cd herramientas-utiles
-   git status
-   ```
+### 🛠️ Paso a paso para clonar cualquier repositorio en VS Code:
+1. **Abrir la pantalla de inicio:**
+   Abre Visual Studio Code y sitúate en la pestaña **Welcome (Bienvenida / Introducción)**. *(Si no la ves, ve al menú superior: `Ayuda (Help) > Bienvenida (Welcome)`)*.
+2. **Iniciar la clonación:**
+   En la sección *Comenzar (Start)*, haz clic en **"Clonar repositorio Git..."** (`Clone Git Repository...`).
+   *(O presiona el atajo universal: `Ctrl + Shift + P` y escribe `Git: Clonar`).*
+3. **Pegar la URL oficial del repositorio:**
+   Pega en la barra superior la dirección HTTPS del repositorio en el que trabajarás:
+   * **Originación:** `https://github.com/credito-tdc-bcpl/originacion-credito.git`
+   * **Administración de Cartera:** `https://github.com/credito-tdc-bcpl/administracion-cartera.git`
+   * **Indicadores Permanentes:** `https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes.git`
+   * **Herramientas Útiles:** `https://github.com/credito-tdc-bcpl/herramientas-utiles.git`
+   * **Capacitación:** `https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git`
+4. **Iniciar sesión y autorizar la organización:**
+   * VS Code mostrará un aviso: *"¿Permitir que la extensión 'GitHub' inicie sesión mediante GitHub?"*. Haz clic en **Permitir (Allow)**.
+   * Se abrirá automáticamente tu navegador web: inicia sesión con tu usuario institucional de BanCoppel (ej. `jaguzmanbcpl`).
+   * **Paso crítico de seguridad:** En la pantalla que solicita acceso a la organización `credito-tdc-bcpl`, haz clic en el botón verde **Authorize / Grant**.
+5. **Elegir la carpeta destino:**
+   Selecciona la carpeta local en tu máquina: `C:\Users\$env:USERNAME\Documents\GitHub` y haz clic en **"Seleccionar como destino del repositorio"**.
+6. **Abrir el proyecto:**
+   En la notificación emergente inferior derecha de VS Code, haz clic en **Abrir (Open)**.
+   *(Al abrirse el proyecto, tu terminal integrada con `Ctrl + Ñ` ya estará lista y sincronizada dentro de la rama `main`).*
 
 ---
 
@@ -179,8 +165,8 @@ Los repositorios de `credito-tdc-bcpl` son **privados de la organización**. Al 
 1. Abre el sitio oficial en tu navegador:  
    👉 **[https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)**
 2. Consulta la pestaña **"6. Monorepos & Módulos Oficiales"** para:
-   - Ver los 4 monorepos y copiar su comando `git clone` o `gh repo clone`.
-   - Diagnóstico completo de autenticación y cómo resolver carpetas que desaparecen.
+   - Ver los 4 monorepos y copiar con un clic su URL oficial para clonar en VS Code.
+   - Diagnóstico visual y prevención del error 401 Unauthorized sin permisos de administrador.
    - Usar el **Generador Interactivo de Comandos** para obtener la secuencia exacta de terminal para tu módulo y tarea con explicación detallada paso a paso.
    - Acceder a la **Guía de Rescate** ante desincronizaciones (`--rebase`), descartes (`restore`) y auditorías (`diff`, `log`).
 3. Avanza por los módulos 1 al 5 para dominar Git desde cero y completar las 9 misiones prácticas en tu consola de Visual Studio Code (`Ctrl + Ñ`).

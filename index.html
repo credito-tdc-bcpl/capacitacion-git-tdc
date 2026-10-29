@@ -297,13 +297,10 @@
 
           <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t text-[11px]" style="border-color: var(--color-hairline); color: var(--color-mid-gray);">
             <div>
-              <span>¿También necesitas GitHub CLI para autenticarte fácil? </span>
-              <button onclick="copyCmd('winget install --id GitHub.cli -e --source winget')" class="text-xs font-mono font-medium hover:underline text-blue-400">
-                Copiar: winget install --id GitHub.cli -e
-              </button>
+              <span>¿No tienes permisos de administrador para ejecutar winget? </span>
             </div>
             <a href="https://git-scm.com/download/win" target="_blank" class="hover:underline font-medium text-blue-400">
-              O descargar instalador gráfico clásico (.exe) ›
+              O descargar instalador clásico ejecutable (.exe) ›
             </a>
           </div>
         </div>
@@ -353,135 +350,140 @@
         </div>
       </div>
 
-      <!-- Card 3: Autenticación Corporativa con GitHub CLI (Paso Crítico para Repos Privados) -->
-      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+      <!-- Card 3: Clonar desde Visual Studio Code (Pestaña Welcome - Sin permisos de Administrador) -->
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-5 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">3</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Autentica tu cuenta corporativa con GitHub CLI (Paso Crítico)</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Clona el repositorio desde Visual Studio Code (Sin permisos de Administrador)</h3>
           </div>
-          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border bg-amber-500/10 text-amber-400 border-amber-500/30">Acceso Organización BanCoppel</span>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border bg-emerald-500/10 text-emerald-400 border-emerald-500/30">Método Oficial Banco</span>
         </div>
 
         <div class="p-4 rounded-[20px] border text-xs space-y-2 leading-relaxed" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
           <div class="font-semibold text-sm flex items-center space-x-2" style="color: var(--color-primary-ink);">
-            <span>⚠️</span>
-            <span>¿Por qué falla el clone o por qué se crea la carpeta y luego desaparece?</span>
+            <span class="text-emerald-400">💡</span>
+            <span>¿Por qué lo hacemos directo desde la interfaz de VS Code?</span>
           </div>
           <p style="color: var(--color-mid-gray);">
-            Los repositorios de <code class="font-mono text-[11px] text-amber-400">credito-tdc-bcpl</code> son <strong>privados</strong>. Al ejecutar <code class="font-mono text-[11px]">git clone</code>, Git primero crea la carpeta local y luego intenta autenticarse. Si Windows tiene guardada una cuenta personal anterior (o un token expirado en el Administrador de Credenciales), la autenticación falla con <strong class="text-red-400">error 401 Unauthorized</strong>. Por seguridad, <strong>Git elimina de inmediato la carpeta recién creada</strong> para no dejar residuos corruptos.
+            En equipos de trabajo bancarios, muchas laptops corporativas no tienen permisos de administrador para instalar utilidades de terminal (como GitHub CLI) o bloquean tokens en consola. <strong>Visual Studio Code resuelve esto de forma nativa:</strong> incluye un asistente visual para clonar repositorios y autenticarse con tu cuenta corporativa de GitHub vía navegador, sin comandos de consola complejos ni contraseñas manuales.
           </p>
-        </div>
-
-        <!-- Alerta si gh no está instalado -->
-        <div class="p-4 rounded-[18px] border space-y-2.5" style="background-color: var(--color-subcard); border-color: rgba(255, 159, 10, 0.35);">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center space-x-2">
-              <span class="text-base">⚡</span>
-              <span class="font-semibold text-xs sm:text-sm text-amber-400">¿Te salió: "El término 'gh' no se reconoce como comando..."?</span>
-            </div>
-            <button onclick="copyCmd('winget install --id GitHub.cli -e --source winget')" class="text-white text-xs px-3 py-1 rounded-full font-medium transition shadow-sm hover:opacity-90" style="background-color: var(--color-electric-blue);">
-              Copiar instalador de gh
-            </button>
-          </div>
-          <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-            Significa que tu equipo aún no tiene instalado <strong>GitHub CLI</strong>. Instálalo directamente desde tu terminal PowerShell:
-          </p>
-          <div class="p-2.5 rounded-[12px] font-mono text-xs border truncate" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-            <code>winget install --id GitHub.cli -e --source winget</code>
-          </div>
-          <div class="p-2.5 rounded-[10px] text-[11px] leading-relaxed border space-y-0.5" style="background-color: rgba(255, 69, 58, 0.08); border-color: rgba(255, 69, 58, 0.3); color: var(--color-primary-ink);">
-            <div class="font-semibold text-red-400">⚠️ PASO OBLIGATORIO TRAS INSTALAR:</div>
-            <div><strong>Cierra y vuelve a abrir tu terminal (o reinicia VS Code por completo)</strong> para que Windows registre el comando <code class="font-mono text-amber-300">gh</code>. Luego continúa con el paso 1 de abajo.</div>
-          </div>
-          <div class="text-[11px] pt-0.5" style="color: var(--color-mid-gray);">
-            ¿Tu máquina corporativa no tiene winget? Descarga el instalador directo (.msi) desde <a href="https://cli.github.com/" target="_blank" class="hover:underline font-medium text-blue-400">cli.github.com ›</a>
-          </div>
         </div>
 
         <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          Para enlazar tu cuenta institucional y autorizar el acceso a la organización, ejecuta estos 2 comandos en PowerShell:
+          Sigue estos pasos dentro de tu <strong>Visual Studio Code</strong>:
         </p>
 
-        <div class="space-y-3">
-          <!-- Paso A: Login Web -->
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-medium" style="color: var(--color-primary-ink);">1. Iniciar sesión web y autorizar organización:</span>
-              <button onclick="copyCmd('gh auth login --hostname github.com -p https -w')" class="text-xs px-3 py-1 rounded-full text-white font-medium" style="background-color: var(--color-electric-blue);">
-                Copiar
+        <!-- Visual Step-by-Step Guide -->
+        <div class="space-y-3.5">
+
+          <!-- Paso A -->
+          <div class="p-4 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-2.5">
+              <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">A</span>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">En la pestaña de Bienvenida (Welcome), haz clic en "Clonar repositorio Git..."</h4>
+            </div>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              Abre VS Code. En la pantalla inicial o pestaña <strong>Welcome / Introducción</strong> (sección <em>Comenzar / Start</em>), haz clic en el botón <strong>"Clonar repositorio Git..."</strong> (o <em>Clone Git Repository...</em>).
+            </p>
+            <p class="text-[11px]" style="color: var(--color-mid-gray);">
+              <em>¿No ves la pestaña de Bienvenida?</em> Puedes presionar el atajo <kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Shift + P</kbd>, escribir <code class="font-mono text-blue-400">Git: Clonar</code> y presionar Enter; o bien hacer clic en el ícono de <strong>Control de código fuente</strong> en la barra lateral izquierda y presionar el botón azul <strong>Clonar repositorio</strong>.
+            </p>
+          </div>
+
+          <!-- Paso B -->
+          <div class="p-4 rounded-[20px] border space-y-2.5" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2.5">
+                <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">B</span>
+                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Pega la URL del repositorio oficial en la barra superior</h4>
+              </div>
+              <button onclick="copyCmd('https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git')" class="text-xs px-3.5 py-1.5 rounded-full text-white font-medium transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar URL del Repo
               </button>
             </div>
-            <div class="p-2.5 rounded-[12px] font-mono text-xs border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <code>gh auth login --hostname github.com -p https -w</code>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              Se desplegará una barra en la parte superior de VS Code pidiéndote la URL del repositorio. Copia y pega esta dirección:
+            </p>
+            <div class="p-2.5 rounded-[12px] font-mono text-xs border truncate" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <code>https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git</code>
             </div>
+            <p class="text-[11px]" style="color: var(--color-mid-gray);">
+              Presiona <strong>Enter</strong> o haz clic en <em>"Clonar desde URL de GitHub"</em>.
+            </p>
+          </div>
+
+          <!-- Paso C -->
+          <div class="p-4 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-2.5">
+              <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">C</span>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Inicia sesión en GitHub en tu navegador (Autorizar BanCoppel)</h4>
+            </div>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              Si es la primera vez que sincronizas VS Code con GitHub:
+            </p>
             <ul class="list-disc pl-5 text-xs space-y-1" style="color: var(--color-mid-gray);">
-              <li>Presiona <strong>Enter</strong> cuando pregunte si deseas iniciar sesión vía navegador web.</li>
-              <li>La consola te mostrará un <strong>código de 8 dígitos de un solo uso</strong> (ejemplo: <code class="font-mono text-[11px] text-amber-400 font-bold">ABCD-1234</code>). Presiona Enter para abrir el navegador.</li>
-              <li>Pega el código e inicia sesión con tu usuario de BanCoppel (ej. <code class="font-mono text-[11px] text-blue-400 font-bold">jaguzmanbcpl</code>).</li>
-              <li><strong class="text-emerald-400">Paso vital:</strong> Si la pantalla solicita acceso o Single Sign-On (SSO) para la organización <code class="font-mono text-[11px] font-bold">credito-tdc-bcpl</code>, haz clic en <strong>Authorize / Grant</strong>.</li>
+              <li>VS Code mostrará un aviso: <em>"¿Permitir que la extensión 'GitHub' inicie sesión mediante GitHub?"</em>. Haz clic en <strong>Permitir (Allow)</strong>.</li>
+              <li>Se abrirá automáticamente tu navegador web. Inicia sesión con tu usuario de BanCoppel (ej. <code class="font-mono text-blue-400 font-bold">jaguzmanbcpl</code>).</li>
+              <li><strong class="text-emerald-400">Paso vital:</strong> Si la pantalla solicita acceso o Single Sign-On (SSO) a la organización <code class="font-mono text-emerald-400 font-bold">credito-tdc-bcpl</code>, haz clic en el botón verde <strong>Authorize / Grant</strong>.</li>
+              <li>El navegador te devolverá a VS Code con tu acceso autorizado.</li>
             </ul>
           </div>
 
-          <!-- Paso B: Configurar Git -->
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-medium" style="color: var(--color-primary-ink);">2. Configurar Git para usar tu autenticación de GitHub CLI:</span>
-              <button onclick="copyCmd('gh auth setup-git')" class="text-xs px-3 py-1 rounded-full text-white font-medium" style="background-color: var(--color-electric-blue);">
-                Copiar
-              </button>
+          <!-- Paso D -->
+          <div class="p-4 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+            <div class="flex items-center space-x-2.5">
+              <span class="w-6 h-6 rounded-full font-semibold text-xs flex items-center justify-center border text-blue-400 font-mono" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">D</span>
+              <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Elige tu carpeta de guardado y abre el proyecto</h4>
             </div>
-            <div class="p-2.5 rounded-[12px] font-mono text-xs border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <code>gh auth setup-git</code>
-            </div>
-            <p class="text-xs" style="color: var(--color-mid-gray);">
-              Este comando enlaza automáticamente tu Git de Windows con el token corporativo autorizado de GitHub CLI, ignorando cualquier cuenta personal previa.
-            </p>
+            <ul class="list-disc pl-5 text-xs space-y-1" style="color: var(--color-mid-gray);">
+              <li>Se abrirá una ventana del explorador de archivos de Windows. Selecciona tu carpeta base: <code class="font-mono text-[11px]">C:\Users\tu.usuario\Documents\GitHub</code> (o dentro de tus Documentos) y haz clic en <strong>"Seleccionar como destino del repositorio"</strong>.</li>
+              <li>En la esquina inferior derecha de VS Code verás la notificación: <em>"¿Desea abrir el repositorio clonado?"</em>. Haz clic en <strong>Abrir (Open)</strong>.</li>
+            </ul>
           </div>
+
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-2" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Inicié sesión con mi usuario institucional en `gh auth login`, autoricé `credito-tdc-bcpl` y ejecuté `gh auth setup-git`.
+            Cloné el repositorio desde la pestaña Welcome de VS Code, autoricé la organización en el navegador y abrí el proyecto.
           </label>
         </div>
       </div>
 
-      <!-- Card 4: Clonar y Abrir -->
+      <!-- Card 4: Abrir la terminal integrada y verificar -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">4</span>
-            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Clona la biblioteca oficial a tu computadora</h3>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Abre la terminal integrada de VS Code y verifica tu proyecto</h3>
           </div>
-          <span class="text-xs font-medium" style="color: var(--color-link-blue);">Biblioteca central</span>
+          <span class="text-xs font-medium" style="color: var(--color-link-blue);">Verificación</span>
         </div>
 
         <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
-          En tu terminal, ve a tu carpeta de Documentos, clona el repositorio y ábrelo en VS Code:
+          Al haber abierto la carpeta desde VS Code, tu terminal integrada ya estará ubicada automáticamente dentro del proyecto. Abre la consola con <kbd class="px-2 py-0.5 rounded font-mono text-xs border" style="background-color: var(--color-kbd-bg); border-color: var(--color-kbd-border); color: var(--color-primary-ink);">Ctrl + Ñ</kbd> y ejecuta:
         </p>
 
-        <div class="space-y-2">
-          <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-            <code class="truncate">git clone https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git</code>
-            <button onclick="copyCmd('git clone https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition ml-2 flex-shrink-0" style="background-color: var(--color-electric-blue);">
-              Copiar
-            </button>
-          </div>
+        <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs sm:text-sm" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+          <code>git status</code>
+          <button onclick="copyCmd('git status')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
+            Copiar
+          </button>
+        </div>
 
-          <div class="p-2 pl-4 rounded-full border flex items-center justify-between font-mono text-xs" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-            <code>cd capacitacion-git-tdc ; code .</code>
-            <button onclick="copyCmd('cd capacitacion-git-tdc ; code .')" class="text-white text-xs px-4 py-1.5 rounded-full font-sans font-medium transition" style="background-color: var(--color-electric-blue);">
-              Copiar
-            </button>
-          </div>
+        <div class="p-4 rounded-[20px] border text-xs space-y-1 font-mono" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">¿Qué verás en tu consola?</div>
+          <div class="text-emerald-400 font-semibold">On branch main</div>
+          <div style="color: var(--color-primary-ink);">Your branch is up to date with 'origin/main'.</div>
+          <div style="color: var(--color-mid-gray);">nothing to commit, working tree clean</div>
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
           <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
           <label for="check-step-3" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
-            Tengo la carpeta `capacitacion-git-tdc` abierta en mi Visual Studio Code.
+            Abrí la terminal con Ctrl + Ñ y verifiqué con `git status` que estoy en la rama main limpia.
           </label>
         </div>
       </div>
@@ -939,18 +941,17 @@
           <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <div class="flex items-center justify-between">
               <span class="text-xs font-semibold uppercase tracking-wider block text-red-400">Error 0</span>
-              <button onclick="copyCmd('winget install --id Git.Git -e --source winget ; winget install --id GitHub.cli -e --source winget')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <button onclick="copyCmd('winget install --id Git.Git -e --source winget')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
                 Copiar fix
               </button>
             </div>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"'git' o 'gh' no se reconoce como un comando..."</h4>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"'git' no se reconoce como comando..."</h4>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Falta instalar Git o GitHub CLI, o no se reinició la terminal tras instalar.
+              <strong>Causa:</strong> Falta instalar Git o no se reinició la terminal/VS Code tras instalar.
             </p>
             <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div class="text-blue-400 truncate">winget install --id GitHub.cli -e</div>
-              <div class="text-emerald-400 truncate">winget install --id Git.Git -e</div>
-              <div class="text-amber-400">Reinicia VS Code / Terminal</div>
+              <div class="text-blue-400 truncate">winget install --id Git.Git -e</div>
+              <div class="text-amber-400">Reinicia VS Code por completo</div>
             </div>
           </div>
           
@@ -992,18 +993,18 @@
           <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <div class="flex items-center justify-between">
               <span class="text-xs font-semibold uppercase tracking-wider block text-amber-400">Error 4</span>
-              <button onclick="copyCmd('gh auth login --hostname github.com -p https -w ; gh auth setup-git')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-                Copiar fix
+              <button onclick="copyCmd('https://github.com/credito-tdc-bcpl/capacitacion-git-tdc.git')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar URL
               </button>
             </div>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿La carpeta se creó y luego desapareció?</h4>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿Error 401 o la carpeta desaparece?</h4>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Error 401 Unauthorized. Windows intentó autenticar con otra cuenta personal guardada. Git borró la carpeta vacía por seguridad.
+              <strong>Causa:</strong> Falla de credenciales en terminal o falta de permisos de administrador en Windows.
             </p>
             <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div class="text-blue-400 truncate">gh auth login --hostname github.com -p https -w</div>
-              <div class="text-emerald-400">gh auth setup-git</div>
-              <div class="text-amber-400 truncate">gh repo clone credito-tdc-bcpl/...</div>
+              <div class="text-blue-400">Usa VS Code > Pestaña Welcome</div>
+              <div class="text-emerald-400">Clic en "Clonar repositorio"</div>
+              <div class="text-amber-400">Pega URL y autoriza vía web</div>
             </div>
           </div>
 
@@ -1488,58 +1489,49 @@
             </div>
           </div>
 
-          <!-- Alerta Crítica: ¿Por qué la carpeta se crea y luego desaparece? -->
-          <div class="rounded-[24px] p-6 border space-y-4" style="background-color: var(--color-subcard); border-color: rgba(255, 159, 10, 0.4);">
+          <!-- Tarjeta de Solución: Clonación Oficial desde VS Code (Sin permisos de Admin) -->
+          <div class="rounded-[24px] p-6 border space-y-4" style="background-color: var(--color-subcard); border-color: rgba(41, 151, 255, 0.4);">
             <div class="flex flex-wrap items-center justify-between gap-2">
               <div class="flex items-center space-x-2.5">
-                <span class="text-xl">⚠️</span>
+                <span class="text-xl">💻</span>
                 <div>
-                  <h4 class="font-bold text-sm sm:text-base text-amber-400">¿Por qué se crea la carpeta y luego desaparece al clonar?</h4>
-                  <span class="text-xs" style="color: var(--color-mid-gray);">Diagnóstico y solución del Error 401 Unauthorized / Conflicto de cuentas en Windows</span>
+                  <h4 class="font-bold text-sm sm:text-base text-blue-400">Método Oficial: Clonar desde la pestaña Welcome de VS Code</h4>
+                  <span class="text-xs" style="color: var(--color-mid-gray);">Evita el error 401 Unauthorized y no requiere permisos de administrador</span>
                 </div>
               </div>
-              <button onclick="copyCmd('gh auth login --hostname github.com -p https -w; gh auth setup-git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-                Copiar Comandos de Solución
+              <button onclick="copySelectedRepoUrl()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar URL del Repo Seleccionado
               </button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed" style="color: var(--color-mid-gray);">
               <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="font-semibold text-xs text-amber-400 uppercase tracking-wide">¿Qué ocurrió internamente?</div>
+                <div class="font-semibold text-xs text-amber-400 uppercase tracking-wide">¿Por qué falla el clonado por consola?</div>
                 <p>
-                  Cuando ejecutas <code class="font-mono text-[11px]">git clone</code>, Git realiza el proceso en dos etapas:
+                  Cuando ejecutas <code class="font-mono text-[11px]">git clone</code> por terminal en una máquina corporativa, Windows suele usar tokens expirados o cuentas personales anteriores, causando el error <strong class="text-red-400">401 Unauthorized</strong> y borrando la carpeta por seguridad. Además, instalar clientes de terminal adicionales requiere permisos de administrador.
                 </p>
-                <ol class="list-decimal pl-4 space-y-1">
-                  <li><strong>Etapa 1:</strong> Crea la carpeta local vacía con el nombre del repositorio.</li>
-                  <li><strong>Etapa 2:</strong> Se conecta a GitHub para autenticarse y descargar los archivos.</li>
-                </ol>
                 <p class="pt-1">
-                  El repositorio es <strong>privado de BanCoppel</strong>. Al conectarse, Windows envió credenciales de otra cuenta personal (o un token expirado) guardadas en el Administrador de Credenciales de Windows. Al fallar la autenticación (<span class="text-red-400 font-semibold">401 Unauthorized</span>), <strong>Git borra automáticamente la carpeta recién creada</strong> para no dejar carpetas vacías o corruptas.
+                  <strong>La solución recomendada por la Dirección:</strong> clonar directamente desde Visual Studio Code. VS Code abre tu navegador, almacena la sesión oficial y gestiona los permisos bancarios sin tocar la consola.
                 </p>
               </div>
 
               <div class="p-4 rounded-[18px] border space-y-2.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
-                <div class="font-semibold text-xs text-emerald-400 uppercase tracking-wide">Paso a paso para solucionarlo:</div>
+                <div class="font-semibold text-xs text-emerald-400 uppercase tracking-wide">Paso a paso en Visual Studio Code:</div>
                 <div class="space-y-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">1. Ubicarte en tu carpeta base de trabajo:</div>
-                  <p class="text-[11px]">Si tu consola ya estaba dentro de una carpeta con el mismo nombre, retrocede para no anidar carpetas:</p>
-                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px]" style="background-color: var(--color-subcard);">cd C:\Users\tu.usuario\Documents\GitHub</code>
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">1. En la pestaña Welcome (Bienvenida):</div>
+                  <p class="text-[11px]">Haz clic en el botón <strong>"Clonar repositorio Git..."</strong> (o presiona <code class="font-mono text-blue-400">Ctrl + Shift + P</code> y busca <em>Git: Clonar</em>).</p>
                 </div>
                 <div class="space-y-1 pt-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">2. Autenticar tu cuenta corporativa con GitHub CLI:</div>
-                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-blue-400" style="background-color: var(--color-subcard);">gh auth login --hostname github.com -p https -w</code>
-                  <p class="text-[11px]">Presiona Enter, pega el código de 8 dígitos (ej: <code class="font-mono text-amber-400">ABCD-1234</code>), inicia sesión con tu usuario BanCoppel y haz clic en <strong>Authorize / Grant</strong> para la organización <code class="font-mono text-emerald-400">credito-tdc-bcpl</code>.</p>
-                  <p class="text-[10px] pt-0.5" style="color: var(--color-mid-gray);">
-                    <span class="text-amber-400 font-semibold">¿No reconoce git o gh?</span> Instálalos desde PowerShell con <code class="font-mono text-blue-400">winget install --id Git.Git -e ; winget install --id GitHub.cli -e</code> y reinicia la terminal.
-                  </p>
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">2. Pegar la URL oficial:</div>
+                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-blue-400" id="selected-repo-url" style="background-color: var(--color-subcard);">https://github.com/credito-tdc-bcpl/originacion-credito.git</code>
                 </div>
                 <div class="space-y-1 pt-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">3. Configurar Git para usar tu autenticación:</div>
-                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-emerald-400" style="background-color: var(--color-subcard);">gh auth setup-git</code>
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">3. Autorizar en el navegador:</div>
+                  <p class="text-[11px]">Haz clic en <strong>Permitir (Allow)</strong>, inicia sesión con tu usuario BanCoppel y presiona <strong>Authorize / Grant</strong> para la organización <code class="font-mono text-emerald-400">credito-tdc-bcpl</code>.</p>
                 </div>
                 <div class="space-y-1 pt-1">
-                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">4. Clonar el repositorio sin errores:</div>
-                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px]" style="background-color: var(--color-subcard);">gh repo clone credito-tdc-bcpl/herramientas-utiles</code>
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">4. Seleccionar carpeta y abrir:</div>
+                  <p class="text-[11px]">Elige <code class="font-mono text-amber-300">C:\Users\tu.usuario\Documents\GitHub</code> y haz clic en <strong>Abrir (Open)</strong> en la notificación de VS Code.</p>
                 </div>
               </div>
             </div>
@@ -1572,10 +1564,10 @@
             <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
               <div class="flex items-center space-x-2">
                 <span class="text-amber-400 font-bold text-sm">🔑</span>
-                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Autenticación en Repos Privados (PAT)</h4>
+                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Autenticación Visual sin Administrador</h4>
               </div>
               <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-                Los repositorios de <code class="font-mono text-[11px]">credito-tdc-bcpl</code> son privados. La primera vez que clones, Git te solicitará usuario y contraseña. <strong>Tu contraseña habitual de GitHub no funcionará</strong>; debes generar un <strong>Personal Access Token (PAT)</strong> con permisos de <code class="font-mono text-[11px]">repo</code> en GitHub Settings, o autenticarte vía <code class="font-mono text-[11px]">gh auth login</code>.
+                Los repositorios de <code class="font-mono text-[11px]">credito-tdc-bcpl</code> son privados. En lugar de lidiar con tokens manuales o instalar clientes de consola que exijan permisos de Administrador, <strong>clona desde la pestaña Welcome de VS Code</strong>: se autentica directamente con tu navegador web de forma nativa y segura.
               </p>
             </div>
 
@@ -2113,35 +2105,53 @@ git push origin main`;
       const repoEl = document.getElementById('clone-repo-select');
       const userEl = document.getElementById('clone-username');
       const out = document.getElementById('gen-clone-output');
-      if (!repoEl || !userEl || !out) return;
+      const repoUrlDisplay = document.getElementById('selected-repo-url');
+      if (!repoEl || !userEl) return;
 
       const repo = repoEl.value || 'originacion-credito';
       const user = userEl.value.trim() || 'tu.usuario';
+      const repoUrl = `https://github.com/credito-tdc-bcpl/${repo}.git`;
 
-      const cloneScript = `# 1. Crear o posicionarte en la carpeta de repositorios en tu equipo
+      if (repoUrlDisplay) {
+        repoUrlDisplay.textContent = repoUrl;
+      }
+
+      const cloneScript = `# ==============================================================
+# OPCIÓN RECOMENDADA: Clonar desde la interfaz de Visual Studio Code
+# (Sin requerir permisos de Administrador ni GitHub CLI)
+# 1. Abre VS Code -> Pestaña Welcome -> Clic en "Clonar repositorio Git..."
+# 2. Pega esta URL oficial:
+#    ${repoUrl}
+# 3. Inicia sesión en el navegador y autoriza la organización 'credito-tdc-bcpl'.
+# ==============================================================
+
+# O ALTERNATIVA POR TERMINAL (PowerShell):
+# 1. Crear o posicionarte en la carpeta de repositorios en tu equipo
 New-Item -ItemType Directory -Force -Path "C:\\Users\\${user}\\Documents\\GitHub"
 cd "C:\\Users\\${user}\\Documents\\GitHub"
 
-# 2. Configurar Git para usar tu sesión corporativa autorizada (previene error 401)
-gh auth setup-git
+# 2. Clonar el repositorio oficial desde GitHub
+git clone ${repoUrl}
 
-# 3. Clonar el repositorio oficial desde GitHub (vía GitHub CLI o Git)
-gh repo clone credito-tdc-bcpl/${repo}
-# (o bien vía Git HTTPS: git clone https://github.com/credito-tdc-bcpl/${repo}.git)
-
-# 4. Entrar a la carpeta del proyecto recién descargado
+# 3. Entrar a la carpeta del proyecto recién descargado
 cd ${repo}
 
-# 5. Crear el entorno virtual corporativo de Python
+# 4. Crear el entorno virtual corporativo de Python
 python -m venv .venv
 
-# 6. Activar el entorno virtual en PowerShell
+# 5. Activar el entorno virtual en PowerShell
 .\\.venv\\Scripts\\Activate.ps1
 
-# 7. Abrir el proyecto en Visual Studio Code
+# 6. Abrir el proyecto en Visual Studio Code
 code .`;
 
-      out.textContent = cloneScript;
+      if (out) out.textContent = cloneScript;
+    }
+
+    function copySelectedRepoUrl() {
+      const repoEl = document.getElementById('clone-repo-select');
+      const repo = repoEl ? repoEl.value : 'originacion-credito';
+      copyCmd(`https://github.com/credito-tdc-bcpl/${repo}.git`);
     }
 
     function copyCloneCommands() {

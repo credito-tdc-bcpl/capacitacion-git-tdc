@@ -28,21 +28,49 @@ La Dirección de Políticas TDC opera mediante una **arquitectura de 4 repositor
 
 ---
 
-## 👥 Matriz de Responsabilidades por Científico de Datos
+## 👥 Equipos Oficiales y Matriz de Permisos por Repositorio
 
-Cada colaborador tiene carpetas y submódulos asignados. El aislamiento por carpetas garantiza que dos personas trabajen simultáneamente sin experimentar conflictos de fusión (`merge conflicts`):
+Para proteger el código productivo y evitar colisiones entre proyectos, la organización opera con **permisos segregados por equipo**. Cada analista tiene permiso de **Escritura (`Write / Push`)** en el repositorio donde es titular, y de **Lectura (`Read`)** en los demás:
 
-| Colaborador | Rol / Especialidad | Repositorios Asignados | Carpetas / Submódulos Clave |
-| :--- | :--- | :--- | :--- |
-| **Luis Enrique Arriola Padua** | Modelos Cuantitativos & Scoring | `originacion-credito`<br>`indicadores-mensuales-permanentes` | `modelos-scoring/lineas-optimas-pd-m4/`<br>`politicas-canales/disposiciones-efectivo/`<br>`indicadores-originacion/cosechas-originacion/` |
-| **Andrea Placencia** | Segmentación & Estrategias Portafolio | `originacion-credito`<br>`administracion-cartera` | `modelos-scoring/segmentacion-riesgo/`<br>`politicas-canales/tiendas-coppel/`<br>`gestion-lineas/incrementos-linea/`<br>`auditoria-y-tasas/conciliacion-tasas-mci/` |
-| **Elizabeth Gómez Soto** | One Click Prime & Cosechas | `originacion-credito`<br>`administracion-cartera`<br>`indicadores-mensuales-permanentes` | `prospectos-one-click/evaluacion-hipo-autos/`<br>`auditoria-y-tasas/certificacion-mensual-brm/`<br>`indicadores-originacion/cosechas-originacion/`<br>`indicadores-originacion/seguimiento-one-click/`<br>`indicadores-cartera-y-administracion/vistas-alternativas-mora/` |
-| **Armando Morales Verdugo** | Líder Operativo Cartera & BAU | `administracion-cartera`<br>`indicadores-mensuales-permanentes` | `gestion-lineas/aplicativo-ptcsf-33/`<br>`gestion-lineas/incrementos-linea/`<br>`cancelacion-depuracion/depuracion-masiva/`<br>`cancelacion-depuracion/saldos-a-favor/`<br>`indicadores-cartera-y-administracion/` (Las 5 rutinas BAU)<br>`indicadores-cartera-y-administracion/uso-linea-general/` |
-| **Laura Anaid Álvarez Zamudio** | Operación BAU & Depuración | `administracion-cartera`<br>`indicadores-mensuales-permanentes` | `cancelacion-depuracion/depuracion-masiva/`<br>`cancelacion-depuracion/saldos-a-favor/`<br>`indicadores-cartera-y-administracion/01-decremento-linea/`<br>`indicadores-cartera-y-administracion/02-pago-minimo-clasica/`<br>`indicadores-cartera-y-administracion/03-cancelacion-cuentas/`<br>`indicadores-cartera-y-administracion/04-reactivacion-inactivas/`<br>`indicadores-cartera-y-administracion/05-indicadores-imor/` |
-| **Naidelin Coronel & Juan José López** | Tramas SICs en Yellowbrick | `originacion-credito` | `buro-y-tramas-sic/desentrame-cadenas/`<br>(Segmento CR y homologación Círculo en DWH) |
-| **Sergio Herrera López** | Especificación SICs & Resiliencia | `originacion-credito` | `buro-y-tramas-sic/def-consultas/`<br>(Reglas de contingencia ante caídas de proveedores) |
-| **Luis Ernesto Álvarez García** | Certificación Variables & Auditoría | `originacion-credito`<br>`administracion-cartera`<br>`indicadores-mensuales-permanentes` | `certificacion-variables/variables-coppel/`<br>`politicas-canales/disposiciones-efectivo/`<br>`auditoria-y-tasas/certificacion-mensual-brm/`<br>`indicadores-originacion/certificacion-mensual-origin/` |
-| **Jorge Adrián Guzmán Inzunza** | Gerente de Políticas TDC | `herramientas-utiles`<br>Todos los repositorios | `automatizaciones/` (`trello_obsidian.py`, `telegram_notificador.py`), `plantillas/`<br>Supervisión y aprobación de Pull Requests (PRs). |
+### 🏛️ Los 4 Equipos Oficiales (`credito-tdc-bcpl`)
+
+1. 🎯 **Equipo Originación (`originacion`)**
+   * **Integrantes:** Luis Enrique Arriola (`enriquearriola-blip`) y Elizabeth Gómez Soto (`egsoto`).
+   * **Permiso de Escritura (`Write`):** [`originacion-credito`](https://github.com/credito-tdc-bcpl/originacion-credito).
+   * **Alcance:** Modelos de scoring PD M4, admisión, prospección One Click y reglas de Buró/Círculo.
+
+2. 📊 **Equipo Administración (`administracion`)**
+   * **Integrantes:** Armando Morales (`Morales1911`), Laura Anaid Álvarez (`anaidzamudio-tech`) y Andrea Placencia (`aplacencia`).
+   * **Permiso de Escritura (`Write`):** [`administracion-cartera`](https://github.com/credito-tdc-bcpl/administracion-cartera).
+   * **Alcance:** Mantenimiento de cuentas, PTCSF-33, cortes CLI día 11, cancelaciones y reducción de reservas.
+
+3. 📈 **Equipo Indicadores Recurrentes (`indicadores-recurrentes`)**
+   * **Integrantes:** Andrea Placencia (`aplacencia`).
+   * **Permiso de Escritura (`Write`):** [`indicadores-mensuales-permanentes`](https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes).
+   * **Alcance:** Cierres mensuales BAU, cosechas (*vintages*) y tableros directivos.
+
+4. 🔬 **Equipo Certificación (`certificacion`)**
+   * **Integrantes:** Naidelin Coronel (`NaiCoronel`), Luis Ernesto Álvarez (`lealvarezfc`) y Juan José López (`jjlopezbc`).
+   * **Permiso de Escritura (`Write`):** [`indicadores-mensuales-permanentes`](https://github.com/credito-tdc-bcpl/indicadores-mensuales-permanentes).
+   * **Alcance:** Certificación mensual de variables, homologación de tramas SICs en DWH y auditoría cruzada.
+
+---
+
+### 📋 Matriz Oficial de Permisos
+
+| Colaborador | Usuario GitHub | Equipo Oficial | `originacion` | `cartera` | `indicadores` | `herramientas` |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **Luis Enrique Arriola** | `@enriquearriola-blip` | Originación | **Write** | Read | Read | Read |
+| **Elizabeth Gómez** | `@egsoto` | Originación | **Write** | Read | Read | Read |
+| **Armando Morales** | `@Morales1911` | Administración | Read | **Write** | Read | Read |
+| **Laura Anaid Álvarez** | `@anaidzamudio-tech` | Administración | Read | **Write** | Read | Read |
+| **Andrea Placencia** | `@aplacencia` | Admin & Indicadores | Read | **Write** | **Write** | Read |
+| **Naidelin Coronel** | `@NaiCoronel` | Certificación | Read | Read | **Write** | Read |
+| **Juan José López** | `@jjlopezbc` | Certificación | Read | Read | **Write** | Read |
+| **Luis Ernesto Álvarez** | `@lealvarezfc` | Certificación | Read | Read | **Write** | Read |
+| **Jorge Adrián Guzmán** | `@jaguzmanbcpl` | Gerente Políticas TDC | **Admin** | **Admin** | **Admin** | **Admin** |
+
+> **Regla de Colaboración:** Si un analista necesita realizar modificaciones en un repositorio donde tiene acceso de **Lectura**, debe coordinar con los integrantes titulares del repositorio o abrir un **Pull Request** para su revisión y aprobación.
 
 ---
 

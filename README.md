@@ -98,16 +98,55 @@ git push origin main
 
 ---
 
+## 🔑 Autenticación Corporativa y Resolución de Errores al Clonar
+
+### ⚠️ ¿Por qué se crea la carpeta y luego desaparece al hacer `git clone`?
+Cuando ejecutas `git clone`, Git realiza el proceso en dos etapas:
+1. **Etapa 1:** Crea la carpeta local vacía con el nombre del repositorio.
+2. **Etapa 2:** Se conecta a GitHub para autenticarse y descargar los archivos.
+
+Los repositorios de `credito-tdc-bcpl` son **privados de la organización**. Al intentar autenticarse, Git suele encontrar credenciales de otra cuenta personal (o un token expirado) en el Administrador de Credenciales de Windows. Al fallar la autenticación (**error 401 Unauthorized**), **el mecanismo de seguridad predeterminado de Git es eliminar la carpeta recién creada** para no dejar carpetas vacías o corruptas en tu equipo.
+
+### 🛠️ Paso a paso para solucionarlo:
+1. **Ubicarte en tu carpeta de trabajo:**
+   ```powershell
+   cd C:\Users\$env:USERNAME\Documents\GitHub
+   ```
+2. **Autenticar tu cuenta corporativa con GitHub CLI:**
+   ```powershell
+   gh auth login --hostname github.com -p https -w
+   ```
+   * Presiona Enter para iniciar sesión vía navegador web.
+   * Te mostrará un **código de 8 dígitos de un solo uso** (ejemplo: `ABCD-1234`). Presiona Enter para abrir el navegador.
+   * Pega el código e inicia sesión con tu usuario de BanCoppel (ej. `jaguzmanbcpl`).
+   * **Paso crítico:** Si la pantalla solicita acceso o Single Sign-On (SSO) a la organización `credito-tdc-bcpl`, haz clic en **Authorize / Grant**.
+3. **Configurar Git para usar tu autenticación institucional:**
+   ```powershell
+   gh auth setup-git
+   ```
+4. **Clonar el repositorio sin conflictos:**
+   ```powershell
+   gh repo clone credito-tdc-bcpl/herramientas-utiles
+   # O bien: git clone https://github.com/credito-tdc-bcpl/herramientas-utiles.git
+   ```
+5. **Entrar a la carpeta y verificar:**
+   ```powershell
+   cd herramientas-utiles
+   git status
+   ```
+
+---
+
 ## 🧭 ¿Cómo usar este Portal de Capacitación?
 
 1. Abre el sitio oficial en tu navegador:  
    👉 **[https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/](https://credito-tdc-bcpl.github.io/capacitacion-git-tdc/)**
 2. Consulta la pestaña **"6. Monorepos & Módulos Oficiales"** para:
-   - Ver los 4 monorepos y copiar su comando `git clone`.
-   - Filtrar el directorio por tu nombre para confirmar tus carpetas.
-   - Usar el **Generador Interactivo de Comandos** para obtener la secuencia exacta de terminal para tu módulo y tarea.
-   - Copiar las plantillas base oficiales en Python y SQL Yellowbrick.
-3. Avanza por los módulos 1 al 5 para dominar Git desde cero y completar las 8 misiones prácticas en tu consola de Visual Studio Code (`Ctrl + Ñ`).
+   - Ver los 4 monorepos y copiar su comando `git clone` o `gh repo clone`.
+   - Diagnóstico completo de autenticación y cómo resolver carpetas que desaparecen.
+   - Usar el **Generador Interactivo de Comandos** para obtener la secuencia exacta de terminal para tu módulo y tarea con explicación detallada paso a paso.
+   - Acceder a la **Guía de Rescate** ante desincronizaciones (`--rebase`), descartes (`restore`) y auditorías (`diff`, `log`).
+3. Avanza por los módulos 1 al 5 para dominar Git desde cero y completar las 9 misiones prácticas en tu consola de Visual Studio Code (`Ctrl + Ñ`).
 
 ---
 

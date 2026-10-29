@@ -122,7 +122,7 @@
         <!-- Live Checklist Progress Bar -->
         <div class="flex items-center space-x-2 text-xs">
           <span class="text-[11px] hidden md:inline" style="color: var(--color-mid-gray);">Misiones en terminal:</span>
-          <span class="font-semibold text-xs font-mono" id="progress-summary" style="color: var(--color-primary-ink);">0 de 8</span>
+          <span class="font-semibold text-xs font-mono" id="progress-summary" style="color: var(--color-primary-ink);">0 de 9</span>
           <div class="w-16 sm:w-20 rounded-full h-1.5 overflow-hidden" style="background-color: var(--color-subcard);">
             <div id="progress-fill" class="h-1.5 rounded-full transition-all duration-300" style="width: 0%; background-color: var(--color-electric-blue);"></div>
           </div>
@@ -311,11 +311,80 @@
         </div>
       </div>
 
-      <!-- Card 3: Clonar y Abrir -->
+      <!-- Card 3: Autenticación Corporativa con GitHub CLI (Paso Crítico para Repos Privados) -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">3</span>
+            <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Autentica tu cuenta corporativa con GitHub CLI (Paso Crítico)</h3>
+          </div>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border bg-amber-500/10 text-amber-400 border-amber-500/30">Acceso Organización BanCoppel</span>
+        </div>
+
+        <div class="p-4 rounded-[20px] border text-xs space-y-2 leading-relaxed" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <div class="font-semibold text-sm flex items-center space-x-2" style="color: var(--color-primary-ink);">
+            <span>⚠️</span>
+            <span>¿Por qué falla el clone o por qué se crea la carpeta y luego desaparece?</span>
+          </div>
+          <p style="color: var(--color-mid-gray);">
+            Los repositorios de <code class="font-mono text-[11px] text-amber-400">credito-tdc-bcpl</code> son <strong>privados</strong>. Al ejecutar <code class="font-mono text-[11px]">git clone</code>, Git primero crea la carpeta local y luego intenta autenticarse. Si Windows tiene guardada una cuenta personal anterior (o un token expirado en el Administrador de Credenciales), la autenticación falla con <strong class="text-red-400">error 401 Unauthorized</strong>. Por seguridad, <strong>Git elimina de inmediato la carpeta recién creada</strong> para no dejar residuos corruptos.
+          </p>
+        </div>
+
+        <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
+          Para enlazar tu cuenta institucional y autorizar el acceso a la organización, ejecuta estos 2 comandos en PowerShell:
+        </p>
+
+        <div class="space-y-3">
+          <!-- Paso A: Login Web -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-medium" style="color: var(--color-primary-ink);">1. Iniciar sesión web y autorizar organización:</span>
+              <button onclick="copyCmd('gh auth login --hostname github.com -p https -w')" class="text-xs px-3 py-1 rounded-full text-white font-medium" style="background-color: var(--color-electric-blue);">
+                Copiar
+              </button>
+            </div>
+            <div class="p-2.5 rounded-[12px] font-mono text-xs border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <code>gh auth login --hostname github.com -p https -w</code>
+            </div>
+            <ul class="list-disc pl-5 text-xs space-y-1" style="color: var(--color-mid-gray);">
+              <li>Presiona <strong>Enter</strong> cuando pregunte si deseas iniciar sesión vía navegador web.</li>
+              <li>La consola te mostrará un <strong>código de 8 dígitos de un solo uso</strong> (ejemplo: <code class="font-mono text-[11px] text-amber-400 font-bold">ABCD-1234</code>). Presiona Enter para abrir el navegador.</li>
+              <li>Pega el código e inicia sesión con tu usuario de BanCoppel (ej. <code class="font-mono text-[11px] text-blue-400 font-bold">jaguzmanbcpl</code>).</li>
+              <li><strong class="text-emerald-400">Paso vital:</strong> Si la pantalla solicita acceso o Single Sign-On (SSO) para la organización <code class="font-mono text-[11px] font-bold">credito-tdc-bcpl</code>, haz clic en <strong>Authorize / Grant</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- Paso B: Configurar Git -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-medium" style="color: var(--color-primary-ink);">2. Configurar Git para usar tu autenticación de GitHub CLI:</span>
+              <button onclick="copyCmd('gh auth setup-git')" class="text-xs px-3 py-1 rounded-full text-white font-medium" style="background-color: var(--color-electric-blue);">
+                Copiar
+              </button>
+            </div>
+            <div class="p-2.5 rounded-[12px] font-mono text-xs border" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <code>gh auth setup-git</code>
+            </div>
+            <p class="text-xs" style="color: var(--color-mid-gray);">
+              Este comando enlaza automáticamente tu Git de Windows con el token corporativo autorizado de GitHub CLI, ignorando cualquier cuenta personal previa.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-1 flex items-center space-x-3">
+          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-2" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+            Inicié sesión con mi usuario institucional en `gh auth login`, autoricé `credito-tdc-bcpl` y ejecuté `gh auth setup-git`.
+          </label>
+        </div>
+      </div>
+
+      <!-- Card 4: Clonar y Abrir -->
+      <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">4</span>
             <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Clona la biblioteca oficial a tu computadora</h3>
           </div>
           <span class="text-xs font-medium" style="color: var(--color-link-blue);">Biblioteca central</span>
@@ -342,18 +411,18 @@
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-2" onchange="toggleTask('check-step-2')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
-          <label for="check-step-2" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-3" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Tengo la carpeta `capacitacion-git-tdc` abierta en mi Visual Studio Code.
           </label>
         </div>
       </div>
 
-      <!-- Card 4: EJECUTAR PRIMER SCRIPT REAL EN TERMINAL -->
+      <!-- Card 5: EJECUTAR PRIMER SCRIPT REAL EN TERMINAL -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-4 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
-            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">4</span>
+            <span class="w-7 h-7 rounded-full font-semibold text-xs flex items-center justify-center border" style="background-color: var(--color-subcard); color: var(--color-primary-ink); border-color: var(--color-hairline);">5</span>
             <h3 class="font-semibold text-lg" style="color: var(--color-primary-ink);">Comprueba tu entorno ejecutando <code class="text-sm font-mono" style="color: var(--color-electric-blue);">ejemplos/reglas_originacion_tdc.py</code></h3>
           </div>
           <span class="text-xs font-medium" style="color: var(--color-ember);">Prueba en consola</span>
@@ -383,8 +452,8 @@
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-3" onchange="toggleTask('check-step-3')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
-          <label for="check-step-3" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-4" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté el script en mi terminal y vi el dictamen de crédito autorizado por $80,000.
           </label>
         </div>
@@ -454,8 +523,8 @@
 
         <!-- Task Checklist -->
         <div class="pt-2 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-4" onchange="toggleTask('check-step-4')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
-          <label for="check-step-4" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-5" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté `git pull` en mi terminal y exploré en VS Code el script de `lineas-credito/` o `indicadores-cosechas/`.
           </label>
         </div>
@@ -530,8 +599,8 @@
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-5" onchange="toggleTask('check-step-5')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
-          <label for="check-step-5" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-6" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Modifiqué el umbral en `reglas_score_buro.py` y vi el archivo en rojo al correr `git status`.
           </label>
         </div>
@@ -591,8 +660,8 @@
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-6" onchange="toggleTask('check-step-6')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
-          <label for="check-step-6" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-7" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté el commit con el mensaje de política de crédito en mi terminal.
           </label>
         </div>
@@ -620,8 +689,8 @@
         </div>
 
         <div class="pt-1 flex items-center space-x-3">
-          <input type="checkbox" id="check-step-7" onchange="toggleTask('check-step-7')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
-          <label for="check-step-7" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
+          <input type="checkbox" id="check-step-8" onchange="toggleTask('check-step-8')" class="task-check w-4 h-4 rounded-full focus:ring-0 cursor-pointer" style="accent-color: var(--color-electric-blue);">
+          <label for="check-step-8" class="text-xs sm:text-sm cursor-pointer select-none" style="color: var(--color-primary-ink);">
             Ejecuté `git push` y verifiqué en GitHub que mi cambio ya está publicado.
           </label>
         </div>
@@ -791,13 +860,13 @@
         </div>
       </div>
 
-      <!-- Solutions to 3 Common Beginner Headaches in Windows -->
+      <!-- Solutions to Common Beginner Headaches in Windows -->
       <div class="space-y-3 pt-2">
         <h3 class="text-lg font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Solución a los 3 Dolores de Cabeza Más Comunes en Windows
+          Solución a los 4 Dolores de Cabeza Más Comunes en Windows
         </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           
           <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 1</span>
@@ -806,7 +875,7 @@
               <strong>Causa:</strong> Abriste la terminal fuera de la carpeta del proyecto.
             </p>
             <div class="p-2.5 rounded-[12px] text-xs font-mono border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              cd capacitacion-git-tdc
+              cd C:\Users\tu.usuario\Documents\GitHub\originacion-credito
             </div>
           </div>
 
@@ -814,11 +883,11 @@
             <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 2</span>
             <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"Updates were rejected"</h4>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Un compañero subió algo y tú diste push sin haber hecho pull primero.
+              <strong>Causa:</strong> Un compañero subió algo a main y diste push sin haber hecho pull primero.
             </p>
             <div class="p-2.5 rounded-[12px] text-xs font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div>git pull</div>
-              <div>git push</div>
+              <div>git pull --rebase origin main</div>
+              <div>git push origin main</div>
             </div>
           </div>
 
@@ -831,6 +900,24 @@
             <div class="p-2.5 rounded-[12px] text-xs font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
               <div>1. Presiona Esc</div>
               <div>2. Escribe :q! y da Enter</div>
+            </div>
+          </div>
+
+          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider block text-amber-400">Error 4</span>
+              <button onclick="copyCmd('gh auth login --hostname github.com -p https -w ; gh auth setup-git')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar fix
+              </button>
+            </div>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿La carpeta se creó y luego desapareció?</h4>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              <strong>Causa:</strong> Error 401 Unauthorized. Windows intentó autenticar con otra cuenta personal guardada. Git borró la carpeta vacía por seguridad.
+            </p>
+            <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <div class="text-blue-400 truncate">gh auth login --hostname github.com -p https -w</div>
+              <div class="text-emerald-400">gh auth setup-git</div>
+              <div class="text-amber-400 truncate">gh repo clone credito-tdc-bcpl/...</div>
             </div>
           </div>
 
@@ -1315,6 +1402,60 @@
             </div>
           </div>
 
+          <!-- Alerta Crítica: ¿Por qué la carpeta se crea y luego desaparece? -->
+          <div class="rounded-[24px] p-6 border space-y-4" style="background-color: var(--color-subcard); border-color: rgba(255, 159, 10, 0.4);">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center space-x-2.5">
+                <span class="text-xl">⚠️</span>
+                <div>
+                  <h4 class="font-bold text-sm sm:text-base text-amber-400">¿Por qué se crea la carpeta y luego desaparece al clonar?</h4>
+                  <span class="text-xs" style="color: var(--color-mid-gray);">Diagnóstico y solución del Error 401 Unauthorized / Conflicto de cuentas en Windows</span>
+                </div>
+              </div>
+              <button onclick="copyCmd('gh auth login --hostname github.com -p https -w; gh auth setup-git')" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar Comandos de Solución
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              <div class="p-4 rounded-[18px] border space-y-2" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
+                <div class="font-semibold text-xs text-amber-400 uppercase tracking-wide">¿Qué ocurrió internamente?</div>
+                <p>
+                  Cuando ejecutas <code class="font-mono text-[11px]">git clone</code>, Git realiza el proceso en dos etapas:
+                </p>
+                <ol class="list-decimal pl-4 space-y-1">
+                  <li><strong>Etapa 1:</strong> Crea la carpeta local vacía con el nombre del repositorio.</li>
+                  <li><strong>Etapa 2:</strong> Se conecta a GitHub para autenticarse y descargar los archivos.</li>
+                </ol>
+                <p class="pt-1">
+                  El repositorio es <strong>privado de BanCoppel</strong>. Al conectarse, Windows envió credenciales de otra cuenta personal (o un token expirado) guardadas en el Administrador de Credenciales de Windows. Al fallar la autenticación (<span class="text-red-400 font-semibold">401 Unauthorized</span>), <strong>Git borra automáticamente la carpeta recién creada</strong> para no dejar carpetas vacías o corruptas.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-[18px] border space-y-2.5" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline);">
+                <div class="font-semibold text-xs text-emerald-400 uppercase tracking-wide">Paso a paso para solucionarlo:</div>
+                <div class="space-y-1">
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">1. Ubicarte en tu carpeta base de trabajo:</div>
+                  <p class="text-[11px]">Si tu consola ya estaba dentro de una carpeta con el mismo nombre, retrocede para no anidar carpetas:</p>
+                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px]" style="background-color: var(--color-subcard);">cd C:\Users\tu.usuario\Documents\GitHub</code>
+                </div>
+                <div class="space-y-1 pt-1">
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">2. Autenticar tu cuenta corporativa con GitHub CLI:</div>
+                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-blue-400" style="background-color: var(--color-subcard);">gh auth login --hostname github.com -p https -w</code>
+                  <p class="text-[11px]">Presiona Enter, pega el código de 8 dígitos (ej: <code class="font-mono text-amber-400">ABCD-1234</code>), inicia sesión con tu usuario BanCoppel y haz clic en <strong>Authorize / Grant</strong> para la organización <code class="font-mono text-emerald-400">credito-tdc-bcpl</code>.</p>
+                </div>
+                <div class="space-y-1 pt-1">
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">3. Configurar Git para usar tu autenticación:</div>
+                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-emerald-400" style="background-color: var(--color-subcard);">gh auth setup-git</code>
+                </div>
+                <div class="space-y-1 pt-1">
+                  <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">4. Clonar el repositorio sin errores:</div>
+                  <code class="block font-mono text-[11px] p-1.5 rounded-[8px]" style="background-color: var(--color-subcard);">gh repo clone credito-tdc-bcpl/herramientas-utiles</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Secuencia Consolidada Clone -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
@@ -1667,7 +1808,7 @@
     }
 
     // Checklist persistence in localStorage
-    const TOTAL_TASKS = 8;
+    const TOTAL_TASKS = 9;
 
     function toggleTask(id) {
       const el = document.getElementById(id);
@@ -1892,19 +2033,23 @@ git push origin main`;
 New-Item -ItemType Directory -Force -Path "C:\\Users\\${user}\\Documents\\GitHub"
 cd "C:\\Users\\${user}\\Documents\\GitHub"
 
-# 2. Clonar el repositorio corporativo desde GitHub
-git clone https://github.com/credito-tdc-bcpl/${repo}.git
+# 2. Configurar Git para usar tu sesión corporativa autorizada (previene error 401)
+gh auth setup-git
 
-# 3. Entrar a la carpeta del proyecto recién descargado
+# 3. Clonar el repositorio oficial desde GitHub (vía GitHub CLI o Git)
+gh repo clone credito-tdc-bcpl/${repo}
+# (o bien vía Git HTTPS: git clone https://github.com/credito-tdc-bcpl/${repo}.git)
+
+# 4. Entrar a la carpeta del proyecto recién descargado
 cd ${repo}
 
-# 4. Crear el entorno virtual corporativo de Python
+# 5. Crear el entorno virtual corporativo de Python
 python -m venv .venv
 
-# 5. Activar el entorno virtual en PowerShell
+# 6. Activar el entorno virtual en PowerShell
 .\\.venv\\Scripts\\Activate.ps1
 
-# 6. Abrir el proyecto en Visual Studio Code
+# 7. Abrir el proyecto en Visual Studio Code
 code .`;
 
       out.textContent = cloneScript;

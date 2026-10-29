@@ -149,6 +149,7 @@ Los repositorios de `credito-tdc-bcpl` son **privados de la organización**. Al 
    cd C:\Users\$env:USERNAME\Documents\GitHub
    ```
 2. **Autenticar tu cuenta corporativa con GitHub CLI:**
+   *(Si te sale el error "El término 'gh' no se reconoce...", instálalo con `winget install --id GitHub.cli -e --source winget` y reinicia tu terminal).*
    ```powershell
    gh auth login --hostname github.com -p https -w
    ```

@@ -373,6 +373,32 @@
           </p>
         </div>
 
+        <!-- Alerta si gh no está instalado -->
+        <div class="p-4 rounded-[18px] border space-y-2.5" style="background-color: var(--color-subcard); border-color: rgba(255, 159, 10, 0.35);">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-2">
+              <span class="text-base">⚡</span>
+              <span class="font-semibold text-xs sm:text-sm text-amber-400">¿Te salió: "El término 'gh' no se reconoce como comando..."?</span>
+            </div>
+            <button onclick="copyCmd('winget install --id GitHub.cli -e --source winget')" class="text-white text-xs px-3 py-1 rounded-full font-medium transition shadow-sm hover:opacity-90" style="background-color: var(--color-electric-blue);">
+              Copiar instalador de gh
+            </button>
+          </div>
+          <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+            Significa que tu equipo aún no tiene instalado <strong>GitHub CLI</strong>. Instálalo directamente desde tu terminal PowerShell:
+          </p>
+          <div class="p-2.5 rounded-[12px] font-mono text-xs border truncate" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <code>winget install --id GitHub.cli -e --source winget</code>
+          </div>
+          <div class="p-2.5 rounded-[10px] text-[11px] leading-relaxed border space-y-0.5" style="background-color: rgba(255, 69, 58, 0.08); border-color: rgba(255, 69, 58, 0.3); color: var(--color-primary-ink);">
+            <div class="font-semibold text-red-400">⚠️ PASO OBLIGATORIO TRAS INSTALAR:</div>
+            <div><strong>Cierra y vuelve a abrir tu terminal (o reinicia VS Code por completo)</strong> para que Windows registre el comando <code class="font-mono text-amber-300">gh</code>. Luego continúa con el paso 1 de abajo.</div>
+          </div>
+          <div class="text-[11px] pt-0.5" style="color: var(--color-mid-gray);">
+            ¿Tu máquina corporativa no tiene winget? Descarga el instalador directo (.msi) desde <a href="https://cli.github.com/" target="_blank" class="hover:underline font-medium text-blue-400">cli.github.com ›</a>
+          </div>
+        </div>
+
         <p class="text-[15px] leading-relaxed" style="color: var(--color-primary-ink);">
           Para enlazar tu cuenta institucional y autorizar el acceso a la organización, ejecuta estos 2 comandos en PowerShell:
         </p>
@@ -913,17 +939,18 @@
           <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <div class="flex items-center justify-between">
               <span class="text-xs font-semibold uppercase tracking-wider block text-red-400">Error 0</span>
-              <button onclick="copyCmd('winget install --id Git.Git -e --source winget')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <button onclick="copyCmd('winget install --id Git.Git -e --source winget ; winget install --id GitHub.cli -e --source winget')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
                 Copiar fix
               </button>
             </div>
-            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"'git' no se reconoce como un comando..."</h4>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"'git' o 'gh' no se reconoce como un comando..."</h4>
             <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
-              <strong>Causa:</strong> Git no está instalado o no se reinició la terminal tras la instalación.
+              <strong>Causa:</strong> Falta instalar Git o GitHub CLI, o no se reinició la terminal tras instalar.
             </p>
             <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <div class="text-blue-400 truncate">winget install --id Git.Git -e --source winget</div>
-              <div class="text-amber-400">Cierra y reabre VS Code</div>
+              <div class="text-blue-400 truncate">winget install --id GitHub.cli -e</div>
+              <div class="text-emerald-400 truncate">winget install --id Git.Git -e</div>
+              <div class="text-amber-400">Reinicia VS Code / Terminal</div>
             </div>
           </div>
           

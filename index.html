@@ -1032,57 +1032,478 @@
         </div>
       </div>
 
-      <!-- Card 2: Generador Dinámico de Comandos Multirrepositorio -->
+      <!-- Card 2: Generador Interactivo & Guía del Proceso Completo Git -->
       <div class="rounded-[28px] p-6 sm:p-8 space-y-6 border transition" style="background-color: var(--color-card); border-color: var(--color-card-border);">
         <div class="space-y-1">
-          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Herramienta Interactiva Multirrepositorio</div>
+          <div class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-ember);">Herramienta Interactiva & Guía Completa de Terminal</div>
           <h3 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--color-primary-ink);">
-            Generador de Comandos para tu Consola
+            Generador de Comandos y Ciclo de Vida Git TDC
           </h3>
           <p class="text-sm" style="color: var(--color-mid-gray);">
-            Selecciona el repositorio donde trabajas y el submódulo de tu proyecto para generar la secuencia completa de terminal:
+            Cubre el proceso de punta a punta: desde clonar y preparar tu entorno el día 1, el flujo diario de edición y publicación con explicación detallada de cada comando, hasta herramientas de rescate y auditoría ante cualquier eventualidad.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">1. Repositorio Oficial:</label>
-            <select id="gen-repo-select" onchange="onRepoChanged()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <option value="originacion-credito">🎯 originacion-credito</option>
-              <option value="administracion-cartera">📊 administracion-cartera</option>
-              <option value="indicadores-mensuales-permanentes">📈 indicadores-mensuales-permanentes</option>
-              <option value="herramientas-utiles">🛠️ herramientas-utiles</option>
-            </select>
+        <!-- Sub-navigation Pills -->
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-[16px] border w-fit" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+          <button id="btn-subtab-daily" onclick="switchGenSubTab('daily')" class="subtab-btn px-4 py-2 rounded-[12px] text-xs font-semibold transition" style="background-color: var(--color-btn-active-bg); color: var(--color-btn-active-text);">
+            🚀 Flujo Diario (Pull, Commit y Push)
+          </button>
+          <button id="btn-subtab-clone" onclick="switchGenSubTab('clone')" class="subtab-btn px-4 py-2 rounded-[12px] text-xs font-semibold transition opacity-70" style="color: var(--color-mid-gray);">
+            📥 Día 1: Clonar y Preparar Entorno
+          </button>
+          <button id="btn-subtab-rescue" onclick="switchGenSubTab('rescue')" class="subtab-btn px-4 py-2 rounded-[12px] text-xs font-semibold transition opacity-70" style="color: var(--color-mid-gray);">
+            🛡️ Comandos de Rescate y Auditoría
+          </button>
+        </div>
+
+        <!-- ================= SUBTAB 1: FLUJO DIARIO ================= -->
+        <div id="view-subtab-daily" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-medium" style="color: var(--color-primary-ink);">1. Repositorio Oficial:</label>
+              <select id="gen-repo-select" onchange="onRepoChanged()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <option value="originacion-credito">🎯 originacion-credito</option>
+                <option value="administracion-cartera">📊 administracion-cartera</option>
+                <option value="indicadores-mensuales-permanentes">📈 indicadores-mensuales-permanentes</option>
+                <option value="herramientas-utiles">🛠️ herramientas-utiles</option>
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-medium" style="color: var(--color-primary-ink);">2. Submódulo de tu proyecto:</label>
+              <select id="gen-module-select" onchange="updateCommandGen()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <!-- Dinámicamente poblado vía JS -->
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-medium" style="color: var(--color-primary-ink);">3. Nombre de tu archivo:</label>
+              <input type="text" id="gen-filename" oninput="updateCommandGen()" placeholder="motor_reglas.py" value="analisis_pd_m4.py" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-medium" style="color: var(--color-primary-ink);">4. Motivo del commit:</label>
+              <input type="text" id="gen-msg" oninput="updateCommandGen()" placeholder="actualiza deciles de corte" value="actualiza curva de corte decil 3" class="w-full text-xs p-2.5 rounded-[12px] border outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            </div>
           </div>
 
-          <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">2. Submódulo de tu proyecto:</label>
-            <select id="gen-module-select" onchange="updateCommandGen()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-              <!-- Dinámicamente poblado vía JS -->
-            </select>
+          <!-- Secuencia Consolidada -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia completa de terminal (PowerShell):</span>
+              <button onclick="copyGeneratedCommands()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar Todo al Portapapeles
+              </button>
+            </div>
+            <pre id="gen-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);"><!-- JS Output --></pre>
           </div>
 
-          <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">3. Nombre de tu archivo:</label>
-            <input type="text" id="gen-filename" oninput="updateCommandGen()" placeholder="motor_reglas.py" value="analisis_pd_m4.py" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
-          </div>
+          <!-- Desglose Paso a Paso con Explicación de Cada Comando -->
+          <div class="space-y-4 pt-2">
+            <div class="border-t pt-4" style="border-color: var(--color-hairline);">
+              <h4 class="font-bold text-sm sm:text-base flex items-center space-x-2" style="color: var(--color-primary-ink);">
+                <span>📖</span>
+                <span>Explicación Paso a Paso de Cada Comando en tu Flujo Diario</span>
+              </h4>
+              <p class="text-xs" style="color: var(--color-mid-gray);">
+                Entiende qué hace cada instrucción en tu sistema, por qué es obligatoria y qué mensaje debes esperar en la terminal:
+              </p>
+            </div>
 
-          <div class="space-y-1.5">
-            <label class="text-xs font-medium" style="color: var(--color-primary-ink);">4. Motivo del commit:</label>
-            <input type="text" id="gen-msg" oninput="updateCommandGen()" placeholder="actualiza deciles de corte" value="actualiza curva de corte decil 3" class="w-full text-xs p-2.5 rounded-[12px] border outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <div class="space-y-3">
+              <!-- Paso 1 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">Paso 1 · Navegación</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Posicionar la terminal en tu repositorio local</span>
+                  </div>
+                  <button onclick="copyCmd(document.getElementById('step-cmd-1').textContent)" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code id="step-cmd-1">cd C:\Users\tu.usuario\Documents\GitHub\originacion-credito</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué se ejecuta?</strong>
+                    Git opera exclusivamente dentro de carpetas que contienen el directorio oculto <code class="font-mono text-[10px]">.git/</code>. Si intentas ejecutar comandos fuera de este directorio, la consola arrojará el error <code class="font-mono text-[10px] text-red-400">fatal: not a git repository</code>.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    El indicador de ruta de PowerShell cambiará a la carpeta del repositorio, reconociendo que ya estás dentro del espacio de trabajo.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 2 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Paso 2 · Hábito Matutino</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Descargar los avances más recientes de tus compañeros</span>
+                  </div>
+                  <button onclick="copyCmd('git pull origin main')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code>git pull origin main</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué es sagrado?</strong>
+                    En un monorepo activo con 8 analistas, tus compañeros suben mejoras continuamente. Si empiezas a programar sobre una versión desfasada de <code class="font-mono text-[10px]">main</code>, al final del día tu <code class="font-mono text-[10px]">git push</code> será rechazado por desincronización.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    Si nadie subió nada verás <code class="font-mono text-[10px] text-emerald-400">Already up to date.</code> Si hubo cambios, Git descargará los archivos y mostrará un resumen tipo <code class="font-mono text-[10px]">Fast-forward</code>.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 3 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">Paso 3 · Entorno Virtual</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Activar el entorno aislado corporativo de Python</span>
+                  </div>
+                  <button onclick="copyCmd('.\\.venv\\Scripts\\Activate.ps1')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code>.\.venv\Scripts\Activate.ps1</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué se ejecuta?</strong>
+                    Garantiza que la ejecución de tus scripts utilice las librerías homologadas del equipo (Polars, conectores, paquetes estadísticos) y no las versiones globales de Windows, evitando fallos por dependencias desalineadas.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    Aparecerá el prefijo <code class="font-mono text-[10px] text-purple-400 font-bold">(.venv)</code> al inicio del prompt en tu terminal de PowerShell.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 4 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">Paso 4 · Inspección</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Auditar qué archivos detectó Git en tu espacio de trabajo</span>
+                  </div>
+                  <button onclick="copyCmd('git status')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code>git status</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué es indispensable?</strong>
+                    Es tu semáforo de control. Te avisa qué archivos modificaste y si creaste archivos nuevos. Te permite detectar si dejaste sin querer un archivo temporal (<code class="font-mono text-[10px]">.xlsx</code>, <code class="font-mono text-[10px]">.csv</code>) antes de agregarlo al repositorio.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    Verás tus archivos modificados en color <span class="text-red-400 font-semibold">rojo</span> indicando que están en el disco pero aún no en el área de preparación (Staging Area).
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 5 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">Paso 5 · Staging Selectivo</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Preparar únicamente tu archivo específico para el commit</span>
+                  </div>
+                  <button onclick="copyCmd(document.getElementById('step-cmd-5').textContent)" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code id="step-cmd-5">git add modelos-scoring/lineas-optimas-pd-m4/analisis_pd_m4.py</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué ser selectivo?</strong>
+                    <strong>Regla de oro institucional:</strong> Prohibido usar <code class="font-mono text-[10px] text-red-400">git add .</code> a ciegas. Agregar por ruta exacta asegura que solo subas el script que trabajaste, sin riesgo de subir archivos con contraseñas o datos sensibles de clientes.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    No arroja salida si tiene éxito. Si vuelves a correr <code class="font-mono text-[10px]">git status</code>, tu archivo ahora aparecerá en color <span class="text-emerald-400 font-semibold">verde</span> bajo <code class="font-mono text-[10px]">Changes to be committed</code>.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 6 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-green-500/10 text-green-400 border border-green-500/20">Paso 6 · Snapshot Semántico</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Guardar una instantánea auditada y permanente en tu historial</span>
+                  </div>
+                  <button onclick="copyCmd(document.getElementById('step-cmd-6').textContent)" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code id="step-cmd-6">git commit -m "feat(originacion): actualiza curva de corte decil 3"</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué usar convención semántica?</strong>
+                    Un commit es un documento de auditoría. Usar <code class="font-mono text-[10px]">feat()</code>, <code class="font-mono text-[10px]">fix()</code> o <code class="font-mono text-[10px]">docs()</code> permite a la Gerencia y a tus compañeros entender qué cambió en una política crediticia sin tener que descifrar líneas de código.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    Un mensaje de confirmación con el hash del commit: <code class="font-mono text-[10px] text-emerald-400">[main a1b2c3d] feat(...): ... 1 file changed, X insertions(+)</code>.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 7 -->
+              <div class="p-4 rounded-[18px] border space-y-2 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Paso 7 · Publicación Remota</span>
+                    <span class="text-xs font-semibold" style="color: var(--color-primary-ink);">Publicar tus commits en la organización de GitHub</span>
+                  </div>
+                  <button onclick="copyCmd('git push origin main')" class="text-[11px] px-2.5 py-1 rounded-full font-medium transition border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                    Copiar comando
+                  </button>
+                </div>
+                <div class="p-2 rounded-[10px] font-mono text-xs overflow-x-auto" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                  <code>git push origin main</code>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1" style="color: var(--color-mid-gray);">
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Por qué se ejecuta?</strong>
+                    Hasta el paso 6, todo ocurrió únicamente en tu laptop. Al ejecutar <code class="font-mono text-[10px]">git push</code>, tus commits se transfieren al servidor remoto corporativo en GitHub, quedando respaldados de inmediato y listos para producción.
+                  </div>
+                  <div>
+                    <strong class="text-[11px] uppercase tracking-wide block" style="color: var(--color-primary-ink);">¿Qué esperar en consola?</strong>
+                    El progreso de transferencia: <code class="font-mono text-[10px] text-cyan-400">Writing objects: 100% (X/X) ... To https://github.com/credito-tdc-bcpl/... main -> main</code>.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia de terminal generada en tiempo real:</span>
-            <button onclick="copyGeneratedCommands()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
-              Copiar Todo al Portapapeles
-            </button>
+        <!-- ================= SUBTAB 2: DÍA 1 (CLONAR Y ENTORNO) ================= -->
+        <div id="view-subtab-clone" class="hidden space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-medium" style="color: var(--color-primary-ink);">Repositorio a clonar:</label>
+              <select id="clone-repo-select" onchange="updateCloneGen()" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none cursor-pointer" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                <option value="originacion-credito">🎯 originacion-credito</option>
+                <option value="administracion-cartera">📊 administracion-cartera</option>
+                <option value="indicadores-mensuales-permanentes">📈 indicadores-mensuales-permanentes</option>
+                <option value="herramientas-utiles">🛠️ herramientas-utiles</option>
+              </select>
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-xs font-medium" style="color: var(--color-primary-ink);">Tu usuario de Windows:</label>
+              <input type="text" id="clone-username" oninput="updateCloneGen()" placeholder="tu.usuario" value="tu.usuario" class="w-full text-xs p-2.5 rounded-[12px] border font-mono outline-none" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            </div>
           </div>
-          <pre id="gen-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);"><!-- JS Output --></pre>
+
+          <!-- Secuencia Consolidada Clone -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-medium" style="color: var(--color-mid-gray);">Secuencia completa de inicialización y clonado (PowerShell):</span>
+              <button onclick="copyCloneCommands()" class="text-xs px-3.5 py-1.5 rounded-full font-medium text-white transition hover:opacity-90 shadow-sm" style="background-color: var(--color-electric-blue);">
+                Copiar Secuencia de Inicialización
+              </button>
+            </div>
+            <pre id="gen-clone-output" class="p-4 rounded-[16px] font-mono text-xs border overflow-x-auto leading-relaxed" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);"><!-- Clone JS Output --></pre>
+          </div>
+
+          <!-- Guía y Explicación del Clonado -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            
+            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center space-x-2">
+                <span class="text-blue-400 font-bold text-sm">📥</span>
+                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">¿Qué hace exactamente "git clone"?</h4>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Crea una copia idéntica y completa del repositorio en tu laptop: descarga todas las carpetas, ramas, archivos y el historial criptográfico de commits. Además, vincula de forma automática el puntero remoto <code class="font-mono text-[11px]">origin</code> hacia GitHub para que no tengas que configurar URLs manualmente.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center space-x-2">
+                <span class="text-amber-400 font-bold text-sm">🔑</span>
+                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Autenticación en Repos Privados (PAT)</h4>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Los repositorios de <code class="font-mono text-[11px]">credito-tdc-bcpl</code> son privados. La primera vez que clones, Git te solicitará usuario y contraseña. <strong>Tu contraseña habitual de GitHub no funcionará</strong>; debes generar un <strong>Personal Access Token (PAT)</strong> con permisos de <code class="font-mono text-[11px]">repo</code> en GitHub Settings, o autenticarte vía <code class="font-mono text-[11px]">gh auth login</code>.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center space-x-2">
+                <span class="text-purple-400 font-bold text-sm">🐍</span>
+                <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Aislamiento con Entorno Virtual (.venv)</h4>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Ejecutar <code class="font-mono text-[11px]">python -m venv .venv</code> crea un sandbox aislado en la carpeta del proyecto. Así, cuando instales librerías como Polars o paquetes de analítica, nunca entrarán en conflicto con otros proyectos de tu máquina ni con la instalación base de Python.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-[20px] border space-y-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-emerald-400 font-bold text-sm">⚡</span>
+                  <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">Error "Scripts Disabled" en PowerShell</h4>
+                </div>
+                <button onclick="copyCmd('Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned')" class="text-[11px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar solución
+                </button>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                Si al activar <code class="font-mono text-[11px]">Activate.ps1</code> recibes el mensaje <em class="text-red-400">"execution of scripts is disabled on this system"</em>, Windows tiene bloqueada la ejecución por defecto. Se soluciona ejecutando este comando una sola vez en PowerShell:
+                <code class="block font-mono text-[11px] p-2 rounded-[8px] mt-1 text-emerald-400" style="background-color: var(--color-pill-bg);">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code>
+              </p>
+            </div>
+
+          </div>
         </div>
+
+        <!-- ================= SUBTAB 3: COMANDOS DE RESCATE ================= -->
+        <div id="view-subtab-rescue" class="hidden space-y-4">
+          <div class="border-b pb-3" style="border-color: var(--color-hairline);">
+            <h4 class="font-bold text-sm sm:text-base" style="color: var(--color-primary-ink);">
+              🛡️ Lo que necesitas para cubrir el proceso completo: Guía de Rescate y Auditoría
+            </h4>
+            <p class="text-xs" style="color: var(--color-mid-gray);">
+              Los 5 escenarios cotidianos más comunes en equipos de ciencia de datos y cómo resolverlos con seguridad en segundos:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Rescate 1 -->
+            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-amber-400 font-bold">1.</span>
+                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Push Rechazado (Alguien subió cambios antes)</h5>
+                </div>
+                <button onclick="copyCmd('git pull --rebase origin main; git push origin main')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar solución
+                </button>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Situación:</strong> Ejecutaste <code class="font-mono text-[11px]">git push</code> y la terminal arrojó <span class="text-red-400 font-mono">[rejected - fetch first]</span> porque un compañero publicó en <code class="font-mono text-[11px]">main</code> mientras tú trabajabas.
+              </p>
+              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <code>git pull --rebase origin main<br>git push origin main</code>
+              </div>
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>¿Por qué rebase?</strong> Descarga los cambios de tu compañero y coloca tus commits locales por encima de forma lineal, sin crear commits feos de mezcla (<code class="font-mono text-[10px]">Merge branch 'main'</code>).
+              </p>
+            </div>
+
+            <!-- Rescate 2 -->
+            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-red-400 font-bold">2.</span>
+                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Descartar Modificaciones Locales en un Script</h5>
+                </div>
+                <button onclick="copyCmd('git restore ruta/a/tu/script.py')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar comando
+                </button>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Situación:</strong> Hiciste modificaciones experimentales en tu código, las pruebas salieron mal y quieres reiniciar el archivo exactamente como estaba en GitHub.
+              </p>
+              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <code>git restore ruta/a/tu/script.py</code>
+              </div>
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Efecto:</strong> Descarta al instante todos los cambios locales no confirmados y recupera la versión limpia del último commit.
+              </p>
+            </div>
+
+            <!-- Rescate 3 -->
+            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-purple-400 font-bold">3.</span>
+                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Deshacer "git add" por Accidente (Staging)</h5>
+                </div>
+                <button onclick="copyCmd('git restore --staged ruta/al/archivo')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar comando
+                </button>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Situación:</strong> Agregaste un archivo por descuido al Staging Area (aparece en verde en <code class="font-mono text-[11px]">git status</code>) y quieres sacarlo antes de hacer commit.
+              </p>
+              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <code>git restore --staged ruta/al/archivo</code>
+              </div>
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Efecto:</strong> Saca el archivo de la lista de preparación pero <em>NO borra tu trabajo ni altera el archivo</em>; simplemente regresa a color rojo.
+              </p>
+            </div>
+
+            <!-- Rescate 4 -->
+            <div class="p-5 rounded-[20px] border space-y-3 transition" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-sky-400 font-bold">4.</span>
+                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Auditar Cambios Línea por Línea (git diff)</h5>
+                </div>
+                <button onclick="copyCmd('git diff ruta/a/tu/script.py')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar comando
+                </button>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Situación:</strong> Quieres revisar exactamente qué líneas agregaste o borraste antes de armar el commit definitivo.
+              </p>
+              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <code>git diff ruta/a/tu/script.py</code>
+              </div>
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Efecto:</strong> Te muestra en <span class="text-emerald-400 font-semibold">+ verde</span> las adiciones y en <span class="text-red-400 font-semibold">- rojo</span> las eliminaciones para validar la calidad de tus fórmulas.
+              </p>
+            </div>
+
+            <!-- Rescate 5 -->
+            <div class="p-5 rounded-[20px] border space-y-3 transition md:col-span-2" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-emerald-400 font-bold">5.</span>
+                  <h5 class="font-bold text-sm" style="color: var(--color-primary-ink);">Consultar Historial Reciente del Equipo (git log)</h5>
+                </div>
+                <button onclick="copyCmd('git log --oneline -n 6')" class="text-[11px] px-2.5 py-1 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                  Copiar comando
+                </button>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Situación:</strong> Necesitas verificar cuáles fueron los últimos commits publicados por tus compañeros de equipo y en qué fecha se modificaron las políticas.
+              </p>
+              <div class="p-2.5 rounded-[10px] font-mono text-xs" style="background-color: var(--color-pill-bg); color: var(--color-primary-ink);">
+                <code>git log --oneline -n 6</code>
+              </div>
+              <p class="text-[11px] leading-relaxed" style="color: var(--color-mid-gray);">
+                <strong>Efecto:</strong> Despliega un resumen visual y condensado de los 6 commits más recientes con sus hashes y mensajes semánticos.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <!-- Card 3: Los 4 Mandamientos del Trabajo en Monorepos -->
@@ -1173,6 +1594,9 @@
         document.getElementById('theme-icon').textContent = '🌙';
       }
       updateActiveTabPillStyles();
+      if (typeof switchGenSubTab === 'function') {
+        switchGenSubTab(currentGenSubTab);
+      }
     }
 
     function toggleTheme() {
@@ -1180,6 +1604,9 @@
       localStorage.setItem('theme_preference', isLight ? 'light' : 'dark');
       document.getElementById('theme-icon').textContent = isLight ? '☀️' : '🌙';
       updateActiveTabPillStyles();
+      if (typeof switchGenSubTab === 'function') {
+        switchGenSubTab(currentGenSubTab);
+      }
       showToast(isLight ? 'Modo Claro activado' : 'Modo Oscuro activado');
     }
 
@@ -1366,6 +1793,36 @@
       updateCommandGen();
     }
 
+    // Control de Sub-pestañas en el Generador del Ciclo de Vida
+    let currentGenSubTab = 'daily';
+
+    function switchGenSubTab(subTab) {
+      currentGenSubTab = subTab;
+      const isLight = document.documentElement.classList.contains('light');
+      const activeBg = isLight ? '#1d1d1f' : '#f5f5f7';
+      const activeText = isLight ? '#ffffff' : '#000000';
+      const inactiveColor = isLight ? '#707070' : '#a1a1a6';
+
+      ['daily', 'clone', 'rescue'].forEach(t => {
+        const btn = document.getElementById(`btn-subtab-${t}`);
+        const view = document.getElementById(`view-subtab-${t}`);
+        if (btn) {
+          if (t === subTab) {
+            btn.style.backgroundColor = activeBg;
+            btn.style.color = activeText;
+            btn.classList.remove('opacity-70');
+          } else {
+            btn.style.backgroundColor = 'transparent';
+            btn.style.color = inactiveColor;
+            btn.classList.add('opacity-70');
+          }
+        }
+        if (view) {
+          view.classList.toggle('hidden', t !== subTab);
+        }
+      });
+    }
+
     function updateCommandGen() {
       const repoSelect = document.getElementById('gen-repo-select');
       const modSelect = document.getElementById('gen-module-select');
@@ -1403,6 +1860,14 @@ git push origin main`;
 
       const out = document.getElementById('gen-output');
       if (out) out.textContent = script;
+
+      // Actualizar dinámicamente comandos en el desglose explicativo
+      const step1 = document.getElementById('step-cmd-1');
+      const step5 = document.getElementById('step-cmd-5');
+      const step6 = document.getElementById('step-cmd-6');
+      if (step1) step1.textContent = `cd C:\\Users\\tu.usuario\\Documents\\GitHub\\${repoKey}`;
+      if (step5) step5.textContent = `git add ${modulePath}/${filename}`;
+      if (step6) step6.textContent = `git commit -m "feat(${domain}): ${msg}"`;
     }
 
     function copyGeneratedCommands() {
@@ -1410,6 +1875,46 @@ git push origin main`;
       if (out) {
         copyCmd(out.textContent);
         showToast('Secuencia de comandos copiada al portapapeles');
+      }
+    }
+
+    // Generador de Inicialización y Clonado (Día 1)
+    function updateCloneGen() {
+      const repoEl = document.getElementById('clone-repo-select');
+      const userEl = document.getElementById('clone-username');
+      const out = document.getElementById('gen-clone-output');
+      if (!repoEl || !userEl || !out) return;
+
+      const repo = repoEl.value || 'originacion-credito';
+      const user = userEl.value.trim() || 'tu.usuario';
+
+      const cloneScript = `# 1. Crear o posicionarte en la carpeta de repositorios en tu equipo
+New-Item -ItemType Directory -Force -Path "C:\\Users\\${user}\\Documents\\GitHub"
+cd "C:\\Users\\${user}\\Documents\\GitHub"
+
+# 2. Clonar el repositorio corporativo desde GitHub
+git clone https://github.com/credito-tdc-bcpl/${repo}.git
+
+# 3. Entrar a la carpeta del proyecto recién descargado
+cd ${repo}
+
+# 4. Crear el entorno virtual corporativo de Python
+python -m venv .venv
+
+# 5. Activar el entorno virtual en PowerShell
+.\\.venv\\Scripts\\Activate.ps1
+
+# 6. Abrir el proyecto en Visual Studio Code
+code .`;
+
+      out.textContent = cloneScript;
+    }
+
+    function copyCloneCommands() {
+      const out = document.getElementById('gen-clone-output');
+      if (out) {
+        copyCmd(out.textContent);
+        showToast('Secuencia de inicialización copiada al portapapeles');
       }
     }
 
@@ -1425,6 +1930,8 @@ git push origin main`;
       }
       updateProgressUI();
       onRepoChanged();
+      updateCloneGen();
+      switchGenSubTab('daily');
     });
   </script>
 

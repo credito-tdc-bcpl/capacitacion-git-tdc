@@ -260,9 +260,51 @@
 
         <div class="p-4 rounded-[20px] border text-xs space-y-1.5 font-mono" style="background-color: var(--color-subcard); border-color: var(--color-hairline);">
           <div class="font-sans font-semibold text-[11px] uppercase tracking-wider" style="color: var(--color-mid-gray);">¿Qué debes ver en tu terminal?</div>
-          <div class="font-semibold" style="color: var(--color-primary-ink);">git version 2.4x.x.windows.1</div>
-          <div class="font-sans text-xs pt-1" style="color: var(--color-mid-gray);">
-            Si sale error, instala Git desde <a href="https://git-scm.com/download/win" target="_blank" class="hover:underline font-medium" style="color: var(--color-link-blue);">git-scm.com ›</a> y reinicia VS Code.
+          <div class="font-semibold text-emerald-400">git version 2.4x.x.windows.1</div>
+          <div class="font-sans text-xs pt-0.5" style="color: var(--color-mid-gray);">
+            Si ves el número de versión, pasa al punto 2. Si recibiste un error en rojo ("el término 'git' no se reconoce..."), sigue la sección de abajo:
+          </div>
+        </div>
+
+        <!-- Caja de instalación desde terminal si no lo tiene -->
+        <div class="p-5 rounded-[22px] border space-y-3.5" style="background-color: var(--color-subcard); border-color: rgba(255, 159, 10, 0.35);">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-2">
+              <span class="text-lg">⚡</span>
+              <div>
+                <h4 class="font-semibold text-xs sm:text-sm text-amber-400">¿No tienes Git instalado? Instálalo directo desde la terminal:</h4>
+                <p class="text-[11px]" style="color: var(--color-mid-gray);">Usa el gestor oficial de Windows (winget) sin necesidad de descargar ejecutables a mano:</p>
+              </div>
+            </div>
+            <button onclick="copyCmd('winget install --id Git.Git -e --source winget')" class="text-white text-xs px-3.5 py-1.5 rounded-full font-medium transition shadow-sm hover:opacity-90" style="background-color: var(--color-electric-blue);">
+              Copiar comando de instalación
+            </button>
+          </div>
+
+          <div class="p-2.5 rounded-[12px] font-mono text-xs border truncate" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+            <code>winget install --id Git.Git -e --source winget</code>
+          </div>
+
+          <div class="p-3 rounded-[12px] text-xs leading-relaxed border space-y-1" style="background-color: rgba(255, 69, 58, 0.08); border-color: rgba(255, 69, 58, 0.3); color: var(--color-primary-ink);">
+            <div class="font-semibold text-red-400 flex items-center space-x-1.5">
+              <span>⚠️</span>
+              <span>PASO OBLIGATORIO TRAS LA INSTALACIÓN:</span>
+            </div>
+            <p class="text-[11px]" style="color: var(--color-mid-gray);">
+              <strong>Cierra tu terminal o reinicia Visual Studio Code por completo.</strong> Windows necesita actualizar las variables de entorno (<code class="font-mono text-amber-300">PATH</code>). Si mantienes la misma terminal abierta, seguirá diciendo que no reconoce <code class="font-mono text-amber-300">git</code>.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t text-[11px]" style="border-color: var(--color-hairline); color: var(--color-mid-gray);">
+            <div>
+              <span>¿También necesitas GitHub CLI para autenticarte fácil? </span>
+              <button onclick="copyCmd('winget install --id GitHub.cli -e --source winget')" class="text-xs font-mono font-medium hover:underline text-blue-400">
+                Copiar: winget install --id GitHub.cli -e
+              </button>
+            </div>
+            <a href="https://git-scm.com/download/win" target="_blank" class="hover:underline font-medium text-blue-400">
+              O descargar instalador gráfico clásico (.exe) ›
+            </a>
           </div>
         </div>
 
@@ -863,10 +905,27 @@
       <!-- Solutions to Common Beginner Headaches in Windows -->
       <div class="space-y-3 pt-2">
         <h3 class="text-lg font-semibold tracking-tight" style="color: var(--color-primary-ink);">
-          Solución a los 4 Dolores de Cabeza Más Comunes en Windows
+          Solución a los 5 Dolores de Cabeza Más Comunes en Windows
         </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          
+          <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider block text-red-400">Error 0</span>
+              <button onclick="copyCmd('winget install --id Git.Git -e --source winget')" class="text-[10px] px-2 py-0.5 rounded-full border hover:opacity-90" style="background-color: var(--color-pill-bg); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+                Copiar fix
+              </button>
+            </div>
+            <h4 class="font-semibold text-sm" style="color: var(--color-primary-ink);">"'git' no se reconoce como un comando..."</h4>
+            <p class="text-xs leading-relaxed" style="color: var(--color-mid-gray);">
+              <strong>Causa:</strong> Git no está instalado o no se reinició la terminal tras la instalación.
+            </p>
+            <div class="p-2.5 rounded-[12px] text-[11px] font-mono space-y-1 border" style="background-color: var(--color-subcard); border-color: var(--color-hairline); color: var(--color-primary-ink);">
+              <div class="text-blue-400 truncate">winget install --id Git.Git -e --source winget</div>
+              <div class="text-amber-400">Cierra y reabre VS Code</div>
+            </div>
+          </div>
           
           <div class="rounded-[28px] p-6 space-y-3 border" style="background-color: var(--color-card); border-color: var(--color-card-border);">
             <span class="text-xs font-semibold uppercase tracking-wider block" style="color: var(--color-ember);">Error 1</span>
@@ -1443,6 +1502,9 @@
                   <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">2. Autenticar tu cuenta corporativa con GitHub CLI:</div>
                   <code class="block font-mono text-[11px] p-1.5 rounded-[8px] text-blue-400" style="background-color: var(--color-subcard);">gh auth login --hostname github.com -p https -w</code>
                   <p class="text-[11px]">Presiona Enter, pega el código de 8 dígitos (ej: <code class="font-mono text-amber-400">ABCD-1234</code>), inicia sesión con tu usuario BanCoppel y haz clic en <strong>Authorize / Grant</strong> para la organización <code class="font-mono text-emerald-400">credito-tdc-bcpl</code>.</p>
+                  <p class="text-[10px] pt-0.5" style="color: var(--color-mid-gray);">
+                    <span class="text-amber-400 font-semibold">¿No reconoce git o gh?</span> Instálalos desde PowerShell con <code class="font-mono text-blue-400">winget install --id Git.Git -e ; winget install --id GitHub.cli -e</code> y reinicia la terminal.
+                  </p>
                 </div>
                 <div class="space-y-1 pt-1">
                   <div class="font-semibold text-[11px]" style="color: var(--color-primary-ink);">3. Configurar Git para usar tu autenticación:</div>

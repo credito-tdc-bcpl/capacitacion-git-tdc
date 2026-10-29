@@ -69,6 +69,42 @@ Para asegurar la reproducibilidad y el cumplimiento normativo bancario:
 
 ---
 
+## 💻 Requisito Previo: Instalación de Git y GitHub CLI desde la Terminal
+
+Si al abrir PowerShell o la consola integrada de VS Code (`Ctrl + Ñ`) y escribir `git --version` aparece el error:
+> *"El término 'git' no se reconoce como un nombre de un cmdlet, función, archivo de script o programa ejecutable..."*
+
+Significa que tu equipo aún no tiene Git instalado. Puedes instalarlo en segundos directamente desde la terminal de Windows sin descargar ejecutables manualmente en el navegador:
+
+### 1. Instalación rápida con `winget` (Windows 10 y 11)
+Abre PowerShell y ejecuta:
+
+```powershell
+# 1. Instalar el cliente oficial de Git para Windows
+winget install --id Git.Git -e --source winget
+
+# 2. (Recomendado) Instalar GitHub CLI para autenticación institucional sin contraseñas
+winget install --id GitHub.cli -e --source winget
+```
+
+> [!IMPORTANT]
+> **REINICIO OBLIGATORIO DE LA TERMINAL:**  
+> Tras finalizar la instalación, **debes cerrar PowerShell o reiniciar Visual Studio Code por completo**. Windows necesita recargar las variables de entorno del sistema (`PATH`). Si continúas en la misma ventana abierta, seguirá mostrando el error de que no reconoce el comando.
+
+### 2. Verificar que ya funciona
+Abre una terminal limpia y ejecuta:
+```powershell
+git --version
+# Salida esperada: git version 2.4x.x.windows.1
+
+gh --version
+# Salida esperada: gh version 2.x.x (...)
+```
+
+*(Alternativa: Si `winget` no estuviera disponible en tu equipo por políticas corporativas, puedes descargar el instalador tradicional desde [git-scm.com/download/win](https://git-scm.com/download/win)).*
+
+---
+
 ## 🐣 Flujo Diario de Trabajo en Terminal (PowerShell)
 
 Para actualizar tu código y subir tus avances al repositorio que te corresponde:

@@ -35,7 +35,7 @@ Para proteger el código productivo y evitar colisiones entre proyectos, la orga
 ### 🏛️ Los 4 Equipos Oficiales (`credito-tdc-bcpl`)
 
 1. 🎯 **Equipo Originación (`originacion`)**
-   * **Integrantes:** Luis Enrique Arriola (`enriquearriola-blip`) y Elizabeth Gómez Soto (`egsoto`).
+   * **Integrantes:** Luis Enrique Arriola (`enriquearriola-blip`), Elizabeth Gómez Soto (`egsoto`) y Andrea Placencia (`aplacencia`).
    * **Permiso de Escritura (`Write`):** [`originacion-credito`](https://github.com/credito-tdc-bcpl/originacion-credito).
    * **Alcance:** Modelos de scoring PD M4, admisión, prospección One Click y reglas de Buró/Círculo.
 
@@ -64,7 +64,7 @@ Para proteger el código productivo y evitar colisiones entre proyectos, la orga
 | **Elizabeth Gómez** | `@egsoto` | Originación | **Write** | Read | Read | Read |
 | **Armando Morales** | `@Morales1911` | Administración | Read | **Write** | Read | Read |
 | **Laura Anaid Álvarez** | `@anaidzamudio-tech` | Administración | Read | **Write** | Read | Read |
-| **Andrea Placencia** | `@aplacencia` | Admin & Indicadores | Read | **Write** | **Write** | Read |
+| **Andrea Placencia** | `@aplacencia` | Originación, Admin & Ind. | **Write** | **Write** | **Write** | Read |
 | **Naidelin Coronel** | `@NaiCoronel` | Certificación | Read | Read | **Write** | Read |
 | **Juan José López** | `@jjlopezbc` | Certificación | Read | Read | **Write** | Read |
 | **Luis Ernesto Álvarez** | `@lealvarezfc` | Certificación | Read | Read | **Write** | Read |
